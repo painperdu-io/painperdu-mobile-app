@@ -17,9 +17,10 @@ export default {
 <style scoped>
 .hello {
   background: #fff;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font: 14px 'Baskerville-Bold', sans-serif;
 }
 h1 {
   color: #42b983;
