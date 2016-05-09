@@ -11,9 +11,9 @@
     "cordova": "npm run build && cordova run ios --target=\"iPhone-6s, 9.3\""
   },
   "dependencies": {
+    "babel-runtime": "^5.8.0",
     "vue": "^1.0.21",
-    "vue-router": "^0.7.13",
-    "babel-runtime": "^5.8.0"
+    "vue-router": "^0.7.13"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
