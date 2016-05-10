@@ -8,7 +8,8 @@
     "clean": "rimraf www && mkdirp www",
     "dev": "node build/dev-server.js",
     "build": "rimraf www && mkdirp www && ncp static www/static && node build/build.js",
-    "cordova": "npm run build && cordova run ios --target=\"iPhone-6s, 9.3\""
+    "platforms": "cordova platforms add ios",
+    "cordova": "npm run build && cordova build && cordova run ios --target=\"iPhone-6s, 9.3\""
   },
   "dependencies": {
     "babel-runtime": "^5.8.0",
