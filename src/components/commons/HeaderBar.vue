@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import './../../utils/commons.scss';
+@import './../../styles/mixins.scss';
 
 .headerBar {
   width: 100%;

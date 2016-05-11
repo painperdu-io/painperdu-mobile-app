@@ -1,0 +1,17 @@
+.fade-transition {
+  transition: all .5s ease;
+}
+
+.fade-enter, .fade-leave {
+  opacity: 0;
+}
+
+.popIn-transition {
+  transition: all .5s ease;
+  transform: scale(1);
+}
+
+.popIn-enter, .popIn-leave {
+  opacity: 0;
+  transform: scale(0);
+}
