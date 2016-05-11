@@ -33,17 +33,17 @@ export default {};
   width: 100%;
 }
 
-.footer-item {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex: 1 33%;
-  font: 1em "Avenir-Book", sans-serif;
-  color: $color-white;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration: none;
-}
+  .footer-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1 33%;
+    font: 1em "Avenir-Book", sans-serif;
+    color: $color-white;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
 
 .footer-active {
   position: absolute;
