@@ -48,7 +48,6 @@ body {
 @font-face {
   font-family: 'Baskerville-Bold';
   src: url('/static/fonts/Baskerville-Bold.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/Baskerville-Bold.woff') format('woff'),
     url('/static/fonts/Baskerville-Bold.ttf')  format('truetype'),
     url('/static/fonts/Baskerville-Bold.svg#Baskerville-Bold') format('svg');
   font-weight: normal;

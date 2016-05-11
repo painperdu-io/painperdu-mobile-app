@@ -1,0 +1,7 @@
+@mixin height($size) {
+  height: (667px * $size) / 1334px;
+}
+
+@mixin width($size) {
+  width: (375px * $size) / 750px;
+}
