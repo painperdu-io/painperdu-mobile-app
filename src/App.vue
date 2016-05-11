@@ -35,6 +35,14 @@ body {
   overflow: hidden;
 }
 
+.fade-transition {
+  transition: all .5s ease;
+}
+
+.fade-enter, .fade-leave {
+  opacity: 0;
+}
+
 @font-face {
   font-family: 'Avenir-Book';
   src: url('/static/fonts/Avenir-Book.eot?#iefix') format('embedded-opentype'),

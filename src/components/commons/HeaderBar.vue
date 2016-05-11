@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      title: 'Pain Perdu tet',
+      title: 'Pain Perdu test',
     };
   },
 }
