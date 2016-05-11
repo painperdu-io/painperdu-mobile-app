@@ -1,26 +1,20 @@
 <template>
   <nav class="headerBar">
-    <h1>{{ title }}</h1>
+    <h1> {{ $route.data.title }}</h1>
 
   </nav>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      title: 'Pain Perdu test',
-    };
-  },
-}
+
+export default {}
 </script>
 
 <style lang='scss' scoped>
-@import './../../styles/mixins.scss';
 
 .headerBar {
   width: 100%;
-  @include height(120px);
+  height: 60px;
   background-color: #ff4743;
   z-index: 900;
 }
