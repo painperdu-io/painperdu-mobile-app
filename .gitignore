@@ -6,8 +6,8 @@ platforms/android/.gradle
 platforms/android/assets/www
 platforms/android/CordovaLib/build
 
-platforms/ios/www
-platforms/ios/CordovaLib/build
+platforms/ios
+plugins/cordova-*
 
 www/
 node_modules/
