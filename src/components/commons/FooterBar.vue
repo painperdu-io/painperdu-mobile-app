@@ -3,7 +3,7 @@
     <nav class="footer-navigation">
       <ul class="footer-list">
         <li class="footer-item" v-link="{ path: '/cart' }">Mon garde manger</li>
-        <li class="footer-item" v-link="{ path: '/market' }">La place du marché</li>
+        <li class="footer-item" v-link="{ path: '/' }">La place du marché</li>
         <li class="footer-item" v-link="{ path: '/alliances' }">Mes alliances</li>
       </ul>
     </nav>

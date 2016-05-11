@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 @import './styles/fonts.scss';
 @import './styles/transitions.scss';
 @import './styles/variables.scss';
