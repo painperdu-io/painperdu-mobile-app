@@ -1,6 +1,6 @@
 <template>
   <div class="header-bar">
-    <h1>{{ header.title }}</h1>
+    <h1>{{ $route.data.title }}</h1>
     <nav>
       <ul>
         <li class="" v-link=""></li>
@@ -28,7 +28,7 @@ export default {};
 
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: $color-white;
   line-height: 2rem;
   background: yellow;
   font-size: 1rem;

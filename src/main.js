@@ -3,7 +3,6 @@ import router from './router'
 import App from './App'
 
 import Splash from './components/splash/PageSplash'
-import Home from './components/home/PageHome'
 import Market from './components/market/PageMarket'
 import Product from './components/market/PageProduct'
 import Clan from './components/market/PageClan'
@@ -23,63 +22,111 @@ router.map({
   '/': {
     name: 'splash',
     component: Splash,
+    data:{
+      bgClass: 'background2',
+      title: 'Pain Perdu',
+    },
   },
   '/market': {
     name: 'market',
-    component: Market
+    component: Market,
+    data:{
+      bgClass: 'background1',
+      title: 'Pain Perdu',
     },
+  },
   '/product': {
     name: 'product',
     component: Product,
+    data:{
+      bgClass: 'background3',
+      title: 'Fiche denrée',
+    },
   },
   '/clan': {
     name: 'clan',
     component: Clan,
+    data:{
+      bgClass: 'background2',
+      title: 'Mon clan',
+    },
     subRoutes: {
       '/users': {
         name: 'users',
         component: Users,
+        data:{
+          bgClass: 'background1',
+          title: 'Mes alliés',
+        },
       },
       '/loc': {
         name: 'loc',
         component: Loc,
+        data:{
+          bgClass: 'background2',
+          title: 'Localisation',
+        },
       },
       '/stats': {
         name: 'stats',
         component: Stats,
+        data:{
+          bgClass: 'background3',
+          title: 'Statistiques',
+        },
       }
     }
   },
   '/addMarket': {
     name: 'addMarket',
     component: AddMarket,
+    data:{
+      bgClass: 'background2',
+      title: 'Ajouter une place du marché',
+    },
   },
   '/alliances': {
     name: 'alliances',
     component: Alliances,
+    data:{
+      bgClass: 'background2',
+      title: 'Mes alliances',
+    },
   },
   '/cart': {
     name: 'cart',
     component: Cart,
+    data:{
+      bgClass: 'background3',
+      title: 'Mon garde-manger',
+    },
     subRoutes: {
       '/users': {
         name: 'users',
         component: Users,
+        data:{
+          bgClass: 'background1',
+          title: 'Mes compères',
+        },
       },
       '/products': {
         name: 'products',
         component: Products,
+        data:{
+          bgClass: 'background2',
+          title: 'Denrées proposées',
+        },
       },
       '/addCart': {
         name: 'addCart',
         component: AddCart,
+        data:{
+          bgClass: 'background2',
+          title: 'Ajouter un garde-manger',
+        },
       }
     }
   },
-  '/users': {
-    name: 'users',
-    component: Users,
-  }
 })
 
 router.start(App, 'painperdu-app')

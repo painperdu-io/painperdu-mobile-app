@@ -1,7 +1,7 @@
 <template>
   <!--<navigation-bar></navigation-bar>-->
   <header-bar></header-bar>
-  <div class="wrap background2">
+  <div class="wrap {{ $route.data.bgClass }}">
     <router-view transition="popIn"></router-view>
   </div>
   <footer-bar></footer-bar>
