@@ -1,7 +1,7 @@
 <template>
   <header-bar></header-bar>
   <div class="wrap">
-    <router-view></router-view>
+    <router-view transition="popIn"></router-view>
   </div>
   <footer-bar></footer-bar>
 </template>
@@ -35,12 +35,23 @@ body {
   overflow: hidden;
 }
 
+/* Transition effects */
 .fade-transition {
   transition: all .5s ease;
 }
 
 .fade-enter, .fade-leave {
   opacity: 0;
+}
+
+.popIn-transition {
+  transition: all .5s ease;
+  transform: scale(1);
+}
+
+.popIn-enter, .popIn-leave {
+  opacity: 0;
+  transform: scale(0);
 }
 
 @font-face {

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div class="button" v-link="{ path: '/cart' }">Mon garde-manger</div>
+    <div class="button" v-link="{ path: '/cart' }" >Mon garde-manger</div>
     <div class="button" v-link="{ path: '/market' }">La place du marché</div>
     <div class="button" v-link="{ path: '/alliances' }">Mes alliances</div>
   </div>

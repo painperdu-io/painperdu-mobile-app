@@ -1,6 +1,7 @@
 <template>
   <nav class="headerBar">
     <h1>{{ title }}</h1>
+
   </nav>
 </template>
 
