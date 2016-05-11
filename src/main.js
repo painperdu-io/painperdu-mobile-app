@@ -24,10 +24,6 @@ router.map({
     name: 'splash',
     component: Splash,
   },
-  '/home': {
-    name: 'home',
-    component: Home,
-  },
   '/market': {
     name: 'market',
     component: Market

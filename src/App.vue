@@ -1,5 +1,5 @@
 <template>
-  <navigation-bar></navigation-bar>
+  <!--<navigation-bar></navigation-bar>-->
   <header-bar></header-bar>
   <div class="wrap background2">
     <router-view transition="popIn"></router-view>

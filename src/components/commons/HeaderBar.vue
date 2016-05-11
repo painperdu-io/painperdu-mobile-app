@@ -1,35 +1,37 @@
 <template>
-  <nav class="headerBar">
-    <h1>{{ title }}</h1>
-
-  </nav>
+  <div class="header-bar">
+    <h1>{{ header.title }}</h1>
+    <nav>
+      <ul>
+        <li class="" v-link=""></li>
+        <li class="" v-link=""></li>
+        <li class="" v-link=""></li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      title: 'Pain Perdu test',
-    };
-  },
-}
+export default {};
 </script>
 
-<style lang='scss' scoped>
-@import './../../styles/mixins.scss';
+<style lang="scss" scoped>
+@import './../../styles/variables.scss';
 
-.headerBar {
+.header-bar {
   width: 100%;
-  @include height(120px);
-  background-color: #ff4743;
+  height: (100px / 2);
+  max-height: (100px / 2);
+  background-color: $color-red;
   z-index: 900;
 }
 
 h1 {
   text-align: center;
   color: #ffffff;
-  line-height: 3rem;
-  font-size: 1.2rem;
-  font-family: sans-serif;
+  line-height: 2rem;
+  background: yellow;
+  font-size: 1rem;
+  font-family: 'Avenir-Book', sans-serif;
 }
 </style>
