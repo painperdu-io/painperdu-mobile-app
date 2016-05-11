@@ -1,11 +1,10 @@
 <template>
   <div class="footer-bar">
     <nav class="footer-navigation">
-      <ul class="footer-list">
-        <li class="footer-item" v-link="{ path: '/cart' }">Mon garde manger</li>
-        <li class="footer-item" v-link="{ path: '/' }">La place du marché</li>
-        <li class="footer-item" v-link="{ path: '/alliances' }">Mes alliances</li>
-      </ul>
+      <div class="footer-item" v-link="{ path: '/cart' }">Mon garde<br/> manger</div>
+      <div class="footer-item" v-link="{ path: '/' }">La place<br/> du marché</div>
+      <div class="footer-item" v-link="{ path: '/alliances' }">Mes<br/> alliances</div>
+      <div class="footer-active"></div>
     </nav>
   </div>
 </template>
@@ -21,31 +20,37 @@ export default {};
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: (156px / 2);
+  height: (120px / 2);
   background: $color-green;
+  box-shadow: 0px -3px 10px rgba(0,0,0, 0.2);
   z-index: 900;
 }
 
-.footer-list {
+.footer-navigation {
   display: flex;
+  flex-flow: row wrap;
+  height: (120px / 2);
+  width: 100%;
 }
 
 .footer-item {
   display: flex;
-  width: 33%;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1 33%;
+  font: 1em "Avenir-Book", sans-serif;
   color: $color-white;
+  text-align: center;
   text-transform: uppercase;
+  text-decoration: none;
+}
 
-  &:nth-child(1) {
-    background: blue;
-  }
-
-  &:nth-child(2) {
-    background: violet;
-  }
-
-  &:nth-child(3) {
-    background: yellow;
-  }
+.footer-active {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 33%;
+  background: $color-white;
 }
 </style>
