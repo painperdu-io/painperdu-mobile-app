@@ -38,28 +38,4 @@ export default {};
   height: 30px/2;
   display: block;
 }
-
-  .icon-note {
-    background: url('/static/icons/nav-note.svg') center center no-repeat;
-  }
-
-  .icon-share {
-    background: url('/static/icons/nav-share.svg') center center no-repeat;
-  }
-
-  .icon-help {
-    background: url('/static/icons/nav-help.svg') center center no-repeat;
-  }
-
-  .icon-cgu {
-    background: url('/static/icons/nav-cgu.svg') center center no-repeat;
-  }
-
-  .icon-partner {
-    background: url('/static/icons/nav-partner.svg') center center no-repeat;
-  }
-
-  .icon-contact {
-    background: url('/static/icons/nav-contact.svg') center center no-repeat;
-  }
 </style>

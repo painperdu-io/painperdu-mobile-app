@@ -52,7 +52,7 @@ export default {};
 .footer-active {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 33%;
   height: 2px;
   width: 33%;
   background: $color-white;
