@@ -22,7 +22,7 @@ router.map({
   '/': {
     name: 'splash',
     component: Splash,
-    data:{
+    page:{
       bgClass: 'background1',
       title: 'Pain Perdu',
     },
@@ -30,49 +30,70 @@ router.map({
   '/market': {
     name: 'market',
     component: Market,
-    data:{
-      bgClass: 'background1',
+    page: {
       title: 'Pain Perdu',
+      bgClass: 'background1',
+      header: {
+        'profile': true,
+        'basket': true,
+        'add': true,
+      },
     },
   },
   '/product': {
     name: 'product',
     component: Product,
-    data:{
-      bgClass: 'background3',
+    page: {
       title: 'Fiche denrée',
+      bgClass: 'background3',
+      header: {
+        'previous': true,
+        'flag': true,
+      },
     },
   },
   '/clan': {
     name: 'clan',
     component: Clan,
-    data:{
-      bgClass: 'background2',
+    page: {
       title: 'Mon clan',
+      bgClass: 'background2',
+      header: {
+        'previous': true,
+      },
     },
     subRoutes: {
       '/users': {
         name: 'users',
         component: Users,
-        data:{
-          bgClass: 'background1',
+        page: {
           title: 'Mes alliés',
+          bgClass: 'background1',
+          header: {
+            'previous': true,
+          },
         },
       },
       '/loc': {
         name: 'loc',
         component: Loc,
-        data:{
-          bgClass: 'background2',
+        page: {
           title: 'Localisation',
+          bgClass: 'background2',
+          header: {
+            'previous': true,
+          },
         },
       },
       '/stats': {
         name: 'stats',
         component: Stats,
-        data:{
-          bgClass: 'background3',
+        page: {
           title: 'Statistiques',
+          bgClass: 'background3',
+          header: {
+            'previous': true,
+          },
         },
       }
     }
@@ -80,49 +101,77 @@ router.map({
   '/addMarket': {
     name: 'addMarket',
     component: AddMarket,
-    data:{
-      bgClass: 'background2',
+    page: {
       title: 'Ajouter une place du marché',
+      bgClass: 'background2',
+      header: {
+        'previous': true,
+      },
     },
   },
   '/alliances': {
     name: 'alliances',
     component: Alliances,
-    data:{
-      bgClass: 'background2',
+    page: {
       title: 'Mes alliances',
+      bgClass: 'background2',
+      header: {
+        'profile': true,
+        'basket': true,
+        'add': true,
+      },
     },
   },
   '/cart': {
     name: 'cart',
     component: Cart,
-    data:{
-      bgClass: 'background3',
+    page: {
       title: 'Mon garde-manger',
+      bgClass: 'background3',
+      header: {
+        'profile': true,
+        'basket': true,
+        'add': true,
+      },
     },
     subRoutes: {
       '/users': {
         name: 'users',
         component: Users,
-        data:{
-          bgClass: 'background1',
+        page: {
           title: 'Mes compères',
+          bgClass: 'background1',
+          header: {
+            'profile': true,
+            'basket': true,
+            'add': true,
+          },
         },
       },
       '/products': {
         name: 'products',
         component: Products,
-        data:{
-          bgClass: 'background2',
+        page: {
           title: 'Denrées proposées',
+          bgClass: 'background2',
+          header: {
+            'profile': true,
+            'basket': true,
+            'add': true,
+          },
         },
       },
       '/addCart': {
         name: 'addCart',
         component: AddCart,
-        data:{
-          bgClass: 'background2',
+        page: {
           title: 'Ajouter un garde-manger',
+          bgClass: 'background2',
+          header: {
+            'profile': true,
+            'basket': true,
+            'add': true,
+          },
         },
       }
     }

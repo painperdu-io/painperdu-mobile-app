@@ -5,12 +5,12 @@
         <svg viewBox="0 0 50 50" class="header-icon  header-icon-previous">
           <use xlink:href="#header-icon-previous"></use>
         </svg>
-        <svg viewBox="0 0 50 50" class="header-icon  header-icon-user">
-          <use xlink:href="#header-icon-user"></use>
+        <svg viewBox="0 0 50 50" class="header-icon  header-icon-profile">
+          <use xlink:href="#header-icon-profile"></use>
         </svg>
       </div>
       <div class="header-item  header-item-50">
-        <h1>{{ $route.data.title }}</h1>
+        <h1>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
         <svg viewBox="0 0 50 50" class="header-icon  header-icon-add">
