@@ -67,7 +67,7 @@ export default {
   flex-direction: column;
   flex: 1 100%;
   height: (250px / 2);
-  margin: (14px / 2) 0;
+  margin-bottom: (14px / 2);
   text-align: center;
 }
 
