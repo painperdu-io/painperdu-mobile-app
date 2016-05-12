@@ -3,12 +3,14 @@
 
 
     <div class="group-item clan-item" v-link="{ path: '/clan' }">
-      <img src="" />
+      <img src="./../../../static/temp/clan.png" />
       <div class="group-name">Ma résidence</div>
     </div>
 
     <div class="products-wrapper">
-      <input id="search-input" placeholder="Nom du produit..." v-model="research" />
+      <div>
+        <input id="search-input" placeholder="Nom du produit..." v-model="research" />
+      </div>
 
       <div class="product-filters">
         <input type="radio" value="false" v-model="productType">
@@ -17,12 +19,11 @@
         <label for="two" class="filter">Produits Bruts</label>
       </div>
 
-
       <div class="products-list">
         <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut'  ">
-          <div class="product" v-link:"{ path: '/product/:id' }">
+          <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link:"{ path: '/product/:id' }">
             <div class="wrapper">
-              <svg viewBox="0 0 100 100" class="header-icon  header-icon-right">
+              <svg viewBox="0 0 100 100" class="foods-icon">
                 <use xlink:href="#foods-icon-{{ product.name}}"></use>
               </svg>
               <div class="product-quantity">{{ product.quantity }}</div>
@@ -84,8 +85,8 @@ export default {
         },
         { name: 'banane',
           quantity: '6',
-          status: true,
-          brut: true,
+          status: true, //disponible maintenant
+          brut: true, //type produit
         },
       ]
     }
@@ -101,17 +102,20 @@ export default {
 .group-item {
   margin: auto;
   text-align: center;
+  img {
+    transform: scale(0.5);
+  }
   .group-name {
     font-size: (2.5em / 2);
     font-family: 'Karla-Bold';
     text-transform: uppercase;
-    color: $color-text
+    color: $color-text;
   }
 }
 .products-list {
   text-align: center;
   .product {
-    display: inline-block;
+    display: inline-block;;
     margin: (45px / 2) (25px/2) 0  (25px/2);
     .wrapper {
       position: relative;
@@ -120,6 +124,9 @@ export default {
       width: (230px / 2);
       height: (230px / 2);
       text-align: center;
+      .foods-icon {
+        transform: scale(0.7);
+      }
       .product-quantity {
         position: absolute;
         right: 0px;
@@ -149,6 +156,9 @@ export default {
       font-size: (2.4em / 2);
       font-family: 'Karla-Italic';
     }
+    &.inactive {
+      filter: grayscale(100%);
+    }
   }
 }
 
@@ -165,7 +175,7 @@ export default {
       color: $color-text;
       font-family: 'Karla-Bold';
       font-size: (2.3em / 2);
-      .active {
+      &::checked {
         background-color: white;
       }
     }
