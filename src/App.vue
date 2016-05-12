@@ -39,14 +39,13 @@ body {
 }
 
 .wrap {
-  position: fixed;
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   overflow: hidden;
-  padding-top: 60px;
+  padding: 80px 0;
 }
 
   .background1 {
