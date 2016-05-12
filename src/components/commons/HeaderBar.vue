@@ -2,16 +2,26 @@
   <div class="header-bar">
     <div class="header-navigation">
       <div class="header-item  header-item-25">
-        <a class="header-icon  header-icon-previous"></a>
-        <a class="header-icon  header-icon-user"></a>
+        <svg viewBox="0 0 50 50" class="header-icon  header-icon-previous">
+          <use xlink:href="#header-icon-previous"></use>
+        </svg>
+        <svg viewBox="0 0 50 50" class="header-icon  header-icon-user">
+          <use xlink:href="#header-icon-user"></use>
+        </svg>
       </div>
       <div class="header-item  header-item-50">
         <h1>{{ $route.data.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
-        <a class="header-icon  header-icon-add"></a>
-        <a class="header-icon  header-icon-basket"></a>
-        <a class="header-icon  header-icon-flag"></a>
+        <svg viewBox="0 0 50 50" class="header-icon  header-icon-add">
+          <use xlink:href="#header-icon-add"></use>
+        </svg>
+        <svg viewBox="0 0 50 50" class="header-icon  header-icon-basket">
+          <use xlink:href="#header-icon-basket"></use>
+        </svg>
+        <svg viewBox="0 0 50 50" class="header-icon  header-icon-flag">
+          <use xlink:href="#header-icon-flag"></use>
+        </svg>
       </div>
     </div>
   </div>
@@ -43,8 +53,6 @@ export default {};
 
   .header-item {
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 
     h1 {
       font: 1.4em "Avenir-Book", sans-serif;
@@ -53,37 +61,23 @@ export default {};
     }
   }
 
-    .header-item-25 {
+    .header-item-1-25 {
       flex: 1 25%;
+      flex-direction: row;
+      justify-content: space-around;
     }
 
     .header-item-50 {
       flex: 1 50%;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
 .header-icon {
+  flex-direction: row;
   width: (60px / 2);
   height: (60px / 2);
-  display: block;
+  margin-top: (10px /2);
+  fill: $color-white;
 }
-
-  .header-icon-add {
-    background: url('/static/icons/header-add.svg') center center no-repeat;
-  }
-
-  .header-icon-basket {
-    background: url('/static/icons/header-basket.svg') center center no-repeat;
-  }
-
-  .header-icon-flag {
-    background: url('/static/icons/header-flag.svg') center center no-repeat;
-  }
-
-  .header-icon-previous {
-    background: url('/static/icons/header-previous.svg') center center no-repeat;
-  }
-
-  .header-icon-user {
-    background: url('/static/icons/header-user.svg') center center no-repeat;
-  }
 </style>
