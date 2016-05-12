@@ -43,6 +43,7 @@ body {
   background-size: cover;
   background-position: center center;
   overflow: hidden;
+  padding-top: 60px;
 }
 
   .background1 {
