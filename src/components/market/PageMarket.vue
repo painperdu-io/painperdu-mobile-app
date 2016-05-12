@@ -21,7 +21,10 @@
       <div class="products-list">
         <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut'  ">
           <div class="product" v-link:"{ path: '/product/:id' }">
-            <div class="wrapper" style="background: url('/static/img/products/({{ product.name)}}.jpg'; ">
+            <div class="wrapper">
+              <svg viewBox="0 0 100 100" class="header-icon  header-icon-right">
+                <use xlink:href="#foods-icon-{{ product.name}}"></use>
+              </svg>
               <div class="product-quantity">{{ product.quantity }}</div>
             </div>
             <div class="product-name">{{ product.name }}</div>
@@ -44,22 +47,22 @@ export default {
   data() {
     return {
       products: [
-        { name: 'tomate',
+        { name: 'salade',
           quantity: '3',
           status: true,
           brut: true,
         },
-        { name: 'emmental',
+        { name: 'choux',
           quantity: '1',
           status: false,
           brut: true,
         },
-        { name: 'viande',
+        { name: 'pain',
           quantity: '1',
           status: true,
           brut: true,
         },
-        { name: 'banane',
+        { name: 'poivron',
           quantity: '6',
           status: true,
           brut: true,
@@ -69,7 +72,7 @@ export default {
           status: true,
           brut: false,
         },
-        { name: 'emmental',
+        { name: 'emmental',  
           quantity: '1',
           status: false,
           brut: true,
@@ -138,7 +141,8 @@ export default {
       font-style: italic;
       color: $color-red;
       font-size: (3.6em / 2);
-      //font-family: 'Karla-Bold';
+      font-family: 'IowanOldStyle-Roman';
+      font-weight: 700;
     }
     .product-status {
       color: $color-text;
