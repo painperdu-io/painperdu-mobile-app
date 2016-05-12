@@ -41,6 +41,7 @@ body {
 .wrap {
   width: 100%;
   height: 100%;
+  min-height: calc(100vh - 160px);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
