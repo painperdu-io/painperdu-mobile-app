@@ -18,7 +18,7 @@
       </div>
 
 
-      <div class="products-list ">
+      <div class="products-list">
         <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut'  ">
           <div class="product" v-link:"{ path: '/product/:id' }">
             <div class="wrapper" style="background: url('/static/img/products/({{ product.name)}}.jpg'; ">
@@ -179,6 +179,4 @@ export default {
 }
 
 ::-webkit-input-placeholder { color: white;}
-
-
 </style>
