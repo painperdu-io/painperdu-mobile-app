@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import App from './App'
 
+import Splash from './components/splash/PageSplash'
 import Market from './components/market/PageMarket'
 import Product from './components/market/PageProduct'
 import Clan from './components/market/PageClan'
@@ -19,6 +20,14 @@ Vue.config.devtools = true
 
 router.map({
   '/': {
+    name: 'splash',
+    component: Splash,
+    data:{
+      bgClass: 'background1',
+      title: 'Pain Perdu',
+    },
+  },
+  '/market': {
     name: 'market',
     component: Market,
     data:{
