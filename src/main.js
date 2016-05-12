@@ -25,6 +25,7 @@ router.map({
     page:{
       bgClass: 'background1',
       title: 'Pain Perdu',
+      header: {},
     },
   },
   '/market': {

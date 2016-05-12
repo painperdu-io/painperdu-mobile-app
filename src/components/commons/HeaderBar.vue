@@ -2,10 +2,13 @@
   <div class="header-bar">
     <div class="header-navigation">
       <div class="header-item  header-item-25">
-        <svg viewBox="0 0 50 50" class="header-icon  header-icon-previous">
+        <svg v-if="$route.page.header.menu" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+          <use xlink:href="#header-icon-menu"></use>
+        </svg>
+        <svg v-if="$route.page.header.previous" viewBox="0 0 50 50" class="header-icon  header-icon-left">
           <use xlink:href="#header-icon-previous"></use>
         </svg>
-        <svg viewBox="0 0 50 50" class="header-icon  header-icon-profile">
+        <svg v-if="$route.page.header.profile" viewBox="0 0 50 50" class="header-icon  header-icon-left">
           <use xlink:href="#header-icon-profile"></use>
         </svg>
       </div>
@@ -13,13 +16,13 @@
         <h1>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
-        <svg viewBox="0 0 50 50" class="header-icon  header-icon-add">
-          <use xlink:href="#header-icon-add"></use>
-        </svg>
-        <svg viewBox="0 0 50 50" class="header-icon  header-icon-basket">
+        <svg v-if="$route.page.header.basket" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg viewBox="0 0 50 50" class="header-icon  header-icon-flag">
+        <svg v-if="$route.page.header.add" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+          <use xlink:href="#header-icon-add"></use>
+        </svg>
+        <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-flag"></use>
         </svg>
       </div>
@@ -61,10 +64,14 @@ export default {};
     }
   }
 
-    .header-item-1-25 {
+    .header-item-25 {
       flex: 1 25%;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: flex-start;
+
+      &:last-child {
+        justify-content: center;
+      }
     }
 
     .header-item-50 {
@@ -77,7 +84,15 @@ export default {};
   flex-direction: row;
   width: (60px / 2);
   height: (60px / 2);
-  margin-top: (10px /2);
+  margin-top: (10px / 2);
   fill: $color-white;
 }
+
+  .header-icon-left {
+    margin-left: (40px / 2);
+  }
+
+  .header-icon-right {
+    margin-right: (20px / 2);
+  }
 </style>
