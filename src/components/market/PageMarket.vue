@@ -33,10 +33,10 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import './../../styles/variables.scss';
 .wrap {
   text-align: center;
@@ -44,5 +44,4 @@ export default {}
 .products-list {
   text-align: center;
 }
-
 </style>

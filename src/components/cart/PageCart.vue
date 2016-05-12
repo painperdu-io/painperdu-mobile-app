@@ -11,10 +11,10 @@
 <script>
 import router from '../../router'
 
-export default {}
+export default {};
 </script>
 
-<style>
+<style lang="scss" scoped>
   .button {
   }
 </style>

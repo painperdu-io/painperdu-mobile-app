@@ -5,11 +5,10 @@
 </template>
 
 <script>
-
-export default {}
+export default {};
 </script>
 
-<style>
+<style lang="scss" scoped>
   .button {
     color: red;
   }
