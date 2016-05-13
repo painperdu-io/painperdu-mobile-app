@@ -2,6 +2,8 @@
   <div>
     <div>En cours</div>
     <div>Passées</div>
+    <div class="footer-item" v-link="{ path: '/addMarket'}">Mes<br/> Ajouter place du marché</div>
+
   </div>
 </template>
 
