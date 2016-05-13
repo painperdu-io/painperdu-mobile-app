@@ -16,7 +16,7 @@
 <script>
   import {load, Map, Marker} from 'vue-google-maps'
 
-  load('YOUR_API_TOKEN','OPTIONAL VERSION NUMBER')
+  load('AIzaSyAyKy5Ep1QK1LekN9GJHu-uHGbUxQL7sfI')
 
   export default {
     data () {
