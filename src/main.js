@@ -137,7 +137,7 @@ router.map({
     name: 'DetailsMarket',
     component: DetailsMarket,
     page: {
-      title: 'Fiche clan',
+      title: 'Ma place du marché',
       bgClass: 'background1',
       header: {
         'previous': true,
@@ -148,7 +148,7 @@ router.map({
         name: 'DetailsMarketMembers',
         component: DetailsMarketMembers,
         page: {
-          title: 'Fiche clan',
+          title: 'Ma place du marché',
           bgClass: 'background1',
           header: {
             'previous': true,
@@ -159,7 +159,7 @@ router.map({
         name: 'DetailsMarketLocation',
         component: DetailsMarketLocation,
         page: {
-          title: 'Fiche clan',
+          title: 'Ma place du marché',
           bgClass: 'background1',
           header: {
             'previous': true,
@@ -170,7 +170,7 @@ router.map({
         name: 'DetailsMarketStats',
         component: DetailsMarketStats,
         page: {
-          title: 'Fiche clan',
+          title: 'Ma place du marché',
           bgClass: 'background1',
           header: {
             'previous': true,

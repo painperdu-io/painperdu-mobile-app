@@ -14,36 +14,35 @@ export default {
     return {
       users: [
         {
-          id: '79',
-          name: 'Firstname Lastname',
-          quantity: '3',
-        },
-        {
-          id: '80',
+          id: 79,
           name: 'Firstname Lastname',
         },
         {
-          id: '34',
+          id: 80,
           name: 'Firstname Lastname',
         },
         {
-          id: '54',
+          id: 34,
           name: 'Firstname Lastname',
         },
         {
-          id: '23',
+          id: 54,
           name: 'Firstname Lastname',
         },
         {
-          id: '64',
+          id: 23,
           name: 'Firstname Lastname',
         },
         {
-          id: '43',
+          id: 64,
           name: 'Firstname Lastname',
         },
         {
-          id: '21',
+          id: 43,
+          name: 'Firstname Lastname',
+        },
+        {
+          id: 21,
           name: 'Firstname Lastname',
         },
       ]

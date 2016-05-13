@@ -12,7 +12,7 @@
 import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
 import MenuBar from './components/commons/navigation/MenuBar'
-import SvgIcons from './components/commons/SvgIcons'
+import SvgIcons from './components/commons/icons/SvgIcons'
 import store from './vuex/store'
 
 export default {
