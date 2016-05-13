@@ -1,16 +1,37 @@
 <template>
   <div>
 
+    <div class="group-list">
 
-    <div class="group-item clan-item" v-link="{ path: '/market/details' }">
-      <img src="./../../../static/temp/clan.png" />
-      <div class="group-name">
-        Ma résidence
-        <svg viewBox="0 0 100 100" class="star-icon">
-          <use xlink:href="#app-icon-star"></use>
-        </svg>
+       <div
+           class="slider-left"
+           @click='slidePre'
+       >prev</div>
+       <div
+           class="slider-right"
+           @click='slideNext'
+       >next</div>
+
+      <template v-for="market in markets |  orderBy 'favorite' -1 ">
+        <div class="group-item clan-item current-group" v-link="{ path: '/market/details' }">
+          <img src="./../../../static/temp/clan.png" />
+          <div class="group-name">
+            {{ market.name }}
+            <svg v-if="market.favorite" viewBox="0 0 100 100" class="star-icon">
+              <use xlink:href="#app-icon-star"></use>
+            </svg>
+          </div>
+        </div>
+      </template>
+      <!-- Ajouter place du marché -->
+      <div class="group-item add-group-item" v-link="{ path: '/market/add' }">
+        <img src="./../../../static/temp/clan.png" />
+        <div class="group-name">
+          Ajouter un clan
+        </div>
       </div>
     </div>
+
 
     <div class="products-wrapper">
       <div class="search-wrapper">
@@ -32,7 +53,7 @@
       </div>
 
       <div class="products-list">
-        <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
+        <template v-for="product in markets[0].products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
           <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link:"{ path: '/market/product/:id' }">
             <div class="wrapper">
               <svg viewBox="0 0 100 100" class="foods-icon">
@@ -48,9 +69,7 @@
       </div>
     </div>
 
-    <!-- Ajouter place du marché
-      <div class="button" v-link="{ path: '/market/add' }">Ajouter une place du marché</div>
-    -->
+
   </div>
 </template>
 
@@ -59,50 +78,256 @@
 export default {
   data() {
     return {
-      products: [
-        { name: 'salade',
-          quantity: '3',
-          status: true,
-          brut: true,
+      markets: [
+        {
+      	  id: 55,
+          name: "Ma résidence Paris",
+          description: "Description de la résidence Paris",
+          latitude: 48.856614,
+          longitude: 2.3522219000000177,
+          favorite: false,
+          products: [
+            {
+              name: "salade",
+              quantity: 3,
+              status: true,
+              brut: true,
+              days: 5,
+            },
+            {
+              name: "chou",
+              quantity: 1,
+              status: false,
+              brut: true,
+              days: 4,
+            },
+            {
+              name: "pain",
+              quantity: 1,
+              status: true,
+              brut: true,
+              days: 2,
+            },
+            {
+              name: "poivron",
+              quantity: 6,
+              status: true,
+              brut: true,
+              days: 3,
+            },
+            {
+              name: "lasagnes",
+              quantity: 3,
+              status: true,
+              brut: false,
+              days: 1,
+            },
+            {
+              name: "emmental",
+              quantity: 1,
+              status: false,
+              brut: true,
+              days: 0,
+            },
+            {
+              name: "viande",
+              quantity: 1,
+              status: true,
+              brut: true,
+              days: 4,
+            },
+            {
+              name: "banane",
+              quantity: 6,
+              status: true,
+              brut: true,
+              days: 2,
+            },
+          ],
+          members: [
+            {
+              id: 79,
+              name: "Firstname Lastname",
+              latitude: 48.856614,
+              longitude: 2.3522219000000177,
+            },
+            {
+              id: 80,
+              name: "Firstname Lastname",
+              latitude: 48.856614,
+              longitude: 2.3522219000000177,
+            },
+            {
+              id: 34,
+              name: "Firstname Lastname",
+              latitude: 48.856614,
+              longitude: 2.3522219000000177,
+            }
+          ]
         },
-        { name: 'chou',
-          quantity: '1',
-          status: false,
-          brut: true,
+        {
+      	  id: 2,
+          name: "Ma résidence Annecy",
+          description: "Descripton de la résidence Annecy",
+          latitude: 45.899247,
+          longitude: 6.129383999999959,
+          favorite: true,
+          products: [
+            {
+              id: 36,
+              name: "salade",
+              quantity: 3,
+              status: true,
+              brut: true,
+            },
+            {
+              id: 65,
+              name: "chou",
+              quantity: 1,
+              status: false,
+              brut: true,
+            },
+            {
+              id: 69,
+              name: "pain",
+              quantity: 1,
+              status: true,
+              brut: true,
+            },
+          ],
+          members: [
+            {
+              id: 79,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 80,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 34,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 54,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 23,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 64,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 43,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 21,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+          ]
         },
-        { name: 'pain',
-          quantity: '1',
-          status: true,
-          brut: true,
-        },
-        { name: 'poivron',
-          quantity: '6',
-          status: true,
-          brut: true,
-        },
-        { name: 'lasagnes',
-          quantity: '3',
-          status: true,
-          brut: false,
-        },
-        { name: 'emmental',
-          quantity: '1',
-          status: false,
-          brut: true,
-        },
-        { name: 'viande',
-          quantity: '1',
-          status: true,
-          brut: true,
-        },
-        { name: 'banane',
-          quantity: '6',
-          status: true, //disponible maintenant
-          brut: true, //type produit
-        },
-      ]
+        {
+      	  id: 3,
+          name: "Ma résidence Test",
+          description: "Descripton de la résidence Test",
+          latitude: 45.899247,
+          longitude: 6.129383999999959,
+          favorite: false,
+          products: [
+            {
+              id: 36,
+              name: "salade",
+              quantity: 3,
+              status: true,
+              brut: true,
+            },
+          ],
+          members: [
+            {
+              id: 79,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 80,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 34,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 54,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 23,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 64,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 43,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+            {
+              id: 21,
+              name: "Firstname Lastname",
+              latitude: 45.899247,
+              longitude: 6.129383999999959,
+            },
+          ]
+        }
+
+      ],
+
+
+
     }
-  }
+  },
+  methods: {
+        slideNext () {
+            this.$broadcast('slideNext')
+        },
+        slidePre () {
+            this.$broadcast('slidePre')
+        },
+    },
 };
 </script>
 
@@ -111,7 +336,11 @@ export default {
 .products-wrapper {
   text-align: center;
 }
+.group-list {
+
+}
 .group-item {
+  display: inline-block;
   position: relative;
   margin: (60px / 2) auto 0;
   text-align: center;
@@ -133,7 +362,7 @@ export default {
     width: (50px/ 2);
     position: absolute;
     left: 95%;
-    top: -55%;
+    bottom: 0;
   }
 }
 .products-list {
