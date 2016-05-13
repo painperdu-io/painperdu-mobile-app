@@ -1,5 +1,5 @@
 <template>
-  <!--<navigation-bar></navigation-bar>-->
+  <!--<menu-bar></menu-bar>-->
   <header-bar></header-bar>
   <div class="wrap {{ $route.page.bgClass }}">
     <router-view transition="popIn"></router-view>
@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import HeaderBar from './components/commons/HeaderBar'
-import FooterBar from './components/commons/FooterBar'
-import NavigationBar from './components/commons/NavigationBar'
+import HeaderBar from './components/commons/navigation/HeaderBar'
+import FooterBar from './components/commons/navigation/FooterBar'
+import MenuBar from './components/commons/navigation/MenuBar'
 import SvgIcons from './components/commons/SvgIcons'
 import store from './vuex/store'
 
@@ -19,7 +19,7 @@ export default {
   components: {
     HeaderBar,
     FooterBar,
-    NavigationBar,
+    MenuBar,
     SvgIcons,
   },
   store,
