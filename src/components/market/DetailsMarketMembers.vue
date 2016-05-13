@@ -1,10 +1,16 @@
 <template>
-  <div class="users" v-for="user in users">
-    <div class="user" v-link="">
-      <div class="user-item">
-        <img src="https://randomuser.me/api/portraits/men/{{ user.id }}.jpg"/>
+  <div class="details-market-members-container">
+
+    <template v-for="user in users">
+      <div class="details-market-members-item" v-link="">
+        <div class="details-market-members-image">
+          <img src="https://randomuser.me/api/portraits/men/{{ user.id }}.jpg"/>
+        </div>
       </div>
-    </div>
+    </template>
+
+
+
   </div>
 </template>
 
@@ -53,23 +59,33 @@ export default {
 
 <style lang="scss" scoped>
 
-
-.users {
-  //display: flex;
-
-}
-
-.user {
+.details-market-members-container {
   display: flex;
-  flex-flow: row wrap;
-  //height: (120px / 2);
-  //width: 100%;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-  .user-item {
+.details-market-members-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-content: center;
+
+  width: 60px;
+  height: 60px;
+  
+}
+
+  .details-market-members-image {
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    img {
+      width: 70px;
+      height: 70px;
+    }
   }
 
 </style>

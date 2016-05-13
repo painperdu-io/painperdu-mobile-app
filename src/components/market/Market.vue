@@ -1,16 +1,6 @@
 <template>
   <div>
-
-
-    <div class="group-item clan-item" v-link="{ path: '/market/details' }">
-      <img src="./../../../static/temp/clan.png" />
-      <div class="group-name">
-        Ma résidence
-        <svg viewBox="0 0 100 100" class="star-icon">
-          <use xlink:href="#app-icon-star"></use>
-        </svg>
-      </div>
-    </div>
+    <residence-slider></residence-slider>
 
     <div class="products-wrapper">
       <div class="search-wrapper">
@@ -55,8 +45,12 @@
 </template>
 
 <script>
+import ResidenceSlider from './../commons/ResidenceSlider'
 
 export default {
+  components: {
+    ResidenceSlider,
+  },
   data() {
     return {
       products: [
@@ -111,31 +105,7 @@ export default {
 .products-wrapper {
   text-align: center;
 }
-.group-item {
-  position: relative;
-  margin: (60px / 2) auto 0;
-  text-align: center;
-  img {
-    width: (338px / 2);
-  }
-  .group-name {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: (2.5em / 2);
-    font-family: 'Karla-Bold';
-    text-transform: uppercase;
-    color: $color-text;
-  }
-  .star-icon {
-    fill: $color-red;
-    width: (50px/ 2);
-    position: absolute;
-    left: 95%;
-    top: -55%;
-  }
-}
+
 .products-list {
   text-align: center;
   .product {
