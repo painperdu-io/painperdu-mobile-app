@@ -86,7 +86,7 @@ export default {
     }
     select {
       width: (525px / 2);
-      background-color: $color-blue;
+      background-color: $color-green-lite;
       border: none;
       color: white;
       border-radius: (80px / 4);

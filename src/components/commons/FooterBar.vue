@@ -1,7 +1,7 @@
 <template>
   <div class="footer-bar">
     <nav class="footer-navigation">
-      <div class="footer-item" v-link="{ path: '/cart', activeClass: 'active' }">Mon garde<br/> manger</div>
+      <div class="footer-item" v-link="{ path: '/foodkeeper', activeClass: 'active' }">Mon garde<br/> manger</div>
       <div class="footer-item" v-link="{ path: '/market', activeClass: 'active' }">La place<br/> du marché</div>
       <div class="footer-item" v-link="{ path: '/alliances', activeClass: 'active' }">Mes<br/> alliances</div>
       <div class="footer-active"></div>

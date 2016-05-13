@@ -2,7 +2,7 @@
   <div>
 
 
-    <div class="group-item clan-item" v-link="{ path: '/clan' }">
+    <div class="group-item clan-item" v-link="{ path: '/market/details' }">
       <img src="./../../../static/temp/clan.png" />
       <div class="group-name">
         Ma résidence
@@ -33,7 +33,7 @@
 
       <div class="products-list">
         <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
-          <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link:"{ path: '/product/:id' }">
+          <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link:"{ path: '/market/product/:id' }">
             <div class="wrapper">
               <svg viewBox="0 0 100 100" class="foods-icon">
                 <use xlink:href="#foods-icon-{{ product.name}}"></use>
@@ -49,7 +49,7 @@
     </div>
 
     <!-- Ajouter place du marché
-      <div class="button" v-link="{ path: '/addMarket' }">Ajouter une place du marché</div>
+      <div class="button" v-link="{ path: '/market/add' }">Ajouter une place du marché</div>
     -->
   </div>
 </template>
@@ -243,7 +243,7 @@ export default {
   width: (525px / 2);
 }
 #search-input {
-  background-color: $color-blue;
+  background-color: $color-green-lite;
   border: none;
   color: white;
   padding: 0 (25px / 2) 0 (100px / 2);

@@ -1,6 +1,6 @@
 <template>
   <div>
-    Groupe d'utilisateurs
+    Ajouter un garde-manger
   </div>
 </template>
 
@@ -9,7 +9,4 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-  .button {
-    color: red;
-  }
 </style>
