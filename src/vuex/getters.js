@@ -17,3 +17,40 @@ export function tabsNavigation () {
 
   return tabs;
 }
+
+export function detailsMarketMembers () {
+  return [
+    {
+      id: 79,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 80,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 34,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 54,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 23,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 64,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 43,
+      name: 'Firstname Lastname',
+    },
+    {
+      id: 21,
+      name: 'Firstname Lastname',
+    },
+  ]
+}

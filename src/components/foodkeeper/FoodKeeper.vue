@@ -3,7 +3,6 @@
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item" v-link:"{ path: '/foodkeeper/:id' }">
         <div class="foodkeeper-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
-        <div class="foodkeeper-item-background-color"></div>
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
         <p class="foodkeeper-item-description">{{ foodkeeper.description }}</p>
@@ -62,29 +61,23 @@ export default {
   justify-content: center;
   flex-direction: column;
   flex: 1 100%;
-  height: (250px / 2);
-  margin-bottom: (14px / 2);
+  height: 125px;
+  margin-bottom: 7px;
   text-align: center;
+  background-color: $color-sepia;
 }
-
-  .foodkeeper-item-background,
-  .foodkeeper-item-background-color {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
 
   .foodkeeper-item-background {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     filter: grayscale(100%);
-  }
-
-  .foodkeeper-item-background-color {
-    background-color: rgba(247, 232, 218, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
   }
 
   .foodkeeper-item-separator {
@@ -116,8 +109,8 @@ export default {
   justify-content: flex-start;
   flex-direction: row;
   flex: 1 100%;
-  height: (250px / 2);
-  margin: (14px / 2) 0;
+  height: 125px;
+  margin: 7px 0;
   background: $color-green-lite;
 }
 
@@ -133,8 +126,8 @@ export default {
       justify-content: center;
       flex-direction: column;
       margin: 0 auto;
-      width: (160px / 2);
-      height: (160px / 2);
+      width: 80px;
+      height: 80px;
       background: $color-white;
       border-radius: 50%;
     }
