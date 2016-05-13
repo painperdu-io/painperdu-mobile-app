@@ -1,28 +1,30 @@
 <template>
-  <div id="map">
-  </div>
-    <form>
-      <div>Quel garde-manger souhaitez-vous associer à ce clan ?</div>
-      <select v-model="address">
-        <option v-for="place in places" v-bind:value="place.name">
-          {{ place.name }}
-        </option>
-      </select>
-      <div> L'adresse de <span class="txt-uppercase"> {{ address }}</span> est : </div>
-      <div class="cart-item-separator"></div>
-
-      <div class="txt-red"><span> {{ selected }}  Adresse complete </span></div>
-      <fieldset>
-        <h2>Périmètre</h2>
-        <input type="range" value="15" max="100" min="0" step="3">
-        <div> Votre <span class="txt-uppercase"> {{ selected }}</span> est : </div>
+  <div>
+    <div id="map">
+    </div>
+      <form>
+        <div>Quel garde-manger souhaitez-vous associer à ce clan ?</div>
+        <select v-model="address">
+          <option v-for="place in places" v-bind:value="place.name">
+            {{ place.name }}
+          </option>
+        </select>
+        <div> L'adresse de <span class="txt-uppercase"> {{ address }}</span> est : </div>
         <div class="cart-item-separator"></div>
 
-        <div class="txt-red"><span> {{ selected }} Test</span></div>
+        <div class="txt-red"><span> {{ selected }}  Adresse complete </span></div>
+        <fieldset>
+          <h2>Périmètre</h2>
+          <input type="range" value="15" max="100" min="0" step="3">
+          <div> Votre <span class="txt-uppercase"> {{ selected }}</span> est : </div>
+          <div class="cart-item-separator"></div>
 
-        <input type="submit" class="button" value="Ajouter">
-      </fieldset>
-    </form>
+          <div class="txt-red"><span> {{ selected }} Test</span></div>
+
+          <input type="submit" class="button" value="Ajouter">
+        </fieldset>
+      </form>
+  </div>
 </template>
 
 <script>
