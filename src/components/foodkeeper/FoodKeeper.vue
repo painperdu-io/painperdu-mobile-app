@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <template v-for="cart in carts">
-      <div class="cart-item" v-link:"{ path: '/cart/:id' }">
-        <div class="cart-item-background" style="background-image: url('/static/temp/{{ cart.photo }}');"></div>
-        <div class="cart-item-background-color"></div>
-        <h3 class="cart-item-title">{{ cart.name }}</h3>
-        <div class="cart-item-separator"></div>
-        <p class="cart-item-description">{{ cart.description }}</p>
-      </div>
-    </template>
+  <div v-for="cart in carts">
+    <div class="cart-item" v-link:"{ path: '/foodkeeper/:id' }">
+      <div class="cart-item-background" style="background-image: url('/static/temp/{{ cart.photo }}');"></div>
+      <div class="cart-item-background-color"></div>
+      <h3 class="cart-item-title">{{ cart.name }}</h3>
+      <div class="cart-item-separator"></div>
+      <p class="cart-item-description">{{ cart.description }}</p>
+    </div>
   </div>
 
-  <div class="cart-add" v-link="{ path: '/cart/addCart' }">
+  <div class="cart-add" v-link="{ path: '/foodkeeper/add' }">
     <div class="cart-add-icon">
       <div class="cart-add-icon-bg">
         <span class="cart-add-icon-text">+</span>
@@ -26,12 +24,10 @@
       </p>
     </div>
   </div>
-
-  <div>
-    <div id="produit" class="button" v-link="{ path: '/cart/users' }">Mes compères</div>
-    <div class="button" v-link="{ path: '/cart/products' }">Denrées proposées</div>
-  </div>
-    <router-view transition="popIn"></router-view>
+</div>
+<div>
+  <div v-link="{ path: '/foodkeeper/members' }">Mes compères</div>
+  <div v-link="{ path: '/foodkeeper/products' }">Denrées proposées</div>
 </div>
 </template>
 
