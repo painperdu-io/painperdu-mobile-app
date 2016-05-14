@@ -35,6 +35,7 @@ export default {};
       position: absolute;
       bottom: 24px;
       left: 50%;
+      width: 100%;
       transform: translate3d(-50%, 0, 0);
       font: 1.25em 'Karla-Bold', sans-serif;
       text-transform: uppercase;
@@ -43,9 +44,11 @@ export default {};
 
     .residence-slider-item-star-icon {
       position: absolute;
-      left: 95%;
-      top: -47%;
-      width: 25px;
+      left: 50%;
+      top: -90px;
+      width: 100px;
+      transform: translate3d(-50%, 0, 0);
       fill: $color-red;
+      opacity: 0.7;
     }
 </style>

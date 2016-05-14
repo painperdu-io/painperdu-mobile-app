@@ -1,7 +1,7 @@
 <template>
   <div class="foodkeeper-container">
     <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item" v-link:"{ path: '/foodkeeper/:id' }">
+      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details' }">
         <div class="foodkeeper-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
@@ -25,10 +25,6 @@
       </div>
     </div>
   </div>
-<div>
-  <div v-link="{ path: '/foodkeeper/members' }">Mes compères</div>
-  <div v-link="{ path: '/foodkeeper/products' }">Denrées proposées</div>
-</div>
 </template>
 
 <script>

@@ -1,6 +1,8 @@
 <template>
   <div class="market-add-container">
-    <div class="market-add-map-wrapper"></div>
+    <div class="market-add-map-wrapper">
+      <google-map></google-map>
+    </div>
     <div class="market-add-form-wrapper">
       <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
       <select class="market-add-form-select" v-model="slectedAddress">
@@ -35,7 +37,12 @@
 </template>
 
 <script>
+import GoogleMap from './../commons/GoogleMap'
+
 export default {
+  components: {
+    GoogleMap,
+  },
   data() {
     return {
       places: [

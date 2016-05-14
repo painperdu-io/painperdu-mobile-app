@@ -6,10 +6,12 @@ import App from './App'
 import Splash from './components/splash/Splash'
 
 // inclusion: mon garde-manger
-import FoodKeeper from './components/foodkeeper/FoodKeeper'
+import Foodkeeper from './components/foodkeeper/Foodkeeper'
 import AddFoodKeeper from './components/foodkeeper/AddFoodKeeper'
-import ProductsFoodkeeper from './components/foodkeeper/ProductsFoodkeeper'
-import MembersFoodkeeper from './components/foodkeeper/MembersFoodkeeper'
+import DetailsFoodkeeper from './components/foodkeeper/DetailsFoodkeeper'
+import DetailsFoodkeeperProducts from './components/foodkeeper/DetailsFoodkeeperProducts'
+import DetailsFoodkeeperStats from './components/foodkeeper/DetailsFoodkeeperStats'
+import DetailsFoodkeeperTimeline from './components/foodkeeper/DetailsFoodkeeperTimeline'
 
 // inclusion: la place du marché
 import Market from './components/market/Market'
@@ -50,10 +52,10 @@ router.map({
 
   // mon garde-manger
   '/foodkeeper': {
-    name: 'FoodKeeper',
-    component: FoodKeeper,
+    name: 'Foodkeeper',
+    component: Foodkeeper,
     page: {
-      title: 'Mon garde-manger',
+      title: 'Mes gardes-mangers',
       wrap: 'wrap-header-footer',
       bgClass: 'background3',
       header: {
@@ -85,39 +87,33 @@ router.map({
       },
     },
   },
-  '/foodkeeper/products': {
-    name: 'ProductsFoodkeeper',
-    component: ProductsFoodkeeper,
+  '/foodkeeper/details': {
+    name: 'DetailsFoodkeeper',
+    component: DetailsFoodkeeper,
     page: {
-      title: 'Denrées proposées',
-      wrap: 'wrap-header-footer',
-      bgClass: 'background2',
-      header: {
-        enable: true,
-        profile: true,
-        basket: true,
-        add: true,
-      },
-      footer: {
-        enable: true,
-      },
-    },
-  },
-  '/foodkeeper/members': {
-    name: 'MembersFoodkeeper',
-    component: MembersFoodkeeper,
-    page: {
-      title: 'Mes compères',
-      wrap: 'wrap-header-footer',
+      title: 'Mon garde-manger',
+      wrap: 'wrap-header',
       bgClass: 'background1',
       header: {
         enable: true,
-        profile: true,
-        basket: true,
-        add: true,
+        previous: true,
       },
       footer: {
-        enable: true,
+        enable: false,
+      },
+    },
+    subRoutes: {
+      '/products': {
+        name: 'DetailsFoodkeeperProducts',
+        component: DetailsFoodkeeperProducts,
+      },
+      '/stats': {
+        name: 'DetailsFoodkeeperStats',
+        component: DetailsFoodkeeperStats,
+      },
+      '/timeline': {
+        name: 'DetailsFoodkeeperTimeline',
+        component: DetailsFoodkeeperTimeline,
       },
     },
   },

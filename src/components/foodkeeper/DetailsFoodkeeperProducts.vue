@@ -1,6 +1,6 @@
 <template>
   <div>
-    Mes compères
+    Details Foodkeeper Product
   </div>
 </template>
 
