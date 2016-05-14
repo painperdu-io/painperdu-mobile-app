@@ -1,5 +1,5 @@
 <template>
-  <div class="details-market-wrapper">
+  <div class="details-market-location-wrapper">
     <google-map></google-map>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.details-market-wrapper {
+.details-market-location-wrapper {
   position: relative;
   width: 100%;
   height: 292px;

@@ -1,5 +1,7 @@
 <template>
-  <members-list></members-list>
+  <div class="details-market-members-wrapper">
+    <members-list></members-list>
+  </div>
 </template>
 
 <script>
@@ -13,4 +15,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.details-market-members-wrapper {}
 </style>

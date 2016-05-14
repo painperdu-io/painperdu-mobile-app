@@ -35,7 +35,7 @@ export default {
   justify-content: center;
   flex-direction: column;
   flex: 1 100%;
-  position: fixed;
+  position: relative;
 }
 
   .market-details-description {
