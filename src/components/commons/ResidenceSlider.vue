@@ -36,7 +36,7 @@ export default {};
       bottom: 24px;
       left: 50%;
       transform: translate3d(-50%, 0, 0);
-      font: 1.25em "Karla-Bold", sans-serif;
+      font: 1.25em 'Karla-Bold', sans-serif;
       text-transform: uppercase;
       color: $color-text;
     }

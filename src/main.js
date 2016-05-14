@@ -36,8 +36,9 @@ router.map({
     name: 'Splash',
     component: Splash,
     page:{
-      bgClass: 'background1',
       title: 'Pain Perdu',
+      wrap: '',
+      bgClass: 'background1',
       header: {
         enable: false,
       },
@@ -53,6 +54,7 @@ router.map({
     component: FoodKeeper,
     page: {
       title: 'Mon garde-manger',
+      wrap: 'wrap-header-footer',
       bgClass: 'background3',
       header: {
         enable: true,
@@ -70,6 +72,7 @@ router.map({
     component: AddFoodKeeper,
     page: {
       title: 'Ajouter un garde-manger',
+      wrap: 'wrap-header-footer',
       bgClass: 'background2',
       header: {
         enable: true,
@@ -87,6 +90,7 @@ router.map({
     component: ProductsFoodkeeper,
     page: {
       title: 'Denrées proposées',
+      wrap: 'wrap-header-footer',
       bgClass: 'background2',
       header: {
         enable: true,
@@ -104,6 +108,7 @@ router.map({
     component: MembersFoodkeeper,
     page: {
       title: 'Mes compères',
+      wrap: 'wrap-header-footer',
       bgClass: 'background1',
       header: {
         enable: true,
@@ -123,6 +128,7 @@ router.map({
     component: Market,
     page: {
       title: 'Pain Perdu',
+      wrap: 'wrap-header-footer',
       bgClass: 'background1',
       header: {
         enable: true,
@@ -140,13 +146,14 @@ router.map({
     component: AddMarket,
     page: {
       title: 'Ajouter une place du marché',
+      wrap: 'wrap-header',
       bgClass: 'background2',
       header: {
         enable: true,
         previous: true,
       },
       footer: {
-        enable: true,
+        enable: false,
       },
     },
   },
@@ -155,6 +162,7 @@ router.map({
     component: ProductMarket,
     page: {
       title: 'Fiche denrée',
+      wrap: 'wrap-header-footer',
       bgClass: 'background3',
       header: {
         enable: true,
@@ -171,6 +179,7 @@ router.map({
     component: DetailsMarket,
     page: {
       title: 'Ma place du marché',
+      wrap: 'wrap-header',
       bgClass: 'background1',
       header: {
         enable: true,
@@ -202,6 +211,7 @@ router.map({
     component: Alliances,
     page: {
       title: 'Mes alliances',
+      wrap: 'wrap-header-footer',
       bgClass: 'background2',
       header: {
         enable: true,

@@ -1,7 +1,7 @@
 <template>
   <!--<menu-bar></menu-bar>-->
   <header-bar v-if="$route.page.header.enable"></header-bar>
-  <div class="wrap {{ $route.page.bgClass }}">
+  <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
     <router-view transition="popIn"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
@@ -41,12 +41,26 @@ body {
 .wrap {
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 120px);
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   overflow: hidden;
-  padding: 60px 0;
+
+  &.wrap-header-footer {
+    min-height: calc(100vh - 120px);
+    padding: 60px 0;
+  }
+
+  &.wrap-header {
+    min-height: calc(100vh - 60px);
+    padding-top: 60px;
+  }
+
+  &.wrap-footer {
+    min-height: calc(100vh - 60px);
+    padding-bottom: 60px;
+  }
 }
 
   .background1 {

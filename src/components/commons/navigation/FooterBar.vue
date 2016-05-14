@@ -20,7 +20,7 @@ export default {};
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: (120px / 2);
+  height: 60px;
   background: $color-green;
   box-shadow: 0px -3px 10px rgba(0,0,0, 0.2);
   z-index: 900;
@@ -29,7 +29,7 @@ export default {};
 .footer-navigation {
   display: flex;
   flex-flow: row wrap;
-  height: (120px / 2);
+  height: 60px;
   width: 100%;
 }
 
@@ -38,7 +38,7 @@ export default {};
     justify-content: center;
     flex-direction: column;
     flex: 1 33%;
-    font: 1em "Avenir-Book", sans-serif;
+    font: 1em 'Avenir-Book', sans-serif;
     color: $color-white;
     text-align: center;
     text-transform: uppercase;

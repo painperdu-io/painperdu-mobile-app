@@ -153,7 +153,7 @@ export default {
     }
 
     .foodkeeper-add-title {
-      font: 1.5em "Karla-Bold", sans-serif;
+      font: 1.5em 'Karla-Bold', sans-serif;
       text-transform: uppercase;
       color: $color-white;
     }

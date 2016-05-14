@@ -41,7 +41,7 @@ export default {};
   position: fixed;
   top: 0;
   width: 100%;
-  height: (120px / 2);
+  height: 60px;
   background: $color-red;
   z-index: 900;
 }
@@ -49,8 +49,8 @@ export default {};
 .header-navigation {
   display: flex;
   flex-flow: row wrap;
-  margin-top: (40px / 2);
-  height: (80px / 2);
+  margin-top: 20px;
+  height: 40px;
   width: 100%;
 }
 
@@ -58,7 +58,7 @@ export default {};
     display: flex;
 
     h1 {
-      font: 1.4em "Avenir-Book", sans-serif;
+      font: 1.4em 'Avenir-Book', sans-serif;
       color: $color-white;
       text-align: center;
     }
@@ -82,17 +82,17 @@ export default {};
 
 .header-icon {
   flex-direction: row;
-  width: (60px / 2);
-  height: (60px / 2);
-  margin-top: (10px / 2);
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
   fill: $color-white;
 }
 
   .header-icon-left {
-    margin-left: (40px / 2);
+    margin-left: 20px;
   }
 
   .header-icon-right {
-    margin-right: (20px / 2);
+    margin-right: 10px;
   }
 </style>
