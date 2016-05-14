@@ -22,7 +22,7 @@ export default {
 .splash-container {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 120px);
 }
 
 .logo {
