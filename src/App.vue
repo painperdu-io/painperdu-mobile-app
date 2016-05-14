@@ -1,10 +1,10 @@
 <template>
   <!--<menu-bar></menu-bar>-->
-  <header-bar></header-bar>
+  <header-bar v-if="$route.page.header.enable"></header-bar>
   <div class="wrap {{ $route.page.bgClass }}">
     <router-view transition="popIn"></router-view>
   </div>
-  <footer-bar></footer-bar>
+  <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <svg-icons></svg-icons>
 </template>
 
@@ -41,7 +41,7 @@ body {
 .wrap {
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 120px);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

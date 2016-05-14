@@ -38,7 +38,12 @@ router.map({
     page:{
       bgClass: 'background1',
       title: 'Pain Perdu',
-      header: {},
+      header: {
+        enable: false,
+      },
+      footer: {
+        enable: false,
+      },
     },
   },
 
@@ -50,9 +55,13 @@ router.map({
       title: 'Mon garde-manger',
       bgClass: 'background3',
       header: {
-        'profile': true,
-        'basket': true,
-        'add': true,
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -63,9 +72,13 @@ router.map({
       title: 'Ajouter un garde-manger',
       bgClass: 'background2',
       header: {
-        'profile': true,
-        'basket': true,
-        'add': true,
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -76,9 +89,13 @@ router.map({
       title: 'Denrées proposées',
       bgClass: 'background2',
       header: {
-        'profile': true,
-        'basket': true,
-        'add': true,
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -89,9 +106,13 @@ router.map({
       title: 'Mes compères',
       bgClass: 'background1',
       header: {
-        'profile': true,
-        'basket': true,
-        'add': true,
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -104,9 +125,13 @@ router.map({
       title: 'Pain Perdu',
       bgClass: 'background1',
       header: {
-        'profile': true,
-        'basket': true,
-        'add': true,
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -117,7 +142,11 @@ router.map({
       title: 'Ajouter une place du marché',
       bgClass: 'background2',
       header: {
-        'previous': true,
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -128,8 +157,12 @@ router.map({
       title: 'Fiche denrée',
       bgClass: 'background3',
       header: {
-        'previous': true,
-        'flag': true,
+        enable: true,
+        previous: true,
+        flag: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
@@ -140,44 +173,27 @@ router.map({
       title: 'Ma place du marché',
       bgClass: 'background1',
       header: {
-        'previous': true,
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: false,
       },
     },
     subRoutes: {
       '/members': {
         name: 'DetailsMarketMembers',
         component: DetailsMarketMembers,
-        page: {
-          title: 'Ma place du marché',
-          bgClass: 'background1',
-          header: {
-            'previous': true,
-          },
-        },
       },
       '/location': {
         name: 'DetailsMarketLocation',
         component: DetailsMarketLocation,
-        page: {
-          title: 'Ma place du marché',
-          bgClass: 'background1',
-          header: {
-            'previous': true,
-          },
-        },
       },
       '/stats': {
         name: 'DetailsMarketStats',
         component: DetailsMarketStats,
-        page: {
-          title: 'Ma place du marché',
-          bgClass: 'background1',
-          header: {
-            'previous': true,
-          },
-        },
-      }
-    }
+      },
+    },
   },
 
   // mes alliances
@@ -188,9 +204,13 @@ router.map({
       title: 'Mes alliances',
       bgClass: 'background2',
       header: {
-        'profile': true,
-        'basket': true,
-        'add': true,
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
       },
     },
   },
