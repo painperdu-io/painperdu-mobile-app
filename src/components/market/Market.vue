@@ -142,7 +142,7 @@ export default {
       font-style: italic;
       color: $color-red;
       font-size: (3.6em / 2);
-      font-family: 'IowanOldStyle-Roman';
+      font-family: 'IowanOldStyleBT-BlackItalic';
       font-weight: 700;
       margin: (20px / 2) auto;
     }
