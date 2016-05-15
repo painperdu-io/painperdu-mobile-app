@@ -1,7 +1,7 @@
 <template>
   <div class="accomplices-container">
     <template v-for="accomplice in accomplices">
-      <div class="accomplices-item" v-link="{ path: '/profile/member/:id' }">
+      <div class="accomplices-item" v-link="{ path: '/profile/member' }">
         <div class="accomplices-image">
           <img src="https://randomuser.me/api/portraits/men/{{ accomplice.id }}.jpg"/>
         </div>

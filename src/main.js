@@ -26,6 +26,10 @@ import ProductMarket from './components/market/ProductMarket'
 // inclusion: mes alliances
 import Alliances from './components/alliances/Alliances'
 
+// inclusion: profile
+import MemberProfile from './components/profile/MemberProfile';
+import MeProfile from './components/profile/MeProfile';
+
 
 // configuration de vuejs
 Vue.config.debug = true
@@ -234,6 +238,40 @@ router.map({
       },
       footer: {
         enable: true,
+      },
+    },
+  },
+
+  // profile
+  '/profile/member': {
+    name: 'MemberProfile',
+    component: MemberProfile,
+    page: {
+      title: 'Fiche compère',
+      wrap: 'wrap-header',
+      bgClass: 'background1',
+      header: {
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: false,
+      },
+    },
+  },
+  '/profile/me': {
+    name: 'MeProfile',
+    component: MeProfile,
+    page: {
+      title: 'Mon profile',
+      wrap: 'wrap-header',
+      bgClass: 'background1',
+      header: {
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: false,
       },
     },
   },
