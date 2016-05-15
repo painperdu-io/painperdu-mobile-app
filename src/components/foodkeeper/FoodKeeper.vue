@@ -1,7 +1,7 @@
 <template>
   <div class="foodkeeper-container">
     <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details' }">
+      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details/stats' }">
         <div class="foodkeeper-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
@@ -67,13 +67,15 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    filter: grayscale(100%);
+    //filter: grayscale(100%);
+    filter: blur(1px);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    mix-blend-mode: multiply;
+    //mix-blend-mode: multiply;
+    margin: -1px 0 0 0;
   }
 
   .foodkeeper-item-separator {

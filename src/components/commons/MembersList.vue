@@ -1,8 +1,8 @@
 <template>
-  <div class="details-market-members-container">
+  <div class="members-container">
     <template v-for="member in members">
-      <div class="details-market-members-item" v-link="{ path: '/profile/member/:id' }">
-        <div class="details-market-members-image">
+      <div class="members-item" v-link="{ path: '/profile/member/:id' }">
+        <div class="members-image">
           <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
         </div>
       </div>
@@ -25,14 +25,14 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
-.details-market-members-container {
+.members-container {
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-  .details-market-members-item {
+  .members-item {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -45,7 +45,7 @@ export default {
     overflow: hidden;
   }
 
-    .details-market-members-image {
+    .members-image {
       display: flex;
       justify-content: center;
       align-content: center;
