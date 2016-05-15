@@ -7,7 +7,7 @@
         </div>
       </div>
     </template>
-    <div class="accomplices-add-icon"  v-link="{ path: '/profile/member/:id' }">
+    <div class="accomplices-add-icon"  v-link="{ path: '/foodkeeper/add/accomplice' }">
       <div class="accomplices-add-icon-bg">
         <span class="accomplices-add-icon-text">+</span>
       </div>

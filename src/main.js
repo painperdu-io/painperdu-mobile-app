@@ -7,7 +7,8 @@ import Splash from './components/splash/Splash'
 
 // inclusion: mon garde-manger
 import Foodkeeper from './components/foodkeeper/Foodkeeper'
-import AddFoodKeeper from './components/foodkeeper/AddFoodKeeper'
+import AddFoodkeeper from './components/foodkeeper/AddFoodkeeper'
+import AddAccomplicesFoodkeeper from './components/foodkeeper/AddAccomplicesFoodkeeper'
 import DetailsFoodkeeper from './components/foodkeeper/DetailsFoodkeeper'
 import DetailsFoodkeeperProducts from './components/foodkeeper/DetailsFoodkeeperProducts'
 import DetailsFoodkeeperStats from './components/foodkeeper/DetailsFoodkeeperStats'
@@ -70,8 +71,8 @@ router.map({
     },
   },
   '/foodkeeper/add': {
-    name: 'AddFoodKeeper',
-    component: AddFoodKeeper,
+    name: 'AddFoodkeeper',
+    component: AddFoodkeeper,
     page: {
       title: 'Ajouter un garde-manger',
       wrap: 'wrap-header-footer',
@@ -84,6 +85,22 @@ router.map({
       },
       footer: {
         enable: true,
+      },
+    },
+  },
+  '/foodkeeper/add/accomplice': {
+    name: 'AddAccomplicesFoodkeeper',
+    component: AddAccomplicesFoodkeeper,
+    page: {
+      title: 'Ajouter un compère',
+      wrap: 'wrap-header',
+      bgClass: 'background2',
+      header: {
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: false,
       },
     },
   },
