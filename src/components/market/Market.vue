@@ -23,7 +23,7 @@
 
       <div class="products-list">
         <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
-          <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link:"{ path: '/market/product/:id' }">
+          <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
             <div class="wrapper">
               <svg viewBox="0 0 100 100" class="foods-icon">
                 <use xlink:href="#foods-icon-{{ product.name}}"></use>
