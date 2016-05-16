@@ -82,7 +82,7 @@ export default {
       }
 
   .member-profile-accomplices-wrapper {
-    margin: -47px auto 0;
+    margin: -47px auto 10px;
     width: 298px;
   }
 </style>
