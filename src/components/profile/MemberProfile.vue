@@ -18,6 +18,6 @@ export default {
 @import './../../styles/variables.scss';
 
 .member-profile-container {
-
+  margin-top: 40px;
 }
 </style>

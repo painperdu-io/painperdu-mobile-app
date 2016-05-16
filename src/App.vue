@@ -63,6 +63,10 @@ body {
   }
 }
 
+  .backgroundWhite {
+    background: $color-white;
+  }
+
   .background1 {
     background: $color-white url('/static/img/bg-1.png');
   }

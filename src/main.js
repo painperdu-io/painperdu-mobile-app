@@ -249,7 +249,7 @@ router.map({
     page: {
       title: 'Fiche compère',
       wrap: 'wrap-header',
-      bgClass: 'background1',
+      bgClass: 'backgroundWhite',
       header: {
         enable: true,
         previous: true,

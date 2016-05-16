@@ -42,7 +42,7 @@ export default {
 
     .profile-infos-photo {
       position: relative;
-      margin: 12px auto;
+      margin: 0 auto 20px;
       width: 125px;
       height: 125px;
       border-radius: 50%;
