@@ -10,7 +10,7 @@
         studium semper Incenderat autem audaces.
       </p>
     </div>
-    <tabs-navigation></tabs-navigation>
+    <tabs-navigation route="DetailsMarket"></tabs-navigation>
     <router-view></router-view>
   </div>
 </template>

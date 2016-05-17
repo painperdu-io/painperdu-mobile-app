@@ -10,7 +10,7 @@
       <h3 class="foodkeeper-details-accomplice-title">Mes compères</h3>
       <accomplices-list></accomplices-list>
     </div>
-    <tabs-navigation></tabs-navigation>
+    <tabs-navigation route="DetailsFoodkeeper"></tabs-navigation>
     <router-view></router-view>
   </div>
 </template>

@@ -1,27 +1,30 @@
 export function tabsNavigation () {
-  const routeName = 'DetailsFoodkeeper';
-  let tabs = [];
-  if (routeName === 'DetailsMarket') {
-    tabs = [
-      { name: 'Localisation', path: '/market/details/location' },
-      { name: 'Membres alliés', path: '/market/details/members' },
-      { name: 'Statistiques', path: '/market/details/stats' },
-    ]
-  }
-  if (routeName === 'UserProfile') {
-    tabs = [
-      { name: 'Mon profil', path: '/profile/user/me' },
-      { name: 'Mes outils', path: '/profile/user/tools' },
-      { name: 'Mes avis', path: '/profile/user/reviews' },
-    ]
-  }
-  if (routeName === 'DetailsFoodkeeper') {
-    tabs = [
-      { name: 'Produits', path: '/foodkeeper/details/products' },
-      { name: 'Statistiques', path: '/foodkeeper/details/stats' },
-      { name: 'Timeline', path: '/foodkeeper/details/timeline' },
-    ]
-  }
+  const tabs = [
+    {
+      route: 'DetailsFoodkeeper',
+      items: [
+        { name: 'Produits', path: '/foodkeeper/details/products' },
+        { name: 'Statistiques', path: '/foodkeeper/details/stats' },
+        { name: 'Timeline', path: '/foodkeeper/details/timeline' },
+      ]
+    },
+    {
+      route: 'DetailsMarket',
+      items: [
+        { name: 'Localisation', path: '/market/details/location' },
+        { name: 'Membres alliés', path: '/market/details/members' },
+        { name: 'Statistiques', path: '/market/details/stats' },
+      ]
+    },
+    {
+      route: 'UserProfile',
+      items: [
+        { name: 'Mon profil', path: '/profile/me' },
+        { name: 'Mes outils', path: '/profile/tools' },
+        { name: 'Mes avis', path: '/profile/reviews' },
+      ]
+    },
+  ]
 
   return tabs;
 }

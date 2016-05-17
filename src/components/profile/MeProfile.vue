@@ -1,6 +1,6 @@
 <template>
   <div class="me-profile-container">
-    <tabs-navigation></tabs-navigation>
+    <tabs-navigation route="UserProfile"></tabs-navigation>
     <profile></profile>
   </div>
 </template>

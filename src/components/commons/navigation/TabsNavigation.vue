@@ -2,7 +2,11 @@
   <div class="tabs-navigation-container">
     <nav class="tabs-navigation-wrapper">
       <template v-for="tab in tabs">
-        <div class="tabs-navigation-item" v-link="{ path: tab.path, activeClass: 'active' }">{{ tab.name }}</div>
+        <template v-if="tab.route == route">
+          <template v-for="item in tab.items">
+            <div class="tabs-navigation-item" v-link="{ path: item.path, activeClass: 'active' }">{{ item.name }}</div>
+          </template>
+        </template>
       </template>
     </nav>
     <div class="tabs-navigation-active"></div>
@@ -13,6 +17,7 @@
 import { tabsNavigation } from './../../../vuex/getters'
 
 export default {
+  props: ['route'],
   vuex: {
     getters: {
       tabs: tabsNavigation,
