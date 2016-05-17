@@ -13,7 +13,7 @@
        >next</div>
 
       <template v-for="market in markets |  orderBy 'favorite' -1 ">
-        <div class="group-item clan-item current-group" v-link="{ path: '/market/details' }">
+        <div class="group-item clan-item current-group" v-link="{ path: '/market/details' }" onmouseover="getCurrentMarket">
           <img src="./../../../static/temp/clan.png" />
           <div class="group-name">
             {{ market.name }}
@@ -327,6 +327,9 @@ export default {
         slidePre () {
             this.$broadcast('slidePre')
         },
+        getCurrentMarker() {
+          console.log('test');
+        }
     },
 };
 </script>
