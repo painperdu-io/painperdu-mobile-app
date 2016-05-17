@@ -8,7 +8,7 @@
         <svg v-if="$route.page.header.previous" v-link="{ path: '/market' }" viewBox="0 0 50 50" class="header-icon  header-icon-left">
           <use xlink:href="#header-icon-previous"></use>
         </svg>
-        <svg v-if="$route.page.header.profile" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+        <svg v-if="$route.page.header.profile" v-link="{ path: '/profile/me' }" viewBox="0 0 50 50" class="header-icon  header-icon-left">
           <use xlink:href="#header-icon-profile"></use>
         </svg>
       </div>

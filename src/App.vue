@@ -78,4 +78,9 @@ body {
   .background3 {
     background: $color-white url('/static/img/bg-3.png');
   }
+
+  .background4 {
+    background: $color-white url('/static/img/bg-4.png');
+    background-size: auto;
+  }
 </style>

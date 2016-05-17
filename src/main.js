@@ -265,7 +265,7 @@ router.map({
     page: {
       title: 'Mon profile',
       wrap: 'wrap-header',
-      bgClass: 'background1',
+      bgClass: 'background4',
       header: {
         enable: true,
         previous: true,
