@@ -3,7 +3,7 @@
     <div class="residence-slider-item" v-link="{ path: '/market/details/members' }">
       <img src="./../../../static/temp/clan.png" />
       <div class="residence-slider-item-name">
-        Ma résidence
+        {{ data.name }}
         <svg viewBox="0 0 100 100" class="residence-slider-item-star-icon">
           <use xlink:href="#app-icon-star"></use>
         </svg>
@@ -13,7 +13,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['data']
+};
 </script>
 
 <style lang="scss" scoped>

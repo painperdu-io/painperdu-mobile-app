@@ -1,6 +1,6 @@
 <template>
   <div>
-    <residence-slider></residence-slider>
+    <residence-slider :data="market"></residence-slider>
 
     <div class="products-wrapper">
       <div class="search-wrapper">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="products-list">
-        <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
+        <template v-for="product in market.products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
           <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
             <div class="wrapper">
               <svg viewBox="0 0 100 100" class="foods-icon">
@@ -53,48 +53,51 @@ export default {
   },
   data() {
     return {
-      products: [
-        { name: 'salade',
-          quantity: '3',
-          status: true,
-          brut: true,
-        },
-        { name: 'chou',
-          quantity: '1',
-          status: false,
-          brut: true,
-        },
-        { name: 'pain',
-          quantity: '1',
-          status: true,
-          brut: true,
-        },
-        { name: 'poivron',
-          quantity: '6',
-          status: true,
-          brut: true,
-        },
-        { name: 'lasagnes',
-          quantity: '3',
-          status: true,
-          brut: false,
-        },
-        { name: 'emmental',
-          quantity: '1',
-          status: false,
-          brut: true,
-        },
-        { name: 'viande',
-          quantity: '1',
-          status: true,
-          brut: true,
-        },
-        { name: 'banane',
-          quantity: '6',
-          status: true, //disponible maintenant
-          brut: true, //type produit
-        },
-      ]
+      market: {
+        name: 'NOM RESIDENCE',
+        products: [
+          { name: 'salade',
+            quantity: '3',
+            status: true,
+            brut: true,
+          },
+          { name: 'chou',
+            quantity: '1',
+            status: false,
+            brut: true,
+          },
+          { name: 'pain',
+            quantity: '1',
+            status: true,
+            brut: true,
+          },
+          { name: 'poivron',
+            quantity: '6',
+            status: true,
+            brut: true,
+          },
+          { name: 'lasagnes',
+            quantity: '3',
+            status: true,
+            brut: false,
+          },
+          { name: 'emmental',
+            quantity: '1',
+            status: false,
+            brut: true,
+          },
+          { name: 'viande',
+            quantity: '1',
+            status: true,
+            brut: true,
+          },
+          { name: 'banane',
+            quantity: '6',
+            status: true, //disponible maintenant
+            brut: true, //type produit
+          },
+        ]
+      }
     }
   }
 };
