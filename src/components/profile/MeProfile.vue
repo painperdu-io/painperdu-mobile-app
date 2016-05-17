@@ -1,7 +1,9 @@
 <template>
   <div class="me-profile-container">
     <tabs-navigation route="UserProfile"></tabs-navigation>
-    <profile></profile>
+    <div class="me-profile-infos-wrapper">
+      <profile></profile>
+    </div>
   </div>
 </template>
 
@@ -20,7 +22,9 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
-.me-profile-container {
-  margin-top: 40px;
-}
+.me-profile-container {}
+
+  .me-profile-infos-wrapper {
+    margin-top: 40px;
+  }
 </style>

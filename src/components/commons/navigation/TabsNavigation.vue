@@ -32,7 +32,6 @@ export default {
 .tabs-navigation-container {
   position: relative;
   width: 100%;
-  height: 60px;
   background: $color-white;
   z-index: 400;
   overflow: hidden;
@@ -41,7 +40,7 @@ export default {
   .tabs-navigation-active {
     position: absolute;
     bottom: 0;
-    left: 33%;
+    left: 0%;
     height: 3px;
     width: 33%;
     background: $color-red;
@@ -50,7 +49,7 @@ export default {
   .tabs-navigation-wrapper {
     display: flex;
     flex-flow: row wrap;
-    height: 55px;
+    height: 60px;
     width: 100%;
   }
 
@@ -65,6 +64,7 @@ export default {
       text-transform: uppercase;
       text-decoration: none;
       border-right: 1px solid $color-gray;
+      margin: 0;
 
       &:last-child {
         border-right: none;
