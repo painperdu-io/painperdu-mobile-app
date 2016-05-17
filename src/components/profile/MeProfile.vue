@@ -25,6 +25,6 @@ export default {
 .me-profile-container {}
 
   .me-profile-infos-wrapper {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 </style>
