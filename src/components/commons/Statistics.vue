@@ -161,14 +161,15 @@ export default {
         margin-bottom: 10px;
         height: 56px;
         background: url('/static/img/stats-value.png');
-        background-size: 60px 56px;
+        background-size: 50px 56px;
         background-position: center center;
         background-repeat: no-repeat;
       }
 
       .statistics-infos-content-value {
+        margin-top: -3px;
         text-align: center;
-        font: 3.5em 'Karla-Bold', sans-serif;
+        font: 1.6em 'Karla-Bold', sans-serif;
         color: $color-green;
       }
 

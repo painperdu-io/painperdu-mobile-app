@@ -10,6 +10,7 @@
         studium semper Incenderat autem audaces.
       </p>
     </div>
+    <div class="market-details-separator"></div>
     <tabs-navigation route="DetailsMarket"></tabs-navigation>
     <router-view></router-view>
   </div>
@@ -54,4 +55,12 @@ export default {
       font: 1.2em 'Karla-Italic', sans-serif;
       color: $color-text;
     }
+
+  .market-details-separator {
+    width: 56px;
+    height: 5px;
+    margin: -5px auto 15px;
+    transform: scale(0.5);
+    background: url('/static/img/separator-green.png') center center no-repeat;
+  }
 </style>
