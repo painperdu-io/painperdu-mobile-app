@@ -5,10 +5,12 @@
     <router-view transition="popIn"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
+  <cart-popup></cart-popup>
   <svg-icons></svg-icons>
 </template>
 
 <script>
+import CartPopup from './components/commons/popup/Cart'
 import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
 import MenuBar from './components/commons/navigation/MenuBar'
@@ -17,6 +19,7 @@ import store from './vuex/store'
 
 export default {
   components: {
+    CartPopup,
     HeaderBar,
     FooterBar,
     MenuBar,

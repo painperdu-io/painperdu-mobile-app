@@ -16,7 +16,7 @@
         <h1>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
-        <svg v-if="$route.page.header.basket" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
         <svg v-if="$route.page.header.add" viewBox="0 0 50 50" class="header-icon  header-icon-right">
@@ -31,7 +31,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openCart: (event) => {
+      document.getElementsByClassName('cart-popup-container')[0].classList.add('active');
+      event.preventDefault()
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
