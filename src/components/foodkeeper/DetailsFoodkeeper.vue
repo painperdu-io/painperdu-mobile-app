@@ -7,7 +7,7 @@
       <p class="foodkeeper-details-item-description">{{ foodkeeper.description }}</p>
     </div>
     <div class="foodkeeper-details-accomplice-wrapper">
-      <h3 class="foodkeeper-details-accomplice-title">Mes compères</h3>
+      <h3 class="foodkeeper-details-accomplice-title"><span class="underline"></span>Mes compères</h3>
       <accomplices-list></accomplices-list>
     </div>
     <tabs-navigation route="DetailsFoodkeeper"></tabs-navigation>
@@ -115,8 +115,22 @@ export default {
   }
 
     .foodkeeper-details-accomplice-title {
+      position: relative;
+      margin: 0 auto -2px;
+      z-index: 1;
+      display: inline-block;
       font: 1.3em 'Karla-Italic', sans-serif;
       color: $color-text;
+
+      .underline {
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+        height: 4px;
+        width: 100%;
+        background: $color-white;
+        z-index: -1;
+      }
     }
 
 </style>
