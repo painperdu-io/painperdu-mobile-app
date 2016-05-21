@@ -9,6 +9,16 @@
       <h3 class="me-profile-accomplices-title">Mes compères</h3>
       <accomplices-list></accomplices-list>
     </div>
+    <div class="me-profile-form-wrapper">
+      <div class="me-profile-form-item">
+        <label class="me-profile-form-item-label" for="mail">Email</label>
+        <input class="me-profile-form-item-input" type="email"></input>
+      </div>
+      <div class="me-profile-form-item">
+        <label class="me-profile-form-item-label" for="address">Adresse</label>
+        <input class="me-profile-form-item-input" type="text"></input>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -55,4 +65,37 @@ export default {
       font: 1.3em 'Karla-Italic', sans-serif;
       color: $color-text;
     }
+
+  .me-profile-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: $color-white;
+    padding: 10px 0;
+  }
+
+    .me-profile-form-item {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 30px;
+    }
+
+      .me-profile-form-item-label {
+        margin-bottom: 10px;
+        font: 1.2em 'Karla-Italic', sans-serif;
+        color: $color-text;
+      }
+
+      .me-profile-form-item-input {
+        padding-bottom: 5px;
+        font: 1.3em 'Karla-Regular', sans-serif;
+        border: none;
+        border-bottom: 1px solid $color-gray;
+        color: $color-text;
+
+        &:hover {
+          font: 1.3em 'Karla-Bold', sans-serif;
+          border-bottom: 2px solid $color-green;
+        }
+      }
 </style>
