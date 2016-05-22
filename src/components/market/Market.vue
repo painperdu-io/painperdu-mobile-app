@@ -15,7 +15,7 @@
       </div>
 
       <div class="product-filters">
-        <input type="radio" id="brut" class="filter"value="false" v-model="productType">
+        <input type="radio" id="brut" class="filter" value="false" v-model="productType">
         <label for="brut" >Plats Préparés</label>
         <input type="radio" id="prepare" class="filter" value="true" v-model="productType">
         <label for="prepare">Produits Bruts</label>
