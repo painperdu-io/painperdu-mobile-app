@@ -1,10 +1,10 @@
 <template>
-  <!--<menu-bar></menu-bar>-->
   <header-bar v-if="$route.page.header.enable"></header-bar>
   <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
     <router-view transition="popIn"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
+  <menu-bar></menu-bar>
   <cart-popup></cart-popup>
   <svg-icons></svg-icons>
 </template>
