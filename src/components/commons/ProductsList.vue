@@ -17,16 +17,6 @@
 </template>
 
 <script>
-/*import { productsList } from './../../vuex/getters'
-
-export default {
-  vuex: {
-    getters: {
-      products: productsList,
-    },
-  },
-};*/
-
 export default {
   props: ['products', 'search', 'type']
 };
