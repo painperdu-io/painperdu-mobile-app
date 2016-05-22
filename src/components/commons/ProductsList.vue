@@ -1,6 +1,6 @@
 <template>
   <div class="products-container">
-    <template v-for="product in products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
+    <template v-for="product in products | filterBy search in 'name' | filterBy type in 'brut' | orderBy 'name' ">
       <div class="product-item-wrapper" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
         <div class="product-item-circle">
           <svg viewBox="0 0 100 100" class="product-item-icon">
@@ -17,14 +17,8 @@
 </template>
 
 <script>
-import { productsList } from './../../vuex/getters'
-
 export default {
-  vuex: {
-    getters: {
-      products: productsList,
-    },
-  },
+  props: ['products', 'search', 'type']
 };
 </script>
 

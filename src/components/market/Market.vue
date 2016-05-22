@@ -1,54 +1,42 @@
 <template>
-  <div>
+  <div class="market-container">
     <residence-slider :data="market"></residence-slider>
 
-    <div class="products-wrapper">
-      <div class="search-wrapper">
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-left">
+    <div class="market-products-wrapper">
+      <div class="market-products-search">
+        <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
           <use xlink:href="#app-icon-search"></use>
         </svg>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+        <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
           <use xlink:href="#app-icon-close"></use>
         </svg>
 
-        <input id="search-input" placeholder="Nom du produit..." v-model="research" />
+        <input id="search-input" placeholder="Nom du produit..." v-model="search" />
       </div>
 
-      <div class="product-filters">
-        <input type="radio" id="brut" class="filter" value="false" v-model="productType">
+
+      <div class="market-products-filters">
+        <input id="brut" class="filter" type="radio" value="false" v-model="type">
         <label for="brut" >Plats Préparés</label>
-        <input type="radio" id="prepare" class="filter" value="true" v-model="productType">
+        <input id="prepare" class="filter" type="radio" value="true" v-model="type">
         <label for="prepare">Produits Bruts</label>
       </div>
 
-      <div class="products-list">
-        <template v-for="product in market.products | filterBy research in 'name' | filterBy productType in 'brut' | orderBy 'name' ">
-          <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
-            <div class="wrapper">
-              <svg viewBox="0 0 100 100" class="foods-icon">
-                <use xlink:href="#foods-icon-{{ product.name}}"></use>
-              </svg>
-              <div class="product-quantity">{{ product.quantity }}</div>
-            </div>
-            <div class="product-name">{{ product.name }}</div>
-            <div class="product-status" v-if="product.status">Disponible maintenant</div>
-            <div class="product-status" v-else>Indisponible</div>
-          </div>
-        </template>
-      </div>
-    </div>
-
-    <!-- Ajouter place du marché
-      <div class="button" v-link="{ path: '/market/add' }">Ajouter une place du marché</div>
-    -->
+      <products-list
+        :products="market.products"
+        :type="type"
+        :search="search">
+      </producst-list>
   </div>
 </template>
 
 <script>
+import ProductsList from './../commons/ProductsList'
 import ResidenceSlider from './../commons/ResidenceSlider'
 
 export default {
   components: {
+    ProductsList,
     ResidenceSlider,
   },
   data() {
@@ -105,131 +93,80 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
-.products-wrapper {
-  text-align: center;
-}
 
-.products-list {
-  text-align: center;
-  .product {
-    display: inline-block;;
-    margin: (45px / 2) (25px/2) 0  (25px/2);
-    .wrapper {
-      position: relative;
-      background-color: white;
-      border-radius: 50%;
-      width: (230px / 2);
-      height: (230px / 2);
-      text-align: center;
-      .foods-icon {
-        transform: scale(0.7);
-      }
-      .product-quantity {
-        position: absolute;
-        right: 0px;
-        top: 10px;
-        display: inline-block;
-        background-color: $color-red;
-        color: $color-white;
-        text-align: center;
-        border-radius: 50%;
-        font-size: (2.6em / 2);
-        font-family: 'Karla-Bold';
-        width: (55px /2);
-        height: (55px /2);
-        line-height: (55px / 2);
-      }
-    }
-    .product-name {
-      text-transform: capitalize;
-      font-style: italic;
-      color: $color-red;
-      font-size: (3.6em / 2);
-      font-family: 'IowanOldStyleBT-BlackItalic';
-      font-weight: 700;
-      margin: (20px / 2) auto;
-    }
-    .product-status {
-      color: $color-text;
-      font-size: (2.4em / 2);
-      font-family: 'Karla-Italic';
-    }
-    &.inactive {
-      filter: grayscale(100%);
-      .product-quantity {
-        background-color: $color-inactive;
-      }
-      .product-status {
-        opacity: 0.5;
-      }
-    }
+.market-container {}
+
+  .market-products-wrapper {
+    text-align: center;
   }
-}
 
-.product-filters {
-  text-align: center;
-  line-height: (80px / 2);
-    .filter {
-      + label {
-        background-color: rgba(0,0,0,0);
-        height: (80px / 2);
-        border: 2px solid white;
-        border-radius: (80px / 4);
-        text-transform: uppercase;
-        padding: (20px / 2);
-        color: $color-text;
-        font-family: 'Karla-Bold';
-        font-size: (2.3em / 2);
+    .market-products-search {
+      position: relative;
+      margin: 25px auto 18px ;
+      width: 262px;
+
+      input {
+        padding: 0 55px 0 50px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        box-sizing: border-box;
+        font: 1.5em 'Karla-Italic', sans-serif;
+        color: $color-white;
+        background: $color-green-lite;
       }
-      &:first-child {
-        + label {
-          margin-right: (40px / 2);
 
+      ::-webkit-input-placeholder {
+        color: $color-white;
+      }
+    }
+
+      .market-products-search-icon {
+        position: absolute;
+        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+        fill: $color-white;
+      }
+
+      .market-products-search-icon-left {
+        left: 15px;
+      }
+      .market-products-search-icon-right {
+        right: 20px;
+      }
+
+    .market-products-filters {
+      text-align: center;
+      line-height: 40px;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .filter {
+        + label {
+          padding: 10px;
+          height: 40px;
+          border: 2px solid $color-white;
+          border-radius: 20px;
+          font: 1.15em 'Karla-Bold', sans-serif;
+          color: $color-text;
+          text-transform: uppercase;
         }
-      }
-      &:checked {
-        + label {
-          background-color: white;
+
+        &:first-child {
+          + label {
+            margin-right: 20px;
+          }
+        }
+
+        &:checked {
+          + label {
+            background: $color-white;
+          }
         }
       }
     }
-}
-
-.search-icon {
-  width: (60px / 2);
-  height: (60px / 2);
-  margin-top: (10px / 2);
-  fill: $color-white;
-  position: absolute;
-}
-
-.search-icon-left {
-  left: 15px;
-}
-.search-icon-right {
-  right: 20px;
-}
-
-.search-wrapper {
-  position: relative;
-  margin:(50px / 2) auto (36px/2) ;
-  width: (525px / 2);
-}
-#search-input {
-  background-color: $color-green-lite;
-  border: none;
-  color: white;
-  padding: 0 (25px / 2) 0 (100px / 2);
-  border-radius: (80px / 4);
-  height: (80px / 2);
-  width: 100%;
-  box-sizing: border-box;
-  font-style: italic;
-}
-
-input[type="radio"] {
-  display: none;
-}
-
-::-webkit-input-placeholder { font-style: italic; color: white;}
 </style>
