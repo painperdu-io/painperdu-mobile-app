@@ -5,6 +5,9 @@ import App from './App'
 // inclusion: application
 import Splash from './components/splash/Splash'
 
+// inclusion: ajout produit
+import AddProduct from './components/commons/AddProduct'
+
 // inclusion: mon garde-manger
 import Foodkeeper from './components/foodkeeper/Foodkeeper'
 import AddFoodkeeper from './components/foodkeeper/AddFoodkeeper'
@@ -25,6 +28,8 @@ import ProductMarket from './components/market/ProductMarket'
 
 // inclusion: mes alliances
 import Alliances from './components/alliances/Alliances'
+import DetailsAlliance from './components/alliances/DetailsAlliance'
+
 
 // inclusion: profile
 import MemberProfile from './components/profile/MemberProfile';
@@ -54,7 +59,23 @@ router.map({
       },
     },
   },
-
+  //ajout produit
+  '/addProduct': {
+    name: 'AddProduct',
+    component: AddProduct,
+    page: {
+      title: 'Ajouter une denrée',
+      wrap: 'wrap-header',
+      bgClass: 'background4',
+      header: {
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: false,
+      },
+    },
+  },
   // mon garde-manger
   '/foodkeeper': {
     name: 'Foodkeeper',
@@ -241,6 +262,25 @@ router.map({
       },
     },
   },
+  'alliances/alliance': {
+    name: 'Alliance',
+    component: DetailsAlliance,
+    page: {
+      title: 'Mon alliance',
+      wrap: 'wrap-header-footer',
+      bgClass: 'background2',
+      header: {
+        enable: true,
+        profile: true,
+        basket: true,
+        add: true,
+      },
+      footer: {
+        enable: true,
+      },
+    },
+  },
+
 
   // profile
   '/profile/member': {
