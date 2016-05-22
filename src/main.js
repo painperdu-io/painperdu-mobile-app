@@ -79,16 +79,14 @@ router.map({
     component: AddFoodkeeper,
     page: {
       title: 'Ajouter un garde-manger',
-      wrap: 'wrap-header-footer',
-      bgClass: 'background2',
+      wrap: 'wrap-header',
+      bgClass: 'background1',
       header: {
         enable: true,
-        profile: true,
-        basket: true,
-        add: true,
+        previous: true,
       },
       footer: {
-        enable: true,
+        enable: false,
       },
     },
   },
