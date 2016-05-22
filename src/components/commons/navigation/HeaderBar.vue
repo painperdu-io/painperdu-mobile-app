@@ -19,7 +19,7 @@
         <svg v-if="$route.page.header.basket" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg v-if="$route.page.header.add" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.add" v-link="{ path: '/addProduct' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-add"></use>
         </svg>
         <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right">
