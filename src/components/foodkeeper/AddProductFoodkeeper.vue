@@ -167,6 +167,7 @@ export default {};
         &.quantity {
           font: 1.5em 'Karla-Bold', sans-serif;
           text-align: center;
+          padding: 0 55px 0 55px;
         }
       }
 
