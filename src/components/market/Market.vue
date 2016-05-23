@@ -11,7 +11,7 @@
           <use xlink:href="#app-icon-close"></use>
         </svg>
 
-        <input id="search-input" placeholder="Nom du produit..." v-model="search" />
+        <input placeholder="Nom du produit..." v-model="search" />
       </div>
 
 

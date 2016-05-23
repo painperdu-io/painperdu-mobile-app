@@ -12,11 +12,11 @@
     <div class="me-profile-form-wrapper">
       <div class="me-profile-form-item">
         <label class="me-profile-form-item-label" for="mail">Email</label>
-        <input class="me-profile-form-item-input" type="email"></input>
+        <input id="mail" class="me-profile-form-item-input" type="email"></input>
       </div>
       <div class="me-profile-form-item">
         <label class="me-profile-form-item-label" for="address">Adresse</label>
-        <input class="me-profile-form-item-input" type="text"></input>
+        <input id="address" class="me-profile-form-item-input" type="text"></input>
       </div>
     </div>
   </div>
