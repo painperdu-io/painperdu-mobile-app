@@ -73,7 +73,7 @@ export default {
     width: 28px;
     height: 2.5px;
     margin: 8px 0;
-    background: url('/static/img/separator-green.png') center left no-repeat;
+    background: url('/static/img/separator-red.png') center left no-repeat;
   }
 
   .alliance-item-product-icon-wrapper {

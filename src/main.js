@@ -271,12 +271,10 @@ router.map({
       bgClass: 'background2',
       header: {
         enable: true,
-        profile: true,
-        basket: true,
-        add: true,
+        previous: true,
       },
       footer: {
-        enable: true,
+        enable: false,
       },
     },
   },

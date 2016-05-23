@@ -273,6 +273,7 @@ export default {
     text-align: center;
     color: $color-text;
     font-family: 'Karla-Italic';
+    padding-bottom: 20px;
 }
 
 .step {
