@@ -1,10 +1,28 @@
 <template>
-  <div> @todo User </div>
-  <div> @todo Product </div>
+  <div class="alliance-summary">
+    <div class="profile-container">
+      <div class="profile-infos">
+        <div class="profile-infos-photo">
+          <div class="profile-infos-photo-img">
+            <img src="https://randomuser.me/api/portraits/men/12.jpg"/>
+          </div>
+        </div>
+        <h3 class="profile-infos-name">Adrien</h3>
+    </div>
+    <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
+      <div class="wrapper">
+        <svg viewBox="0 0 100 100" class="foods-icon">
+          <use xlink:href="#foods-icon-chou"></use>
+        </svg>
+        <div class="product-quantity">2</div>
+      </div>
+      <div class="product-name">Chou</div>
+    </div>
+  </div>
 
   <div class="steps-summary">
     <h3 class="title-section">Suivi de mes actions</h3>
-    <div class="profile-infos-separator"></div>
+    <div class="steps-summary-separator"></div>
 
     <fieldset class="step my-side">
       <legend>
@@ -94,8 +112,12 @@
 </template>
 
 <script>
-export default {
+import Profile from './../commons/Profile'
 
+export default {
+  components: {
+    Profile,
+  },
 };
 </script>
 
@@ -103,17 +125,99 @@ export default {
 @import './../../styles/variables.scss';
 @import './../../styles/fonts.scss';
 
+.profile-container {
+  text-align: center;
+}
+
+    .profile-infos-photo {
+      position: relative;
+      margin: 0 auto 20px;
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+      .profile-infos-photo-img {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        background-color: $color-sepia;
+
+        img {
+          width: 125px;
+          height: 125px;
+          filter: grayscale(100%);
+          mix-blend-mode: multiply;
+        }
+      }
+
+    .profile-infos-name,
+    .profile-infos-status {
+      margin: 5px 0;
+      color: $color-text;
+      z-index: 10;
+    }
+
+    .profile-infos-name {
+      font: bold 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
+      text-transform: capitalize;
+      color: $color-red;
+    }
+
+    .product {
+      display: inline-block;;
+      margin: (45px / 2) (25px/2) 0  (25px/2);
+      .wrapper {
+        position: relative;
+        background-color: white;
+        border-radius: 50%;
+        width: (230px / 2);
+        height: (230px / 2);
+        text-align: center;
+        .foods-icon {
+          transform: scale(0.7);
+        }
+        .product-quantity {
+          position: absolute;
+          right: 0px;
+          top: 10px;
+          display: inline-block;
+          background-color: $color-red;
+          color: $color-white;
+          text-align: center;
+          border-radius: 50%;
+          font-size: (2.6em / 2);
+          font-family: 'Karla-Bold';
+          width: (55px /2);
+          height: (55px /2);
+          line-height: (55px / 2);
+        }
+      }
+      .product-name {
+        text-transform: capitalize;
+        font-style: italic;
+        color: $color-red;
+        font-size: (3.6em / 2);
+        font-family: 'IowanOldStyleBT-BlackItalic';
+        font-weight: 700;
+        margin: (20px / 2) auto;
+      }
+    }
+
 .title-section {
     text-transform: uppercase;
 }
 
-.profile-infos-separator {
+.steps-summary-separator {
   width: 56px;
   height: 5px;
   margin: 8px auto;
   transform: scale(0.5);
   background: url('/static/img/separator-green.png') center left no-repeat;
 }
+
 
 .alliance-action-button {
   display: inline-block;
@@ -155,8 +259,8 @@ export default {
     padding-bottom: 15px;
 }
 
-.step.my-side {border: 1px solid $color-red;}
-.step.user-side {border: 1px solid $color-green;}
+  .step.my-side {border: 1px solid $color-red;}
+  .step.user-side {border: 1px solid $color-green;}
 
 legend {
   text-align: center;
