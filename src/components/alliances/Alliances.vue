@@ -5,7 +5,7 @@
     <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
       <template v-for="alliance in alliances | orderBy 'name'">
-        <div class="alliances-product-item" v-bind:class="{ 'inactive': !alliance.status }" v-link="{ path: '/alliances/alliance' }" v-for="product in alliance.product">
+        <div class="alliances-product-item" v-bind:class="{ 'inactive': !alliance.status }" v-link="{ path: '/alliances/details' }" v-for="product in alliance.product">
           <div class="alliances-product-icon">
             <svg viewBox="0 0 100 100">
               <use xlink:href="#foods-icon-{{ product.name }}"></use>
@@ -15,6 +15,11 @@
             <div class="alliances-product-description-name">{{ product.name }}</div>
             <div class="alliances-product-description-separator"></div>
             <div class="alliances-product-description-status">{{ alliance.statusName }}</div>
+          </div>
+          <div class="alliance-product-detail">
+            <svg viewBox="0 0 50 50" class="alliance-product-detail-icon">
+              <use xlink:href="#header-icon-previous"></use>
+            </svg>
           </div>
         </div>
       </template>
@@ -69,6 +74,7 @@ export default {
   }
 
     .alliances-product-item {
+      position: relative;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -80,6 +86,13 @@ export default {
 
       &.inactive {
         background: $color-beige;
+        opacity: 0.6;
+
+        .alliances-product-icon,
+        .alliances-product-description {
+          filter: grayscale(100%);
+          mix-blend-mode: multiply;
+        }
       }
     }
 
@@ -97,7 +110,7 @@ export default {
       }
 
       .alliances-product-description {
-
+        width: 150px;
       }
 
         .alliances-product-description-name {
@@ -109,7 +122,7 @@ export default {
         .alliances-product-description-separator {
           width: 56px;
           height: 5px;
-          margin: 0 0 8px;
+          margin: 0 -13px 10px;
           transform: scale(0.5);
           background: url('/static/img/separator-green.png') center center no-repeat;
         }
@@ -118,5 +131,15 @@ export default {
           font: 1.3em 'Karla-Italic', sans-serif;
           color: $color-text;
           text-transform: capitalize;
+        }
+
+      .alliance-product-detail {}
+
+        .alliance-product-detail-icon {
+          width: 30px;
+          height: 30px;
+          margin-top: 5px;
+          fill: $color-red;
+          transform: rotate(180deg);
         }
 </style>

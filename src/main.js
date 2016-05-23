@@ -26,6 +26,7 @@ import ProductMarket from './components/market/ProductMarket'
 
 // inclusion: mes alliances
 import Alliances from './components/alliances/Alliances'
+import DetailsAlliance from './components/alliances/DetailsAlliance'
 
 // inclusion: profile
 import MemberProfile from './components/profile/MemberProfile';
@@ -253,6 +254,22 @@ router.map({
       },
       footer: {
         enable: true,
+      },
+    },
+  },
+  'alliances/details': {
+    name: 'DetailsAlliance',
+    component: DetailsAlliance,
+    page: {
+      title: 'Mon alliance',
+      wrap: 'wrap-header-footer',
+      bgClass: 'background2',
+      header: {
+        enable: true,
+        previous: true,
+      },
+      footer: {
+        enable: false,
       },
     },
   },
