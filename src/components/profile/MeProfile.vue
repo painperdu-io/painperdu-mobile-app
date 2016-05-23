@@ -87,6 +87,7 @@ export default {
       }
 
       .me-profile-form-item-input {
+        margin-top: -5px;
         padding-bottom: 5px;
         font: 1.3em 'Karla-Regular', sans-serif;
         border: none;

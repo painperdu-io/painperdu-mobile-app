@@ -15,9 +15,9 @@
       </div>
 
       <div class="market-products-filters">
-        <input id="brut" class="filter" type="radio" value="false" v-model="type">
+        <input id="brut" class="filter" type="checkbox" value="false" v-model="type">
         <label for="brut" >Plats Préparés</label>
-        <input id="prepare" class="filter" type="radio" value="true" v-model="type">
+        <input id="prepare" class="filter" type="checkbox" value="true" v-model="type">
         <label for="prepare">Produits Bruts</label>
       </div>
 
@@ -140,7 +140,7 @@ export default {
       text-align: center;
       line-height: 40px;
 
-      input[type="radio"] {
+      input[type="checkbox"] {
         display: none;
       }
 

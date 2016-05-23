@@ -278,12 +278,12 @@ router.map({
     name: 'MeProfile',
     component: MeProfile,
     page: {
-      title: 'Mon profile',
+      title: 'Mon profil',
       wrap: 'wrap-header',
       bgClass: 'background4',
       header: {
         enable: true,
-        previous: true,
+        menu: true,
       },
       footer: {
         enable: false,
