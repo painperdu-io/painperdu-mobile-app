@@ -57,7 +57,7 @@
     <div class="alliance-action-button">Oui</div> <div class="alliance-action-button">Non</div>
 
     <div class="user-address">
-      Les cordoonnées de Ludovic sont :<br>
+      Les coordonnées de Ludovic sont :<br>
       <span class="user-address-details">Appartement 5, étage 2 <br>
       20 rue du Trésum <br>
       74000 Annecy</span>
@@ -130,7 +130,11 @@ export default {
   display: flex;
   flex-direction: row;
   flex: 1 100%;
-  margin: 45px 0 30px;
+  padding: 45px 0 30px;
+  position: fixed;
+  width: 100%;
+  background: $color-white url('/static/img/bg-3.png');
+  z-index: 99;
 }
 
 .profile-container,
@@ -228,9 +232,9 @@ export default {
 
 .steps-summary {
   background-color: $color-white;
-  padding-top: 25px;
   font-size: (2.6em / 2);
   font-family: 'Karla-Italic';
+  margin-top: 280px;
 }
 
 .steps-summary-separator {
@@ -238,7 +242,7 @@ export default {
   height: 5px;
   margin: 8px auto;
   transform: scale(0.5);
-  background: url('/static/img/separator-green.png') center left no-repeat;
+  background: url('/static/img/separator-red.png') center left no-repeat;
 }
 
 
