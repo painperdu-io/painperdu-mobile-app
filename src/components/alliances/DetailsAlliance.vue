@@ -8,6 +8,7 @@
           </div>
         </div>
         <h3 class="profile-infos-name">Adrien</h3>
+      </div>
     </div>
     <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
       <div class="wrapper">
@@ -56,10 +57,10 @@
     <div class="alliance-action-button">Oui</div> <div class="alliance-action-button">Non</div>
 
     <div class="user-address">
-      Les cordoonnées de Ludovic sont :
-      Appartement 5, étage 2 <br>
+      Les cordoonnées de Ludovic sont :<br>
+      <span class="user-address-details">Appartement 5, étage 2 <br>
       20 rue du Trésum <br>
-      74000 Annecy
+      74000 Annecy</span>
     </div>
 
     <fieldset class="step my-side">
@@ -82,15 +83,15 @@
       <form>
         <h3>Ludovic n'est pas disponible aujourd'hui mais il vous propose les créneaux suivants</h3>
         <div class="multiple-dates">
-          <input type="radio" id="date-1" class="filter"value="false" v-model="productType">
+          <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
           <label for="date-1" >
             <div class="date-day">Jeudi 28/02/16</div>
             <span class="date-hours">Entre 10h et 12h</span>
           </label>
           <input type="radio" id="date-2"  class="filter" value="true" v-model="productType">
           <label for="date-2">
-            Jeudi 28/02/16
-            <span>Entre 18h et 20h</span>
+            <div class="date-day">Jeudi 28/02/16</div>
+            <span class="date-hours">Entre 18h et 20h</span>
           </label>
         </div>
       </form>
@@ -125,6 +126,20 @@ export default {
 @import './../../styles/variables.scss';
 @import './../../styles/fonts.scss';
 
+.alliance-summary {
+  display: flex;
+  flex-direction: row;
+  flex: 1 100%;
+  margin: 45px 0 30px;
+}
+
+.profile-container,
+.product {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .profile-container {
   text-align: center;
 }
@@ -132,8 +147,8 @@ export default {
     .profile-infos-photo {
       position: relative;
       margin: 0 auto 20px;
-      width: 125px;
-      height: 125px;
+      width: 115px;
+      height: 115px;
       border-radius: 50%;
       overflow: hidden;
     }
@@ -161,14 +176,13 @@ export default {
     }
 
     .profile-infos-name {
-      font: bold 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
+      font: bold 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
       text-transform: capitalize;
       color: $color-red;
     }
 
     .product {
       display: inline-block;;
-      margin: (45px / 2) (25px/2) 0  (25px/2);
       .wrapper {
         position: relative;
         background-color: white;
@@ -176,6 +190,7 @@ export default {
         width: (230px / 2);
         height: (230px / 2);
         text-align: center;
+        margin: auto;
         .foods-icon {
           transform: scale(0.7);
         }
@@ -203,11 +218,19 @@ export default {
         font-family: 'IowanOldStyleBT-BlackItalic';
         font-weight: 700;
         margin: (20px / 2) auto;
+        text-align: center;
       }
     }
 
 .title-section {
     text-transform: uppercase;
+}
+
+.steps-summary {
+  background-color: $color-white;
+  padding-top: 25px;
+  font-size: (2.6em / 2);
+  font-family: 'Karla-Italic';
 }
 
 .steps-summary-separator {
@@ -259,8 +282,54 @@ export default {
     padding-bottom: 15px;
 }
 
-  .step.my-side {border: 1px solid $color-red;}
-  .step.user-side {border: 1px solid $color-green;}
+  .step.my-side {border: 1px solid $color-green;}
+  .step.user-side {border: 1px solid $color-red;}
+
+.date-day {
+  background-color: $color-green;
+  height: (80px / 2);
+  border-radius: (80px / 4);
+  text-transform: uppercase;
+  color: $color-white;
+  font-family: 'Karla-Bold';
+  font-size: (3em / 2);
+  box-sizing: border-box;
+  line-height: (80px / 2);
+  width: 60%;
+  min-width: 115px;
+  margin: auto;
+}
+
+.user-address {
+  margin-top: 40px;
+}
+
+.user-address-details {
+  margin-top: 10px;
+  font-family: 'Karla-BoldItalic';
+  font-size: (3.6em / 2);
+  line-height: 1.4em;
+}
+
+.multiples-dates {
+  text-align: center;
+  line-height: (80px / 2);
+    .filter {
+      &:first-child {
+        + label {
+          margin-right: (40px / 2);
+
+        }
+      }
+      &:checked {
+        + label .date-day {
+          background-color: white;
+          border-color: $color-green;
+          color: $color-green
+        }
+      }
+    }
+}
 
 legend {
   text-align: center;
