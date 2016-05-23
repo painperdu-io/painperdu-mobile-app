@@ -14,6 +14,7 @@
         <input placeholder="Nom du produit..." v-model="search" />
       </div>
 
+
       <div class="market-products-filters">
         <input id="brut" class="filter" type="checkbox" value="false" v-model="type">
         <label for="brut" >Plats Préparés</label>

@@ -22,7 +22,7 @@
     <div class="market-add-form-perimeter-wrapper">
       <div class="market-add-form-perimeter-range">
         <h3>Périmètre</h3>
-        <input type="range" value="1" max="2" min="0" step="1"/>
+        <input type="range" value="1" max="2" min="0" step="1"/> 
       </div>
       <div class="market-add-form-perimeter-address">
         <p>Votre <span class="txt-current-selected">{{ slectedAddress.name }}</span> est :</p>
