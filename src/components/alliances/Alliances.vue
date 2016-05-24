@@ -23,6 +23,8 @@
           </div>
         </div>
       </template>
+      <div class="alliances-list-title">Plus tôt dans la semaine</div>
+      <div class="alliances-list-title">Plus tôt dans le mois</div>
     </div>
 
   </div>
@@ -63,6 +65,7 @@ export default {
     font: 1.4em 'Karla-Regular', sans-serif;
     color: $color-text;
     text-transform: uppercase;
+    background: $color-white;
 
     &.active {
       font: 1.4em 'Karla-Bold', sans-serif;
