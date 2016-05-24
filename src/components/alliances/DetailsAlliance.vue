@@ -122,7 +122,6 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
-@import './../../styles/fonts.scss';
 
 .alliance-summary {
   display: flex;
