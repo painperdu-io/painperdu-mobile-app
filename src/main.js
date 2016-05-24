@@ -195,7 +195,7 @@ router.map({
     component: ProductMarket,
     page: {
       title: 'Fiche denrée',
-      wrap: 'wrap-header-footer',
+      wrap: 'wrap-header',
       bgClass: 'background3',
       header: {
         enable: true,
@@ -203,7 +203,7 @@ router.map({
         flag: true,
       },
       footer: {
-        enable: true,
+        enable: false,
       },
     },
   },
