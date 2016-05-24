@@ -25,18 +25,16 @@
     <h3 class="title-section">Suivi de mes actions</h3>
     <div class="steps-summary-separator"></div>
 
-    <fieldset class="step my-side">
-      <legend>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
-          <use xlink:href="#app-icon-close"></use>
-        </svg>
-      </legend>
+    <fieldset class="step final-step">
       <form>
+        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+          <use xlink:href="#app-icon-note"></use>
+        </svg>
         <h3>
           Laissez un avis à Ludovic <br>
           Votre échange était :
         </h3>
-        <select class="market-add-form-select" v-model="selectedProductType">
+        <select class="alliance-form-vote-select" v-model="selectedProductType">
           <option>Parfait</option>
           <option>Moyen</option>
         </select>
@@ -47,7 +45,7 @@
     <fieldset class="step user-side">
       <legend>
         <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-bugle"></use>
         </svg>
       </legend>
       <form>
@@ -66,7 +64,7 @@
     <fieldset class="step my-side">
       <legend>
         <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-helmet"></use>
         </svg>
       </legend>
         <h3>Ludovic est disponible :</h3>
@@ -77,7 +75,7 @@
     <fieldset class="step user-side">
       <legend>
         <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-bugle"></use>
         </svg>
       </legend>
       <form>
@@ -101,7 +99,7 @@
     <fieldset class="step my-side">
       <legend>
         <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-helmet"></use>
         </svg>
       </legend>
         <h3>Vous avez contacté Ludovic le :</h3>
@@ -245,6 +243,25 @@ export default {
   background: url('/static/img/separator-red.png') center left no-repeat;
 }
 
+.alliance-form-vote-select {
+  margin: 20px 0 15px;
+  width: 170px;
+  height: 40px;
+  background: $color-green-lite;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 20px;
+  font-style: italic;
+  text-align-last: center;
+  text-transform: capitalize;
+  color: $color-white;
+  font-size: 1.1em;
+
+  option {
+    text-align: center;
+    text-transform: capitalize;
+  }
+}
 
 .alliance-action-button {
   display: inline-block;
@@ -285,10 +302,21 @@ export default {
     margin: 30px auto;
     width: 75%;
     padding-bottom: 15px;
+    border: 0px;
 }
 
   .step.my-side {border: 1px solid $color-green;}
   .step.user-side {border: 1px solid $color-red;}
+    .step.user-side svg {fill: $color-green;}
+  .step.final-step {
+    border: 0px;
+    background: url('/static/img/rectangle-profile.png');
+    background-size: 298px 165px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+    .step.final-step svg {fill: $color-green;}
+
 
 .date-day {
   background-color: $color-green;
@@ -297,7 +325,7 @@ export default {
   text-transform: uppercase;
   color: $color-white;
   font-family: 'Karla-Bold';
-  font-size: (3em / 2);
+  font-size: (2.6 / 2);
   box-sizing: border-box;
   line-height: (80px / 2);
   width: 60%;
