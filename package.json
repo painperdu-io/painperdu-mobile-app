@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf www && mkdirp www",
     "dev": "node build/dev-server.js",
-    "build": "rimraf www && mkdirp www && ncp static www/static && cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.conf.js",
+    "build": "rimraf www && mkdirp www && ncp static www/static && cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.conf.js && ./build/css-url.sh",
     "platforms": "npm run build && cordova platforms add ios",
     "cordova": "npm run build && cordova build && cordova run ios --target=\"iPhone-6s, 9.3\""
   },
