@@ -3,6 +3,9 @@
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details/stats' }">
         <div class="foodkeeper-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
+        <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
+          <use xlink:href="#app-icon-star"></use>
+        </svg>
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
         <p class="foodkeeper-item-description">{{ foodkeeper.description }}</p>
@@ -36,11 +39,13 @@ export default {
           name: 'Studio Lyon',
           description: 'Description du studio',
           photo: 'home-1.jpg',
+          favorite: true,
         },
         {
           name: 'Maison Maman',
           description: 'Description du studio',
           photo: 'home-1.jpg',
+          favorite: false,
         },
       ]
     }
@@ -86,6 +91,14 @@ export default {
     background: url('/static/img/separator-green.png') center center no-repeat;
   }
 
+  .foodkeeper-star-icon {
+    width: 25px;
+    height: 25px;
+    fill: $color-white;
+    z-index: 10;
+    margin: 0 auto;
+  }
+
   .foodkeeper-item-title,
   .foodkeeper-item-description {
     margin: 5px 0;
@@ -110,6 +123,7 @@ export default {
   height: 125px;
   margin: 7px 0;
   background: $color-green-lite;
+  opacity: 0.8;
 }
 
   .foodkeeper-add-icon {

@@ -68,7 +68,6 @@ router.map({
       header: {
         enable: true,
         profile: true,
-        basket: true,
         add: true,
       },
       footer: {
@@ -134,6 +133,8 @@ router.map({
       header: {
         enable: true,
         previous: true,
+        basket: true,
+        product: true,
       },
       footer: {
         enable: false,
