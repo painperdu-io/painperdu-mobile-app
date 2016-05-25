@@ -1,23 +1,19 @@
-var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var config = require('../config')
+var config = require('./webpack.dev.conf')
 var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = process.env.NODE_ENV === 'testing'
-  ? require('./webpack.prod.conf')
-  : require('./webpack.dev.conf')
-
-// default port where dev server listens for incoming traffic
-var port = process.env.PORT || config.dev.port
-// Define HTTP proxies to your custom API backend
-// https://github.com/chimurai/http-proxy-middleware
-var proxyTable = config.dev.proxyTable
 
 var app = express()
-var compiler = webpack(webpackConfig)
+var compiler = webpack(config)
+
+// Define HTTP proxies to your custom API backend
+// https://github.com/chimurai/http-proxy-middleware
+var proxyTable = {
+  // '/api': 'http://localhost:3000'
+}
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
+  publicPath: config.output.publicPath,
   stats: {
     colors: true,
     chunks: false
@@ -53,13 +49,12 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // serve pure static assets
-var staticPath = path.posix.join(config.build.assetsPublicPath, config.build.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+app.use('/static', express.static('./static'))
 
-module.exports = app.listen(port, function (err) {
+module.exports = app.listen(8080, function (err) {
   if (err) {
     console.log(err)
     return
   }
-  console.log('Listening at http://localhost:' + port + '\n')
+  console.log('Listening at http://localhost:8080')
 })
