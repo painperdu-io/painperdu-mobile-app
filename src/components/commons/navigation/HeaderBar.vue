@@ -19,8 +19,11 @@
         <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg v-if="$route.page.header.add" v-link="{ path: '/foodkeeper/add/product' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.add" v-link="{ path: '/foodkeeper/' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-add"></use>
+        </svg>
+        <svg v-if="$route.page.header.product" v-link="{ path: '/foodkeeper/add/product' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+          <use xlink:href="#header-icon-add-product"></use>
         </svg>
         <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-flag"></use>

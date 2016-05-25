@@ -2,6 +2,9 @@
   <div class="foodkeeper-details-container">
     <div class="foodkeeper-details-item-wrapper" v-link="{ path: '/foodkeeper/details' }">
       <div class="foodkeeper-details-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
+      <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
+        <use xlink:href="#app-icon-star"></use>
+      </svg>
       <h3 class="foodkeeper-details-item-title">{{ foodkeeper.name }}</h3>
       <div class="foodkeeper-details-item-separator"></div>
       <p class="foodkeeper-details-item-description">{{ foodkeeper.description }}</p>
@@ -30,6 +33,7 @@ export default {
         name: 'Studio Lyon',
         description: 'Description du studio',
         photo: 'home-1.jpg',
+        favorite: true,
         accomplices: [
           {
             id: 75,
@@ -92,6 +96,14 @@ export default {
       margin: 0 auto;
       transform: scale(0.5);
       background: url('/static/img/separator-green.png') center center no-repeat;
+    }
+
+    .foodkeeper-star-icon {
+      width: 25px;
+      height: 25px;
+      fill: $color-white;
+      z-index: 10;
+      margin: 0 auto;
     }
 
     .foodkeeper-details-item-title,

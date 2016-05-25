@@ -133,6 +133,8 @@ router.map({
       header: {
         enable: true,
         previous: true,
+        basket: true,
+        product: true,
       },
       footer: {
         enable: false,
