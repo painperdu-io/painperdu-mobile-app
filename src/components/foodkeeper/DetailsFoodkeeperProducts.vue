@@ -39,7 +39,7 @@ export default {
             brut: true,
             emergency: false,
           },
-          { name: 'lasagnes',
+          { name: 'pizza',
             quantity: '3',
             status: true,
             brut: false,

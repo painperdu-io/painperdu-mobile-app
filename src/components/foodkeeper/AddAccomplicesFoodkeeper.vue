@@ -1,9 +1,15 @@
 <template>
-  <div class="foodkeeper-add-accomplice-container">
-    <div class="foodkeeper-add-accomplice-mail">
-      <input type="email" placeholder="Indiquer l'adresse mail" />
+  <div class="cart-popup-container">
+    <div class="cart-popup-close" v-on:click="closeCart"></div>
+    <h3 class="cart-popup-title">Ajoutez un compère ?</h3>
+    <div class="cart-popup-item-wrapper">
+      <div class="foodkeeper-add-accomplice-container">
+        <div class="foodkeeper-add-accomplice-mail">
+          <input type="email" placeholder="Indiquer l'adresse mail" />
+        </div>
+        <div class="foodkeeper-add-accomplice-button">Ajouter</div>
+      </div>
     </div>
-    <div class="foodkeeper-add-accomplice-button">Ajouter</div>
   </div>
 </template>
 

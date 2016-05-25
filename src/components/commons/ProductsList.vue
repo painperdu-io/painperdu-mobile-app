@@ -60,7 +60,7 @@ export default {
       background: $color-white;
       border: 12px solid $color-white;
       box-sizing: border-box;
-    } 
+    }
 
       .product-item-circle.type {
         background: url('/static/img/bg-brut.png') center center repeat $color-white;
@@ -104,7 +104,7 @@ export default {
 
     .product-item-name {
       margin: 10px auto 5px;
-      font: bold 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
+      font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
       text-transform: capitalize;
       color: $color-red;
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="statistics-container">
     <div class="statistics-products-wrapper">
-      <div class="statistics-product-text">Produits les plus échangés</div>
+      <div class="statistics-product-text">Denrées les plus échangées</div>
       <div class="statistics-product-data">
         <div class="statistics-product-data-lines">
           <div class="statistics-product-data-line"></div>
@@ -25,13 +25,13 @@
         <div class="statistics-infos-content-bg">
           <div class="statistics-infos-content-value">{{ statistics.share.month }}</div>
         </div>
-        <div class="statistics-infos-content-legend">échanges effectués dans le mois</div>
+        <div class="statistics-infos-content-legend">Alliances effectuées dans le mois</div>
       </div>
       <div class="statistics-infos-content">
         <div class="statistics-infos-content-bg">
           <div class="statistics-infos-content-value">{{ statistics.share.begin }}</div>
         </div>
-        <div class="statistics-infos-content-legend">échanges effectués depuis l’inscription</div>
+        <div class="statistics-infos-content-legend">Alliances effectuées depuis l’inscription</div>
       </div>
     </div>
   </div>
