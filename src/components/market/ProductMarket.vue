@@ -1,24 +1,32 @@
 <template>
   <div class="product-wrapper">
     <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/' }">
-      <div class="wrapper">
+      <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
         <svg viewBox="0 0 100 100" class="foods-icon">
           <use xlink:href="#foods-icon-chou"></use>
         </svg>
+        <div class="product-item-quantity" v-bind:class="{ 'emergency': product.emergency }">{{ product.count }}</div>
+      </div>
+      <div class="controls-quantity">
+        <button class="btn btn-more" v-on:click="increment">+</button>
+        <button class="btn btn-less" v-on:click="decrement">-</button>
       </div>
       <div class="product-name">Chou</div>
       <div class="product-infos-separator"></div>
+
     </div>
   </div>
   <div class="product-infos">
-    <div class="product-status value">
-      <svg viewBox="0 0 100 100" class="search-icon search-icon-left">
-        <use xlink:href="#app-icon-search"></use>
-      </svg>
+    <div class="product-status">
+      <div class="value">
+        <svg viewBox="0 0 100 100" class="check-icon">
+          <use xlink:href="#app-icon-check"></use>
+        </svg>
+      </div>
       <p class="legend">Disponible</p>
     </div>
     <div class="product-quantity">
-      <span class="value">2</span>
+      <span class="value">{{ product.quantity }}</span>
       <p class="legend">Quantité</p>
     </div>
     <div class="product-dlc">
@@ -29,6 +37,11 @@
   <div class="product-description">Description du produit. </div>
 
   <div class="member-profile-statistics-wrapper">
+    <div class="member-profile-wrapper">
+      Picto
+      Nom user
+      Statut
+    </div>
     <div class="member-profile-statistics">
       <div class="member-profile-statistics-item">
         <p class="legend">Nombre d'échanges</p>
@@ -54,12 +67,31 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      product: {
+        quantity: 2,
+        count : 0,
+      },
+    }
+  },
+  methods: {
+    increment: function (event) {
+      if (this.count != product.quantity){
+        this.count++;
+      }
+    },
+    decrement: function (event) {
+      this.count--;
+    },
+  },
+};
+
 </script>
 
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
-@import './../../styles/fonts.scss';
 
 .member-profile-statistics-wrapper {
   display: flex;
@@ -102,22 +134,55 @@ export default {};
     }
 
     .product-wrapper {
+      position: relative;
       text-align: center;
     }
     .product {
       display: inline-block;;
       margin: (45px / 2) (25px/2) 0  (25px/2);
-      .wrapper {
+      .product-item-circle {
         position: relative;
         background-color: white;
         border-radius: 50%;
         width: (230px / 2);
         height: (230px / 2);
         text-align: center;
+        border: 12px solid $color-white;
+        box-sizing: border-box;
+        z-index: 10;
         .foods-icon {
-          transform: scale(0.7);
+          transform: scale(0.8);
         }
       }
+      .product-item-circle.type {
+        background: url('/static/img/bg-brut.png') center center repeat $color-white;
+        background-size: 25%;
+      }
+
+      .product-item-circle.type-prepare {
+        background: url('/static/img/bg-prepare.png') center center repeat $color-white;
+        background-size: 25%;
+      }
+
+      .product-item-quantity {
+        position: absolute;
+        right: -7px;
+        top: -7px;
+        width: 28px;
+        height: 28px;
+        font: 1.3em 'Karla-Bold', sans-serif;
+        line-height: 28px;
+        text-align: center;
+        color: $color-white;
+        background: $color-red;
+        border-radius: 50%;
+        animation-name: shake-item;
+        animation-iteration-count: 3;
+        animation-direction: alternate;
+        animation-delay: 2s;
+      }
+
+
       .product-name {
         text-transform: capitalize;
         font-style: italic;
@@ -145,9 +210,11 @@ export default {};
       color: $color-text;
     }
 
-    .search-icon {
+    .check-icon {
       fill: $color-white;
-      transform: scale(0.5);
+      width: (40px /2);
+      height: (40px /2);
+      vertical-align: middle;
     }
 
     .product-quantity,
@@ -169,6 +236,11 @@ export default {};
       width: (55px /2);
       height: (55px /2);
       line-height: (55px / 2);
+    }
+
+    .product-infos .legend {
+      font-size: 1.2em;
+      font-family: 'Karla-Regular';
     }
 
     .product-description {
@@ -215,4 +287,33 @@ export default {};
       transform: scale(0.5);
       background: url('/static/img/separator-green.png') center center no-repeat;
     }
+
+
+  .controls-quantity {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    background-color: $color-gray-lite;
+    width: 60%;
+    transform: translate3d(-50%,-50%,0);
+    padding: 5px 10px;
+    border-radius: 20px;
+    z-index: 0;
+  }
+
+  .controls-quantity .btn {
+    color: $color-green;
+    border-radius: 50%;
+    border: 2px solid $color-green;
+    font-size: 2em;
+    width: 28px;
+    height: 28px;
+    line-height: 20px;
+    padding: 0;
+    background-color: $color-gray-lite;
+  }
+
+  .controls-quantity .btn-less { float: left; }
+  .controls-quantity .btn-more { float: right; }
+
 </style>
