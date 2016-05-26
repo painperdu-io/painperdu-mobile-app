@@ -35,6 +35,11 @@ export default {
 @import './styles/transitions.scss';
 @import './styles/variables.scss';
 
+::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+
 body {
   margin: 0;
   background: $color-red;
