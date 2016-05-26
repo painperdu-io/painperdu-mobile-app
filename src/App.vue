@@ -26,6 +26,12 @@ export default {
     SvgIcons,
   },
   store,
+  data() {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }
+  }
 };
 </script>
 
@@ -34,6 +40,11 @@ export default {
 @import './styles/fonts.scss';
 @import './styles/transitions.scss';
 @import './styles/variables.scss';
+
+::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
 
 body {
   margin: 0;

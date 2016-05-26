@@ -9,7 +9,7 @@
     </author>
 
     <!-- // painperdu icon -->
-    <!-- <icon src="res/icon.png" /> -->
+    <!--<icon src="res/AppIcon.png" />-->
 
     <!-- // painperdu entry point -->
     <content src="index.html" />
@@ -51,6 +51,42 @@
         <splash src="res/screen/ios/Default-667h.png" width="750" height="1334"/>
         <splash src="res/screen/ios/Default-736h.png" width="1242" height="2208"/>
         <splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
+        <icon src="res/icon/ios/Icon-120.png" width="120" height="120" />
+        <icon src="res/icon/ios/Icon-152.png" width="152" height="152" />
+        <icon src="res/icon/ios/Icon-16.png" width="16" height="16" />
+        <icon src="res/icon/ios/Icon-24.png" width="24" height="24" />
+        <icon src="res/icon/ios/Icon-32.png" width="32" height="32" />
+        <icon src="res/icon/ios/Icon-40.png" width="40" height="40" />
+        <icon src="res/icon/ios/Icon-40@2x.png" width="80" height="80" />
+        <icon src="res/icon/ios/Icon-40@3x.png" width="120" height="120" />
+        <icon src="res/icon/ios/Icon-60.png" width="60" height="60" />
+        <icon src="res/icon/ios/Icon-60@2x.png" width="120" height="120" />
+        <icon src="res/icon/ios/Icon-60@3x.png" width="180" height="180" />
+        <icon src="res/icon/ios/Icon-64.png" width="64" height="64" />
+        <icon src="res/icon/ios/Icon-72.png" width="72" height="72" />
+        <icon src="res/icon/ios/Icon-72@2x.png" width="144" height="144" />
+        <icon src="res/icon/ios/Icon-76.png" width="76" height="76" />
+        <icon src="res/icon/ios/Icon-76@2x.png" width="152" height="152" />
+        <icon src="res/icon/ios/Icon-Amazon.png" width="114" height="114" />
+        <icon src="res/icon/ios/Icon-Small-40.png" width="40" height="40" />
+        <icon src="res/icon/ios/Icon-Small-40@2x.png" width="80" height="80" />
+        <icon src="res/icon/ios/Icon-Small-40@3x.png" width="120" height="120" />
+        <icon src="res/icon/ios/Icon-Small-50.png" width="50" height="50" />
+        <icon src="res/icon/ios/Icon-Small-50@2x.png" width="100" height="100" />
+        <icon src="res/icon/ios/Icon-Small.png" width="29" height="29" />
+        <icon src="res/icon/ios/Icon-Small@2x.png" width="58" height="58" />
+        <icon src="res/icon/ios/Icon-Small@3x.png" width="87" height="87" />
+        <icon src="res/icon/ios/Icon-hdpi.png" width="72" height="72" />
+        <icon src="res/icon/ios/Icon-ldpi.png" width="36" height="36" />
+        <icon src="res/icon/ios/Icon-mdpi.png" width="48" height="48" />
+        <icon src="res/icon/ios/Icon-xhdpi.png" width="96" height="96" />
+        <icon src="res/icon/ios/Icon-xxhdpi.png" width="144" height="144" />
+        <icon src="res/icon/ios/Icon-xxxhdpi.png" width="192" height="192" />
+        <icon src="res/icon/ios/Icon.png" width="57" height="57" />
+        <icon src="res/icon/ios/Icon@2x.png" width="114" height="114" />
+        <icon src="res/icon/ios/Icon@3x.png" width="171" height="171" />
+        <icon src="res/icon/ios/iTunesArtwork.png" width="512" height="512" />
+        <icon src="res/icon/ios/iTunesArtwork@2x.png" width="1024" height="1024" />
     </platform>
 
     <!-- // splashscreen -->
@@ -66,6 +102,7 @@
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="BackupWebStorage" value="local"/>
     <preference name="WebViewBounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
     <preference name="loadUrlTimeoutValue" value="30000" />
     <preference name="StatusBarStyle" value="lightcontent" />
 </widget>
