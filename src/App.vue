@@ -26,12 +26,6 @@ export default {
     SvgIcons,
   },
   store,
-  data() {
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight
-    }
-  }
 };
 </script>
 
