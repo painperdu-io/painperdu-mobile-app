@@ -40,7 +40,8 @@ export default {
     margin: 20px 15px;
 
     &.inactive {
-      filter: grayscale(100%);
+      filter: grayscale(1);
+      -webkit-filter: grayscale(1);
 
       .product-item-quantity {
         background-color: $color-inactive;
