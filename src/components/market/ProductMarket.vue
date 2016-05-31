@@ -5,7 +5,7 @@
         <svg viewBox="0 0 100 100" class="foods-icon">
           <use xlink:href="#foods-icon-chou"></use>
         </svg>
-        <div class="product-item-quantity" v-bind:class="{ 'emergency': product.emergency }">{{ product.count }}</div>
+        <div class="product-item-quantity" v-model="count" v-bind:class="{ 'emergency': product.emergency }">{{ product.count }}</div>
       </div>
       <div class="controls-quantity">
         <button class="btn btn-more" v-on:click="increment">+</button>
@@ -47,7 +47,7 @@
         <p class="legend">Nombre d'échanges</p>
         <p class="value">8</p>
       </div>
-      <div class="member-profile-statistics-item">
+      <div class="member-profile-statistics-item membre-{{membre-status}}">
         <p class="legend">Avis moyen</p>
         <p class="value">Parfait</p>
       </div>
@@ -264,8 +264,14 @@ export default {
       padding-left: 20px;
       width: 70%;
       margin: auto;
-      font-size: 1.3em;
+      font-size: 1.2em;
+      font-family: 'Karla-Bold';
+      font-weight: 700;
       margin-bottom: 20px;
+    }
+
+    .ask-product-wrapper input[type="radio"] {
+      display: none;
     }
 
     .ask-product-button {
