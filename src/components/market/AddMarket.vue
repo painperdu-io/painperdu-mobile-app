@@ -1,8 +1,5 @@
 <template>
   <div class="market-add-container">
-    <div class="market-add-map-wrapper">
-      <google-map></google-map>
-    </div>
     <div class="market-add-form-wrapper">
       <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
       <select class="market-add-form-select" v-model="slectedAddress">
@@ -10,29 +7,30 @@
           {{ place.name }}
         </option>
       </select>
-      <div class="market-add-form-adress">
-        <p>L'adresse de <span class="txt-current-selected">{{ slectedAddress.name }}</span> est :</p>
-        <div class="market-add-form-adress-separator"></div>
-        <div class="market-add-form-adress-data">
-          <div><p><span class="underline"></span>{{ slectedAddress.addressL1 }}</p></div>
-          <div><p class="txt-uppercase"><span class="underline"></span>{{ slectedAddress.addressL2 }}</p></div>
+
+      <div class="market-add-form-perimeter-range">
+        <h3>Périmètre de recherche pour cette place</h3>
+        <input type="range" value="1" max="2" min="0" step="1"/>
+        <div>
+          <span>Lopin</span>
+          <span>Canton</span>
+          <span>Contrée</span>
         </div>
       </div>
-    </div>
-    <div class="market-add-form-perimeter-wrapper">
-      <div class="market-add-form-perimeter-range">
-        <h3>Périmètre</h3>
-        <input type="range" value="1" max="2" min="0" step="1"/> 
-      </div>
       <div class="market-add-form-perimeter-address">
-        <p>Votre <span class="txt-current-selected">{{ slectedAddress.name }}</span> est :</p>
+        <p>L'adresse de votre place du marché est :</p>
         <div class="market-add-form-perimeter-separator"></div>
         <div class="market-add-form-perimeter-address-data">
+          <div class="blason"></div>
           <p>{{ slectedAddress.addressL1 }}</p>
         </div>
       </div>
-      <div class="market-add-form-perimeter-add">Ajouter</div>
     </div>
+
+    <div class="market-add-map-wrapper">
+      <google-map></google-map>
+    </div>
+    <div class="market-add-form-perimeter-add">Ajouter</div>
   </div>
 </template>
 
@@ -75,7 +73,7 @@ export default {
 }
 
   .market-add-map-wrapper {
-    height: 150px;
+    height: 350px;
     background: $color-white;
     overflow: hidden;
   }

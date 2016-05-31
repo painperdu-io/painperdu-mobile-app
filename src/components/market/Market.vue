@@ -1,5 +1,8 @@
 <template>
+  <div v-link="{ path: '/market/add' }">Add market</div>
+
   <div class="market-container">
+
     <residence-slider :data="market"></residence-slider>
 
     <div class="market-products-wrapper">
