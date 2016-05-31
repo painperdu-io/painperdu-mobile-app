@@ -4,7 +4,7 @@
     <div class="foodkeeper-add-form-wrapper">
       <div class="foodkeeper-add-form-itemgreen">
         <svg viewBox="0 0 100 100" class="foodkeeper-add-form-itemgreen-icon">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-star"></use>
         </svg>
         <input placeholder="Nom du garde manger" />
       </div>
@@ -139,6 +139,10 @@ export default {};
         margin-bottom: 10px;
         font: 1.2em 'Karla-Italic', sans-serif;
         color: $color-text;
+
+        &:hover {
+          color: $color-green;
+        }
       }
 
       .foodkeeper-add-form-item-input {

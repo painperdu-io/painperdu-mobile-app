@@ -6,6 +6,8 @@
         <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
           <use xlink:href="#app-icon-star"></use>
         </svg>
+        <input id="user-dispo" type="checkbox">
+        <label for="userdispo"></label>
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
         <p class="foodkeeper-item-description">{{ foodkeeper.description }}</p>
@@ -36,13 +38,19 @@ export default {
     return {
       foodkeepers: [
         {
-          name: 'Studio Lyon',
+          name: 'Studio Annecy',
           description: 'Description du studio',
           photo: 'home-1.jpg',
           favorite: true,
         },
         {
-          name: 'Maison Maman',
+          name: 'Chez Papa/Maman',
+          description: 'Description du studio',
+          photo: 'home-1.jpg',
+          favorite: false,
+        },
+        {
+          name: 'Megalo',
           description: 'Description du studio',
           photo: 'home-1.jpg',
           favorite: false,
@@ -173,4 +181,54 @@ export default {
     .foodkeeper-add-description {
       font: 1.2em 'Karla-Italic', sans-serif;
     }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      position: absolute;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      margin: 12px 0;
+      transition: 0.3s;
+      box-sizing: border-box;
+      right: 10px;
+      top: 0px;
+      &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 20px;
+        height: 20px;
+        transition: 0.3s;
+      }
+    }
+
+    #user-dispo:checked + label{
+      background: $color-green;
+    }
+
+    #user-dispo:checked + label:after {
+      left: calc(100% - 18px);
+      background: $color-white;
+    }
+
+    #user-dispo + label {
+      background: $color-gray;
+      border-radius: 20px;
+    }
+
+    #user-dispo + label:after{
+      background: $color-white;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      top: 2px;
+      left: 2px;
+    }
+
 </style>

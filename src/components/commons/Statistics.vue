@@ -149,7 +149,7 @@ export default {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      width: 169px;
+      width: 48%;
       height: 120px;
       background: $color-white;
     }
