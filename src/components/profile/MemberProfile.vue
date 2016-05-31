@@ -6,18 +6,20 @@
         <div class="member-profile-statistics-item">
           <p class="legend">Nombre d'échanges</p>
           <p class="value">8</p>
+          <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item">
           <p class="legend">Avis moyen</p>
           <p class="value">Parfait</p>
+          <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item">
           <p class="legend">Ses compères</p>
         </div>
+        <div class="member-profile-accomplices-wrapper">
+          <members-list></members-list>
+        </div>
       </div>
-    </div>
-    <div class="member-profile-accomplices-wrapper">
-      <members-list></members-list>
     </div>
   </div>
 </template>
@@ -49,7 +51,7 @@ export default {
     margin: 0 auto;
     width: 298px;
     height: 165px;
-    background: url('/static/img/rectangle-profile.png');
+    background: url('/static/img/rectangle-red.png');
     background-size: 298px 165px;
     background-position: center center;
     background-repeat: no-repeat;
@@ -60,6 +62,7 @@ export default {
     }
 
       .member-profile-statistics-item {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -82,7 +85,18 @@ export default {
       }
 
   .member-profile-accomplices-wrapper {
-    margin: -47px auto 10px;
+    margin: 0px auto 10px;
     width: 298px;
   }
+
+  .underline {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    height: 6px;
+    width: 100%;
+    background-color: $color-beige;
+    z-index: -1;
+  }
+
 </style>

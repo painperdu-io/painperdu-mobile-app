@@ -1,7 +1,7 @@
 <template>
   <div class="members-container">
     <template v-for="member in members">
-      <div class="members-item" v-link="{ path: '/profile/member' }">
+      <div class="members-item" v-bind:class="{ 'allie-item': allie }" v-link="{ path: '/profile/member' }">
         <div class="members-image">
           <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
         </div>
@@ -43,6 +43,11 @@ export default {
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
+
+    &.allie-item {
+      border-radius: 0;
+      clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    }
   }
 
     .members-image {
