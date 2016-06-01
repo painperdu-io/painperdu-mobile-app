@@ -144,7 +144,6 @@ export default {
       .market-add-form-perimeter-range {
         h3 {
           text-transform: uppercase;
-          margin: 0 0 5px -140px;
         }
 
         input[type="range"] {
@@ -193,5 +192,9 @@ export default {
         font: 1.3em 'Karla-Bold', sans-serif;
         color: $color-text;
         text-transform: uppercase;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translate3d(-50%,0,0);
       }
 </style>
