@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
-      <div class="wrapper">
+      <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
         <svg viewBox="0 0 100 100" class="foods-icon">
           <use xlink:href="#foods-icon-chou"></use>
         </svg>
@@ -27,7 +27,7 @@
 
     <fieldset class="step final-step">
       <form>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+        <svg viewBox="0 0 100 100" class="alliance-icon">
           <use xlink:href="#app-icon-note"></use>
         </svg>
         <h3>
@@ -44,7 +44,7 @@
 
     <fieldset class="step user-side">
       <legend>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+        <svg viewBox="0 0 100 100" class="alliance-icon">
           <use xlink:href="#app-icon-bugle"></use>
         </svg>
       </legend>
@@ -63,7 +63,7 @@
 
     <fieldset class="step my-side">
       <legend>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+        <svg viewBox="0 0 100 100" class="alliance-icon">
           <use xlink:href="#app-icon-helmet"></use>
         </svg>
       </legend>
@@ -74,7 +74,7 @@
 
     <fieldset class="step user-side">
       <legend>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+        <svg viewBox="0 0 100 100" class="alliance-icon">
           <use xlink:href="#app-icon-bugle"></use>
         </svg>
       </legend>
@@ -98,7 +98,7 @@
 
     <fieldset class="step my-side">
       <legend>
-        <svg viewBox="0 0 100 100" class="search-icon search-icon-right">
+        <svg viewBox="0 0 100 100" class="alliance-icon">
           <use xlink:href="#app-icon-helmet"></use>
         </svg>
       </legend>
@@ -184,13 +184,15 @@ export default {
 
     .product {
       display: inline-block;;
-      .wrapper {
+      .product-item-circle {
         position: relative;
-        background-color: white;
+        width: 125px;
+        height: 125px;
         border-radius: 50%;
-        width: (230px / 2);
-        height: (230px / 2);
         text-align: center;
+        background: $color-white;
+        border: 10px solid $color-white;
+        box-sizing: border-box;
         margin: auto;
         .foods-icon {
           transform: scale(0.7);
@@ -211,6 +213,15 @@ export default {
           line-height: (55px / 2);
         }
       }
+
+      .product-item-circle.type {
+        background: url('/static/img/product-brut.png') center center no-repeat $color-white;
+      }
+
+      .product-item-circle.type-prepare {
+        background: url('/static/img/product-prepare.png') center center no-repeat $color-white;
+      }
+
       .product-name {
         text-transform: capitalize;
         font-style: italic;
@@ -275,18 +286,11 @@ export default {
   text-align: center;
 }
 
-.search-icon {
-  width: (60px / 2);
-  height: (60px / 2);
-  margin-top: (10px / 2);
+.alliance-icon {
+  width: 40px;
+  height: 40px ;
+  margin: 5px 15px 0px;
   fill: $color-red;
-}
-
-.search-icon-left {
-  left: 15px;
-}
-.search-icon-right {
-  right: 20px;
 }
 
 .steps-summary {
@@ -304,15 +308,21 @@ export default {
     border: 0px;
 }
 
-  .step.my-side {border: 1px solid $color-green;}
-  .step.user-side {border: 1px solid $color-red;}
+  .step.my-side {
+    background: url('/static/img/rectangle-green.png') no-repeat center;
+    background-size: 100% 100%;
+  }
+  .step.user-side {
+    background: url('/static/img/rectangle-red.png') no-repeat center;
+    background-size: 100% 100%;
+  }
     .step.user-side svg {fill: $color-green;}
   .step.final-step {
     border: 0px;
-    background: url('/static/img/rectangle-profile.png');
-    background-size: 298px 165px;
-    background-position: center center;
+    background: url('/static/img/rectangle-beige.png');
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
     .step.final-step svg {fill: $color-green;}
 
