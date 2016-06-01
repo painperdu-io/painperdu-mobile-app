@@ -72,10 +72,10 @@ export default {
 
   .popup-close {
     position: absolute;
-    top: 12px;
+    top: 20px;
     right: 12px;
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     fill: $color-red;
   }
 

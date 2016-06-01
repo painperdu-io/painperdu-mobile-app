@@ -1,6 +1,7 @@
 <template>
   <div class="cart-popup-container">
     <h3 class="cart-popup-title">Avez-vous acheté... ?</h3>
+    <div class="popup-title-separator"></div>
     <div class="cart-popup-item-wrapper">
       <div class="cart-popup-item">
         <div class="cart-popup-item-question-wrapper">
@@ -83,6 +84,14 @@ export default {
     margin-top: 30px;
     font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
     color: $color-red;
+  }
+
+  .popup-title-separator {
+    width: 56px;
+    height: 5px;
+    margin: 0 auto;
+    transform: scale(0.5);
+    background: url('/static/img/separator-green.png') center center no-repeat;
   }
 
   .cart-popup-item-wrapper {
