@@ -1,16 +1,20 @@
 <template>
   <div class="cart-popup-container">
-    <div class="cart-popup-close" v-on:click="closeCart"></div>
+    <div class="cart-popup-close" v-on:click="closeCart">
+      <svg viewBox="0 0 100 100" class="app-icon">
+        <use xlink:href="#app-icon-close"></use>
+      </svg>
+    </div>
     <h3 class="cart-popup-title">Avez-vous acheté... ?</h3>
     <div class="cart-popup-item-wrapper">
       <div class="cart-popup-item">
         <div class="cart-popup-item-question-wrapper">
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-pomme"></use>
           </svg>
           <p class="cart-popup-item-question"><span class="underline"></span>Des fruits et des légumes ?</p>
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-orange"></use>
           </svg>
         </div>
         <input id="cart1" type="checkbox">
@@ -19,11 +23,11 @@
       <div class="cart-popup-item">
         <div class="cart-popup-item-question-wrapper">
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-emmental"></use>
           </svg>
           <p class="cart-popup-item-question"><span class="underline"></span>Des produits laitiers ?</p>
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-lait"></use>
           </svg>
         </div>
         <input id="cart2" type="checkbox">
@@ -32,11 +36,11 @@
       <div class="cart-popup-item">
         <div class="cart-popup-item-question-wrapper">
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-croissant"></use>
           </svg>
           <p class="cart-popup-item-question"><span class="underline"></span>Du pain, des viennoiseries?</p>
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-sandwich"></use>
           </svg>
         </div>
         <input id="cart3" type="checkbox">
@@ -45,18 +49,18 @@
       <div class="cart-popup-item">
         <div class="cart-popup-item-question-wrapper">
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-viande"></use>
           </svg>
           <p class="cart-popup-item-question"><span class="underline"></span>De la viande, du poisson ?</p>
           <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-salade"></use>
+            <use xlink:href="#foods-icon-poisson"></use>
           </svg>
         </div>
         <input id="cart4" type="checkbox">
         <label for="cart4"></label>
       </div>
     </div>
-    <div class="cart-popup-add-button">Ajouter</div>
+    <div class="cart-popup-add-button">Valider</div>
   </div>
 </template>
 
@@ -98,7 +102,7 @@ export default {
     right: 12px;
     width: 25px;
     height: 25px;
-    background: $color-red;
+    fill: $color-red;
   }
 
   .cart-popup-title {
