@@ -1,10 +1,10 @@
 <template>
   <div class="cart-popup-container">
-    <div class="cart-popup-close" v-on:click="closeCart">
+    <!--<div class="cart-popup-close" v-on:click="closeCart">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
-    </div>
+    </div>-->
     <h3 class="cart-popup-title">Avez-vous acheté... ?</h3>
     <div class="cart-popup-item-wrapper">
       <div class="cart-popup-item">
@@ -62,6 +62,7 @@
     </div>
     <div class="cart-popup-add-button">Valider</div>
   </div>
+  <div class="popup-overlay"></div>
 </template>
 
 <script>
@@ -69,6 +70,7 @@ export default {
   methods: {
     closeCart: (event) => {
       document.getElementsByClassName('cart-popup-container')[0].classList.remove('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()
     }
   }
@@ -79,8 +81,7 @@ export default {
 @import './../../../styles/variables.scss';
 
 .cart-popup-container {
-  display: none;
-  flex-direction: column;
+  /*flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: fixed;
@@ -90,20 +91,22 @@ export default {
   width: 335px;
   height: 492px;
   background: $color-white;
+  z-index: 9999;*/
+  width: 100%;
 
-  &.active {
+  /*&.active {
     display: flex;
-  }
+  }*/
 }
 
-  .cart-popup-close {
+  /*.cart-popup-close {
     position: absolute;
     top: 12px;
     right: 12px;
     width: 25px;
     height: 25px;
     fill: $color-red;
-  }
+  }*/
 
   .cart-popup-title {
     margin-top: 30px;
@@ -229,4 +232,21 @@ export default {
     text-transform: uppercase;
     text-align: center;
   }
+
+  .popup-overlay {
+      content: "";
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-color: $color-black;
+      opacity: 0.7;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      overflow: hidden;
+  }
+
+  .popup-overlay.active {display: inline-block;}
+
 </style>

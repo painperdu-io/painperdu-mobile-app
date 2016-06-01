@@ -5,12 +5,12 @@
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>
-  <cart-popup></cart-popup>
+  <popup :route="$route.name"></popup>
   <svg-icons></svg-icons>
 </template>
 
 <script>
-import CartPopup from './components/commons/popup/Cart'
+import Popup from './components/commons/popup/PopupContainer'
 import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
 import MenuBar from './components/commons/navigation/MenuBar'
@@ -19,7 +19,7 @@ import store from './vuex/store'
 
 export default {
   components: {
-    CartPopup,
+    Popup,
     HeaderBar,
     FooterBar,
     MenuBar,
@@ -93,4 +93,5 @@ body {
     background-size: 375px 796px;
     background-position: center 120px;
   }
+
 </style>

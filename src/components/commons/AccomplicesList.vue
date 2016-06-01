@@ -7,12 +7,13 @@
         </div>
       </div>
     </template>
-    <div class="accomplices-add-icon"  v-link="{ path: '/foodkeeper/add/accomplice' }">
+    <div class="accomplices-add-icon"  v-on:click="addAccomplice">
       <div class="accomplices-add-icon-bg">
         <span class="accomplices-add-icon-text">+</span>
       </div>
     </div>
   </div>
+  <add-accomplice-popup></add-accomplice-popup>
 </template>
 
 <script>
@@ -24,6 +25,13 @@ export default {
       accomplices: detailsFoodkeeperAccomplices,
     },
   },
+  methods: {
+    addAccomplice: (event) => {
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      event.preventDefault()
+    }
+  }
 };
 </script>
 

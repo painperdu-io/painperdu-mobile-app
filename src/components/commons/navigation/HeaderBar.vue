@@ -37,7 +37,8 @@
 export default {
   methods: {
     openCart: (event) => {
-      document.getElementsByClassName('cart-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
     }
   }

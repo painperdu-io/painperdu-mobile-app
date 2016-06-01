@@ -29,6 +29,21 @@ export function tabsNavigation () {
   return tabs;
 }
 
+export function popupsList () {
+  const popups = [
+    {
+      route: 'Market',
+      cart: true,
+    },
+    {
+      route: 'MeProfile',
+      addAccomplice: true,
+    },
+  ]
+
+  return popups;
+}
+
 export function detailsMarketMembers () {
   return [
     {
