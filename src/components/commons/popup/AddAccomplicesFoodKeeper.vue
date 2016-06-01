@@ -1,7 +1,15 @@
 <template transition="popIn">
   <div class="foodkeeper-add-popup-container">
     <h3 class="foodkeeper-add-popup-title">Ajoutez un compère</h3>
+
     <div class="foodkeeper-add-popup-item-wrapper">
+      <div class="foodkeeper-add-popup-item">
+        <div class="foodkeeper-add-accomplice-text">
+          <p>Associez vos partenaires de vie <span class="underline"></span></p><br/>
+          <p>à ce garde-manger pour qu'ils se rallient <span class="underline"></span></p><br/>
+          <p>eux aussi à la quête du Pain Perdu <span class="underline"></span></p>
+        </div>
+      </div>
       <div class="foodkeeper-add-popup-item">
         <div class="foodkeeper-add-accomplice-mail">
           <input type="email" placeholder="Indiquer l'adresse mail" />
@@ -42,7 +50,6 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
   }
 
     .foodkeeper-add-popup-item {
@@ -53,6 +60,13 @@ export default {
       text-align: center;
     }
 
+    .foodkeeper-add-accomplice-text p {
+      display: inline;
+      position: relative;
+      margin: 0;
+      font: 1.5em 'Karla-Italic', sans-serif;
+      color: $color-text;
+    }
 
     .underline {
       position: absolute;
@@ -64,6 +78,26 @@ export default {
       z-index: -1;
     }
 
+    .foodkeeper-add-accomplice-mail {
+      margin: 25px auto;
+      width: 260px;
+
+      input {
+        width: 100%;
+        height: 40px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        border: none;
+        background-color: $color-green-lite;
+        color: $color-white;
+        font: 1.4em 'Karla-Italic', sans-serif;
+      }
+
+      ::-webkit-input-placeholder {
+        color: $color-white;
+      }
+    }
 
   .foodkeeper-add-accomplice-button {
     margin: 0 auto 20px;
