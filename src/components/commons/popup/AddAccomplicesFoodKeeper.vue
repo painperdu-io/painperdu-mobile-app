@@ -1,7 +1,7 @@
 <template transition="popIn">
   <div class="foodkeeper-add-popup-container">
     <h3 class="foodkeeper-add-popup-title">Ajoutez un compère</h3>
-
+    <div class="popup-title-separator"></div>
     <div class="foodkeeper-add-popup-item-wrapper">
       <div class="foodkeeper-add-popup-item">
         <div class="foodkeeper-add-accomplice-text">
@@ -34,6 +34,14 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../../styles/variables.scss';
+
+.popup-title-separator {
+  width: 56px;
+  height: 5px;
+  margin: 0 auto;
+  transform: scale(0.5);
+  background: url('/static/img/separator-green.png') center center no-repeat;
+}
 
 .foodkeeper-add-popup-container {
   width: 100%;
@@ -110,4 +118,5 @@ export default {
     text-transform: uppercase;
     text-align: center;
   }
+
 </style>
