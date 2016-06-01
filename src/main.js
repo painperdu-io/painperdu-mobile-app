@@ -64,7 +64,7 @@ router.map({
     page: {
       title: 'Mes gardes-mangers',
       wrap: 'wrap-header-footer',
-      bgClass: 'background3',
+      bgClass: 'background2',
       header: {
         enable: true,
         profile: true,
@@ -81,7 +81,7 @@ router.map({
     page: {
       title: 'Ajouter un garde-manger',
       wrap: 'wrap-header',
-      bgClass: 'background1',
+      bgClass: 'background2',
       header: {
         enable: true,
         previous: true,
@@ -181,7 +181,7 @@ router.map({
     page: {
       title: 'Ajouter une place du marché',
       wrap: 'wrap-header',
-      bgClass: 'background2',
+      bgClass: 'background3',
       header: {
         enable: true,
         previous: true,
@@ -197,7 +197,7 @@ router.map({
     page: {
       title: 'Fiche denrée',
       wrap: 'wrap-header',
-      bgClass: 'background3',
+      bgClass: 'background1',
       header: {
         enable: true,
         previous: true,
@@ -246,7 +246,7 @@ router.map({
     page: {
       title: 'Mes alliances',
       wrap: 'wrap-header-footer',
-      bgClass: 'background2',
+      bgClass: 'background4',
       header: {
         enable: true,
         profile: true,
@@ -264,7 +264,7 @@ router.map({
     page: {
       title: 'Mon alliance',
       wrap: 'wrap-header-footer',
-      bgClass: 'background2',
+      bgClass: 'background4',
       header: {
         enable: true,
         previous: true,
@@ -282,7 +282,7 @@ router.map({
     page: {
       title: 'Fiche compère',
       wrap: 'wrap-header',
-      bgClass: 'backgroundWhite',
+      bgClass: 'background1',
       header: {
         enable: true,
         previous: true,
@@ -298,7 +298,7 @@ router.map({
     page: {
       title: 'Mon profil',
       wrap: 'wrap-header',
-      bgClass: 'background4',
+      bgClass: 'background1',
       header: {
         enable: true,
         menu: true,

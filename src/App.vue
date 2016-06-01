@@ -47,13 +47,14 @@ body {
 }
 
 .wrap {
+  position: relative;
   width: 100%;
   height: 100%;
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  overflow: hidden;
+  overflow-y: auto;
 
   &.wrap-header-footer {
     min-height: calc(100vh - 120px);
@@ -84,7 +85,7 @@ body {
   }
 
   .background3 {
-    background: $color-white url('/static/img/bg-3.png');
+    background: $color-white url('/static/img/bg-3.jpg');
   }
 
   .background4 {
