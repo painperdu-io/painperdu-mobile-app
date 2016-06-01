@@ -1,10 +1,5 @@
 <template>
   <div class="cart-popup-container">
-    <!--<div class="cart-popup-close" v-on:click="closeCart">
-      <svg viewBox="0 0 100 100" class="app-icon">
-        <use xlink:href="#app-icon-close"></use>
-      </svg>
-    </div>-->
     <h3 class="cart-popup-title">Avez-vous acheté... ?</h3>
     <div class="cart-popup-item-wrapper">
       <div class="cart-popup-item">
@@ -81,32 +76,8 @@ export default {
 @import './../../../styles/variables.scss';
 
 .cart-popup-container {
-  /*flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  width: 335px;
-  height: 492px;
-  background: $color-white;
-  z-index: 9999;*/
   width: 100%;
-
-  /*&.active {
-    display: flex;
-  }*/
 }
-
-  /*.cart-popup-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 25px;
-    height: 25px;
-    fill: $color-red;
-  }*/
 
   .cart-popup-title {
     margin-top: 30px;
