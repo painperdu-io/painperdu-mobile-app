@@ -59,18 +59,16 @@ export default {
       border-radius: 50%;
       text-align: center;
       background: $color-white;
-      border: 12px solid $color-white;
+      border: 10px solid $color-white;
       box-sizing: border-box;
     }
 
       .product-item-circle.type {
-        background: url('/static/img/bg-brut.png') center center repeat $color-white;
-        background-size: 25%;
+        background: url('/static/img/product-brut.png') center center no-repeat $color-white;
       }
 
       .product-item-circle.type-prepare {
-        background: url('/static/img/bg-prepare.png') center center repeat $color-white;
-        background-size: 25%;
+        background: url('/static/img/product-prepare.png') center center no-repeat $color-white;
       }
 
       .product-item-icon {

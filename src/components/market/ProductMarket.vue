@@ -46,10 +46,12 @@
       <div class="member-profile-statistics-item">
         <p class="legend">Nombre d'échanges</p>
         <p class="value">8</p>
+        <span class="underline"></span>
       </div>
       <div class="member-profile-statistics-item membre-{{membre-status}}">
         <p class="legend">Avis moyen</p>
         <p class="value">Parfait</p>
+        <span class="underline"></span>
       </div>
     </div>
   </div>
@@ -98,13 +100,13 @@ export default {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0 auto 150px;
+  padding-bottom: 30px;
   width: 298px;
-  height: 165px;
-  background: url('/static/img/rectangle-profile.png');
-  background-size: 298px 165px;
+  background: url('/static/img/rectangle-red.png');
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: 100%;
 }
 
   .member-profile-statistics {
@@ -112,6 +114,7 @@ export default {
   }
 
     .member-profile-statistics-item {
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -126,11 +129,23 @@ export default {
       .value {
         font: 1.2em 'Karla-Bold', sans-serif;
         color: $color-green;
+        z-index: 1;
       }
 
       & > p {
         display: inline-block;
+        z-index: 1;
       }
+    }
+
+    .underline {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      height: 6px;
+      width: 100%;
+      background-color: $color-white;
+      z-index: 0;
     }
 
     .product-wrapper {
@@ -155,13 +170,11 @@ export default {
         }
       }
       .product-item-circle.type {
-        background: url('/static/img/bg-brut.png') center center repeat $color-white;
-        background-size: 25%;
+        background: url('/static/img/product-brut.png') center center repeat $color-white;
       }
 
       .product-item-circle.type-prepare {
-        background: url('/static/img/bg-prepare.png') center center repeat $color-white;
-        background-size: 25%;
+        background: url('/static/img/product-prepare.png') center center repeat $color-white;
       }
 
       .product-item-quantity {
