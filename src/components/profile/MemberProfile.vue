@@ -14,7 +14,7 @@
           <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item">
-          <p class="legend">Ses compères</p>
+          <p class="legend">Ses compères <span class="underline"></span></p>
         </div>
         <div class="member-profile-accomplices-wrapper">
           <members-list></members-list>
@@ -50,9 +50,8 @@ export default {
     flex-direction: column;
     margin: 0 auto;
     width: 298px;
-    height: 165px;
     background: url('/static/img/rectangle-red.png');
-    background-size: 298px 165px;
+    background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
   }
@@ -89,13 +88,17 @@ export default {
     width: 298px;
   }
 
+  .legend { position: relative;
+    .underline { bottom: 0px; }
+  }
+
   .underline {
     position: absolute;
     left: 0;
     bottom: 10px;
     height: 6px;
     width: 100%;
-    background-color: $color-beige;
+    background-color: $color-white;
     z-index: -1;
   }
 
