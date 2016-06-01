@@ -1,36 +1,49 @@
 <template>
   <div v-link="{ path: '/market/add' }">Add market</div>
 
-  <div class="market-container">
+  <div class="market-slider">
+    <div class="market-container">
 
-    <residence-slider :data="market"></residence-slider>
+      <residence-slider :data="market"></residence-slider>
 
-    <div class="market-products-wrapper">
-      <div class="market-products-search">
-        <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
-          <use xlink:href="#app-icon-search"></use>
-        </svg>
-        <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
-          <use xlink:href="#app-icon-close"></use>
-        </svg>
+      <div class="market-products-wrapper">
+        <div class="market-products-search">
+          <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
+            <use xlink:href="#app-icon-search"></use>
+          </svg>
+          <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
+            <use xlink:href="#app-icon-close"></use>
+          </svg>
 
-        <input placeholder="Nom du produit..." v-model="search" />
-      </div>
+          <input placeholder="Nom du produit..." v-model="search" />
+        </div>
 
 
-      <div class="market-products-filters">
-        <input id="brut" class="filter" type="checkbox" value="false" v-model="type">
-        <label for="brut" >Plats Préparés</label>
-        <input id="prepare" class="filter" type="checkbox" value="true" v-model="type">
-        <label for="prepare">Produits Bruts</label>
-      </div>
+        <div class="market-products-filters">
+          <input id="brut" class="filter" type="checkbox" value="false" v-model="type">
+          <label for="brut" >Plats Préparés</label>
+          <input id="prepare" class="filter" type="checkbox" value="true" v-model="type">
+          <label for="prepare">Produits Bruts</label>
+        </div>
 
-      <products-list
-        :products="market.products"
-        :type="type"
-        :search="search">
-      </producst-list>
+        <products-list
+          :products="market.products"
+          :type="type"
+          :search="search">
+        </producst-list>
+    </div>
   </div>
+
+  <div>
+    <img src="" />
+    Se rallier à une nouvelle place du marché
+  </div>
+
+  <div class="controls">
+    <div class="previous"></div>
+    <div class="next"></div>
+  </div>
+</div>
 </template>
 
 <script>

@@ -24,10 +24,13 @@ export default {
 .residence-slider-container {
   position: relative;
   margin: 30px auto 0;
+  text-align: center;
 }
 
   .residence-slider-item {
+    position: relative;
     text-align: center;
+    display: inline-block;
     img {
       width: 169px;
     }
