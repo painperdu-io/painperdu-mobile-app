@@ -48,6 +48,11 @@ export default {
 <style lang="scss" scoped>
 @import './../../../styles/variables.scss';
 
+@keyframes apparition-header {
+  0% {top: -100%;}
+  100% {top: 0;}
+}
+
 .header-bar {
   position: fixed;
   top: 0;
@@ -55,6 +60,7 @@ export default {
   height: 60px;
   background: $color-red;
   z-index: 900;
+  animation: apparition-header 2s;
 }
 
 .header-navigation {
