@@ -90,16 +90,38 @@ export default {
         animation-name: shake-item;
         animation-iteration-count: 3;
         animation-direction: alternate;
-        animation-delay: 2s;
+        animation-delay: 0.2s;
+
+        @keyframes shake-item {
+          0% {right:0px; top:0px;}
+          100% {right:-7px; top:-7px;}
+        }
+
+        @keyframes fade {
+          0% {opacity: 0;}
+          100% {opacity: 1;}
+        }
+
+        &.emergency {
+          animation: shake-item 0.2s infinite alternate;
+          .square {
+            position: absolute;
+            display: inline-block;
+            width: 5px;
+            height: 6px;
+            background-color: $color-red;
+            &.square-0 { top: -12px; right: 11px; transform: rotate(0deg); animation: fade 0.2s infinite alternate 0.1s ;}
+            &.square-1 { top: -10px; right: 0; transform: rotate(25deg); animation: fade 0.2s infinite alternate 0.2s ;}
+            &.square-2 { top: -4px; right: -9px; transform: rotate(50deg); animation: fade 0.2s infinite alternate 0.3s ;}
+            &.square-3 { top: 6px; right: -13px; transform: rotate(75deg); animation: fade 0.2s infinite alternate 0.4s ;}
+            &.square-4 { top: 17px; right: -13px; transform: rotate(-75deg); animation: fade 0.2s infinite alternate 0.5s ;}
+            &.square-5 { top: 26px; right: -6px; transform: rotate(-50deg); animation: fade 0.2s infinite alternate 0.6s ;}
+
+          }
+        }
       }
 
-      @keyframes shake-item {
-          0%   {background-color: red; left:0px; top:0px;}
-          25%  {background-color: yellow; left:200px; top:0px;}
-          50%  {background-color: blue; left:200px; top:200px;}
-          75%  {background-color: green; left:0px; top:200px;}
-          100% {background-color: red; left:0px; top:0px;}
-      }
+
 
     .product-item-name {
       margin: 10px auto 5px;
