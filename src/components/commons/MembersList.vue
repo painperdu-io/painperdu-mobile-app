@@ -1,7 +1,12 @@
 <template>
   <div class="members-container">
-    <template v-for="member in members">
-      <div class="members-item" v-bind:class="{ 'allie-item': allie }" v-link="{ path: '/profile/member' }">
+    <template v-for="(index, member) in members">
+      <div v-if="comperes && index < 3" class="members-item comperes-item" v-bind:class="{ 'comperes-item': comperes }" v-link="{ path: '/profile/member' }">
+        <div class="members-image">
+          <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
+        </div>
+      </div>
+      <div v-if="!comperes" class="members-item" v-link="{ path: '/profile/member' }">
         <div class="members-image">
           <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
         </div>
@@ -14,6 +19,7 @@
 import { detailsMarketMembers } from './../../vuex/getters'
 
 export default {
+  props: ['comperes'],
   vuex: {
     getters: {
       members: detailsMarketMembers,
@@ -41,12 +47,15 @@ export default {
     margin: 12px;
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    border-radius: 0;
     overflow: hidden;
+    clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
 
-    &.allie-item {
-      border-radius: 0;
-      clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    &.comperes-item {
+      border-radius: 50%;
+      clip-path: none;
+      -webkit-clip-path: none;
     }
   }
 

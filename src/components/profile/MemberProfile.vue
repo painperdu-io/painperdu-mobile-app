@@ -17,7 +17,7 @@
           <p class="legend">Ses compères <span class="underline"></span></p>
         </div>
         <div class="member-profile-accomplices-wrapper">
-          <members-list></members-list>
+          <members-list :comperes="true"></members-list>
         </div>
       </div>
     </div>
