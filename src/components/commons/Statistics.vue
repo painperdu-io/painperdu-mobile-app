@@ -10,7 +10,7 @@
         </div>
         <div class="statistics-product-data-graphs">
           <template v-for="product in statistics.products">
-            <div class="statistics-product-data-graph  top-{{ product.priority }}" style="height:{{ product.percent }}%;"></div>
+            <div class="statistics-product-data-graph" style="height:{{ product.percent }}%;"><span class="top-{{ product.priority }}"></span></div>
           </template>
         </div>
         <div class="statistics-product-data-names">
@@ -101,6 +101,8 @@ export default {
         flex-direction: column;
       }
 
+
+
         .statistics-product-data-line {
           width: 100%;
           height: 1px;
@@ -111,15 +113,30 @@ export default {
         flex-direction: row;
       }
 
+      @keyframes increase {
+        0% { height: 0px;}
+        100% { height: 100%;}
+      }
+
         .statistics-product-data-graph {
           width: 20%;
-          background: $color-stats-line;
+          position: relative;
 
-          &.top-1 { background: $color-stats-red1; }
-          &.top-2 { background: $color-stats-red2; }
-          &.top-3 { background: $color-stats-red3; }
-          &.top-4 { background: $color-stats-red4; }
-          &.top-5 { background: $color-stats-red5; }
+          span {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background: $color-stats-line;
+            animation: increase 1s normal;
+            position: absolute;
+            bottom: 0;
+            &.top-1 { background: $color-stats-red1; }
+            &.top-2 { background: $color-stats-red2; }
+            &.top-3 { background: $color-stats-red3; }
+            &.top-4 { background: $color-stats-red4; }
+            &.top-5 { background: $color-stats-red5; }
+          }
+
         }
 
       .statistics-product-data-names {
@@ -145,6 +162,11 @@ export default {
     margin-top: 12px;
   }
 
+    @keyframes apparition {
+      0% { opacity: 1; transform: scale3d(0,0,0);  }
+      100% { opacity: 1; transform: scale3d(1,1,1); }
+    }
+
     .statistics-infos-content {
       display: flex;
       justify-content: center;
@@ -152,6 +174,7 @@ export default {
       width: 48%;
       height: 120px;
       background: $color-white;
+      animation: apparition 1s normal;
     }
 
       .statistics-infos-content-bg {
