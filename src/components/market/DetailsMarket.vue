@@ -1,6 +1,6 @@
 <template>
   <div class="market-details-container">
-    <residence-slider></residence-slider>
+    <residence-slider v-on:click="addBlason"></residence-slider>
     <div class="market-details-description">
       <p class="market-details-description-text">
         Haec igitur prima lex amicitiae sanciatur,
@@ -25,6 +25,13 @@ export default {
     ResidenceSlider,
     TabsNavigation,
   },
+  methods: {
+    addBlason: (event) => {
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      event.preventDefault()
+    }
+  }
 };
 </script>
 

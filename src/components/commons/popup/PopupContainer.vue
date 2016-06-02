@@ -11,6 +11,9 @@
       <template v-if="popup.route == route">
         <cart v-if="popup.cart"></cart>
         <add-accomplice v-if="popup.addAccomplice"></add-accomplice>
+        <add-photo v-if="popup.addPhoto"></add-photo>
+        <add-blason v-if="popup.addBlason"></add-blason>
+        <tip v-if="popup.tip"></tip>
       </template>
     </template>
 
@@ -19,7 +22,10 @@
 
 <script>
 import Cart from './Cart';
-import AddAccomplice from './addAccomplicesFoodKeeper';
+import AddAccomplice from './AddAccomplicesFoodKeeper';
+import Tip from './Tip';
+import AddPhoto from './AddPhoto';
+import AddBlason from './AddBlason';
 import { popupsList } from './../../../vuex/getters';
 
 export default {
@@ -32,6 +38,9 @@ export default {
   components: {
     Cart,
     AddAccomplice,
+    Tip,
+    AddPhoto,
+    AddBlason,
   },
   methods: {
     closeCart: (event) => {

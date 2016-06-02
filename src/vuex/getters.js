@@ -33,11 +33,31 @@ export function popupsList () {
   const popups = [
     {
       route: 'Market',
-      cart: true,
+      tip: true,
     },
     {
       route: 'MeProfile',
       addAccomplice: true,
+    },
+    {
+      route: 'AddFoodkeeper',
+      addPhoto: true,
+    },
+    {
+      route: 'AddMarket',
+      addBlason: true,
+    },
+    {
+      route: 'DetailsMarketMembers',
+      addBlason: true,
+    },
+    {
+      route: 'DetailsFoodkeeper',
+      cart: true,
+    },
+    {
+      route: 'Market',
+      recipe: true,
     },
   ]
 

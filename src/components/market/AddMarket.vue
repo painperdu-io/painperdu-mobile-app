@@ -27,6 +27,8 @@
       </div>
     </div>
 
+    <div class="market-add-form-blason" v-on:click="addPhoto">Blason </div>
+    
     <div class="market-add-map-wrapper">
       <google-map></google-map>
     </div>
@@ -49,6 +51,13 @@ export default {
       ]
     }
   },
+  methods: {
+    addBlason: (event) => {
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      event.preventDefault()
+    }
+  }
 };
 </script>
 
