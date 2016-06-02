@@ -38,6 +38,11 @@
 
   <fieldset class="member-profile-statistics-wrapper">
     <legend class="member-profile-wrapper">
+      <div class="member-profile-item-allie" v-if="member.allie">
+        <svg viewBox="0 0 100 100" class="profile-icon ">
+          <use xlink:href="#app-icon-infinite"></use>
+        </svg>
+      </div>
       <div class="member-profile-img"><img src="https://randomuser.me/api/portraits/men/36.jpg"/></div>
       <div class="member-profile-text">
         <h2 class="member-profile-name">Jonathan</h2>
@@ -78,6 +83,9 @@ export default {
         quantity: 2,
         count : 0,
       },
+      member: {
+        allie: true,
+      }
     }
   },
   methods: {
@@ -410,6 +418,20 @@ export default {
   .member-profile-status {
     color: $color-text;
     margin: 2px 0;
+  }
+
+  .member-profile-item-allie {
+    position: absolute;
+    right: 35%;
+    top: -10px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    fill: $color-white;
+    background: $color-green;
+    border-radius: 50%;
+    z-index: 3;
   }
 
 </style>
