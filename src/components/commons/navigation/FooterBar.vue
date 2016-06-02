@@ -1,20 +1,37 @@
 <template>
   <div class="footer-bar">
     <nav class="footer-navigation">
-      <div class="footer-item" v-link="{ path: '/foodkeeper', activeClass: 'active' }">Mon garde<br/> manger</div>
-      <div class="footer-item" v-link="{ path: '/market', activeClass: 'active' }">La place<br/> du marché</div>
-      <div class="footer-item" v-link="{ path: '/alliances', activeClass: 'active' }">Mes<br/> alliances</div>
+      <div class="footer-item" v-on:click="changeActive(0, 'Foodkeeper')">Mon garde<br/> manger</div>
+      <div class="footer-item" v-on:click="changeActive(1, 'Market')" >La place<br/> du marché</div>
+      <div class="footer-item" v-on:click="changeActive(2, 'Alliances')" >Mes<br/> alliances</div>
       <div class="footer-active"></div>
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+import router from '../../../router';
+
+export default {
+  methods: {
+    changeActive: (position, route) => {
+      var el = document.getElementsByClassName('footer-active')[0];
+      el.style.left = "" + position * 33 + "%";
+      router.go({ name: route });
+      event.preventDefault()
+    }
+  }
+};
+
 </script>
 
 <style lang="scss" scoped>
 @import './../../../styles/variables.scss';
+
+@keyframes apparition-footer {
+  0% {bottom: -100%;}
+  100% {bottom: 0;}
+}
 
 .footer-bar {
   position: fixed;
@@ -24,6 +41,7 @@ export default {};
   background: $color-green;
   box-shadow: 0px -3px 10px rgba(0,0,0, 0.2);
   z-index: 900;
+  animation: apparition-footer 2s;
 }
 
 .footer-navigation {
@@ -56,5 +74,6 @@ export default {};
   height: 2px;
   width: 33%;
   background: $color-white;
+  transition: all 1s;
 }
 </style>
