@@ -34,14 +34,16 @@
       <p class="legend">Périme dans</p>
     </div>
   </div>
-  <div class="product-description">Description du produit. </div>
+  <div class="product-description">Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper Incenderat autem audaces.</div>
 
-  <div class="member-profile-statistics-wrapper">
-    <div class="member-profile-wrapper">
-      Picto
-      Nom user
-      Statut
-    </div>
+  <fieldset class="member-profile-statistics-wrapper">
+    <legend class="member-profile-wrapper">
+      <div class="member-profile-img"><img src="https://randomuser.me/api/portraits/men/36.jpg"/></div>
+      <div class="member-profile-text">
+        <h2 class="member-profile-name">Jonathan</h2>
+        <p class="member-profile-status">Menestrel</p>
+      </div>
+    </legend>
     <div class="member-profile-statistics">
       <div class="member-profile-statistics-item">
         <p class="legend">Nombre d'échanges</p>
@@ -54,11 +56,11 @@
         <span class="underline"></span>
       </div>
     </div>
-  </div>
+  </fieldset>
 
   <div class="ask-product-wrapper">
     <div class="ask-product-text">
-      <input type="radio" id="brut" class="filter"value="false" v-model="productType">
+      <input type="checkbox" id="brut" class="filter"value="false" v-model="productType">
       <label for="brut" >
         Je ne suis pas disponible maintenant. <br>
         Je veux récupérer ma demande plus tard.
@@ -106,7 +108,8 @@ export default {
   background: url('/static/img/rectangle-red.png');
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
+  border: 0;
 }
 
   .member-profile-statistics {
@@ -202,7 +205,7 @@ export default {
         color: $color-red;
         font-size: (3.6em / 2);
         font-family: 'IowanOldStyleBT-BlackItalic';
-        font-weight: 700;
+        font-weight: 300;
         margin: (20px / 2) auto;
       }
       &.inactive {
@@ -266,25 +269,50 @@ export default {
 
     .ask-product-wrapper {
       background-color: $color-green;
-      padding: 10px;
-      position: absolute;
+      padding: 10px 0;
+      position: fixed;
       bottom: 0px;
       width: 100%;
+      z-index: 2;
     }
 
     .ask-product-text {
       color: $color-white;
       padding-left: 20px;
       width: 70%;
-      margin: auto;
+      margin: 0 auto 20px;
       font-size: 1.2em;
       font-family: 'Karla-Bold';
       font-weight: 700;
-      margin-bottom: 20px;
+      position: relative;
     }
 
-    .ask-product-wrapper input[type="radio"] {
+    .ask-product-wrapper input[type="checkbox"] {
       display: none;
+      + label:before {
+        content: "";
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        position: absolute;
+        top: 0px;
+        left: -5px;
+        margin: 3px 0 0 0;
+      }
+      &:checked + label:after {
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-color: $color-red;
+        border-radius: 50%;
+        position: absolute;
+        top: 3px;
+        left: -2px;
+        margin: 3px 0 0 0;
+      }
     }
 
     .ask-product-button {
@@ -334,5 +362,54 @@ export default {
 
   .controls-quantity .btn-less { float: left; }
   .controls-quantity .btn-more { float: right; }
+
+  @keyframes float {
+    0%   { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(0,10%,0); }
+  }
+
+  .member-profile-wrapper {
+    width: 100%;
+    position: relative;
+    animation: float 1s infinite alternate;
+    text-align: center;
+  }
+
+  .member-profile-img {
+    display: inline-block;
+    width: 75px;
+    height: 100px;
+    clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    background-color: $color-gray;
+    overflow: hidden;
+    img {
+      height: 100%;
+      transform: translate3d(-10%,0 ,0);
+    }
+  }
+
+  .member-profile-text {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    width: 110px;
+    background-color: $color-white;
+    padding: 5px 0;
+  }
+
+  .member-profile-name {
+    font-size: 1,3em;
+    font-family: 'IowanOldStyleBT-BlackItalic';
+    color: $color-red;
+    margin: 2px 0;
+    font-weight: 300;
+  }
+
+  .member-profile-status {
+    color: $color-text;
+    margin: 2px 0;
+  }
 
 </style>
