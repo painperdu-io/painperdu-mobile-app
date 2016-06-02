@@ -3,8 +3,8 @@
     <nav class="tabs-navigation-wrapper">
       <template v-for="tab in tabs">
         <template v-if="tab.route == route">
-          <template v-for="item in tab.items">
-            <div class="tabs-navigation-item" v-link="{ path: item.path, activeClass: 'active' }">{{ item.name }}</div>
+          <template v-for="(index, item) in tab.items">
+            <div class="tabs-navigation-item" v-on:click="changeActive(index, item.path )">{{ item.name }}</div>
           </template>
         </template>
       </template>
@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import { tabsNavigation } from './../../../vuex/getters'
+import { tabsNavigation } from './../../../vuex/getters';
+import router from '../../../router';
 
 export default {
   props: ['route'],
@@ -22,6 +23,14 @@ export default {
     getters: {
       tabs: tabsNavigation,
     },
+  },
+  methods: {
+    changeActive: (position, route) => {
+      var el = document.getElementsByClassName('tabs-navigation-active')[0];
+      el.style.left = "" + position * 33 + "%";
+      router.go({ path: route });
+      event.preventDefault()
+    }
   },
 };
 </script>
@@ -44,6 +53,7 @@ export default {
     height: 3px;
     width: 33%;
     background: $color-red;
+    transition: all 1s;
   }
 
   .tabs-navigation-wrapper {
