@@ -2,18 +2,23 @@
   <div class="foodkeeper-add-product-container">
     <div class="foodkeeper-add-product-form1-wrapper">
       <div class="foodkeeper-add-product-form1-add-icon">
+        <div class="controls-quantity">
+          <button class="btn btn-more" v-on:click="increment">+</button>
+          <button class="btn btn-less" v-on:click="decrement">-</button>
+        </div>
         <div class="foodkeeper-add-product-form1-add-icon-bg">
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
+          <div class="product-item-quantity" >0</div>
         </div>
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
         <svg viewBox="0 0 100 100" class="foodkeeper-add-product-form1-itemgreen-icon right">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-star"></use>
         </svg>
-        <input type="text" placeholder="Nom du garde manger" />
+        <input type="text" placeholder="Nom du produit" />
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
-        <input type="text" placeholder="Description du garde manger" />
+        <input type="text" placeholder="Description du produit" />
       </div>
       <div class="foodkeeper-add-product-form1-filters">
         <input id="brut" class="filter" type="radio" value="false" v-model="type">
@@ -21,25 +26,20 @@
         <input id="prepare" class="filter" type="radio" value="true" v-model="type">
         <label for="prepare">Produits Bruts</label>
       </div>
+      <div class="foodkeeper-add-product-form1-question">Dans quel <span>garde-manger</span> proposez-vous ce produit ?</div>
       <select class="foodkeeper-add-product-form1-select" v-model="slectedAddress">
-        <option>Légumes</option>
-        <option>Légumes</option>
-        <option>Légumes</option>
-      </select>
-      <div class="foodkeeper-add-product-form1-itemgreen">
-        <svg viewBox="0 0 100 100" class="foodkeeper-add-product-form1-itemgreen-icon left">
-          <use xlink:href="#app-icon-close"></use>
-        </svg>
-        <input class="quantity" type="text" value="1" readonly="readonly">
         <svg viewBox="0 0 100 100" class="foodkeeper-add-product-form1-itemgreen-icon right">
-          <use xlink:href="#app-icon-close"></use>
+          <use xlink:href="#app-icon-previous"></use>
         </svg>
-      </div>
+        <option v-for="place in places" v-bind:value="place">
+          {{ place.name }}
+        </option>
+      </select>
     </div>
     <div class="foodkeeper-add-product-form2-wrapper">
       <h3 class="foodkeeper-add-product-form2-title">À consommer sous</h3>
       <div class="foodkeeper-add-product-form2-dlc-range">
-        <label for="product-dlc">jours</label>
+        <label class="product-dlc" for="product-dlc">0 jours</label>
         <input type="range" name="product-dlc" value="1" max="10" min="0" step="1"/>
         <div class="foodkeeper-add-product-form2-label-range">
             <p>0 jours</p>
@@ -52,7 +52,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      places: [
+        { name: 'maison', addressL1: '12 rue du Trésum', addressL2: '74000 Annecy' },
+        { name: 'boulot', addressL1: '63 route du Périmètre', addressL2: '74000 Annecy' },
+      ]
+    }
+  },
+  methods: {
+    increment: function (event) {
+      if (this.count != product.quantity){
+        this.count++;
+      }
+    },
+    decrement: function (event) {
+      this.count--;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -81,12 +100,13 @@ export default {};
     }
 
       .foodkeeper-add-product-form1-add-icon-bg {
+        position: relative;
         display: flex;
         justify-content: center;
         flex-direction: column;
         margin: 20px 0;
-        width: 75px;
-        height: 75px;
+        width: 115px;
+        height: 115px;
         background: $color-white;
         border-radius: 50%;
       }
@@ -218,9 +238,9 @@ export default {};
         -webkit-appearance:none;
         width: 100%;
         height: 4px;
+        margin: 10px 0px 0px;
         background: $color-green-lite;
         border-radius: 4px;
-        margin: auto;
       }
 
       input[type="range"]::-webkit-slider-thumb {
@@ -256,5 +276,62 @@ export default {};
       color: $color-text;
       text-transform: uppercase;
       text-align: center;
+    }
+
+    .product-dlc {
+      background-color: $color-green;
+      color: $color-white;
+      border-radius: 50px;
+      padding: 5px 10px;
+    }
+
+    .product-item-quantity {
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      width: 28px;
+      height: 28px;
+      font: 1.3em 'Karla-Bold', sans-serif;
+      line-height: 28px;
+      text-align: center;
+      color: $color-white;
+      background: $color-red;
+      border-radius: 50%;
+      animation-name: shake-item;
+      animation-iteration-count: 3;
+      animation-direction: alternate;
+      animation-delay: 2s;
+    }
+
+    .controls-quantity {
+      position: absolute;
+      top: 13%;
+      left: 50%;
+      background-color: $color-gray-lite;
+      width: 60%;
+      transform: translate3d(-50%,-50%,0);
+      padding: 5px 10px;
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    .controls-quantity .btn {
+      color: $color-green;
+      border-radius: 50%;
+      border: 2px solid $color-green;
+      font-size: 2em;
+      width: 28px;
+      height: 28px;
+      line-height: 20px;
+      padding: 0;
+      background-color: $color-gray-lite;
+    }
+
+    .controls-quantity .btn-less { float: left; }
+    .controls-quantity .btn-more { float: right; }
+
+    .foodkeeper-add-product-form1-question {
+      margin: 20px auto 0;
+      color: $color-text;
     }
 </style>
