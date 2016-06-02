@@ -1,6 +1,6 @@
 <template>
   <div class="foodkeeper-add-container">
-    <div class="foodkeeper-add-image-wrapper">+</div>
+    <div class="foodkeeper-add-image-wrapper"  v-on:click="addPhoto" >+</div>
     <div class="foodkeeper-add-form-wrapper">
       <div class="foodkeeper-add-form-itemgreen">
         <svg viewBox="0 0 100 100" class="foodkeeper-add-form-itemgreen-icon">
@@ -44,7 +44,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    addPhoto: (event) => {
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      event.preventDefault()
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
