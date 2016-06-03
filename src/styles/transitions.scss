@@ -15,3 +15,12 @@
   opacity: 0;
   transform: scale(0);
 }
+
+.upIn-transition {
+  transition: all 1s ease;
+  transform: translate3d(0,0,0);
+}
+
+.upIn-enter, .upIn-leave {
+  transform: translate3d(0,100%,0);
+}

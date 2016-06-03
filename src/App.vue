@@ -1,7 +1,7 @@
 <template>
   <header-bar v-if="$route.page.header.enable"></header-bar>
   <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
-    <router-view transition="popIn"></router-view>
+    <router-view transition="upIn"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>

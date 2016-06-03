@@ -1,16 +1,16 @@
 <template>
   <div class="foodkeeper-container">
     <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details/stats' }">
-        <div class="foodkeeper-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
+      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details/products' }">
+        <div class="foodkeeper-item-background"  style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
         <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
           <use xlink:href="#app-icon-star"></use>
         </svg>
-        <input id="user-dispo" type="checkbox">
-        <label for="userdispo"></label>
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
         <p class="foodkeeper-item-description">{{ foodkeeper.description }}</p>
+        <input id="user-dispo" type="checkbox">
+        <label for="userdispo"></label>
       </div>
     </template>
 
@@ -89,6 +89,7 @@ export default {
     height: 100%;
     //mix-blend-mode: multiply;
     margin: -1px 0 0 0;
+    z-index: 0;
   }
 
   .foodkeeper-item-separator {
@@ -184,18 +185,17 @@ export default {
 
     input[type="checkbox"] {
       display: none;
+      z-index: 99;
     }
 
     label {
-      position: absolute;
+      position: relative;
       display: inline-block;
       width: 40px;
       height: 20px;
-      margin: 12px 0;
+      margin: 0 auto;
       transition: 0.3s;
       box-sizing: border-box;
-      right: 10px;
-      top: 0px;
       &:after{
         content: '';
         display: block;
