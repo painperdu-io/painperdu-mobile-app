@@ -58,11 +58,18 @@ export default {
     ResidenceSlider,
   },
   data() {
+    return { market: { name: 'Nom de la résidence', products: {} }};
+  }
+  ready() {
     this.$http({ url: 'products', method: 'GET' })
       .then((response) => {
-        return { market: { name: 'Nom de la résidence', products: response.data }};
+        this.market.products = response.data;
       })
-      .catch(err => { console.log(err); });
+      .catch(err => {
+        // This is certainly not a good way to handle errors
+        console.log(err);
+      });
+  }
 
       //console.log(this.test);
       //return test;
