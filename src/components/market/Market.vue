@@ -1,21 +1,21 @@
 <template>
 
-  <div class="market-slider">
-    <div class="market-container">
+    <div class="market-slider">
+      <div class="market-container">
 
-      <residence-slider :data="market"></residence-slider>
+        <residence-slider :data="market"></residence-slider>
 
-      <div class="market-products-wrapper">
-        <div class="market-products-search">
-          <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
-            <use xlink:href="#app-icon-search"></use>
-          </svg>
-          <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
-            <use xlink:href="#app-icon-close"></use>
-          </svg>
+        <div class="market-products-wrapper">
+          <div class="market-products-search">
+            <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
+              <use xlink:href="#app-icon-search"></use>
+            </svg>
+            <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
+              <use xlink:href="#app-icon-close"></use>
+            </svg>
 
-          <input placeholder="Nom du produit..." v-model="search" />
-        </div>
+            <input placeholder="Nom du produit..." v-model="search" />
+          </div>
 
 
         <div class="market-products-filters">
@@ -24,25 +24,22 @@
           <input id="prepare" v-on:click="selectType" class="filter" type="checkbox" value="true" v-model="type">
           <label for="prepare">Produits Bruts</label>
         </div>
+      </div>
 
-        <products-list
-          :products="market.products"
-          :type="type"
-          :search="search">
-        </producst-list>
+    </div>
+
+    <div v-link="{ path: '/market/add' }">
+      <img src="" />
+      Se rallier à une nouvelle place du marché
+    </div>
+
+    <div class="controls">
+      <div class="previous"></div>
+      <div class="next"></div>
     </div>
   </div>
 
-  <div v-link="{ path: '/market/add' }">
-    <img src="" />
-    Se rallier à une nouvelle place du marché
-  </div>
 
-  <div class="controls">
-    <div class="previous"></div>
-    <div class="next"></div>
-  </div>
-</div>
 </template>
 
 <script>
@@ -55,7 +52,22 @@ export default {
     ResidenceSlider,
   },
   data() {
-    return {
+    return { market: { name: 'Nom de la résidence', products: {} }};
+  }
+  ready() {
+    this.$http({ url: 'products', method: 'GET' })
+      .then((response) => {
+        this.market.products = response.data;
+      })
+      .catch(err => {
+        // This is certainly not a good way to handle errors
+        console.log(err);
+      });
+  }
+
+      //console.log(this.test);
+      //return test;
+    /*return {
       market: {
         name: 'NOM RESIDENCE',
         products: [
@@ -103,20 +115,7 @@ export default {
           },
         ]
       }
-    }
-  },
-  methods : {
-    selectType: (event) => {
-      var el = event.target;
-      if(el.classList.contains('checked')) {
-        el.classList.remove('checked');
-      }
-      else {
-        el.classList.add('checked');
-        el.type.push(el.value);
-      }
-      event.preventDefault()
-    }
+    }*/
   }
 };
 </script>
