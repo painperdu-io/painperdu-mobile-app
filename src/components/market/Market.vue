@@ -1,5 +1,4 @@
 <template>
-  <div v-link="{ path: '/market/add' }">Add market</div>
 
   <div class="market-slider">
     <div class="market-container">
@@ -20,9 +19,9 @@
 
 
         <div class="market-products-filters">
-          <input id="brut" class="filter" type="checkbox" value="false" v-model="type">
+          <input id="brut" v-on:click="selectType" class="filter" type="checkbox" value="false" v-model="type">
           <label for="brut" >Plats Préparés</label>
-          <input id="prepare" class="filter" type="checkbox" value="true" v-model="type">
+          <input id="prepare" v-on:click="selectType" class="filter" type="checkbox" value="true" v-model="type">
           <label for="prepare">Produits Bruts</label>
         </div>
 
@@ -34,7 +33,7 @@
     </div>
   </div>
 
-  <div>
+  <div v-link="{ path: '/market/add' }">
     <img src="" />
     Se rallier à une nouvelle place du marché
   </div>
@@ -64,6 +63,7 @@ export default {
             quantity: '3',
             status: true,
             brut: true,
+            emergency: true,
           },
           { name: 'oeuf',
             quantity: '1',
@@ -94,6 +94,7 @@ export default {
             quantity: '1',
             status: true,
             brut: true,
+            emergency: true,
           },
           { name: 'orange',
             quantity: '6',
@@ -102,6 +103,19 @@ export default {
           },
         ]
       }
+    }
+  },
+  methods : {
+    selectType: (event) => {
+      var el = event.target;
+      if(el.classList.contains('checked')) {
+        el.classList.remove('checked');
+      }
+      else {
+        el.classList.add('checked');
+        el.type.push(el.value);
+      }
+      event.preventDefault()
     }
   }
 };
@@ -159,6 +173,11 @@ export default {
 
       input[type="checkbox"] {
         display: none;
+        &.checked {
+          + label {
+            background: $color-white;
+          }
+        }
       }
 
       .filter {
@@ -178,11 +197,7 @@ export default {
           }
         }
 
-        &:checked {
-          + label {
-            background: $color-white;
-          }
-        }
+
       }
     }
 </style>
