@@ -59,67 +59,13 @@ export default {
   },
   data() {
     return { market: { name: 'Nom de la résidence', products: {} }};
-  }
+  },
   ready() {
     this.$http({ url: 'products', method: 'GET' })
       .then((response) => {
         this.market.products = response.data;
       })
-      .catch(err => {
-        // This is certainly not a good way to handle errors
-        console.log(err);
-      });
-  }
-
-      //console.log(this.test);
-      //return test;
-    /*return {
-      market: {
-        name: 'NOM RESIDENCE',
-        products: [
-          { name: 'yaourt',
-            quantity: '3',
-            status: true,
-            brut: true,
-          },
-          { name: 'oeuf',
-            quantity: '1',
-            status: false,
-            brut: true,
-          },
-          { name: 'riz',
-            quantity: '1',
-            status: true,
-            brut: true,
-          },
-          { name: 'lait',
-            quantity: '6',
-            status: true,
-            brut: true,
-          },
-          { name: 'patate',
-            quantity: '3',
-            status: true,
-            brut: false,
-          },
-          { name: 'poisson',
-            quantity: '1',
-            status: false,
-            brut: true,
-          },
-          { name: 'chocolat',
-            quantity: '1',
-            status: true,
-            brut: true,
-          },
-          { name: 'orange',
-            quantity: '6',
-            status: true, //disponible maintenant
-            brut: true, //type produit
-          },
-        ]
-      }
-    }*/
+      .catch(err => { console.log(err); });
   }
 };
 </script>
