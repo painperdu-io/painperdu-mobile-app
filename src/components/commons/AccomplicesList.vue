@@ -1,7 +1,7 @@
 <template>
   <div class="accomplices-container">
     <template v-for="accomplice in accomplices">
-      <div class="accomplices-item" v-link="{ path: '/profile/member/'+ accomplice._id, params: { id: accomplice._id }}">
+      <div class="accomplices-item" v-link="{ name: 'MemberProfile', params: { id: accomplice._id }}">
         <div class="accomplices-image">
           <img v-bind:src="accomplice.picture"/>
         </div>

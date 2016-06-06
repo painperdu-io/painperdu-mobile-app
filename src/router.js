@@ -16,6 +16,7 @@ const router = new VueRouter({
   abstract: true,
   hashbang: false,
   history: true,
+  root:  '/',
 })
 
 sync(store, router)

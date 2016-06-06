@@ -55,13 +55,15 @@ export default {
     };
   },
   ready() {
+    const userId = this.$route.params.id;
+
     // récupérer le profile en fonction de l'id de l'utilisateur
-    this.$http({ url: 'users/' + this.$route.params.id, method: 'GET' })
+    this.$http({ url: `users/${userId}`, method: 'GET' })
       .then((response) => { this.profile = response.data; })
       .catch(err => { console.log(err); });
 
     // récupérer les compères d'un utilisateur
-    this.$http({ url: 'users/' + this.$route.params.id + '/accomplices', method: 'GET' })
+    this.$http({ url: `users/${userId}/accomplices`, method: 'GET' })
       .then((response) => { this.accomplices = response.data; })
       .catch(err => { console.log(err); });
   }

@@ -15,7 +15,6 @@
 
 <script>
 import { tabsNavigation } from './../../../vuex/getters';
-import router from '../../../router';
 
 export default {
   props: ['objectid', 'route'],
@@ -25,10 +24,10 @@ export default {
     },
   },
   methods: {
-    tabActive: (position, route) => {
+    tabActive(position, route) {
       const el = document.getElementsByClassName('tabs-navigation-active')[0];
       el.style.left = `${position * (100 / 3)}%`;
-      router.go({ path: route });
+      this.$route.router.go({ path: route });
       event.preventDefault()
     }
   },

@@ -1,13 +1,13 @@
 <template>
   <div class="members-container">
-    <template v-for="(index, member) in members">
-      <div v-if="comperes && index < 3" class="members-item comperes-item" v-bind:class="{ 'comperes-item': comperes }" v-link="{ path: '/profile/member' }">
+    <template v-for="member in members">
+      <div v-if="comperes" class="members-item comperes-item" v-bind:class="{ 'comperes-item': comperes }" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div class="members-image">
           <img v-bind:src="member.picture"/>
         </div>
       </div>
-      <div v-if="!comperes" class="members-item" v-link="{ path: '/profile/member' }">
-        <div class="members-name">{{ member.name }}</div>
+      <div v-if="!comperes" class="members-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
+        <div class="members-name">{{ member.name.first }}</div>
         <div class="members-image">
           <img v-bind:src="member.picture"/>
         </div>

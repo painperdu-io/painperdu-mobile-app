@@ -10,14 +10,12 @@
 </template>
 
 <script>
-import router from '../../../router';
-
 export default {
   methods: {
-    changeActive: (position, route) => {
+    changeActive(position, route) {
       const el = document.getElementsByClassName('footer-active')[0];
       el.style.left = `${position * (100 / 3)}%`;
-      router.go({ name: route });
+      this.$route.router.go({ name: route });
       event.preventDefault()
     }
   }
