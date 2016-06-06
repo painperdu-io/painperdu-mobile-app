@@ -22,7 +22,7 @@
   </div>
 
   <div class="steps-summary">
-    <h3 class="title-section">Suivi de mes actions</h3>
+    <h3 class="title-section">Suivi de vos actions</h3>
     <div class="steps-summary-separator"></div>
 
     <fieldset class="step final-step">
@@ -68,8 +68,8 @@
         </svg>
       </legend>
         <h3>Ludovic est disponible :</h3>
-        <div class="date-day">Jeudi 28/02/16</div>
-        <span class="date-hours">Entre 10h et 12h</span>
+        <div class="date-hours">Entre 10h et 12h</div>
+        <span class="date-day">Jeudi 28/02/16</span>
     </fieldset>
 
     <fieldset class="step user-side">
@@ -83,13 +83,13 @@
         <div class="multiple-dates">
           <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
           <label for="date-1" >
-            <div class="date-day">Jeudi 28/02/16</div>
-            <span class="date-hours">Entre 10h et 12h</span>
+            <div class="date-hours">Entre 10h et 12h</div>
+            <span class="date-day">Jeudi 28/02/16</span>
           </label>
           <input type="radio" id="date-2"  class="filter" value="true" v-model="productType">
           <label for="date-2">
-            <div class="date-day">Jeudi 28/02/16</div>
-            <span class="date-hours">Entre 18h et 20h</span>
+            <div class="date-hours">Entre 18h et 20h</div>
+            <span class="date-day">Jeudi 28/02/16<span class="underline"></span></span>
           </label>
         </div>
       </form>
@@ -129,9 +129,10 @@ export default {
   flex: 1 100%;
   padding: 45px 0 30px;
   position: fixed;
-  width: 100%;
   background: $color-white url('/static/img/bg-3.png');
   z-index: 99;
+  width: 100%;
+  justify-content: center;
 }
 
 .profile-container,
@@ -139,6 +140,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
+  max-width: 150px;
 }
 
 .profile-container {
@@ -148,10 +150,13 @@ export default {
     .profile-infos-photo {
       position: relative;
       margin: 0 auto 20px;
-      width: 115px;
+      width: 110px;
       height: 115px;
-      border-radius: 50%;
       overflow: hidden;
+      mask-image: url('/static/img/blason-1.png');
+      -webkit-mask-image: url('/static/img/blason-1.png');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
     }
 
       .profile-infos-photo-img {
@@ -159,7 +164,6 @@ export default {
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        background-color: $color-sepia;
 
         img {
           width: 125px;
@@ -327,7 +331,7 @@ export default {
     .step.final-step svg {fill: $color-green;}
 
 
-.date-day {
+.date-hours {
   background-color: $color-green;
   height: (80px / 2);
   border-radius: (80px / 4);
@@ -353,20 +357,20 @@ export default {
   line-height: 1.4em;
 }
 
-.multiples-dates {
+.multiple-dates {
   text-align: center;
   line-height: (80px / 2);
     .filter {
+      display: none;
       &:first-child {
         + label {
-          margin-right: (40px / 2);
 
         }
       }
       &:checked {
-        + label .date-day {
+        + label .date-hours {
           background-color: white;
-          border-color: $color-green;
+          border: 2px solid $color-green;
           color: $color-green
         }
       }
@@ -376,5 +380,6 @@ export default {
 legend {
   text-align: center;
 }
+
 
 </style>

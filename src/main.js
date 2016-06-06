@@ -150,7 +150,6 @@ router.map({
       header: {
         enable: true,
         profile: true,
-        basket: true,
         add: true,
       },
       footer: {
@@ -195,7 +194,7 @@ router.map({
     name: 'DetailsMarket',
     component: DetailsMarket,
     page: {
-      title: 'Ma place du marché',
+      title: 'Fiche place du marché',
       wrap: 'wrap-header',
       bgClass: 'background1',
       header: {
@@ -233,8 +232,6 @@ router.map({
       header: {
         enable: true,
         profile: true,
-        basket: true,
-        add: true,
       },
       footer: {
         enable: true,
@@ -268,7 +265,7 @@ router.map({
       bgClass: 'background1',
       header: {
         enable: true,
-        previous: true,
+        close: true,
       },
       footer: {
         enable: false,

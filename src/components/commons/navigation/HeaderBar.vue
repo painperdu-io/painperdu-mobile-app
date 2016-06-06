@@ -13,13 +13,16 @@
         </svg>
       </div>
       <div class="header-item  header-item-50">
-        <h1>{{ $route.page.title }}</h1>
+        <svg v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " viewBox="0 0 1024 768" class="header-logo">
+          <use xlink:href="#logo-icon"></use>
+        </svg>
+        <h1 v-else>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
         <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg v-if="$route.page.header.add" v-link="{ path: '/foodkeeper/' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.add && $route.name == 'Market' " v-link="{ path: '/market/add' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-add"></use>
         </svg>
         <svg v-if="$route.page.header.product" v-link="{ path: '/foodkeeper/add/product' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
@@ -28,6 +31,9 @@
         <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-flag"></use>
         </svg>
+        <div v-if="$route.page.header.close" v-link="{ path: '/market' }" class="header-icon  header-icon-right header-icon-close">
+          Fermer
+        </div>
       </div>
     </div>
   </div>
@@ -73,6 +79,7 @@ export default {
 
   .header-item {
     display: flex;
+    overflow: hidden;
 
     h1 {
       font: 1.4em 'Avenir-Book', sans-serif;
@@ -87,7 +94,7 @@ export default {
       justify-content: flex-start;
 
       &:last-child {
-        justify-content: center;
+        justify-content: flex-end;
       }
     }
 
@@ -95,6 +102,10 @@ export default {
       flex: 1 50%;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    .header-logo {
+      transform: scale3d(3.4,3.4,3.4);
     }
 
 .header-icon {

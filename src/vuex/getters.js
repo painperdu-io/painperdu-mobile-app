@@ -20,7 +20,7 @@ export function tabsNavigation () {
       route: 'UserProfile',
       items: [
         { name: 'Mon profil', path: '/profile/me' },
-        { name: 'Mes outils', path: '/profile/tools' },
+        { name: 'Mes statistiques', path: '/profile/stats' },
         { name: 'Mes avis', path: '/profile/reviews' },
       ]
     },
@@ -58,6 +58,10 @@ export function popupsList () {
     {
       route: 'Market',
       recipe: true,
+    },
+    {
+      route: 'DetailsFoodkeeperProducts',
+      addAccomplice: true,
     },
   ]
 

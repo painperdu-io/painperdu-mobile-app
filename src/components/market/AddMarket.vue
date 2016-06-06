@@ -9,26 +9,38 @@
       </select>
 
       <div class="market-add-form-perimeter-range">
-        <h3>Périmètre de recherche pour cette place</h3>
+        <h3>Périmètre de recherche <span>pour cette place :</span></h3>
         <input type="range" value="1" max="2" min="0" step="1"/>
-        <div>
-          <span>Lopin</span>
-          <span>Canton</span>
+        <div class="market-add-form-perimeter-range-label">
+          <span class="align-left">Lopin</span>
+          <span class="align-right">Canton</span>
           <span>Contrée</span>
         </div>
       </div>
       <div class="market-add-form-perimeter-address">
-        <p>L'adresse de votre place du marché est :</p>
+        <h3><span>L'adresse de </span>ta place du marché <span>est :</span></h3>
         <div class="market-add-form-perimeter-separator"></div>
-        <div class="market-add-form-perimeter-address-data">
-          <div class="blason"></div>
-          <p>{{ slectedAddress.addressL1 }}</p>
+      </div>
+    </div>
+
+    <div class="market-add-form-blason" v-on:click="addBlason">
+      <div class="app-icon-container">
+        <svg viewBox="0 0 50 50" class="app-icon">
+          <use xlink:href="#app-icon-edit"></use>
+        </svg>
+      </div>
+      <div class="residence-slider-item">
+        <div class="residence-slider-image">
+          <img src="./../../../static/temp/clan.png" />
+        </div>
+        <div class="residence-slider-item-name">
+          <div class="residence-slider-item-name-content">
+            {{ slectedAddress.addressL1 }}
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="market-add-form-blason" v-on:click="addPhoto">Blason </div>
-    
     <div class="market-add-map-wrapper">
       <google-map></google-map>
     </div>
@@ -82,18 +94,19 @@ export default {
 }
 
   .market-add-map-wrapper {
-    height: 350px;
+    height: 320px;
     background: $color-white;
     overflow: hidden;
+    margin-top: 50px;
   }
 
   .market-add-form-wrapper {
-    padding: 30px 0;
+    padding: 30px 0 0;
     background: url('/static/img/bg-1.png') center center;
   }
 
     .market-add-form-select {
-      margin: 20px 0 15px;
+      margin: 10px 0 10px;
       width: 262px;
       height: 40px;
       background: $color-green-lite;
@@ -150,14 +163,19 @@ export default {
       background: $color-white;
     }
 
+    h3 {
+      text-transform: uppercase;
+      span {
+        text-transform: initial;
+        font-weight: 300;
+      }
+    }
+
       .market-add-form-perimeter-range {
-        h3 {
-          text-transform: uppercase;
-        }
 
         input[type="range"] {
           -webkit-appearance:none;
-          width: 200px;
+          width: 262px;
           height: 4px;
           background: $color-green-lite;
           border-radius: 4px;
@@ -175,6 +193,13 @@ export default {
           box-shadow: 0px 3px 10px rgba(0,0,0, 0.2);
           z-index: 3;
         }
+      }
+
+      .market-add-form-perimeter-range-label {
+        margin: 15px auto 0;
+        width: 262px;
+        .align-left {float: left;}
+        .align-right {float: right;}
       }
 
       .market-add-form-perimeter-separator {
@@ -206,4 +231,115 @@ export default {
         left: 50%;
         transform: translate3d(-50%,0,0);
       }
+
+      .market-add-form-blason {
+        position: absolute;
+        left: 50%;
+        z-index: 45;
+        transform: translate3d(-50%,0,0);
+      }
+
+      .residence-slider-item {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        .residence-slider-image {
+          width: 100px;
+          height: 115px;
+          mask-image: url('/static/img/blason-1.png');
+          -webkit-mask-image: url('/static/img/blason-1.png');
+          mask-size: 100% 100%;
+          -webkit-mask-size: 100% 100%;
+          background-color: $color-gray;
+        }
+        img {
+          width: 100%;
+        }
+      }
+
+        .residence-slider-item-name {
+          position: absolute;
+          bottom: 18px;
+          left: 50%;
+          min-width: 135px;
+          transform: translate3d(-50%, 0, 0);
+          font: 1.25em 'Karla-Bold', sans-serif;
+          font-weight: 300;
+          text-transform: uppercase;
+          color: $color-text;
+          padding: 5px 10px;
+          background-color: $color-white;
+          z-index: 99;
+          min-height: 18px;
+
+          &:before, &:after {
+             content: '';
+             position: absolute;
+             display: block;
+             bottom: -0.6em;
+             border: 0.8em solid $color-white;
+             z-index: 0;
+             }
+
+          &:before {
+             left: -1.4em;
+             border-right-width: 0.7em;
+             border-left-color: transparent;
+             -webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+             -moz-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+             box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+          }
+
+          &:after {
+           right: -1.4em;
+           border-left-width: 0.7em;
+           border-right-color: transparent;
+           -webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+           -moz-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+           box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+          }
+        }
+
+        .residence-slider-item-name .residence-slider-item-name-content:before,
+        .residence-slider-item-name .residence-slider-item-name-content:after {
+             border-color: #929396 $color-white transparent $color-white;
+             position: absolute;
+             display: block;
+             border-style: solid;
+             bottom: -0.6em;
+             content: '';
+             z-index: 1;
+        }
+
+        .residence-slider-item-name .residence-slider-item-name-content:before {
+           left: 0;
+           border-width: 0.6em 0 0 2em;
+           -webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+           -moz-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+           box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+        }
+
+        .residence-slider-item-name .residence-slider-item-name-content:after {
+           right: 0;
+           border-width: 0.6em 2em 0 0;
+           -webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+           -moz-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+           box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+        }
+
+        .app-icon-container {
+          position: absolute;
+          width: 35px;
+          height: 35px;
+          padding: 3px;
+          box-sizing: border-box;
+          border-radius: 50%;
+          background-color: $color-green;
+          fill: $color-white;
+          z-index: 10;
+          left: 50%;
+          top: 40%;
+          transform: translate3d(-50%,-50%,0);
+        }
+
 </style>

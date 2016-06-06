@@ -45,9 +45,13 @@
       </div>
 
       <div class="market-container">
-        <div>
-          <img src="" />
-          Se rallier à une nouvelle place du marché
+        <div class="add-market" v-link="{ path: '/market/add' }">
+          <div class="add-market-blason"><span>+</span></div>
+          <div class="add-market-text">
+            <p>Se rallier <span class="underline"></span><p>
+            <p>à une nouvelle <span class="underline"></span></p>
+            <p> place du marché <span class="underline"></span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -138,7 +142,7 @@ export default {
 
     .market-products-search {
       position: relative;
-      margin: 25px auto 18px ;
+      margin: 0px auto 18px ;
       width: 262px;
 
       input {
@@ -210,8 +214,8 @@ export default {
       position: absolute;
       top: 65px;
       width: 100%;
-      .previous,
-      .next {
+      z-index: 99;
+      .controls-icon {
         width: 25px;
         height: 25px;
         border-radius: 50%;
@@ -245,5 +249,52 @@ export default {
       min-width: 100%;
       align-items: center;
       transition: all 1s;
+      align-content: center;
+    }
+
+    .add-market { text-align: center;}
+
+    .add-market-blason {
+      background-color: $color-white;
+      color: $color-red;
+      width: 100px;
+      height: 115px;
+      line-height: 115px;
+      text-align: center;
+      margin: 30px auto 0;
+      box-shadow: 2px 2px 5px $color-gray;
+      font: 3em 'Karla-Regular', sans-serif;
+      mask-image: url('/static/img/blason-1.png');
+      -webkit-mask-image: url('/static/img/blason-1.png');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      span {
+        display: inline-block;
+        margin-top: 30px;
+      }
+    }
+
+    .add-market-text {
+      display: inline-block;
+      width: 110px;
+      margin-top: 20px;
+    }
+
+    .add-market p {
+      display: inline-block;
+      position: relative;
+      margin: 0;
+      font: 1.5em 'Karla-Italic', sans-serif;
+      color: $color-text;
+    }
+
+    .add-market .underline {
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      height: 4px;
+      width: 100%;
+      background: $color-beige;
+      z-index: -1;
     }
 </style>

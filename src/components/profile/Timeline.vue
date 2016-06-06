@@ -1,46 +1,10 @@
 <template>
-  <div class="statistics-container">
-    <div class="statistics-products-wrapper">
-      <div class="statistics-product-text">Produits les plus échangés</div>
-      <div class="statistics-product-data">
-        <div class="statistics-product-data-lines">
-          <div class="statistics-product-data-line"></div>
-          <div class="statistics-product-data-line"></div>
-          <div class="statistics-product-data-line"></div>
-        </div>
-        <div class="statistics-product-data-graphs">
-          <template v-for="product in statistics.products">
-            <div class="statistics-product-data-graph" style="height:{{ product.percent }}%;"><span class="top-{{ product.priority }}"></span></div>
-          </template>
-        </div>
-        <div class="statistics-product-data-totals">
-          <div class="statistics-product-data-total">0</div>
-          <div class="statistics-product-data-total">5</div>
-          <div class="statistics-product-data-total">10</div>
-        </div>
-        <div class="statistics-product-data-names">
-          <template v-for="product in statistics.products">
-            <div class="statistics-product-data-name">{{ product.name }}</div>
-          </template>
-        </div>
-      </div>
+  <div class="timeline-container">
+    <div class="timeline-products-wrapper">
+      <div class="timeline-product-text">Produits les plus échangés</div>
+
     </div>
-    <div class="statistics-infos-wrapper">
-      <div class="statistics-infos-content">
-        <div class="statistics-infos-content-bg">
-          <div class="statistics-infos-content-value">{{ statistics.share.month }}</div>
-        </div>
-        <div class="statistics-infos-content-legend"><span class="underline"></span>Echanges effectuées </div>
-        <div class="statistics-infos-content-legend"><span class="underline"></span>dans le mois</div>
-      </div>
-      <div class="statistics-infos-content">
-        <div class="statistics-infos-content-bg">
-          <div class="statistics-infos-content-value">{{ statistics.share.begin }}</div>
-        </div>
-        <div class="statistics-infos-content-legend"><span class="underline"></span>Echanges effectuées</div>
-        <div class="statistics-infos-content-legend"><span class="underline"></span>depuis l’inscription</div>
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -48,7 +12,7 @@
 export default {
   data () {
     return {
-      statistics: {
+      timeline: {
         share: { month: '2', begin: '6' },
         products: [
           { name: 'Tomate', percent: '96', priority: '1' },
@@ -66,12 +30,12 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
-.statistics-container {
+.timeline-container {
   position: relative;
   width: 100%;
 }
 
-  .statistics-products-wrapper {
+  .timeline-products-wrapper {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -80,19 +44,19 @@ export default {
     background: $color-white;
   }
 
-    .statistics-product-text {
+    .timeline-product-text {
       font: 1.2em 'Karla-Regular', sans-serif;
       color: $color-text;
     }
 
-    .statistics-product-data {
+    .timeline-product-data {
       position: relative;
       width: 100%;
       height: 140px;
     }
 
-      .statistics-product-data-lines,
-      .statistics-product-data-graphs {
+      .timeline-product-data-lines,
+      .timeline-product-data-graphs {
         position: absolute;
         top: 0;
         left: 0;
@@ -104,19 +68,19 @@ export default {
         height: 107px;
       }
 
-      .statistics-product-data-lines {
+      .timeline-product-data-lines {
         flex-direction: column;
       }
 
 
 
-        .statistics-product-data-line {
+        .timeline-product-data-line {
           width: 100%;
           height: 1px;
           background: $color-stats-line;
         }
 
-      .statistics-product-data-graphs {
+      .timeline-product-data-graphs {
         flex-direction: row;
       }
 
@@ -125,7 +89,7 @@ export default {
         100% { height: 100%;}
       }
 
-        .statistics-product-data-graph {
+        .timeline-product-data-graph {
           width: 20%;
           position: relative;
 
@@ -146,7 +110,7 @@ export default {
 
         }
 
-      .statistics-product-data-names{
+      .timeline-product-data-names{
         position: absolute;
         top: 125px;
         left: 0;
@@ -156,7 +120,7 @@ export default {
         width: 100%;
       }
 
-      .statistics-product-data-totals {
+      .timeline-product-data-totals {
         position: absolute;
         top: 5px;
         left: -15px;
@@ -167,20 +131,20 @@ export default {
         height: 110px;
       }
 
-        .statistics-product-data-name {
+        .timeline-product-data-name {
           width: 20%;
           font: 0.9em 'Karla-Regular', sans-serif;
           color: #9b9b9b;
         }
 
-        .statistics-product-data-total {
+        .timeline-product-data-total {
           &:first-child{ height: 4%;}
           height: 49%;
           font: 0.9em 'Karla-Regular', sans-serif;
           color: #9b9b9b;
         }
 
-  .statistics-infos-wrapper {
+  .timeline-infos-wrapper {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -192,7 +156,7 @@ export default {
       100% { opacity: 1; transform: scale3d(1,1,1); }
     }
 
-    .statistics-infos-content {
+    .timeline-infos-content {
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -202,7 +166,7 @@ export default {
       animation: apparition 1s normal;
     }
 
-      .statistics-infos-content-bg {
+      .timeline-infos-content-bg {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -216,14 +180,14 @@ export default {
         -webkit-mask-size: 100% 100%;
       }
 
-      .statistics-infos-content-value {
+      .timeline-infos-content-value {
         margin-top: -3px;
         text-align: center;
         font: 1.6em 'Karla-Bold', sans-serif;
         color: $color-white;
       }
 
-      .statistics-infos-content-legend {
+      .timeline-infos-content-legend {
         display: flex;
         position: relative;
         margin: 0 10%;

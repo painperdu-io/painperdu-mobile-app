@@ -37,7 +37,7 @@
   <div class="product-description">Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper Incenderat autem audaces.</div>
 
   <fieldset class="member-profile-statistics-wrapper">
-    <legend class="member-profile-wrapper">
+    <legend class="member-profile-wrapper" v-link="{ path: '/profile/member' }">
       <div class="member-profile-item-allie" v-if="member.allie">
         <svg viewBox="0 0 100 100" class="profile-icon ">
           <use xlink:href="#app-icon-infinite"></use>
@@ -65,11 +65,17 @@
 
   <div class="ask-product-wrapper">
     <div class="ask-product-text">
-      <input type="checkbox" id="brut" class="filter"value="false" v-model="productType">
-      <label for="brut" >
+      <input type="checkbox" id="later" class="later" value="false" v-model="laterHours">
+      <label for="later" >
         Je ne suis pas disponible maintenant. <br>
         Je veux récupérer ma demande plus tard.
       </label>
+    </div>
+    <div v-if="laterHours">
+      <label>Date</label>
+      <input type="text" />
+      <label>Créneau horaire</label>
+      <input type="text" />
     </div>
     <div class="ask-product-button">Demander</div>
   </div>
@@ -257,9 +263,9 @@ export default {
       border-radius: 50%;
       font-size: (2.6em / 2);
       font-family: 'Karla-Bold';
-      width: (55px /2);
-      height: (55px /2);
-      line-height: (55px / 2);
+      width: (70px /2);
+      height: (70px /2);
+      line-height: (70px / 2);
     }
 
     .product-infos .legend {

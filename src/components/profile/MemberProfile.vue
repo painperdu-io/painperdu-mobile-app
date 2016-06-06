@@ -1,5 +1,10 @@
 <template>
   <div class="member-profile-container">
+    <div class="app-icon-container">
+      <svg viewBox="0 0 50 50" class="app-icon">
+        <use xlink:href="#header-icon-flag"></use>
+      </svg>
+    </div>
     <profile :profile="profile"></profile>
     <div class="member-profile-statistics-wrapper">
       <div class="member-profile-statistics">
@@ -10,7 +15,7 @@
         </div>
         <div class="member-profile-statistics-item">
           <p class="legend">Avis moyen</p>
-          <p class="value">Parfait</p>
+          <p class="value green">Parfait</p>
           <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item">
@@ -20,6 +25,15 @@
           <members-list :members="accomplices" :comperes="true"></members-list>
         </div>
       </div>
+    </div>
+    <div class="already-allie" v-if="profile.allie">
+      <div class="profile-item-allie">
+        <svg viewBox="0 0 100 100" class="profile-icon">
+          <use xlink:href="#app-icon-infinite"></use>
+        </svg>
+      </div>
+      <h3 class="text">Vous vous êtes déjà allié avec Laurie !<h3>
+      <p class="see-alliance">Voir l'historique de vos alliances</p>
     </div>
   </div>
 </template>
@@ -35,6 +49,7 @@ export default {
   },
   data() {
     return {
+      allie: true,
       profile: {},
       accomplices: {},
     };
@@ -74,7 +89,7 @@ export default {
   }
 
     .member-profile-statistics {
-      padding: 18px 0 0 0;
+      padding: 18px 0 15px 0;
     }
 
       .member-profile-statistics-item {
@@ -93,6 +108,9 @@ export default {
         .value {
           font: 1.2em 'Karla-Bold', sans-serif;
           color: $color-green;
+          &.green {
+            color: #4ce08a;
+          }
         }
 
         & > p {
@@ -119,4 +137,42 @@ export default {
     z-index: -1;
   }
 
+  .already-allie {
+    margin-top: 20px;
+    text-align: center;
+    .text {
+      color: $color-text;
+    }
+    .see-alliance {
+      color: $color-green;
+      text-decoration: underline;
+      text-transform: uppercase;
+    }
+  }
+
+  .profile-item-allie {
+    position: absolute;
+    right: 33%;
+    top: -14px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    fill: $color-white;
+    background: $color-blue;
+    border-radius: 50%;
+  }
+
+  .app-icon-container {
+    position: absolute;
+    width: 32px;
+    height: 20px;
+    padding: 3px;
+    box-sizing: border-box;
+    fill: $color-red;
+    z-index: 10;
+    right: 40px;
+    top: 45px;
+    transform: translate3d(-50%,-50%,0);
+  }
 </style>

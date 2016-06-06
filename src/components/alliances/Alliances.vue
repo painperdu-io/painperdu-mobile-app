@@ -6,7 +6,7 @@
     <div class="alliances-list-product">
       <template v-for="alliance in alliances | orderBy 'name'">
         <div class="alliances-product-item" v-bind:class="{ 'inactive': !alliance.status }" v-link="{ path: '/alliances/details' }" v-for="product in alliance.product">
-          <div class="alliances-product-icon">
+          <div class="alliances-product-icon type" v-bind:class="{ 'type-prepare': product.brut }">
             <svg viewBox="0 0 100 100">
               <use xlink:href="#foods-icon-{{ product.name }}"></use>
             </svg>
@@ -93,8 +93,10 @@ export default {
 
         .alliances-product-icon,
         .alliances-product-description {
-          filter: grayscale(100%);
+          filter: grayscale(1);
+          -webkit-filter:grayscale(1);
           mix-blend-mode: multiply;
+          opacity: 0.5;
         }
       }
     }
@@ -106,10 +108,20 @@ export default {
         border-radius: 50%;
         text-align: center;
         background: $color-white;
+        border: 12px solid $color-white;
+        box-sizing: border-box;
 
         svg {
-          transform: scale(0.7);
+          transform: scale(0.8);
         }
+      }
+
+      .alliances-product-icon.type {
+        background: url('/static/img/product-brut.png') center center repeat $color-white;
+      }
+
+      .alliances-product-icon.type-prepare {
+        background: url('/static/img/product-prepare.png') center center repeat $color-white;
       }
 
       .alliances-product-description {
