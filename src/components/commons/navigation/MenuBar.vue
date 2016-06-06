@@ -10,7 +10,7 @@
         <svg viewBox="0 0 1024 768">
           <use xlink:href="#nav-icon-note"></use>
         </svg>
-        <a href="#">Noter l'application</a>
+        <a href="#">Configurer mes outils</a>
       </div>
       <div class="menu-bar-nav-item-separator"></div>
       <div class="menu-bar-nav-item">
@@ -67,14 +67,24 @@ export default {};
   align-items: center;
   position: fixed;
   top: 10px;
-  left: -500px;
+  left: 0px;
   width: 300px;
   height: 100vh;
-  background: $color-white url('/static/img/bg-menu.png');
+  background-color: $color-white;
   background-size: 303px 431px;
   background-position: center 150px;
+  transform: translate3d(-100%, 0,0);
+  -webkit-transform: translate3d(-100%, 0,0);
   box-shadow: 0px 3px 70px rgba(0,0,0, 0.2);
-  z-index: 999;
+  z-index: 0;
+  transition: transform 1s 0.5s, z-index 0.5s;
+  -webkit-transition: -webkit-transform 1s 0.5s, z-index 0.5s;
+
+  &.active {
+    transform: translate3d(0, 0,0);
+    -webkit-transform: translate3d(0, 0,0);
+    z-index: 999;
+  }
 }
 
   .menu-bar-logo-wrapper {
@@ -84,7 +94,7 @@ export default {};
     align-items: center;
     width: 100%;
     height: 150px;
-    background: $color-beige;
+    background: $color-red;
 
     & > svg {
       transform: scale(1.5);

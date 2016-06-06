@@ -284,7 +284,8 @@ router.map({
       bgClass: 'background1',
       header: {
         enable: true,
-        previous: true,
+        menu: true,
+        close: true,
       },
       footer: {
         enable: false,

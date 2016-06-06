@@ -2,7 +2,7 @@
   <div class="header-bar">
     <div class="header-navigation">
       <div class="header-item  header-item-25">
-        <svg v-if="$route.page.header.menu" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+        <svg v-if="$route.page.header.menu" v-on:click="openMenu" viewBox="0 0 50 50" class="header-icon  header-icon-left">
           <use xlink:href="#header-icon-menu"></use>
         </svg>
         <svg v-if="$route.page.header.previous" v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left">
@@ -13,9 +13,7 @@
         </svg>
       </div>
       <div class="header-item  header-item-50">
-        <svg v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " viewBox="0 0 1024 768" class="header-logo">
-          <use xlink:href="#logo-icon"></use>
-        </svg>
+        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " class="header-logo"></div>
         <h1 v-else>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
@@ -43,15 +41,19 @@
 export default {
   methods: {
     openCart(event) {
+      event.preventDefault()
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
-      event.preventDefault()
     },
     goPrevious(event) {
       event.preventDefault();
       this.$route.router.go(history.go(0));
-    }
-  }
+    },
+    openMenu(event) {
+      event.preventDefault();
+      document.getElementsByClassName('menu-bar-container')[0].classList.add('active');
+    },
+  },
 };
 </script>
 
@@ -112,6 +114,8 @@ export default {
       width: auto;
       height: 40px;
       vertical-align: top;
+      background: url('/static/img/logo-pain-perdu.png') top center no-repeat;
+      background-size: 175px 35px;
     }
 
 .header-icon {
