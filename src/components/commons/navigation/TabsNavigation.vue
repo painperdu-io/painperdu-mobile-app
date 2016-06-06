@@ -4,7 +4,7 @@
       <template v-for="tab in tabs">
         <template v-if="tab.route == route">
           <template v-for="(index, item) in tab.items">
-            <div class="tabs-navigation-item" v-on:click="tabActive(index, item.path + '/' + objectid )">{{ item.name }}</div>
+            <div class="tabs-navigation-item" v-link="current" v-on:click="tabActive(index, item.path + '/' + objectid )">{{ item.name }}</div>
           </template>
         </template>
       </template>
@@ -25,6 +25,13 @@ export default {
   },
   methods: {
     tabActive(position, route) {
+      var links = document.getElementsByClassName('tabs-navigation-item');
+      for (var i = 0; i < links.length; i++) {
+        if(i == position){
+          var current = document.getElementsByClassName('tabs-navigation-item')[position].classList.add('active');
+        }
+        else { document.getElementsByClassName('tabs-navigation-item')[i].classList.remove('active'); }
+      }
       const el = document.getElementsByClassName('tabs-navigation-active')[0];
       el.style.left = `${position * (100 / 3)}%`;
       this.$route.router.go({ path: route });
@@ -52,7 +59,7 @@ export default {
     height: 3px;
     width: 33%;
     background: $color-red;
-    transition: all 1s;
+    transition: all 0.5s;
   }
 
   .tabs-navigation-wrapper {
