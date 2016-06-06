@@ -108,8 +108,8 @@ export default {
     }
 
     .header-logo {
-      transform: scale3d(3.4,3.4,3.4);
-      -webkit-transform: scale3d(3.4,3.4,3.4);
+      transform: scale(3.4);
+      -webkit-transform: scale(3.4);
     }
 
 .header-icon {
