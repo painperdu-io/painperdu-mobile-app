@@ -7,6 +7,7 @@
         </div>
       </div>
       <div v-if="!comperes" class="members-item" v-link="{ path: '/profile/member' }">
+        <div class="members-name">{{ member.name }}</div>
         <div class="members-image">
           <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
         </div>
@@ -36,39 +37,56 @@ export default {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  padding: 10px 20px;
 }
 
   .members-item {
     display: flex;
     justify-content: center;
     align-content: center;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
-    margin: 12px;
-    width: 60px;
-    height: 60px;
+    margin: 10px 8px;
     border-radius: 0;
     overflow: hidden;
-    clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
-    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+
 
     &.comperes-item {
       border-radius: 50%;
-      clip-path: none;
-      -webkit-clip-path: none;
+      .members-image {
+        width: 55px;
+        height: 55px;
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
     }
   }
 
+  .members-name {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    text-transform: uppercase;
+    font: 1.2em 'Karla-Italic', sans-serif;
+    color: $color-text;
+    margin-bottom: 5px;
+  }
     .members-image {
       display: flex;
+      width: 55px;
+      height: 65px;
       justify-content: center;
       align-content: center;
-      flex-direction: column;
-      background-color: $color-sepia;
+      flex-direction: row;
+      mask-image: url('/static/img/blason-1.png');
+      -webkit-mask-image: url('/static/img/blason-1.png');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
 
       img {
-        width: 60px;
-        height: 60px;
+        width: auto;
+        height: 65px;
         filter: grayscale(100%);
         mix-blend-mode: multiply;
       }

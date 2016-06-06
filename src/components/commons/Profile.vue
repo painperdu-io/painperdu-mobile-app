@@ -1,7 +1,7 @@
 <template>
   <div class="profile-container">
     <div class="profile-infos {{ profile.status }}">
-      <div class="profile-infos-photo">
+      <div class="profile-infos-photo" v-bind:class="{ 'profile-allie': profile.allie }">
         <div class="profile-infos-photo-img">
           <img src="https://randomuser.me/api/portraits/men/{{ profile.id }}.jpg"/>
         </div>
@@ -80,6 +80,16 @@ export default {
       height: 125px;
       border-radius: 50%;
       overflow: hidden;
+
+      &.profile-allie {
+        border-radius: 0;
+        width: 100px;
+        height: 115px;
+        mask-image: url('/static/img/blason-1.png');
+        -webkit-mask-image: url('/static/img/blason-1.png');
+        mask-size: 100% 100%;
+        -webkit-mask-size: 100% 100%;
+      }
     }
 
       .profile-infos-photo-img {
@@ -93,8 +103,10 @@ export default {
           width: 125px;
           height: 125px;
           filter: grayscale(100%);
-          mix-blend-mode: multiply;
+          //mix-blend-mode: multiply;
         }
+
+
       }
 
     .profile-infos-separator {
@@ -142,14 +154,14 @@ export default {
 
     .profile-item-allie {
       position: absolute;
-      right: 35%;
-      top: 0;
+      right: 33%;
+      top: -14px;
       width: 28px;
       height: 28px;
       line-height: 28px;
       text-align: center;
       fill: $color-white;
-      background: $color-green;
+      background: $color-blue;
       border-radius: 50%;
     }
 
