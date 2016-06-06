@@ -49,8 +49,8 @@ export default {
       this.$route.router.go(history.back());
     },
     openMenu(event) {
-      document.getElementsByClassName('menu-bar-container')[0].classList.add('active');
       event.preventDefault();
+      document.getElementsByClassName('menu-bar-container')[0].classList.add('active');
     },
   },
 };
