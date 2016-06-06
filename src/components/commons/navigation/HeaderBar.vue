@@ -22,7 +22,7 @@
         <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 50 50" class="header-icon  header-icon-right">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg v-if="$route.page.header.add && $route.name == 'Market' " v-link="{ path: '/market/add' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.add && $route.name == 'Market' " v-link="{ path: '/market/add' }" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-add">
           <use xlink:href="#header-icon-add"></use>
         </svg>
         <svg v-if="$route.page.header.product" v-link="{ path: '/foodkeeper/add/product' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
@@ -123,4 +123,21 @@ export default {
   .header-icon-right {
     margin-right: 10px;
   }
+
+  .header-icon-app {
+    flex: auto;
+  }
+
+  .header-icon-close {
+    color: $color-white;
+    text-decoration: underline;
+    font: 1.5em 'Avenir-Book', sans-serif;
+    font-weight: 300;
+    width: auto;
+    margin-top: 7px;
+    margin-right: 33px;
+  }
+
+  .header-icon-close {transform: scale3d(1.2,1.2,1.2);}
+
 </style>

@@ -5,7 +5,7 @@
         <use xlink:href="#header-icon-flag"></use>
       </svg>
     </div>
-    <profile :profile="profile"></profile>
+    <profile :profile="profile" :type="accomplice" ></profile>
     <div class="member-profile-statistics-wrapper">
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       allie: true,
+      type: {},
       profile: {},
       accomplices: {},
     };
