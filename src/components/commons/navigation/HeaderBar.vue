@@ -108,7 +108,9 @@ export default {
     }
 
     .header-logo {
-      
+      width: auto;
+      height: 40px;
+      vertical-align: top;
     }
 
 .header-icon {
