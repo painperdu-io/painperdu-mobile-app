@@ -64,16 +64,19 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0) scale3d(0,0,0);
+  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(0,0,0);
   width: 335px;
   min-height: 100px;
   background: $color-white;
   z-index: -1;
   text-align: center;
-  transition: all 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
   opacity: 0;
 
   &.active {
     transform: translate3d(-50%, -50%, 0) scale3d(1,1,1);
+    -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1,1,1);
     opacity: 1;
     z-index: 9999;
   }
