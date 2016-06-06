@@ -2,7 +2,7 @@
   <div class="header-bar">
     <div class="header-navigation">
       <div class="header-item  header-item-25">
-        <svg v-if="$route.page.header.menu" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+        <svg v-if="$route.page.header.menu" v-on:click="openMenu" viewBox="0 0 50 50" class="header-icon  header-icon-left">
           <use xlink:href="#header-icon-menu"></use>
         </svg>
         <svg v-if="$route.page.header.previous" v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left">
@@ -49,8 +49,12 @@ export default {
     },
     goPrevious() {
       this.$route.router.go(history.back());
-    }
-  }
+    },
+    openMenu(event) {
+      document.getElementsByClassName('menu-bar-container')[0].classList.add('active');
+      event.preventDefault();
+    },
+  },
 };
 </script>
 
