@@ -1,24 +1,34 @@
 <template>
   <div class="members-container">
     <template v-for="(index, member) in members">
-      <div v-if="comperes && index < 3" class="members-item comperes-item" v-bind:class="{ 'comperes-item': comperes }" v-link="{ path: '/profile/member' }">
-        <div class="members-image">
-          <img v-bind:src="member.picture"/>
-        </div>
-      </div>
-      <div v-if="!comperes" class="members-item" v-link="{ path: '/profile/member' }">
+      <div v-if="!accomplices" class="members-item" v-link="{ path: '/profile/member' , params: { type: 'ally' } }">
         <div class="members-name">{{ member.name }}</div>
         <div class="members-image">
           <img v-bind:src="member.picture"/>
         </div>
       </div>
+      <div v-if="accomplices" class="members-item accomplices-item" v-bind:class="{ 'accomplices-item': accomplices }" v-link="{ path: '/profile/member', params: { type: 'accomplices' } }">
+        <div v-if="index < 3" class="members-image">
+          <img v-bind:src="member.picture"/>
+        </div>
+        <div class="accomplices-add-icon" v-on:click="addAccomplice">
+          <div class="accomplices-add-icon-bg">
+            <span class="accomplices-add-icon-text">+</span>
+          </div>
+        </div>
+      </div>
     </template>
+    <div v-if="add" class="accomplices-add-icon" v-on:click="addAccomplice">
+      <div class="accomplices-add-icon-bg">
+        <span class="accomplices-add-icon-text">+</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['members', 'comperes'],
+  props: ['members', 'accomplices'],
 };
 </script>
 
@@ -44,7 +54,7 @@ export default {
     overflow: hidden;
 
 
-    &.comperes-item {
+    &.accomplices-item {
       border-radius: 50%;
       .members-image {
         width: 55px;
@@ -84,4 +94,29 @@ export default {
         mix-blend-mode: multiply;
       }
     }
+
+    .accomplices-add-icon {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: row;
+    }
+
+      .accomplices-add-icon-bg {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 9px;
+        width: 60px;
+        height: 60px;
+        background: $color-white;
+        border-radius: 50%;
+        box-shadow: 0px 3px 10px rgba(0,0,0, 0.2);
+      }
+
+      .accomplices-add-icon-text {
+        text-align: center;
+        font: 3em 'Karla-Regular', sans-serif;
+        color: $color-red;
+      }
 </style>
