@@ -15,14 +15,13 @@ import router from '../../../router';
 export default {
   methods: {
     changeActive: (position, route) => {
-      var el = document.getElementsByClassName('footer-active')[0];
-      el.style.left = "" + position * 33 + "%";
+      const el = document.getElementsByClassName('footer-active')[0];
+      el.style.left = `${position * (100 / 3)}%`;
       router.go({ name: route });
       event.preventDefault()
     }
   }
 };
-
 </script>
 
 <style lang="scss" scoped>

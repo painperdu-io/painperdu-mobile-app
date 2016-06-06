@@ -4,7 +4,7 @@
       <template v-for="tab in tabs">
         <template v-if="tab.route == route">
           <template v-for="(index, item) in tab.items">
-            <div class="tabs-navigation-item" v-on:click="changeActive(index, item.path )">{{ item.name }}</div>
+            <div class="tabs-navigation-item" v-on:click="tabActive(index, item.path + '/' + objectid )">{{ item.name }}</div>
           </template>
         </template>
       </template>
@@ -18,16 +18,16 @@ import { tabsNavigation } from './../../../vuex/getters';
 import router from '../../../router';
 
 export default {
-  props: ['route'],
+  props: ['objectid', 'route'],
   vuex: {
     getters: {
       tabs: tabsNavigation,
     },
   },
   methods: {
-    changeActive: (position, route) => {
-      var el = document.getElementsByClassName('tabs-navigation-active')[0];
-      el.style.left = "" + position * 33 + "%";
+    tabActive: (position, route) => {
+      const el = document.getElementsByClassName('tabs-navigation-active')[0];
+      el.style.left = `${position * (100 / 3)}%`;
       router.go({ path: route });
       event.preventDefault()
     }

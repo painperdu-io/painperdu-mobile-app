@@ -1,8 +1,8 @@
 <template>
   <div class="foodkeeper-container">
     <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details/products' }">
-        <div class="foodkeeper-item-background"  style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
+      <div class="foodkeeper-item" v-link="{ path: '/foodkeeper/details/products/'+ foodkeeper._id, params: { id: foodkeeper._id }}">
+        <div class="foodkeeper-item-background"  style="background-image: url('/static/temp/{{ foodkeeper.picture }}');"></div>
         <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
           <use xlink:href="#app-icon-star"></use>
         </svg>
@@ -35,28 +35,13 @@
 <script>
 export default {
   data() {
-    return {
-      foodkeepers: [
-        {
-          name: 'Studio Annecy',
-          description: 'Description du studio',
-          photo: 'home-1.jpg',
-          favorite: true,
-        },
-        {
-          name: 'Chez Papa/Maman',
-          description: 'Description du studio',
-          photo: 'home-1.jpg',
-          favorite: false,
-        },
-        {
-          name: 'Megalo',
-          description: 'Description du studio',
-          photo: 'home-1.jpg',
-          favorite: false,
-        },
-      ]
-    }
+    return { foodkeepers: [] };
+  },
+  ready() {
+    // récupérer la liste des foodkeepers
+    this.$http({ url: 'users/575302fc5dacbac32540268d', method: 'GET' })
+      .then((response) => { this.foodkeepers = response.data.foodkeepers; })
+      .catch(err => { console.log(err); });
   }
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="products-container">
-    <template v-for="product in products | filterBy search in 'name' | filterBy type in 'brut' | orderBy 'name' ">
-      <div class="product-item-wrapper" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product' }">
-        <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
+    <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'name' ">
+      <div class="product-item-wrapper" v-bind:class="{ 'inactive': !product.available }" v-link="{ path: '/market/product' }">
+        <div class="product-item-circle {{ product.type }}">
           <svg viewBox="0 0 100 100" class="product-item-icon">
-            <use xlink:href="#foods-icon-{{ product.name}}"></use>
+            <use xlink:href="#foods-icon-{{ product.icon}}"></use>
           </svg>
           <div class="product-item-quantity" v-bind:class="{ 'emergency': product.emergency }">
             {{ product.quantity }}
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="product-item-name">{{ product.name }}</div>
-        <div class="product-item-status" v-if="product.status">Disponible maintenant</div>
+        <div class="product-item-status" v-if="product.available">Disponible maintenant</div>
         <div class="product-item-status" v-else>Indisponible</div>
       </div>
     </template>
@@ -63,11 +63,11 @@ export default {
       box-sizing: border-box;
     }
 
-      .product-item-circle.type {
+      .product-item-circle.raw {
         background: url('/static/img/product-brut.png') center center no-repeat $color-white;
       }
 
-      .product-item-circle.type-prepare {
+      .product-item-circle.homemade {
         background: url('/static/img/product-prepare.png') center center no-repeat $color-white;
       }
 
@@ -116,12 +116,9 @@ export default {
             &.square-3 { top: 6px; right: -13px; transform: rotate(75deg); animation: fade 0.2s infinite alternate 0.4s ;}
             &.square-4 { top: 17px; right: -13px; transform: rotate(-75deg); animation: fade 0.2s infinite alternate 0.5s ;}
             &.square-5 { top: 26px; right: -6px; transform: rotate(-50deg); animation: fade 0.2s infinite alternate 0.6s ;}
-
           }
         }
       }
-
-
 
     .product-item-name {
       margin: 10px auto 5px;

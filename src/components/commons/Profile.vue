@@ -3,7 +3,7 @@
     <div class="profile-infos {{ profile.status }}">
       <div class="profile-infos-photo">
         <div class="profile-infos-photo-img">
-          <img src="https://randomuser.me/api/portraits/men/{{ profile.id }}.jpg"/>
+          <img v-bind:src="profile.picture"/>
         </div>
       </div>
       <div class="profile-item-allie" v-if="profile.allie">
@@ -11,28 +11,36 @@
           <use xlink:href="#app-icon-infinite"></use>
         </svg>
       </div>
-      <h3 class="profile-infos-name">{{ profile.name }}</h3>
+      <h3 class="profile-infos-name">{{ profile.name.first }} {{ profile.name.last }}</h3>
       <div class="profile-infos-separator"></div>
-      <p class="profile-infos-status ">{{ profile.status }}</p>
+      <p class="profile-infos-status ">{{ statusName }}</p>
     </div>
     <div class="profile-description">
-      <p class="profile-description-text">{{ profile.description }}</p>
+      <p class="profile-description-text">{{ profile.profile.description }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      profile: {
-        id: '12',
-        name: 'Adrien',
-        status: 'ménestrel',
-        allie: true,
-        description: 'Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper Incenderat autem audaces.',
-      },
-    };
+  props: ['profile'],
+  computed: {
+    statusName() {
+      const status = [
+        { score: 10, name: 'Artisan' },
+        { score: 20, name: 'Soldat' },
+        { score: 30, name: 'Menestrel' },
+        { score: 40, name: 'Écuyer' },
+        { score: 50, name: 'Chevalier' },
+        { score: 60, name: 'Seigneur' },
+      ];
+
+      for (let i = 0; i < status.length; i++) {
+        if (3 < status[i].score) {
+          return status[i].name;
+        }
+      }
+    },
   },
 };
 </script>
@@ -152,5 +160,4 @@ export default {
       background: $color-green;
       border-radius: 50%;
     }
-
 </style>

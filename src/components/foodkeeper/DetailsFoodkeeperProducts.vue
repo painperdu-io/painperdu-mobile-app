@@ -1,6 +1,6 @@
 <template>
   <div class="details-foodkeeper-products-wrapper">
-    <products-list :products="foodkeeper.products"></products-list>
+    <products-list :products="products"></products-list>
   </div>
 </template>
 
@@ -12,60 +12,13 @@ export default {
     ProductsList,
   },
   data() {
-    return {
-      foodkeeper: {
-        products: [
-          { name: 'salade',
-            quantity: '3',
-            status: true,
-            brut: true,
-            emergency: true,
-          },
-          { name: 'chou',
-            quantity: '1',
-            status: false,
-            brut: true,
-            emergency: true,
-          },
-          { name: 'pain',
-            quantity: '1',
-            status: true,
-            brut: true,
-            emergency: false,
-          },
-          { name: 'poivron',
-            quantity: '6',
-            status: true,
-            brut: true,
-            emergency: false,
-          },
-          { name: 'pizza',
-            quantity: '3',
-            status: true,
-            brut: false,
-            emergency: true,
-          },
-          { name: 'emmental',
-            quantity: '1',
-            status: false,
-            brut: true,
-            emergency: false,
-          },
-          { name: 'viande',
-            quantity: '1',
-            status: true,
-            brut: true,
-            emergency: false,
-          },
-          { name: 'banane',
-            quantity: '6',
-            status: true, //disponible maintenant
-            brut: true, //type produit
-            emergency: false,
-          },
-        ]
-      }
-    }
+    return { products: [] };
+  },
+  ready() {
+    // récupére les produits liés à un foodkeeper
+    this.$http({ url: 'products/foodkeeper/' + this.$route.params.id, method: 'GET' })
+      .then((response) => { this.products = response.data; })
+      .catch(err => { console.log(err); });
   }
 };
 </script>

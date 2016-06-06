@@ -1,13 +1,13 @@
 <template>
   <div class="accomplices-container">
     <template v-for="accomplice in accomplices">
-      <div class="accomplices-item" v-link="{ path: '/profile/member' }">
+      <div class="accomplices-item" v-link="{ path: '/profile/member/'+ accomplice._id, params: { id: accomplice._id }}">
         <div class="accomplices-image">
-          <img src="https://randomuser.me/api/portraits/men/{{ accomplice.id }}.jpg"/>
+          <img v-bind:src="accomplice.picture"/>
         </div>
       </div>
     </template>
-    <div class="accomplices-add-icon"  v-on:click="addAccomplice">
+    <div class="accomplices-add-icon" v-on:click="addAccomplice">
       <div class="accomplices-add-icon-bg">
         <span class="accomplices-add-icon-text">+</span>
       </div>
@@ -17,14 +17,8 @@
 </template>
 
 <script>
-import { detailsFoodkeeperAccomplices } from './../../vuex/getters'
-
 export default {
-  vuex: {
-    getters: {
-      accomplices: detailsFoodkeeperAccomplices,
-    },
-  },
+  props: ['accomplices'],
   methods: {
     addAccomplice: (event) => {
       document.getElementsByClassName('popup-container')[0].classList.add('active');

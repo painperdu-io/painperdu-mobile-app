@@ -3,12 +3,12 @@
     <template v-for="(index, member) in members">
       <div v-if="comperes && index < 3" class="members-item comperes-item" v-bind:class="{ 'comperes-item': comperes }" v-link="{ path: '/profile/member' }">
         <div class="members-image">
-          <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
+          <img v-bind:src="member.picture"/>
         </div>
       </div>
       <div v-if="!comperes" class="members-item" v-link="{ path: '/profile/member' }">
         <div class="members-image">
-          <img src="https://randomuser.me/api/portraits/men/{{ member.id }}.jpg"/>
+          <img v-bind:src="member.picture"/>
         </div>
       </div>
     </template>
@@ -16,15 +16,8 @@
 </template>
 
 <script>
-import { detailsMarketMembers } from './../../vuex/getters'
-
 export default {
-  props: ['comperes'],
-  vuex: {
-    getters: {
-      members: detailsMarketMembers,
-    },
-  },
+  props: ['members', 'comperes'],
 };
 </script>
 

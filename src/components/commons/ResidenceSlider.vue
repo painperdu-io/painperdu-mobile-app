@@ -1,6 +1,6 @@
 <template>
   <div class="residence-slider-container">
-    <div class="residence-slider-item" v-link="{ path: '/market/details/members' }">
+    <div class="residence-slider-item" v-link="{ path: '/market/details/location/'+ data._id, params: { id: data._id }}">
       <img src="./../../../static/temp/clan.png" />
       <div class="residence-slider-item-name">
         {{ data.name }}
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ['data']
+  props: ['data'],
 };
 </script>
 

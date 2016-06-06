@@ -1,7 +1,7 @@
 <template>
   <div class="foodkeeper-details-container">
-    <div class="foodkeeper-details-item-wrapper" v-link="{ path: '/foodkeeper/details' }">
-      <div class="foodkeeper-details-item-background" style="background-image: url('/static/temp/{{ foodkeeper.photo }}');"></div>
+    <div class="foodkeeper-details-item-wrapper">
+      <div class="foodkeeper-details-item-background" style="background-image: url('/static/temp/{{ foodkeeper.picture }}');"></div>
       <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
         <use xlink:href="#app-icon-star"></use>
       </svg>
@@ -11,9 +11,9 @@
     </div>
     <div class="foodkeeper-details-accomplice-wrapper">
       <h3 class="foodkeeper-details-accomplice-title"><span class="underline"></span>Mes compères</h3>
-      <accomplices-list></accomplices-list>
+      <accomplices-list :accomplices="accomplices"></accomplices-list>
     </div>
-    <tabs-navigation route="DetailsFoodkeeper"></tabs-navigation>
+    <tabs-navigation :objectid="$route.params.id" route="DetailsFoodkeeper"></tabs-navigation>
     <router-view></router-view>
   </div>
 </template>
@@ -27,30 +27,23 @@ export default {
     AccomplicesList,
     TabsNavigation,
   },
-  data () {
+  data() {
     return {
-      foodkeeper: {
-        name: 'Studio Lyon',
-        description: 'Description du studio',
-        photo: 'home-1.jpg',
-        favorite: true,
-        accomplices: [
-          {
-            id: 75,
-            name: 'Firstname Lastname',
-          },
-          {
-            id: 54,
-            name: 'Firstname Lastname',
-          },
-          {
-            id: 23,
-            name: 'Firstname Lastname',
-          },
-        ],
-      },
+      foodkeeper: {},
+      accomplices: {}
     };
   },
+  ready() {
+    // récupére les informations sur le foodkeeper
+    this.$http({ url: 'foodkeepers/' + this.$route.params.id, method: 'GET' })
+      .then((response) => { this.foodkeeper = response.data; })
+      .catch(err => { console.log(err); });
+
+    // récupére les informations sur les compères
+    this.$http({ url: 'users/foodkeeper/' + this.$route.params.id, method: 'GET' })
+      .then((response) => { this.accomplices = response.data; })
+      .catch(err => { console.log(err); });
+  }
 };
 </script>
 
@@ -144,5 +137,4 @@ export default {
         z-index: -1;
       }
     }
-
 </style>

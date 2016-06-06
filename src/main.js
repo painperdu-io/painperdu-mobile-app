@@ -124,15 +124,15 @@ router.map({
       },
     },
     subRoutes: {
-      '/products': {
+      '/products/:id': {
         name: 'DetailsFoodkeeperProducts',
         component: DetailsFoodkeeperProducts,
       },
-      '/stats': {
+      '/stats/:id': {
         name: 'DetailsFoodkeeperStats',
         component: DetailsFoodkeeperStats,
       },
-      '/timeline': {
+      '/timeline/:id': {
         name: 'DetailsFoodkeeperTimeline',
         component: DetailsFoodkeeperTimeline,
       },
@@ -207,15 +207,15 @@ router.map({
       },
     },
     subRoutes: {
-      '/members': {
+      '/members/:id': {
         name: 'DetailsMarketMembers',
         component: DetailsMarketMembers,
       },
-      '/location': {
+      '/location/:id': {
         name: 'DetailsMarketLocation',
         component: DetailsMarketLocation,
       },
-      '/stats': {
+      '/stats/:id': {
         name: 'DetailsMarketStats',
         component: DetailsMarketStats,
       },
@@ -259,7 +259,7 @@ router.map({
   },
 
   // profile
-  '/profile/member': {
+  '/profile/member/:id': {
     name: 'MemberProfile',
     component: MemberProfile,
     page: {

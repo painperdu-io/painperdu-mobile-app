@@ -1,6 +1,6 @@
 <template>
   <div class="member-profile-container">
-    <profile></profile>
+    <profile :profile="profile"></profile>
     <div class="member-profile-statistics-wrapper">
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
@@ -17,7 +17,7 @@
           <p class="legend">Ses compères <span class="underline"></span></p>
         </div>
         <div class="member-profile-accomplices-wrapper">
-          <members-list :comperes="true"></members-list>
+          <members-list :members="accomplices" :comperes="true"></members-list>
         </div>
       </div>
     </div>
@@ -33,6 +33,23 @@ export default {
     Profile,
     MembersList,
   },
+  data() {
+    return {
+      profile: {},
+      accomplices: {},
+    };
+  },
+  ready() {
+    // récupérer le profile en fonction de l'id de l'utilisateur
+    this.$http({ url: 'users/' + this.$route.params.id, method: 'GET' })
+      .then((response) => { this.profile = response.data; })
+      .catch(err => { console.log(err); });
+
+    // récupérer les compères d'un utilisateur
+    this.$http({ url: 'users/' + this.$route.params.id + '/accomplices', method: 'GET' })
+      .then((response) => { this.accomplices = response.data; })
+      .catch(err => { console.log(err); });
+  }
 };
 </script>
 
