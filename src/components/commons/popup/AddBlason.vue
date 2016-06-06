@@ -182,10 +182,12 @@ export default {
   .blason {
     margin: 15px;
     width: 100px;
-    height: 100px;
+    height: 115px;
     background-color: $color-gray;
-    clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
-    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    mask-image: url('/static/img/blason-1.png');
+    -webkit-mask-image: url('/static/img/blason-1.png');
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
   }
 
 </style>

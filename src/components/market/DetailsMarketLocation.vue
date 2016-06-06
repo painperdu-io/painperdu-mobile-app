@@ -18,6 +18,6 @@ export default {
 .details-market-location-wrapper {
   position: relative;
   width: 100%;
-  height: 292px;
+  height: 372px;
 }
 </style>

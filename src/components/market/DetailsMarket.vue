@@ -1,16 +1,11 @@
 <template>
   <div class="market-details-container">
-    <residence-slider v-on:click="addBlason"></residence-slider>
-    <div class="market-details-description">
-      <p class="market-details-description-text">
-        Haec igitur prima lex amicitiae sanciatur,
-        ut ab amicis honesta petamus,
-        amicorum causa honesta faciamus,
-        ne exspectemus quidem, dum rogemur;
-        studium semper Incenderat autem audaces.
-      </p>
+    <div class="app-icon-container" v-link="{ path: '/market/add' }">
+      <svg viewBox="0 0 50 50" class="app-icon">
+        <use xlink:href="#app-icon-edit" ></use>
+      </svg>
     </div>
-    <div class="market-details-separator"></div>
+    <residence-slider></residence-slider>
     <tabs-navigation route="DetailsMarket"></tabs-navigation>
     <router-view></router-view>
   </div>
@@ -46,28 +41,18 @@ export default {
   position: relative;
 }
 
-  .market-details-description {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex: 1 100%;
-    height: 100px;
-  }
-
-    .market-details-description-text {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      width: 75%;
-      font: 1.2em 'Karla-Italic', sans-serif;
-      color: $color-text;
-    }
-
-  .market-details-separator {
-    width: 56px;
-    height: 5px;
-    margin: -5px auto 15px;
-    transform: scale(0.5);
-    background: url('/static/img/separator-green.png') center center no-repeat;
+  .app-icon-container {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: $color-green;
+    fill: $color-white;
+    z-index: 10;
+    right: 40px;
+    top: 65px;
+    transform: translate3d(-50%,-50%,0);
   }
 </style>

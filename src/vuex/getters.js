@@ -20,7 +20,7 @@ export function tabsNavigation () {
       route: 'UserProfile',
       items: [
         { name: 'Mon profil', path: '/profile/me' },
-        { name: 'Mes outils', path: '/profile/tools' },
+        { name: 'Mes statistiques', path: '/profile/stats' },
         { name: 'Mes avis', path: '/profile/reviews' },
       ]
     },
@@ -59,6 +59,10 @@ export function popupsList () {
       route: 'Market',
       recipe: true,
     },
+    {
+      route: 'DetailsFoodkeeperProducts',
+      addAccomplice: true,
+    },
   ]
 
   return popups;
@@ -68,35 +72,35 @@ export function detailsMarketMembers () {
   return [
     {
       id: 79,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 80,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 34,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 54,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 23,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 64,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 43,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
     {
       id: 21,
-      name: 'Firstname Lastname',
+      name: 'Firstname',
     },
   ]
 }
