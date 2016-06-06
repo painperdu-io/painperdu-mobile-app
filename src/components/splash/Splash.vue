@@ -9,11 +9,9 @@
 </template>
 
 <script>
-import router from '../../router'
-
 export default {
   ready () {
-    setTimeout(() => router.go({ name: 'Market' }), 1000);
+    setTimeout(() => this.$route.router.go({ name: 'Market' }), 1000);
   },
 };
 </script>

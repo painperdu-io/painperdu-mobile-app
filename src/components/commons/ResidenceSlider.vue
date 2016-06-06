@@ -1,6 +1,6 @@
 <template>
   <div class="residence-slider-container">
-    <div class="residence-slider-item" v-link="{ path: '/market/details/location/'+ data._id, params: { id: data._id }}">
+    <div class="residence-slider-item" v-link="{ name: 'DetailsMarketLocation', params: { id: data._id }}">
       <div class="residence-slider-image">
         <img src="./../../../static/temp/clan.png" />
       </div>

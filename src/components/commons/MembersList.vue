@@ -1,8 +1,7 @@
 <template>
   <div class="members-container">
-    <template v-for="(index, member) in members">
-      <div v-if="!accomplices" class="members-item" v-link="{ path: '/profile/member' , params: { type: 'ally' } }">
-        <div class="members-name">{{ member.name }}</div>
+    <template v-for="member in members">
+      <div v-if="accomplices" class="members-item accomplices-item" v-bind:class="{ 'accomplices-item': accomplices }" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div class="members-image">
           <img v-bind:src="member.picture"/>
         </div>

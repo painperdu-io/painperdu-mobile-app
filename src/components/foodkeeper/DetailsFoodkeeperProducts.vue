@@ -15,8 +15,10 @@ export default {
     return { products: [] };
   },
   ready() {
+    const foodkeeperId = this.$route.params.id;
+
     // récupére les produits liés à un foodkeeper
-    this.$http({ url: 'products/foodkeeper/' + this.$route.params.id, method: 'GET' })
+    this.$http({ url: `products/foodkeeper/${foodkeeperId}`, method: 'GET' })
       .then((response) => { this.products = response.data; })
       .catch(err => { console.log(err); });
   }
