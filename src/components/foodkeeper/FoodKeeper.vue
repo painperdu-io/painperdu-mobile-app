@@ -9,8 +9,8 @@
         <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
         <p class="foodkeeper-item-description">{{ foodkeeper.description }}</p>
-        <input id="user-dispo" type="checkbox">
-        <label for="userdispo"></label>
+        <!--<input id="user-dispo" type="checkbox">
+        <label for="userdispo"></label>-->
       </div>
     </template>
 

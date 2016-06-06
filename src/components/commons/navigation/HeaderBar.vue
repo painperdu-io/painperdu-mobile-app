@@ -47,8 +47,9 @@ export default {
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
     },
-    goPrevious() {
-      this.$route.router.go(history.back());
+    goPrevious(event) {
+      event.preventDefault();
+      this.$route.router.go(history.go(0));
     }
   }
 };
