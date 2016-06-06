@@ -1,6 +1,5 @@
 <template>
   <div class="me-profile-container">
-    <tabs-navigation route="UserProfile"></tabs-navigation>
     <div class="me-profile-infos-wrapper">
       <profile></profile>
       <div class="me-profile-btn-public">Voir le profil public</div>
@@ -23,14 +22,12 @@
 </template>
 
 <script>
-import TabsNavigation from './../commons/navigation/TabsNavigation'
 import AccomplicesList from './../commons/AccomplicesList'
 import Profile from './../commons/Profile'
 
 export default {
   components: {
     AccomplicesList,
-    TabsNavigation,
     Profile,
   },
 };

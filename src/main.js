@@ -29,7 +29,10 @@ import DetailsAlliance from './components/alliances/DetailsAlliance'
 
 // inclusion: profile
 import MemberProfile from './components/profile/MemberProfile';
-import MeProfile from './components/profile/MeProfile';
+import Profile from './components/profile/Profile';
+import DetailsProfileMe from './components/profile/DetailsProfileMe';
+import DetailsProfileReviews from './components/profile/DetailsProfileReviews';
+import DetailsProfileStatistics from './components/profile/DetailsProfileStatistics';
 
 
 // configuration de vuejs
@@ -272,19 +275,33 @@ router.map({
       },
     },
   },
-  '/profile/me': {
-    name: 'MeProfile',
-    component: MeProfile,
+  '/profile': {
+    name: 'Profile',
+    component: Profile,
     page: {
       title: 'Mon profil',
       wrap: 'wrap-header',
       bgClass: 'background1',
       header: {
         enable: true,
-        menu: true,
+        previous: true,
       },
       footer: {
         enable: false,
+      },
+    },
+    subRoutes: {
+      '/me/:id': {
+        name: 'DetailsProfileMe',
+        component: DetailsProfileMe,
+      },
+      '/reviews/:id': {
+        name: 'DetailsProfileReviews',
+        component: DetailsProfileReviews,
+      },
+      '/stats/:id': {
+        name: 'DetailsProfileStatistics',
+        component: DetailsProfileStatistics,
       },
     },
   },
