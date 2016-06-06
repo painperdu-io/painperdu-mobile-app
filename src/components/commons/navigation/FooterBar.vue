@@ -58,6 +58,7 @@ export default {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+    font-weight: 700;
 
     &.active {
       font-weight: bold;

@@ -1,7 +1,7 @@
 <template>
   <div class="profile-container">
-    <div class="profile-infos {{ profile.status }}">
-      <div class="profile-infos-photo" v-bind:class="{ 'profile-allie': profile.allie }">
+    <div class="profile-infos {{ statusName }}">
+      <div class="profile-infos-photo {{ type }}" v-bind:class="{ 'profile-accomplice': type == 'accomplice' }">
         <div class="profile-infos-photo-img">
           <img v-bind:src="profile.picture"/>
         </div>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ['profile'],
+  props: ['profile', 'type'],
   computed: {
     statusName() {
       const status = [
@@ -84,19 +84,21 @@ export default {
     .profile-infos-photo {
       position: relative;
       margin: 0 auto 20px;
-      width: 125px;
-      height: 125px;
-      border-radius: 50%;
-      overflow: hidden;
+      border-radius: 0;
+      width: 100px;
+      height: 115px;
+      mask-image: url('/static/img/blason-1.png');
+      -webkit-mask-image: url('/static/img/blason-1.png');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
 
-      &.profile-allie {
-        border-radius: 0;
-        width: 100px;
-        height: 115px;
-        mask-image: url('/static/img/blason-1.png');
-        -webkit-mask-image: url('/static/img/blason-1.png');
-        mask-size: 100% 100%;
-        -webkit-mask-size: 100% 100%;
+      &.profile-accomplice {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        overflow: hidden;
+        mask-image: initial;
+        -webkit-mask-image: initial;
       }
     }
 

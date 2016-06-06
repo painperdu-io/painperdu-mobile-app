@@ -11,7 +11,7 @@
     </div>
     <div class="foodkeeper-details-accomplice-wrapper">
       <h3 class="foodkeeper-details-accomplice-title"><span class="underline"></span>Mes compères</h3>
-      <accomplices-list :accomplices="accomplices"></accomplices-list>
+      <accomplices-list :type="" :accomplices="accomplices"></accomplices-list>
     </div>
     <tabs-navigation :objectid="$route.params.id" route="DetailsFoodkeeper"></tabs-navigation>
     <router-view></router-view>
