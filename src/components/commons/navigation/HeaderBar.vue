@@ -13,9 +13,7 @@
         </svg>
       </div>
       <div class="header-item  header-item-50">
-        <svg v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " viewBox="0 0 1024 768" class="header-logo">
-          <use xlink:href="#logo-icon"></use>
-        </svg>
+        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " class="header-logo"></div>
         <h1 v-else>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
@@ -115,6 +113,8 @@ export default {
       width: auto;
       height: 40px;
       vertical-align: top;
+      background: url('/static/img/logo-pain-perdu.png') top center no-repeat;
+      background-size: 175px 35px;
     }
 
 .header-icon {
