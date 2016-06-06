@@ -109,6 +109,7 @@ export default {
 
     .header-logo {
       transform: scale3d(3.4,3.4,3.4);
+      -webkit-transform: scale3d(3.4,3.4,3.4);
     }
 
 .header-icon {
@@ -141,7 +142,8 @@ export default {
     margin-right: 33px;
   }
 
-  .header-icon-close {
-    transform: scale3d(1.2,1.2,1.2);
-  }
+.header-icon-add {
+  transform: scale3d(1.2, 1.2, 1.2);
+  -webkit-transform: scale3d(1.2, 1.2, 1.2);
+}
 </style>
