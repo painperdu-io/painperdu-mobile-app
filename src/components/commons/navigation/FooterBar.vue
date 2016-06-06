@@ -64,8 +64,12 @@ export default {
       font-weight: bold;
     }
 
+    &:not(:active) {
+      transition: background 0.5s ease;
+    }
+
     &:active {
-      transition: all 0.3s ease;
+      transition: background 0.2s ease;
       background: yellow;
     }
   }
