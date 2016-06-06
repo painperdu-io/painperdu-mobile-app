@@ -41,12 +41,13 @@
 export default {
   methods: {
     openCart(event) {
+      event.preventDefault()
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
-      event.preventDefault()
     },
-    goPrevious() {
-      this.$route.router.go(history.back());
+    goPrevious(event) {
+      event.preventDefault();
+      this.$route.router.go(history.go(0));
     },
     openMenu(event) {
       event.preventDefault();

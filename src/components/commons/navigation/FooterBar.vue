@@ -63,6 +63,11 @@ export default {
     &.active {
       font-weight: bold;
     }
+
+    &:active {
+      transition: all 0.3s ease;
+      background: yellow;
+    }
   }
 
 .footer-active {
