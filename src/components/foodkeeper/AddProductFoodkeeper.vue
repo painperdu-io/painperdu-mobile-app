@@ -255,8 +255,8 @@ export default {
       input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance:none;
         position:relative;
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
         border-radius: 100%;
         background: $color-white;
         border: 2px solid #f2f2f2;
