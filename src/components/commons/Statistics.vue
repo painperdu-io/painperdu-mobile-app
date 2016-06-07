@@ -188,8 +188,8 @@ export default {
   }
 
     @keyframes apparition {
-      0% { opacity: 1; transform: scale3d(0,0,0);  }
-      100% { opacity: 1; transform: scale3d(1,1,1); }
+      0% { opacity: 1; transform: translate3d(0,-200px,0);}
+      100% { opacity: 1; transform: translate3d(0,0,0); }
     }
 
     .statistics-infos-content {
@@ -219,7 +219,7 @@ export default {
       .statistics-infos-content-value {
         margin-top: -3px;
         text-align: center;
-        font: 1.6em 'Karla-Bold', sans-serif;
+        font: 2em 'Karla-Bold', sans-serif;
         color: $color-white;
       }
 
