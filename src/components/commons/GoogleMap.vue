@@ -61,12 +61,12 @@ export default {
       zoom: 17,
       center : { lng: 0, lat: 0 },
       markers: [{ 'position': { lng: 0, lat: 0 } }],
-      /*markersIcon : {
+      markersIcon : [{
         url: '/static/img/stats-value.png',
         size: { width: 40, height: 30 },
         origin: { x: 0, y: 0},
         anchor: { x: 0, y: 30},
-      },*/
+      }],
       mapStyle: 'default',
       circleBounds: {},
       circleRadius: 100,

@@ -11,6 +11,22 @@ export default {
   components: {
     MembersList,
   },
+  data() {
+    return {
+      ally: [],
+    };
+  },
+  ready() {
+    const marketId = this.$route.params.id;
+
+    // récupérer les informations du market en fonction de son id
+    this.$http({ url: `markets/${marketId}/ally`, method: 'GET' })
+      .then((response) => {
+        console.log(response);
+        this.ally = response.data;
+      })
+      .catch(err => { console.log(err); });
+  }
 };
 </script>
 
