@@ -2,31 +2,33 @@
   <div class="header-bar">
     <div class="header-navigation">
       <div class="header-item  header-item-25">
-        <svg v-if="$route.page.header.menu" v-on:click="openMenu" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+        <svg v-if="$route.page.header.menu" v-on:click="openMenu" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-menu">
           <use xlink:href="#header-icon-menu"></use>
         </svg>
-        <svg v-if="$route.page.header.previous" v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+        <svg v-if="$route.page.header.previous" v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-previous">
           <use xlink:href="#header-icon-previous"></use>
         </svg>
-        <svg v-if="$route.page.header.profile" v-link="{ name: 'DetailsProfileMe', params: { id: '575302fc5dacbac32540268d' }}" viewBox="0 0 50 50" class="header-icon  header-icon-left">
+        <svg v-if="$route.page.header.profile" v-link="{ name: 'DetailsProfileMe', params: { id: '575302fc5dacbac32540268d' }}" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-profile">
           <use xlink:href="#header-icon-profile"></use>
         </svg>
       </div>
       <div class="header-item  header-item-50">
-        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " class="header-logo"></div>
+        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " class="header-logo">
+          <img width="132" height="30" src="../../../../static/img/logo-pain-perdu.png" />
+        </div>
         <h1 v-else>{{ $route.page.title }}</h1>
       </div>
       <div class="header-item  header-item-25">
-        <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-basket">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg v-if="$route.page.header.add && $route.name == 'Market' " v-link="{ name: 'AddMarket' }" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-add">
+        <svg v-if="$route.page.header.add && $route.name == 'Market' " v-link="{ name: 'AddMarket' }" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-add">
           <use xlink:href="#header-icon-add"></use>
         </svg>
-        <svg v-if="$route.page.header.product" v-link="{ name: 'AddProductFoodkeeper' }" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.product" v-link="{ name: 'AddProductFoodkeeper' }" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-add-product">
           <use xlink:href="#header-icon-add-product"></use>
         </svg>
-        <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right">
+        <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-flag">
           <use xlink:href="#header-icon-flag"></use>
         </svg>
         <div v-if="$route.page.header.close" v-on:click="goPrevious" class="header-icon  header-icon-right header-icon-close">
@@ -43,6 +45,7 @@ export default {
     openCart(event) {
       event.preventDefault()
       document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-container')[0].classList.add('cart');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
     },
     goPrevious(event) {
@@ -78,7 +81,7 @@ export default {
 .header-navigation {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 20px;
+  margin-top: 15px;
   height: 40px;
   width: 100%;
 }
@@ -86,11 +89,13 @@ export default {
   .header-item {
     display: flex;
     overflow: hidden;
+    align-items: center;
 
     h1 {
-      font: 1.4em 'Avenir-Book', sans-serif;
+      font: 1.5em 'Avenir-Book', sans-serif;
       color: $color-white;
       text-align: center;
+      margin-top: 7px;
     }
   }
 
@@ -114,15 +119,17 @@ export default {
       width: auto;
       height: 40px;
       vertical-align: top;
-      background: url('/static/img/logo-pain-perdu.png') top center no-repeat;
-      background-size: 175px 35px;
+      text-align: center;
+      img {
+        margin-top: 5px;
+      }
     }
 
 .header-icon {
   flex-direction: row;
-  width: 30px;
-  height: 30px;
-  margin-top: 5px;
+  width: 50px;
+  height: 50px;
+  //margin-top: 5px;
   fill: $color-white;
 }
 
@@ -144,12 +151,20 @@ export default {
     font: 1.5em 'Avenir-Book', sans-serif;
     font-weight: 300;
     width: auto;
-    margin-top: 7px;
+    height: 35px;
+    margin-top: 6px;
     margin-right: 33px;
+    align-items: initial;
   }
 
-.header-icon-add {
-  transform: scale3d(1.2, 1.2, 1.2);
-  -webkit-transform: scale3d(1.2, 1.2, 1.2);
+.header-icon-profile{
+  width: 40px;
+  height: 40px;
 }
+
+.header-icon-flag{ width: 35px;}
+.header-icon-previous{ width: 35px;}
+.header-icon-add-product{ width: 65px;}
+.header-icon-basket{ width: 55px;}
+.header-icon-menu{ width: 36px;}
 </style>
