@@ -141,7 +141,7 @@ export default {
   .menu-bar-logout {
     background: $color-green;
     width: 100%;
-    height: 70px;
+    height: 80px;
     font: 1.5em 'Avenir-Book', sans-serif;
     color: $color-white;
     line-height: 60px;
