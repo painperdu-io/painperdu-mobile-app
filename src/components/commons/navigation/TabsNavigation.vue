@@ -28,7 +28,7 @@ export default {
       var links = document.getElementsByClassName('tabs-navigation-item');
       for (var i = 0; i < links.length; i++) {
         if(i == position){
-          var current = document.getElementsByClassName('tabs-navigation-item')[position].classList.add('active');
+          var current = document.getElementsByClassName('tabs-navigation-item')[i].classList.add('active');
         }
         else { document.getElementsByClassName('tabs-navigation-item')[i].classList.remove('active'); }
       }
