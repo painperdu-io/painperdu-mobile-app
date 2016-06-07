@@ -5,7 +5,8 @@
         <svg viewBox="0 0 100 100" class="foods-icon">
           <use xlink:href="#foods-icon-chou"></use>
         </svg>
-        <div class="product-item-quantity" v-model="count" v-bind:class="{ 'emergency': product.emergency }">{{ product.count }}</div>
+        <div class="product-item-quantity" v-bind:class="{ 'emergency': product.emergency }">{{ quantity }}</div>
+        <input id="product-item-count" number value="2" v-model="quantity" hidden>
       </div>
       <div class="controls-quantity">
         <button class="btn btn-more" v-on:click="increment">+</button>
@@ -26,7 +27,7 @@
       <p class="legend">Disponible</p>
     </div>
     <div class="product-quantity">
-      <span class="value">{{ product.quantity }}</span>
+      <span class="value">{{ product.total }}</span>
       <p class="legend">Quantité</p>
     </div>
     <div class="product-dlc">
@@ -86,8 +87,7 @@ export default {
   data() {
     return {
       product: {
-        quantity: 2,
-        count : 0,
+        total: 2,
       },
       member: {
         allie: true,
@@ -96,12 +96,15 @@ export default {
   },
   methods: {
     increment: function (event) {
-      if (this.count != product.quantity){
-        this.count++;
+      if (this.quantity < this.product.total){
+        this.quantity++;
       }
+
     },
     decrement: function (event) {
-      this.count--;
+      if (this.quantity > 0){
+        this.quantity--;
+      }
     },
   },
 };
@@ -283,7 +286,7 @@ export default {
 
     .ask-product-wrapper {
       background-color: $color-green;
-      padding: 10px 0;
+      padding: 20px 0;
       position: fixed;
       bottom: 0px;
       width: 100%;
@@ -295,7 +298,7 @@ export default {
       padding-left: 20px;
       width: 70%;
       margin: 0 auto 20px;
-      font-size: 1.2em;
+      font-size: 1.3em;
       font-family: 'Karla-Bold';
       font-weight: 700;
       position: relative;
