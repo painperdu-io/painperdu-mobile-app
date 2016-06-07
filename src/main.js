@@ -176,7 +176,7 @@ router.map({
       },
     },
   },
-  '/market/product': {
+  '/market/product/:id': {
     name: 'ProductMarket',
     component: ProductMarket,
     page: {
@@ -241,7 +241,7 @@ router.map({
       },
     },
   },
-  'alliances/details': {
+  '/alliances/details': {
     name: 'DetailsAlliance',
     component: DetailsAlliance,
     page: {
