@@ -64,7 +64,7 @@ export default {
     }
   },
   methods: {
-    addBlason: (event) => {
+    addBlason(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()

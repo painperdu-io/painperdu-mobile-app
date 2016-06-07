@@ -1,12 +1,12 @@
 <template>
   <div class="market-details-container">
-    <div class="app-icon-container" v-link="{ path: '/market/add' }">
+    <div class="app-icon-container">
       <svg viewBox="0 0 50 50" class="app-icon">
         <use xlink:href="#app-icon-edit" ></use>
       </svg>
     </div>
-    <residence-slider></residence-slider>
-    <tabs-navigation route="DetailsMarket"></tabs-navigation>
+    <residence-slider :market="market"></residence-slider>
+    <tabs-navigation :objectid="$route.params.id" route="DetailsMarket"></tabs-navigation>
     <router-view></router-view>
   </div>
 </template>
@@ -20,12 +20,20 @@ export default {
     ResidenceSlider,
     TabsNavigation,
   },
-  methods: {
-    addBlason: (event) => {
-      document.getElementsByClassName('popup-container')[0].classList.add('active');
-      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
-      event.preventDefault()
-    }
+  data() {
+    return {
+      market: {},
+    };
+  },
+  ready() {
+    const marketId = this.$route.params.id;
+
+    // récupérer les informations du market en fonction de son id
+    this.$http({ url: `markets/${marketId}`, method: 'GET' })
+      .then((response) => {
+        this.market = response.data;
+      })
+      .catch(err => { console.log(err); });
   }
 };
 </script>

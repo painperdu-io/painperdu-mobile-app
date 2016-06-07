@@ -66,25 +66,15 @@ export default {};
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  top: 20px;
-  left: 0px;
+  top: 10px;
+  left: -500px;
   width: 300px;
   height: 100vh;
-  background-color: $color-white;
+  background: $color-white url('/static/img/bg-menu.png');
   background-size: 303px 431px;
   background-position: center 150px;
-  transform: translate3d(-110%, 0,0);
-  -webkit-transform: translate3d(-110%, 0,0);
   box-shadow: 0px 3px 70px rgba(0,0,0, 0.2);
-  z-index: 0;
-  transition: transform 0.5s 0.2s, z-index 0.2s;
-  -webkit-transition: -webkit-transform 0.5s 0.2s, z-index 0.2s;
-
-  &.active {
-    transform: translate3d(0, 0,0);
-    -webkit-transform: translate3d(0, 0,0);
-    z-index: 999;
-  }
+  z-index: 999;
 }
 
   .menu-bar-logo-wrapper {
@@ -94,7 +84,7 @@ export default {};
     align-items: center;
     width: 100%;
     height: 150px;
-    background: $color-red;
+    background: $color-beige;
 
     & > svg {
       transform: scale(1.5);
@@ -106,7 +96,7 @@ export default {};
     flex-direction: column;
     justify-content: space-between;
     width: 250px;
-    height: 315px;
+    height: 325px;
   }
 
     .menu-bar-nav-item {

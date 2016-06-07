@@ -1,13 +1,13 @@
 <template>
   <div class="residence-slider-container">
-    <div class="residence-slider-item" v-link="{ name: 'DetailsMarketLocation', params: { id: data._id }}">
+    <div class="residence-slider-item" v-link="{ name: 'DetailsMarketLocation', params: { id: market._id }}">
       <div class="residence-slider-image">
-        <img src="./../../../static/temp/clan.png" />
+        <img v-bind:src="{{ market.foodkeeper.picture }}" />
       </div>
       <div class="residence-slider-item-name">
         <div class="residence-slider-item-name-content">
-          {{ data.name }}
-          <svg viewBox="0 0 100 100" class="residence-slider-item-star-icon">
+          {{ market.foodkeeper.name }}
+          <svg v-if={{ market.foodkeeper.favorite }} viewBox="0 0 100 100" class="residence-slider-item-star-icon">
             <use xlink:href="#app-icon-star"></use>
           </svg>
         </div>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ['data'],
+  props: ['market'],
 };
 </script>
 

@@ -1,9 +1,9 @@
 <template>
   <div class="footer-bar">
     <nav class="footer-navigation">
-      <div class="footer-item" v-on:click="changeActive(0, 'Foodkeeper')">Mon garde<br/> manger</div>
-      <div class="footer-item" v-on:click="changeActive(1, 'Market')" >La place<br/> du marché</div>
-      <div class="footer-item" v-on:click="changeActive(2, 'Alliances')" >Mes<br/> alliances</div>
+      <div class="footer-item v-click" v-on:click="changeActive(0, 'Foodkeeper')">Mon garde<br/> manger</div>
+      <div class="footer-item v-click" v-on:click="changeActive(1, 'Market')" >La place<br/> du marché</div>
+      <div class="footer-item v-click" v-on:click="changeActive(2, 'Alliances')" >Mes<br/> alliances</div>
       <div class="footer-active"></div>
     </nav>
   </div>
@@ -16,7 +16,6 @@ export default {
       const el = document.getElementsByClassName('footer-active')[0];
       el.style.left = `${position * (100 / 3)}%`;
       this.$route.router.go({ name: route });
-      event.preventDefault()
     }
   }
 };
@@ -66,10 +65,12 @@ export default {
 
     &:not(:active) {
       transition: background 0.5s ease;
+      -webkit-transition: background 0.5s ease;
     }
 
     &:active {
       transition: background 0.2s ease;
+      -webkit-transition: background 0.2s ease;
       background: yellow;
     }
   }

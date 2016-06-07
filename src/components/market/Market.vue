@@ -16,7 +16,7 @@
       </div>
 
       <div class="market-container">
-        <residence-slider :data="market"></residence-slider>
+        <residence-slider :market="market"></residence-slider>
 
         <div class="market-products-wrapper">
           <div class="market-products-search">
@@ -45,7 +45,7 @@
       </div>
 
       <div class="market-container">
-        <div class="add-market" v-link="{ path: '/market/add' }">
+        <div class="add-market" v-link="{ name: 'AddMarket' }">
           <div class="add-market-blason"><span>+</span></div>
           <div class="add-market-text">
             <p>Se rallier <span class="underline"></span><p>
@@ -109,24 +109,23 @@ export default {
     }
   },
   data() {
-    //return { market: { name: 'Nom de la résidence', products: {} }};
     return {
-      market: { name: '', products: {} },
-      markets: [
-        { name: 'Résidence 1', products: {} },
-        { name: 'Résidence 2', products: {} },
-        { name: 'Résidence 3', products: {} },
-      ],
+      market: { foodkeeper: {}, products: {} },
+      markets: [],
+      products: [],
       marketCurrent: 0,
     };
   },
   ready() {
-    this.market = this.markets[0];
-    // this.$http({ url: 'products', method: 'GET' })
-    //   .then((response) => {
-    //     this.market.products = response.data;
-    //   })
-    //   .catch(err => { console.log(err); });
+    const userId = '575302fc5dacbac32540268d';
+
+    // récupérer les markets en fonction de l'id d'un utilisateur
+    this.$http({ url: `markets/user/${userId}`, method: 'GET' })
+      .then((response) => {
+        this.markets = response.data;
+        this.market = this.markets[0];
+      })
+      .catch(err => { console.log(err); });
   }
 };
 </script>
