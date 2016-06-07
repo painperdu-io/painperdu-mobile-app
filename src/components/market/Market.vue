@@ -1,5 +1,5 @@
 <template>
-  <div class="markets-container">
+  <div v-show="true" class="markets-container" transition="fade">
 
     <div class="markets-slider">
       <div class="controls">
@@ -41,6 +41,9 @@
             :type="type"
             :search="search">
           </producst-list>
+
+          <div v-gesture:touchstart.stop.prevent="handle($event, 'touchstart')">touchstart</div>
+
         </div>
       </div>
 
@@ -62,6 +65,7 @@
 <script>
 import ProductsList from './../commons/ProductsList'
 import ResidenceSlider from './../commons/ResidenceSlider'
+
 
 export default {
   components: {
@@ -125,6 +129,7 @@ export default {
       market: {},
       markets: [],
       products: [],
+      show: true,
     };
   },
   ready() {
