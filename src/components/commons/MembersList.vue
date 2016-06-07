@@ -1,6 +1,6 @@
 <template>
   <div class="members-container">
-    <template v-for="member in members">
+    <template v-for="(index, member) in members">
       <div v-if="type == 'ally' " class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div class="members-name">{{ member.name.first }}</div>
         <div class="members-image">
