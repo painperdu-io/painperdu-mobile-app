@@ -1,6 +1,6 @@
 <template>
   <header-bar v-if="$route.page.header.enable"></header-bar>
-  <div v-on:click="closeMenu" class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
+  <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
     <router-view transition="upIn"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
@@ -18,14 +18,6 @@ import SvgIcons from './components/commons/icons/SvgIcons'
 import store from './vuex/store'
 
 export default {
-  methods: {
-    closeMenu(event) {
-      if(document.getElementsByClassName('menu-bar-container')[0].classList.contains('active')){
-        document.getElementsByClassName('menu-bar-container')[0].classList.remove('active');
-      }
-      event.preventDefault()
-    },
-  },
   components: {
     Popup,
     HeaderBar,
@@ -100,6 +92,7 @@ body {
     background: $color-white url('/static/img/bg-4.png');
     background-size: 375px 796px;
     background-position: center 120px;
+    position: fixed;
   }
 
 </style>
