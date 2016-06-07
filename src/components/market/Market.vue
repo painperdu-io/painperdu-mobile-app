@@ -5,12 +5,12 @@
       <div class="controls">
         <div class="previous" v-on:click="moveLeft">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-previous">
-            <use xlink:href="#header-icon-next"></use>
+            <use xlink:href="#header-icon-previous"></use>
           </svg>
         </div>
         <div class="next" v-on:click="moveRight">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-next">
-            <use xlink:href="#header-icon-next"></use>
+            <use xlink:href="#header-icon-previous"></use>
           </svg>
         </div>
       </div>
@@ -26,13 +26,13 @@
             <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
               <use xlink:href="#app-icon-close"></use>
             </svg>
-            <input placeholder="Nom du produit..." v-model="search" />
+            <input placeholder="Nom du produit..." v-on:click="displayClose" v-model="search" />
           </div>
 
           <div class="market-products-filters">
             <input id="brut" class="filter" type="radio" value="homemade" v-model="type">
             <label for="brut" >Plats Préparés</label>
-            <input id="prepare" class="filter" type="radio" value="raw" v-model="type" checked>
+            <input id="prepare" class="filter" type="radio" value="raw" v-model="type">
             <label for="prepare">Produits Bruts</label>
           </div>
 
@@ -106,7 +106,10 @@ export default {
       //   const x = slides[i].offsetLeft;
       //   slides[i].style.transform = `translate3d(-100%, 0, 0)`;
       // }
-    }
+    },
+    displayClose(event) {
+      document.getElementsByClassName('market-products-search-icon-right')[0].classList.add('active');
+    },
   },
   data() {
     //return { market: { name: 'Nom de la résidence', products: {} }};
@@ -174,7 +177,12 @@ export default {
         left: 15px;
       }
       .market-products-search-icon-right {
-        right: 20px;
+        right: 15px;
+        opacity: 0;
+        transition: all 0.5s;
+        &.active {
+          opacity: 1;
+        }
       }
 
     .market-products-filters {
@@ -231,6 +239,7 @@ export default {
       .next {
         position: absolute;
         right: 8%;
+        transform: rotate(180deg);
       }
 
     }
