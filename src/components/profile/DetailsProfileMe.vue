@@ -4,10 +4,6 @@
       <profile></profile>
       <div class="me-profile-btn-public">Voir le profil public</div>
     </div>
-    <div class="me-profile-accomplices-wrapper">
-      <h3 class="me-profile-accomplices-title">Mes compères</h3>
-      <accomplices-list></accomplices-list>
-    </div>
     <div class="me-profile-form-wrapper">
       <div class="me-profile-form-item">
         <label class="me-profile-form-item-label" for="mail">Email</label>
@@ -22,12 +18,10 @@
 </template>
 
 <script>
-import AccomplicesList from './../commons/AccomplicesList'
 import Profile from './../commons/Profile'
 
 export default {
   components: {
-    AccomplicesList,
     Profile,
   },
 };

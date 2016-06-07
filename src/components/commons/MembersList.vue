@@ -1,23 +1,19 @@
 <template>
   <div class="members-container">
     <template v-for="member in members">
-      <div v-if="accomplices" class="members-item accomplices-item" v-bind:class="{ 'accomplices-item': accomplices }" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
+      <div v-if="type == 'ally' " class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
+        <div class="members-name">{{ member.name }}</div>
         <div class="members-image">
           <img v-bind:src="member.picture"/>
         </div>
       </div>
-      <div v-if="accomplices" class="members-item accomplices-item" v-bind:class="{ 'accomplices-item': accomplices }" v-link="{ path: '/profile/member', params: { type: 'accomplices' } }">
-        <div v-if="index < 3" class="members-image">
+      <div v-else class="members-item accomplice-item" v-link="{ name: 'MemberProfile' }">
+        <div v-if="index < 4" class="members-image">
           <img v-bind:src="member.picture"/>
-        </div>
-        <div class="accomplices-add-icon" v-on:click="addAccomplice">
-          <div class="accomplices-add-icon-bg">
-            <span class="accomplices-add-icon-text">+</span>
-          </div>
         </div>
       </div>
     </template>
-    <div v-if="add" class="accomplices-add-icon" v-on:click="addAccomplice">
+    <div v-if="add && type == 'accomplice' " class="accomplices-add-icon" v-on:click="addAccomplice">
       <div class="accomplices-add-icon-bg">
         <span class="accomplices-add-icon-text">+</span>
       </div>
@@ -27,7 +23,7 @@
 
 <script>
 export default {
-  props: ['members', 'accomplices'],
+  props: ['members', 'type', 'add'],
 };
 </script>
 
@@ -53,7 +49,7 @@ export default {
     overflow: hidden;
 
 
-    &.accomplices-item {
+    &.accomplice-item {
       border-radius: 50%;
       .members-image {
         width: 55px;

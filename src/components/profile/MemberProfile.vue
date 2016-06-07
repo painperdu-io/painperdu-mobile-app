@@ -22,7 +22,7 @@
           <p class="legend">Ses compères <span class="underline"></span></p>
         </div>
         <div class="member-profile-accomplices-wrapper">
-          <members-list :members="accomplices" :comperes="true"></members-list>
+          <members-list :type="accomplices" :add="false"></members-list>
         </div>
       </div>
     </div>
