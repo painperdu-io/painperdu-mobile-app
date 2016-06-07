@@ -63,6 +63,19 @@ export function popupsList () {
       route: 'DetailsFoodkeeperProducts',
       addAccomplice: true,
     },
+    {
+      route: 'DetailsFoodkeeperStats',
+      addAccomplice: true,
+
+    },
+    {
+      route: 'DetailsFoodkeeperTimeline',
+      addAccomplice: true,
+    },
+    {
+      route: 'AddProductFoodkeeper',
+      addPicto: true,
+    },
   ]
 
   return popups;

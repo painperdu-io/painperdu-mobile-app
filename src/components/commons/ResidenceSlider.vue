@@ -76,18 +76,18 @@ export default {
          left: -1.4em;
          border-right-width: 0.7em;
          border-left-color: transparent;
-         -webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+         /*-webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
          -moz-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
-         box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+         box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;*/
       }
 
       &:after {
        right: -1.4em;
        border-left-width: 0.7em;
        border-right-color: transparent;
-       -webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+       /*-webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
        -moz-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
-       box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+       box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;*/
       }
     }
 
@@ -105,17 +105,17 @@ export default {
     .residence-slider-item-name .residence-slider-item-name-content:before {
        left: 0;
        border-width: 0.6em 0 0 2em;
-       -webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+       /*-webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
        -moz-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
-       box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
+       box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;*/
     }
 
     .residence-slider-item-name .residence-slider-item-name-content:after {
        right: 0;
        border-width: 0.6em 2em 0 0;
-       -webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+       /*-webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
        -moz-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
-       box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
+       box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;*/
     }
 
     .residence-slider-item-star-icon {

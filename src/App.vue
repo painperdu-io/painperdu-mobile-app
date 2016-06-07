@@ -92,6 +92,7 @@ body {
     background: $color-white url('/static/img/bg-4.png');
     background-size: 375px 796px;
     background-position: center 120px;
+    position: fixed;
   }
 
 </style>

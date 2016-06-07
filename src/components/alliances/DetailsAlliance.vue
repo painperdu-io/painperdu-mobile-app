@@ -129,7 +129,7 @@ export default {
   flex: 1 100%;
   padding: 45px 0 30px;
   position: fixed;
-  background: $color-white url('/static/img/bg-3.png');
+  background: url('/static/img/bg-3.jpg');
   z-index: 99;
   width: 100%;
   justify-content: center;
@@ -152,7 +152,6 @@ export default {
       margin: 0 auto 20px;
       width: 110px;
       height: 115px;
-      overflow: hidden;
       mask-image: url('/static/img/blason-1.png');
       -webkit-mask-image: url('/static/img/blason-1.png');
       mask-size: 100% 100%;
@@ -215,6 +214,7 @@ export default {
           width: (55px /2);
           height: (55px /2);
           line-height: (55px / 2);
+
         }
       }
 

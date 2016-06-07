@@ -9,10 +9,11 @@
 
     <template v-for="popup in popups">
       <template v-if="popup.route == route">
-        <cart v-if="popup.cart"></cart>
-        <add-accomplice v-if="popup.addAccomplice"></add-accomplice>
+        <cart v-if="popup.cart || this.cart "></cart>
+        <add-accomplice v-if="popup.addAccomplice && !this.cart"></add-accomplice>
         <add-photo v-if="popup.addPhoto"></add-photo>
         <add-blason v-if="popup.addBlason"></add-blason>
+        <add-picto v-if="popup.addPicto"></add-picto>
         <tip v-if="popup.tip"></tip>
       </template>
     </template>
@@ -26,6 +27,7 @@ import AddAccomplice from './AddAccomplicesFoodKeeper';
 import Tip from './Tip';
 import AddPhoto from './AddPhoto';
 import AddBlason from './AddBlason';
+import AddPicto from './AddPicto';
 import { popupsList } from './../../../vuex/getters';
 
 export default {
@@ -41,14 +43,29 @@ export default {
     Tip,
     AddPhoto,
     AddBlason,
+    AddPicto,
   },
   methods: {
     closeCart: (event) => {
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()
+    },
+    checkPop : () => {
+      if(document.getElementsByClassName('popup-container')[0].classList.contains('cart')){
+        this.cart = true;
+        console.log('Je suis dans checkPop :' + this.cart);
+      }
+    },
+  },
+  data () {
+    return {
+      cart : false,
     }
-  }
+  },
+  ready () {
+    document.getElementsByClassName('wrap')[0].addEventListener("click", this.checkPop);
+  },
 };
 </script>
 
@@ -63,22 +80,22 @@ export default {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0) scale3d(0,0,0);
-  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(0,0,0);
-  width: 335px;
-  min-height: 100px;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  width: 200px;
+  min-height: 50px;
+  max-height: 597px;
   background: $color-white;
   z-index: -1;
   text-align: center;
-  transition: transform 0.5s, opacity 0.5s;
-  -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+  transition: width 0.5s, opacity 0.5s;
+  -webkit-transition: width 0.5s, opacity 0.5s;
   opacity: 0;
 
   &.active {
-    transform: translate3d(-50%, -50%, 0) scale3d(1,1,1);
-    -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1,1,1);
     opacity: 1;
     z-index: 9999;
+    width: 335px;
   }
 }
 

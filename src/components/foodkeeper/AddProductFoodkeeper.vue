@@ -6,9 +6,10 @@
           <button class="btn btn-more" v-on:click="increment">+</button>
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>
-        <div class="foodkeeper-add-product-form1-add-icon-bg">
+        <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
-          <div class="product-item-quantity" >0</div>
+          <input id="product-item-count" value="0" v-model="quantity" number hidden>
+          <div class="product-item-quantity">{{ quantity }}</div>
         </div>
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
@@ -39,7 +40,8 @@
     <div class="foodkeeper-add-product-form2-wrapper">
       <h3 class="foodkeeper-add-product-form2-title">À consommer sous</h3>
       <div class="foodkeeper-add-product-form2-dlc-range">
-        <label class="product-dlc" for="product-dlc">0 jours</label>
+        <input id="product-item-dlc" value="0" v-model="dlc" number hidden>
+        <label class="product-dlc" for="product-dlc">{{ dlc }} jours</label>
         <input type="range" name="product-dlc" value="1" max="10" min="0" step="1"/>
         <div class="foodkeeper-add-product-form2-label-range">
             <p>0 jours</p>
@@ -55,6 +57,8 @@
 export default {
   data() {
     return {
+      dlc: 0,
+      quantity: 0,
       places: [
         { name: 'maison', addressL1: '12 rue du Trésum', addressL2: '74000 Annecy' },
         { name: 'boulot', addressL1: '63 route du Périmètre', addressL2: '74000 Annecy' },
@@ -63,13 +67,18 @@ export default {
   },
   methods: {
     increment: function (event) {
-      if (this.count != product.quantity){
-        this.count++;
-      }
+      this.quantity++;
     },
     decrement: function (event) {
-      this.count--;
+      if (this.quantity > 0){
+        this.quantity--;
+      }
     },
+    addPicto: (event) => {
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      event.preventDefault()
+    }
   },
 };
 </script>
@@ -312,7 +321,7 @@ export default {
       transform: translate3d(-50%,-50%,0);
       padding: 5px 10px;
       border-radius: 20px;
-      z-index: -1;
+      z-index: 0;
     }
 
     .controls-quantity .btn {

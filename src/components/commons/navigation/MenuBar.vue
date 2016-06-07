@@ -4,6 +4,11 @@
       <svg viewBox="0 0 1024 768">
         <use xlink:href="#logo-icon"></use>
       </svg>
+      <div class="menu-close" v-on:click="closeMenu">
+        <svg viewBox="0 0 100 100" class="app-icon">
+          <use xlink:href="#app-icon-close"></use>
+        </svg>
+      </div>
     </div>
     <nav class="menu-bar-nav-wrapper">
       <div class="menu-bar-nav-item">
@@ -54,7 +59,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    closeMenu(event) {
+      event.preventDefault();
+      document.getElementsByClassName('menu-bar-container')[0].classList.remove('active');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -134,5 +146,14 @@ export default {};
     color: $color-white;
     line-height: 60px;
     text-align: center;
+  }
+
+  .menu-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    fill: $color-white;
   }
 </style>
