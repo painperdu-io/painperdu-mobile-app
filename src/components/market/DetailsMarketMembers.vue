@@ -1,6 +1,6 @@
 <template>
   <div class="details-market-members-wrapper">
-    <members-list></members-list>
+    <members-list :members="ally" type="ally" add="false"></members-list>
   </div>
 </template>
 
@@ -21,11 +21,8 @@ export default {
 
     // récupérer les informations du market en fonction de son id
     this.$http({ url: `markets/${marketId}/ally`, method: 'GET' })
-      .then((response) => {
-        console.log(response);
-        this.ally = response.data;
-      })
-      .catch(err => { console.log(err); });
+      .then(response => this.ally = response.data)
+      .catch(err => console.log(err));
   }
 };
 </script>

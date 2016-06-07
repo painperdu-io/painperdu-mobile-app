@@ -11,7 +11,7 @@
     </div>
     <div class="foodkeeper-details-accomplice-wrapper">
       <h3 class="foodkeeper-details-accomplice-title"><span class="underline"></span>Mes compères</h3>
-      <accomplices-list :type="" :accomplices="accomplices"></accomplices-list>
+      <members-list :members="accomplices" type="accomplice" add="true"></members-list>
     </div>
     <tabs-navigation :objectid="$route.params.id" route="DetailsFoodkeeper"></tabs-navigation>
     <router-view></router-view>
@@ -19,18 +19,18 @@
 </template>
 
 <script>
-import AccomplicesList from './../commons/AccomplicesList'
+import MembersList from './../commons/MembersList'
 import TabsNavigation from './../commons/navigation/TabsNavigation'
 
 export default {
   components: {
-    AccomplicesList,
+    MembersList,
     TabsNavigation,
   },
   data() {
     return {
       foodkeeper: {},
-      accomplices: {}
+      accomplices: [],
     };
   },
   ready() {
@@ -39,13 +39,13 @@ export default {
 
     // récupére les informations sur le foodkeeper
     this.$http({ url: `foodkeepers/${foodkeeperId}`, method: 'GET' })
-      .then((response) => { this.foodkeeper = response.data; })
-      .catch(err => { console.log(err); });
+      .then((response) => this.foodkeeper = response.data)
+      .catch(err => console.log(err));
 
     // récupére les informations sur les compères
     this.$http({ url: `users/${userId}/foodkeeper/${foodkeeperId}`, method: 'GET' })
-      .then((response) => { this.accomplices = response.data; })
-      .catch(err => { console.log(err); });
+      .then((response) => this.accomplices = response.data)
+      .catch(err => console.log(err));
   }
 };
 </script>

@@ -71,24 +71,31 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../../styles/variables.scss';
-
 .menu-bar-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  top: 10px;
-  left: -500px;
+  top: 20px;
+  left: 0px;
   width: 300px;
   height: 100vh;
-  background: $color-white url('/static/img/bg-menu.png');
+  background-color: $color-white;
   background-size: 303px 431px;
   background-position: center 150px;
+  transform: translate3d(-110%, 0,0);
+  -webkit-transform: translate3d(-110%, 0,0);
   box-shadow: 0px 3px 70px rgba(0,0,0, 0.2);
-  z-index: 999;
+  z-index: 0;
+  transition: transform 0.5s 0.2s, z-index 0.2s;
+  -webkit-transition: -webkit-transform 0.5s 0.2s, z-index 0.2s;
+  &.active {
+    transform: translate3d(0, 0,0);
+    -webkit-transform: translate3d(0, 0,0);
+    z-index: 999;
+  }
 }
-
   .menu-bar-logo-wrapper {
     display: flex;
     flex-direction: column;
@@ -96,32 +103,27 @@ export default {
     align-items: center;
     width: 100%;
     height: 150px;
-    background: $color-beige;
-
+    background: $color-red;
     & > svg {
       transform: scale(1.5);
     }
   }
-
   .menu-bar-nav-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 250px;
-    height: 325px;
+    height: 315px;
   }
-
     .menu-bar-nav-item {
       display: flex;
       flex-direction: row;
       align-items: center;
-
       & > a {
         font: 1.5em 'Karla-Regular', sans-serif;
         text-decoration: none;
         color: $color-text;
       }
-
       & > svg {
         margin-right: 10px;
         width: 35px;
@@ -129,7 +131,6 @@ export default {
         fill: $color-green;
       }
     }
-
     .menu-bar-nav-item-separator {
       width: 56px;
       height: 5px;
@@ -137,7 +138,6 @@ export default {
       transform: scale(0.5);
       background: url('/static/img/separator-red.png') center center no-repeat;
     }
-
   .menu-bar-logout {
     background: $color-green;
     width: 100%;
@@ -147,7 +147,6 @@ export default {
     line-height: 60px;
     text-align: center;
   }
-
   .menu-close {
     position: absolute;
     top: 5px;
