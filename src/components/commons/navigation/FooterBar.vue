@@ -62,17 +62,6 @@ export default {
     &.active {
       font-weight: bold;
     }
-
-    &:not(:active) {
-      transition: background 0.5s ease;
-      -webkit-transition: background 0.5s ease;
-    }
-
-    &:active {
-      transition: background 0.2s ease;
-      -webkit-transition: background 0.2s ease;
-      background: yellow;
-    }
   }
 
 .footer-active {

@@ -1,112 +1,135 @@
 <template>
-  <div class="product-wrapper">
-    <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/' }">
-      <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
-        <svg viewBox="0 0 100 100" class="foods-icon">
-          <use xlink:href="#foods-icon-chou"></use>
-        </svg>
-        <div class="product-item-quantity" v-bind:class="{ 'emergency': product.emergency }">{{ quantity }}</div>
-        <input id="product-item-count" number value="2" v-model="quantity" hidden>
-      </div>
-      <div class="controls-quantity">
-        <button class="btn btn-more" v-on:click="increment">+</button>
-        <button class="btn btn-less" v-on:click="decrement">-</button>
-      </div>
-      <div class="product-name">Chou</div>
-      <div class="product-infos-separator"></div>
+  <div class="product-container">
+    <div class="product-wrapper">
+      <div class="product" v-bind:class="{ 'inactive': !product.status }">
+        <div class="product-item-circle {{ product.type }}">
+          <svg viewBox="0 0 100 100" class="foods-icon">
+            <use xlink:href="#foods-icon-{{ product.icon }}"></use>
+          </svg>
+          <div class="product-item-quantity">{{ quantity }}</div>
+          <input id="product-item-count" number value="1" v-model="quantity" hidden>
+        </div>
+        <div class="controls-quantity">
+          <button class="btn btn-more" v-on:click="increment">+</button>
+          <button class="btn btn-less" v-on:click="decrement">-</button>
+        </div>
+        <div class="product-name">{{ product.name }}</div>
+        <div class="product-infos-separator"></div>
 
-    </div>
-  </div>
-  <div class="product-infos">
-    <div class="product-status">
-      <div class="value">
-        <svg viewBox="0 0 100 100" class="check-icon">
-          <use xlink:href="#app-icon-check"></use>
-        </svg>
       </div>
-      <p class="legend">Disponible</p>
     </div>
-    <div class="product-quantity">
-      <span class="value">{{ product.total }}</span>
-      <p class="legend">Quantité</p>
+    <div class="product-infos">
+      <div class="product-status">
+        <div class="value">
+          <svg viewBox="0 0 100 100" class="check-icon">
+            <use v-if="{{ product.status }}" xlink:href="#app-icon-check"></use>
+            <use v-else xlink:href="#app-icon-close"></use>
+          </svg>
+        </div>
+        <p class="legend">Disponible</p>
+      </div>
+      <div class="product-quantity">
+        <span class="value">{{ product.quantity }}</span>
+        <p class="legend">Quantité</p>
+      </div>
+      <div class="product-dlc">
+        <span class="value">2j</span>
+        <p class="legend">Périme dans</p>
+      </div>
     </div>
-    <div class="product-dlc">
-      <span class="value">2j</span>
-      <p class="legend">Périme dans</p>
-    </div>
-  </div>
-  <div class="product-description">Haec igitur prima lex amicitiae sanciatur, ut ab amicis honesta petamus, amicorum causa honesta faciamus, ne exspectemus quidem, dum rogemur; studium semper Incenderat autem audaces.</div>
+    <div class="product-description">{{ product.description }}</div>
 
-  <fieldset class="member-profile-statistics-wrapper">
-    <legend class="member-profile-wrapper" v-link="{ path: '/profile/member' }">
-      <div class="member-profile-item-allie" v-if="member.allie">
-        <svg viewBox="0 0 100 100" class="profile-icon ">
-          <use xlink:href="#app-icon-infinite"></use>
-        </svg>
+    <fieldset class="member-profile-statistics-wrapper">
+      <legend class="member-profile-wrapper" v-link="{ name: 'MemberProfile', params: { id: product.author._id }}">
+        <div class="member-profile-item-allie">
+          <svg viewBox="0 0 100 100" class="profile-icon ">
+            <use xlink:href="#app-icon-infinite"></use>
+          </svg>
+        </div>
+        <div class="member-profile-img"><img src="{{ product.author.picture }}"/></div>
+        <div class="member-profile-text">
+          <h2 class="member-profile-name">{{ product.author.name.first }}</h2>
+          <p class="member-profile-status">{{ statusName }}</p>
+        </div>
+      </legend>
+      <div class="member-profile-statistics">
+        <div class="member-profile-statistics-item">
+          <p class="legend">Nombre d'échanges</p>
+          <p class="value">8</p>
+          <span class="underline"></span>
+        </div>
+        <div class="member-profile-statistics-item membre-{{membre-status}}">
+          <p class="legend">Avis moyen</p>
+          <p class="value">Parfait</p>
+          <span class="underline"></span>
+        </div>
       </div>
-      <div class="member-profile-img"><img src="https://randomuser.me/api/portraits/men/36.jpg"/></div>
-      <div class="member-profile-text">
-        <h2 class="member-profile-name">Jonathan</h2>
-        <p class="member-profile-status">Menestrel</p>
-      </div>
-    </legend>
-    <div class="member-profile-statistics">
-      <div class="member-profile-statistics-item">
-        <p class="legend">Nombre d'échanges</p>
-        <p class="value">8</p>
-        <span class="underline"></span>
-      </div>
-      <div class="member-profile-statistics-item membre-{{membre-status}}">
-        <p class="legend">Avis moyen</p>
-        <p class="value">Parfait</p>
-        <span class="underline"></span>
-      </div>
-    </div>
-  </fieldset>
+    </fieldset>
 
-  <div class="ask-product-wrapper">
-    <div class="ask-product-text">
-      <input type="checkbox" id="later" class="later" value="false" v-model="laterHours">
-      <label for="later" >
-        Je ne suis pas disponible maintenant. <br>
-        Je veux récupérer ma demande plus tard.
-      </label>
+    <div class="ask-product-wrapper">
+      <div class="ask-product-text">
+        <input type="checkbox" id="later" class="later" value="false" v-model="laterHours">
+        <label for="later" >
+          Je ne suis pas disponible maintenant. <br>
+          Je veux récupérer ma demande plus tard.
+        </label>
+      </div>
+      <div v-if="laterHours">
+        <label>Date</label>
+        <input type="text" />
+        <label>Créneau horaire</label>
+        <input type="text" />
+      </div>
+      <div class="ask-product-button">Demander</div>
     </div>
-    <div v-if="laterHours">
-      <label>Date</label>
-      <input type="text" />
-      <label>Créneau horaire</label>
-      <input type="text" />
-    </div>
-    <div class="ask-product-button">Demander</div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      product: {
-        total: 2,
-      },
-      member: {
-        allie: true,
+  computed: {
+    statusName() {
+      const status = [
+        { score: 10, name: 'Artisan' },
+        { score: 20, name: 'Soldat' },
+        { score: 30, name: 'Menestrel' },
+        { score: 40, name: 'Écuyer' },
+        { score: 50, name: 'Chevalier' },
+        { score: 60, name: 'Seigneur' },
+      ];
+
+      for (let i = 0; i < status.length; i++) {
+        if (3 < status[i].score) {
+          return status[i].name;
+        }
       }
-    }
+    },
   },
   methods: {
-    increment: function (event) {
-      if (this.quantity < this.product.total){
+    increment(event) {
+      if (this.quantity < this.product.quantity) {
         this.quantity++;
       }
-
     },
-    decrement: function (event) {
-      if (this.quantity > 0){
+    decrement(event) {
+      if (this.quantity > 1) {
         this.quantity--;
       }
     },
   },
+  data() {
+    return {
+      product: {},
+    }
+  },
+  ready() {
+    const productId = this.$route.params.id;
+
+    // récupérer un produit en fonction de son id
+    this.$http({ url: `products/${productId}`, method: 'GET' })
+      .then((response) => this.product = response.data)
+      .catch(err => console.log(err));
+  }
 };
 
 </script>
@@ -189,12 +212,12 @@ export default {
           transform: scale(0.8);
         }
       }
-      .product-item-circle.type {
-        background: url('/static/img/product-brut.png') center center repeat $color-white;
+      .product-item-circle.raw {
+        background: url('/static/img/product-brut.png') center center no-repeat $color-white;
       }
 
-      .product-item-circle.type-prepare {
-        background: url('/static/img/product-prepare.png') center center repeat $color-white;
+      .product-item-circle.homemade {
+        background: url('/static/img/product-prepare.png') center center no-repeat $color-white;
       }
 
       .product-item-quantity {
@@ -417,11 +440,12 @@ export default {
   }
 
   .member-profile-name {
-    font-size: 1,3em;
+    font-size: 1.3em;
     font-family: 'IowanOldStyleBT-BlackItalic';
     color: $color-red;
     margin: 2px 0;
     font-weight: 300;
+    text-transform: capitalize;
   }
 
   .member-profile-status {
