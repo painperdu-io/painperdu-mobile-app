@@ -263,7 +263,7 @@ router.map({
     name: 'MemberProfile',
     component: MemberProfile,
     page: {
-      title: 'Fiche compère',
+      title: 'Fiche allié',
       wrap: 'wrap-header',
       bgClass: 'background1',
       header: {

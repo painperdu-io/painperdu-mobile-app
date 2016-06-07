@@ -6,10 +6,12 @@
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>
   <popup :route="$route.name"></popup>
+  <cart></cart>
   <svg-icons></svg-icons>
 </template>
 
 <script>
+import Cart from './components/commons/popup/Cart'
 import Popup from './components/commons/popup/PopupContainer'
 import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
@@ -19,6 +21,7 @@ import store from './vuex/store'
 
 export default {
   components: {
+    Cart,
     Popup,
     HeaderBar,
     FooterBar,

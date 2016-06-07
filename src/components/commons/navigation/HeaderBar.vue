@@ -44,9 +44,8 @@ export default {
   methods: {
     openCart(event) {
       event.preventDefault()
-      document.getElementsByClassName('popup-container')[0].classList.add('active');
-      document.getElementsByClassName('popup-container')[0].classList.add('cart');
-      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      document.getElementsByClassName('cart-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('cart-popup-overlay')[0].classList.add('active');
     },
     goPrevious(event) {
       event.preventDefault();

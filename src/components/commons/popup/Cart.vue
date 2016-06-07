@@ -1,64 +1,72 @@
 <template>
+  <div class="cart-popup-overlay"></div>
   <div class="cart-popup-container">
-    <h3 class="cart-popup-title">Avez-vous acheté... ?</h3>
-    <div class="popup-title-separator"></div>
-    <div class="cart-popup-item-wrapper">
-      <div class="cart-popup-item">
-        <div class="cart-popup-item-question-wrapper">
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-pomme"></use>
-          </svg>
-          <p class="cart-popup-item-question"><span class="underline"></span>Des fruits et des légumes ?</p>
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-orange"></use>
-          </svg>
-        </div>
-        <input id="cart1" type="checkbox">
-        <label for="cart1"></label>
-      </div>
-      <div class="cart-popup-item">
-        <div class="cart-popup-item-question-wrapper">
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-emmental"></use>
-          </svg>
-          <p class="cart-popup-item-question"><span class="underline"></span>Des produits laitiers ?</p>
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-lait"></use>
-          </svg>
-        </div>
-        <input id="cart2" type="checkbox">
-        <label for="cart2"></label>
-      </div>
-      <div class="cart-popup-item">
-        <div class="cart-popup-item-question-wrapper">
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-croissant"></use>
-          </svg>
-          <p class="cart-popup-item-question"><span class="underline"></span>Du pain, des viennoiseries?</p>
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-sandwich"></use>
-          </svg>
-        </div>
-        <input id="cart3" type="checkbox">
-        <label for="cart3"></label>
-      </div>
-      <div class="cart-popup-item">
-        <div class="cart-popup-item-question-wrapper">
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-viande"></use>
-          </svg>
-          <p class="cart-popup-item-question"><span class="underline"></span>De la viande, du poisson ?</p>
-          <svg viewBox="0 0 100 100" class="food-icon">
-            <use xlink:href="#foods-icon-poisson"></use>
-          </svg>
-        </div>
-        <input id="cart4" type="checkbox">
-        <label for="cart4"></label>
-      </div>
+    <div class="cart-popup-close" v-on:click="closeCart">
+      <svg viewBox="0 0 100 100" class="app-icon">
+        <use xlink:href="#app-icon-close"></use>
+      </svg>
     </div>
-    <div class="cart-popup-add-button">Valider</div>
-  </div>
+    <div class="cart-popup-container-content">
+      <h3 class="cart-popup-title">Avez-vous acheté... ?</h3>
+      <div class="popup-title-separator"></div>
+      <div class="cart-popup-item-wrapper">
+        <div class="cart-popup-item">
+          <div class="cart-popup-item-question-wrapper">
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-pomme"></use>
+            </svg>
+            <p class="cart-popup-item-question"><span class="underline"></span>Des fruits et des légumes ?</p>
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-orange"></use>
+            </svg>
+          </div>
+          <input id="cart1" type="checkbox">
+          <label for="cart1"></label>
+        </div>
+        <div class="cart-popup-item">
+          <div class="cart-popup-item-question-wrapper">
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-emmental"></use>
+            </svg>
+            <p class="cart-popup-item-question"><span class="underline"></span>Des produits laitiers ?</p>
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-lait"></use>
+            </svg>
+          </div>
+          <input id="cart2" type="checkbox">
+          <label for="cart2"></label>
+        </div>
+        <div class="cart-popup-item">
+          <div class="cart-popup-item-question-wrapper">
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-croissant"></use>
+            </svg>
+            <p class="cart-popup-item-question"><span class="underline"></span>Du pain, des viennoiseries?</p>
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-sandwich"></use>
+            </svg>
+          </div>
+          <input id="cart3" type="checkbox">
+          <label for="cart3"></label>
+        </div>
+        <div class="cart-popup-item">
+          <div class="cart-popup-item-question-wrapper">
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-viande"></use>
+            </svg>
+            <p class="cart-popup-item-question"><span class="underline"></span>De la viande, du poisson ?</p>
+            <svg viewBox="0 0 100 100" class="food-icon">
+              <use xlink:href="#foods-icon-poisson"></use>
+            </svg>
+          </div>
+          <input id="cart4" type="checkbox">
+          <label for="cart4"></label>
+        </div>
+      </div>
+      <div v-on:click="closeCart" class="cart-popup-add-button">Valider</div>
+    </div>
   <div class="popup-overlay"></div>
+  </div>
 </template>
 
 <script>
@@ -66,7 +74,7 @@ export default {
   methods: {
     closeCart: (event) => {
       document.getElementsByClassName('cart-popup-container')[0].classList.remove('active');
-      document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
+      document.getElementsByClassName('cart-popup-overlay')[0].classList.remove('active');
       event.preventDefault()
     }
   }
@@ -77,6 +85,59 @@ export default {
 @import './../../../styles/variables.scss';
 
 .cart-popup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  width: 200px;
+  min-height: 50px;
+  max-height: 597px;
+  background: $color-white;
+  z-index: -1;
+  text-align: center;
+  transition: width 0.5s, opacity 0.5s;
+  -webkit-transition: width 0.5s, opacity 0.5s;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+    z-index: 9999;
+    width: 335px;
+  }
+}
+
+  .cart-popup-close {
+    position: absolute;
+    top: 20px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    fill: $color-red;
+  }
+
+  .cart-popup-overlay {
+      content: "";
+      display: inline-block;;
+      width: 100%;
+      height: 100%;
+      background-color: $color-black;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      transition: all 0.2s;
+      z-index: -1;
+  }
+
+  .cart-popup-overlay.active {opacity: 0.7;   z-index: 999;}
+
+.cart-popup-container-content {
   width: 100%;
 }
 
@@ -86,7 +147,7 @@ export default {
     color: $color-red;
   }
 
-  .popup-title-separator {
+  .cart-popup-title-separator {
     width: 56px;
     height: 5px;
     margin: 0 auto;
@@ -213,7 +274,7 @@ export default {
     text-align: center;
   }
 
-  .popup-overlay {
+  .cart-popup-overlay {
       content: "";
       display: none;
       width: 100%;
@@ -227,6 +288,6 @@ export default {
       overflow: hidden;
   }
 
-  .popup-overlay.active {display: inline-block;}
+  .cart-popup-overlay.active {display: inline-block;}
 
 </style>

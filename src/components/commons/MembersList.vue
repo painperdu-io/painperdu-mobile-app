@@ -7,7 +7,7 @@
           <img v-bind:src="member.picture"/>
         </div>
       </div>
-      <div v-else class="members-item accomplice-item" v-link="{ name: 'MemberProfile' }">
+      <div v-else class="members-item accomplice-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div v-if="index < 4" class="members-image">
           <img v-bind:src="member.picture"/>
         </div>
@@ -24,6 +24,13 @@
 <script>
 export default {
   props: ['members', 'type', 'add'],
+  methods: {
+    addAccomplice: (event) => {
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      event.preventDefault()
+    }
+  }
 };
 </script>
 

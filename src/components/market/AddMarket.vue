@@ -185,8 +185,8 @@ export default {
         input[type="range"]::-webkit-slider-thumb {
           -webkit-appearance:none;
           position:relative;
-          width: 20px;
-          height: 20px;
+          width: 25px;
+          height: 25px;
           border-radius: 100%;
           background: $color-white;
           border: 2px solid #f2f2f2;
@@ -285,18 +285,12 @@ export default {
              left: -1.4em;
              border-right-width: 0.7em;
              border-left-color: transparent;
-             -webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
-             -moz-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
-             box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
           }
 
           &:after {
            right: -1.4em;
            border-left-width: 0.7em;
            border-right-color: transparent;
-           -webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
-           -moz-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
-           box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
           }
         }
 
@@ -314,17 +308,11 @@ export default {
         .residence-slider-item-name .residence-slider-item-name-content:before {
            left: 0;
            border-width: 0.6em 0 0 2em;
-           -webkit-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
-           -moz-box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
-           box-shadow: rgba(000,000,000,0.4) 0.5px 1px 1px;
         }
 
         .residence-slider-item-name .residence-slider-item-name-content:after {
            right: 0;
            border-width: 0.6em 2em 0 0;
-           -webkit-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
-           -moz-box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
-           box-shadow: rgba(000,000,000,0.4) -0.5px 1px 1px;
         }
 
         .app-icon-container {
@@ -337,8 +325,8 @@ export default {
           background-color: $color-green;
           fill: $color-white;
           z-index: 10;
-          left: 50%;
-          top: 40%;
+          left: 165%;
+          top: 30%;
           transform: translate3d(-50%,-50%,0);
         }
 
