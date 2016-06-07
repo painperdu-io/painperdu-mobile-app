@@ -26,18 +26,18 @@
             <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
               <use xlink:href="#app-icon-close"></use>
             </svg>
-            <input placeholder="Nom du produit..." v-on:click="displayClose" v-model="search" />
+            <input class="market-products-search-input" placeholder="Nom du produit..." v-on:click="displayRemove" v-model="search" />
           </div>
 
           <div class="market-products-filters">
+            <input id="prepare" class="filter" type="radio" value="raw" v-model="type" checked>
+            <label for="prepare">Produits Bruts</label>
             <input id="brut" class="filter" type="radio" value="homemade" v-model="type">
             <label for="brut" >Plats Préparés</label>
-            <input id="prepare" class="filter" type="radio" value="raw" v-model="type">
-            <label for="prepare">Produits Bruts</label>
           </div>
 
           <products-list
-            :products="market.products"
+            :products="products"
             :type="type"
             :search="search">
           </producst-list>
@@ -72,7 +72,7 @@ export default {
     moveLeft(event) {
       if (this.marketCurrent !== 0) {
         this.marketCurrent--;
-        this.market = this.markets[this.marketCurrent];
+        this.updateMarketBySlideId(this.marketCurrent);
       } else {
         this.market = this.markets[this.markets.length];
         this.marketCurrent = this.markets.length;
@@ -95,10 +95,10 @@ export default {
           this.market = { name: '', products: {} };
           console.log('AJOUT PLACE DU MARCHÉ');
         } else {
-          this.market = this.markets[this.marketCurrent];
+          this.updateMarketBySlideId(this.marketCurrent);
         }
       } else {
-        this.market = this.markets[0];
+        this.updateMarketBySlideId(0);
         this.marketCurrent = 0;
       }
       // const slides = document.getElementsByClassName('market-container');
@@ -107,16 +107,24 @@ export default {
       //   slides[i].style.transform = `translate3d(-100%, 0, 0)`;
       // }
     },
-    displayClose(event) {
+    displayRemove(event) {
       document.getElementsByClassName('market-products-search-icon-right')[0].classList.add('active');
+    },
+    updateMarketBySlideId(id) {
+      this.market = this.markets[id];
+
+      // récupérer les produits liés à un market
+      this.$http({ url: `markets/${this.market._id}/products`, method: 'GET' })
+        .then((response) => this.products = response.data)
+        .catch(err => console.log(err));
     },
   },
   data() {
     return {
-      market: { foodkeeper: {}, products: {} },
+      marketCurrent: 0,
+      market: {},
       markets: [],
       products: [],
-      marketCurrent: 0,
     };
   },
   ready() {
@@ -126,9 +134,9 @@ export default {
     this.$http({ url: `markets/user/${userId}`, method: 'GET' })
       .then((response) => {
         this.markets = response.data;
-        this.market = this.markets[0];
+        this.updateMarketBySlideId(0);
       })
-      .catch(err => { console.log(err); });
+      .catch(err => console.log(err));
   }
 };
 </script>
