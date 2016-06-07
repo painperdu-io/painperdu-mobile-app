@@ -36,10 +36,6 @@ export function popupsList () {
       tip: true,
     },
     {
-      route: 'MeProfile',
-      addAccomplice: true,
-    },
-    {
       route: 'AddFoodkeeper',
       addPhoto: true,
     },
@@ -53,7 +49,7 @@ export function popupsList () {
     },
     {
       route: 'DetailsFoodkeeper',
-      cart: true,
+      addAccomplice: true,
     },
     {
       route: 'Market',

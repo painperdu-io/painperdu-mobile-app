@@ -9,8 +9,7 @@
 
     <template v-for="popup in popups">
       <template v-if="popup.route == route">
-        <cart v-if="popup.cart || this.cart "></cart>
-        <add-accomplice v-if="popup.addAccomplice && !this.cart"></add-accomplice>
+        <add-accomplice v-if="popup.addAccomplice"></add-accomplice>
         <add-photo v-if="popup.addPhoto"></add-photo>
         <add-blason v-if="popup.addBlason"></add-blason>
         <add-picto v-if="popup.addPicto"></add-picto>
@@ -50,12 +49,6 @@ export default {
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()
-    },
-    checkPop : () => {
-      if(document.getElementsByClassName('popup-container')[0].classList.contains('cart')){
-        this.cart = true;
-        console.log('Je suis dans checkPop :' + this.cart);
-      }
     },
   },
   data () {
