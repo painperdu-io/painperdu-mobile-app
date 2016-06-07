@@ -30,10 +30,8 @@ export default {
 
     // récupérer les informations du market en fonction de son id
     this.$http({ url: `markets/${marketId}`, method: 'GET' })
-      .then((response) => {
-        this.market = response.data;
-      })
-      .catch(err => { console.log(err); });
+      .then(response => this.market = response.data)
+      .catch(err => console.log(err));
   }
 };
 </script>
