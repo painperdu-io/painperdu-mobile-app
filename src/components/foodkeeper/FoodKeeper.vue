@@ -130,7 +130,7 @@ export default {
   height: 125px;
   margin: 7px 0;
   background: rgba(0,224,201,0.5);
-  opacity: 0.8;
+  opacity:1 ;
 }
 
   .foodkeeper-add-icon {
@@ -147,7 +147,7 @@ export default {
       margin: 0 auto;
       width: 80px;
       height: 80px;
-      background: $color-white;
+      background: url('/static/img/bg-3.png') no-repeat;
       border-radius: 50%;
     }
 
