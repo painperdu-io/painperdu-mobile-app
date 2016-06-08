@@ -188,5 +188,15 @@ export default {
             color: $color-green;
           }
         }
+
+        &.error {
+          &:hover, &:focus {
+            font: 1.3em 'Karla-Bold', sans-serif;
+            border-bottom: 2px solid $color-red;
+            + label {
+              color: $color-red;
+            }
+          }
+        }
       }
 </style>
