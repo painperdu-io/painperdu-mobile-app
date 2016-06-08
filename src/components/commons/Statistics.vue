@@ -10,7 +10,7 @@
         </div>
         <div class="statistics-product-data-graphs">
           <template v-for="product in statistics.products">
-            <div class="statistics-product-data-graph" style="height:{{ product.percent }}%;"><span class="top-{{ product.priority }}"></span></div>
+            <div class="statistics-product-data-graph" :style="{ 'height': product.percent + '%' }"><span class="top-{{ product.priority }}"></span></div>
           </template>
         </div>
         <div class="statistics-product-data-totals">
