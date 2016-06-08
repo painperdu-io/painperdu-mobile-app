@@ -5,12 +5,12 @@
         <div class="profile-infos">
           <div class="profile-infos-photo">
             <div class="profile-infos-photo-img">
-              <img v-if="alliance.type == 'giver'" :src="alliance.applicant.picture"/>
-              <img v-else :src="alliance.giver.picture"/>
+              <img v-if="alliance.type == 'giver'" :src="alliance.users.applicant.picture"/>
+              <img v-else :src="alliance.users.giver.picture"/>
             </div>
           </div>
-          <h3 v-if="alliance.type == 'giver'" class="profile-infos-name">{{ alliance.applicant.name.first }}</h3>
-          <h3 v-else class="profile-infos-name">{{ alliance.giver.name.first }}</h3>
+          <h3 v-if="alliance.type == 'giver'" class="profile-infos-name">{{ alliance.users.applicant.name.first }}</h3>
+          <h3 v-else class="profile-infos-name">{{ alliance.users.giver.name.first }}</h3>
         </div>
       </div>
       <div class="product animated bounceInLeft">
