@@ -1,28 +1,30 @@
 <template>
   <div class="alliance-details-container animated" transition="moveHorizontal">
     <div class="alliance-summary">
-      <div class="profile-container animated bounceInRight" v-show="show" >
+      <div class="profile-container animated bounceInRight">
         <div class="profile-infos">
           <div class="profile-infos-photo">
             <div class="profile-infos-photo-img">
-              <img src="https://randomuser.me/api/portraits/men/12.jpg"/>
+              <img v-if="alliance.type == 'giver'" :src="alliance.applicant.picture"/>
+              <img v-else :src="alliance.giver.picture"/>
             </div>
           </div>
-          <h3 class="profile-infos-name">Adrien</h3>
+          <h3 v-if="alliance.type == 'giver'" class="profile-infos-name">{{ alliance.applicant.name.first }}</h3>
+          <h3 v-else class="profile-infos-name">{{ alliance.giver.name.first }}</h3>
         </div>
       </div>
-      <div class="product animated bounceInLeft" :class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
-        <div class="product-item-circle type" :class="{ 'type-prepare': !product.brut }">
+      <div class="product animated bounceInLeft">
+        <div class="product-item-circle {{ alliance.product.type }}">
           <svg viewBox="0 0 100 100" class="foods-icon animated tada">
-            <use xlink:href="#foods-icon-chou"></use>
+            <use xlink:href="#foods-icon-{{ alliance.product.icon }}"></use>
           </svg>
-          <div class="product-quantity">2</div>
+          <div class="product-quantity">{{ alliance.quantity }}</div>
         </div>
-        <div class="product-name">Chou</div>
+        <div class="product-name">{{ alliance.product.name }}</div>
       </div>
     </div>
 
-    <div class="steps-summary">
+    <!--<div class="steps-summary">
       <h3 class="title-section">Suivi de vos actions</h3>
       <div class="steps-summary-separator"></div>
 
@@ -107,7 +109,7 @@
           <div class="date-day">28/02/16</div>
       </fieldset>
 
-    </div>
+    </div>-->
   </div>
 
 </template>
@@ -116,14 +118,23 @@
 import Profile from './../commons/Profile'
 
 export default {
-  data() {
-    return {
-      show: true,
-    };
-  },
   components: {
     Profile,
   },
+  data() {
+    return {
+      alliance: {},
+    };
+  },
+  ready() {
+    const allianceId = this.$route.params.id;
+    const userId = '575302fc5dacbac32540268d';
+
+    // récupérer une alliance en fonction de son id
+    this.$http({ url: `alliances/${allianceId}/user/${userId}`, method: 'GET' })
+      .then(response => this.alliance = response.data)
+      .catch(err => console.log(err));
+  }
 };
 </script>
 
@@ -219,7 +230,7 @@ export default {
           color: $color-white;
           text-align: center;
           border-radius: 50%;
-          font-size: (2.6em / 2);
+          font-size: 1.3em;
           font-family: 'Karla-Bold';
           width: (55px /2);
           height: (55px /2);
@@ -228,11 +239,11 @@ export default {
         }
       }
 
-      .product-item-circle.type {
+      .product-item-circle.raw {
         background: url('/static/img/product-brut.png') center center no-repeat $color-white;
       }
 
-      .product-item-circle.type-prepare {
+      .product-item-circle.homemade {
         background: url('/static/img/product-prepare.png') center center no-repeat $color-white;
       }
 
@@ -240,10 +251,10 @@ export default {
         text-transform: capitalize;
         font-style: italic;
         color: $color-red;
-        font-size: (3.6em / 2);
+        font-size: 1.8em;
         font-family: 'IowanOldStyleBT-BlackItalic';
         font-weight: 700;
-        margin: (20px / 2) auto;
+        margin: 10px auto;
         text-align: center;
       }
     }
@@ -254,7 +265,7 @@ export default {
 
 .steps-summary {
   background-color: $color-white;
-  font-size: (2.6em / 2);
+  font-size: 1.3em;
   font-family: 'Karla-Italic';
   margin-top: 280px;
 }
@@ -308,18 +319,18 @@ export default {
 }
 
 .steps-summary {
-    text-align: center;
-    color: $color-text;
-    font-family: 'Karla-Italic';
-    padding-bottom: 20px;
+  text-align: center;
+  color: $color-text;
+  font-family: 'Karla-Italic';
+  padding-bottom: 20px;
 }
 
 .step {
-    text-align: center;
-    margin: 30px auto;
-    width: 75%;
-    padding-bottom: 15px;
-    border: 0px;
+  text-align: center;
+  margin: 30px auto;
+  width: 75%;
+  padding-bottom: 15px;
+  border: 0px;
 }
 
   .step.my-side {
@@ -330,7 +341,7 @@ export default {
     background: url('/static/img/rectangle-red.png') no-repeat center;
     background-size: 100% 100%;
   }
-    .step.user-side svg {fill: $color-green;}
+  .step.user-side svg {fill: $color-green;}
   .step.final-step {
     border: 0px;
     background: url('/static/img/rectangle-beige.png');
@@ -343,14 +354,14 @@ export default {
 
 .date-hours {
   background-color: $color-green;
-  height: (80px / 2);
-  border-radius: (80px / 4);
+  height: 20px;
+  border-radius: 20px;
   text-transform: uppercase;
   color: $color-white;
   font-family: 'Karla-Bold';
-  font-size: (2.6 / 2);
+  font-size: 1.3em;
   box-sizing: border-box;
-  line-height: (80px / 2);
+  line-height: 40px;
   width: 60%;
   min-width: 115px;
   margin: auto;
@@ -363,33 +374,31 @@ export default {
 .user-address-details {
   margin-top: 10px;
   font-family: 'Karla-BoldItalic';
-  font-size: (3.6em / 2);
+  font-size: 1.8em;
   line-height: 1.4em;
 }
 
 .multiple-dates {
   text-align: center;
-  line-height: (80px / 2);
-    .filter {
-      display: none;
-      &:first-child {
-        + label {
+  line-height: 40px;
+  .filter {
+    display: none;
+    &:first-child {
+      + label {
 
-        }
-      }
-      &:checked {
-        + label .date-hours {
-          background-color: white;
-          border: 2px solid $color-green;
-          color: $color-green
-        }
       }
     }
+    &:checked {
+      + label .date-hours {
+        background-color: white;
+        border: 2px solid $color-green;
+        color: $color-green
+      }
+    }
+  }
 }
 
 legend {
   text-align: center;
 }
-
-
 </style>

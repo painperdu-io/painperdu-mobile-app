@@ -114,7 +114,7 @@ export default {
 
       // récupérer les produits liés à un market
       this.$http({ url: `markets/${this.market._id}/products`, method: 'GET' })
-        .then((response) => this.products = response.data)
+        .then(response => this.products = response.data)
         .catch(err => console.log(err));
     },
   },

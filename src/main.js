@@ -252,7 +252,7 @@ router.map({
       },
     },
   },
-  '/alliances/details': {
+  '/alliances/details/:id': {
     name: 'DetailsAlliance',
     component: DetailsAlliance,
     page: {

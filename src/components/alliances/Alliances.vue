@@ -1,18 +1,19 @@
 <template>
   <div class="alliances-container animated" transition="fade" transition-mode="out-in">
-    <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
-      <template v-for="alliance in alliances | orderBy 'name'">
-        <div class="alliances-product-item" :class="{ 'inactive': !alliance.status }" v-link="{ path: '/alliances/details' }" v-for="product in alliance.product">
-          <div class="alliances-product-icon type" :class="{ 'type-prepare': product.brut }">
+      <template v-for="alliance in alliances">
+        <div class="alliances-product-item {{ alliance.status }} {{ alliance.type }}" v-link="{ name: 'DetailsAlliance', params: { id: alliance._id }}">
+          <div class="alliances-product-icon {{ alliance.product.type }}">
             <svg viewBox="0 0 100 100">
-              <use xlink:href="#foods-icon-{{ product.name }}"></use>
+              <use xlink:href="#foods-icon-{{ alliance.product.icon }}"></use>
             </svg>
           </div>
           <div class="alliances-product-description">
-            <div class="alliances-product-description-name">{{ product.name }}</div>
+            <div class="alliances-product-description-name">{{ alliance.product.name }}</div>
             <div class="alliances-product-description-separator"></div>
-            <div class="alliances-product-description-status">{{ alliance.statusName }}</div>
+            <div v-if="alliance.status == 'current'" class="alliances-product-description-status">En cours</div>
+            <div v-if="alliance.status == 'terminated'" class="alliances-product-description-status">Terminé</div>
+            <div v-if="alliance.status == 'abandoned'" class="alliances-product-description-status">Abandonné</div>
           </div>
           <div class="alliance-product-detail">
             <svg viewBox="0 0 50 50" class="alliance-product-detail-icon">
@@ -21,27 +22,25 @@
           </div>
         </div>
       </template>
-      <div class="alliances-list-title">Plus tôt dans la semaine</div>
-      <div class="alliances-list-title">Plus tôt dans le mois</div>
     </div>
-
   </div>
 </template>
 
 <script>
-import { alliancesList } from './../../vuex/getters'
-
 export default {
-  vuex: {
-    getters: {
-      alliances: alliancesList,
-    },
-  },
   data() {
     return {
-      show: true,
+      alliances: []
     };
   },
+  ready() {
+    const userId = '575302fc5dacbac32540268d';
+
+    // récupérer la liste des alliances en fonction de l'id utilisateur
+    this.$http({ url: `alliances/user/${userId}`, method: 'GET' })
+      .then((response) => this.alliances = response.data)
+      .catch(err => console.log(err));
+  }
 };
 </script>
 
@@ -55,25 +54,6 @@ export default {
   align-items: center;
   margin: -1px 0;
 }
-
-  .alliances-list-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 33px;
-    border-top: 1px solid $color-gray;
-    border-bottom: 1px solid $color-gray;
-    font: 1.4em 'Karla-Regular', sans-serif;
-    color: $color-text;
-    text-transform: uppercase;
-    background: $color-white;
-
-    &.active {
-      font: 1.4em 'Karla-Bold', sans-serif;
-    }
-  }
 
   .alliances-list-product {
     width: 100%;
@@ -90,7 +70,8 @@ export default {
       border-top: 1px solid $color-gray;
       border-bottom: 1px solid $color-gray;
 
-      &.inactive {
+      &.abandoned,
+      &.terminated {
         background: $color-beige;
         opacity: 0.6;
 
@@ -119,11 +100,11 @@ export default {
         }
       }
 
-      .alliances-product-icon.type {
+      .alliances-product-icon.raw {
         background: url('/static/img/product-brut.png') center center repeat $color-white;
       }
 
-      .alliances-product-icon.type-prepare {
+      .alliances-product-icon.homemade {
         background: url('/static/img/product-prepare.png') center center repeat $color-white;
       }
 
