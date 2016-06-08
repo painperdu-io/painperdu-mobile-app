@@ -10,21 +10,31 @@
       </div>
       <h3 class="foodkeeper-add-form-title">Renseigner l'adresse du garde manger</h3>
       <div class="foodkeeper-add-form-item">
-        <label class="foodkeeper-add-form-item-label" for="address1">Rue, route, impasse</label>
         <input id="address1" v-model="form.street" class="foodkeeper-add-form-item-input" type="text" placeholder="Rue, route, impasse"></input>
+        <label class="foodkeeper-add-form-item-label" for="address1">Rue, route, impasse</label>
       </div>
       <div class="foodkeeper-add-form-inline-wrapper">
         <div class="foodkeeper-add-form-item">
-          <label class="foodkeeper-add-form-item-label" for="number">Numéro</label>
           <input id="number" v-model="form.number" class="foodkeeper-add-form-item-input" type="text" placeholder="Numéro"></input>
+          <label class="foodkeeper-add-form-item-label" for="number">Numéro</label>
         </div>
         <div class="foodkeeper-add-form-item">
-          <label class="foodkeeper-add-form-item-label" for="apartment">Appartement</label>
           <input id="apartment" v-model="form.apartment" class="foodkeeper-add-form-item-input" type="text" placeholder="Appart."></input>
+          <label class="foodkeeper-add-form-item-label" for="apartment">Appartement</label>
         </div>
         <div class="foodkeeper-add-form-item">
-          <label class="foodkeeper-add-form-item-label" for="floor">Étage</label>
           <input id="floor" v-model="form.floor" class="foodkeeper-add-form-item-input" type="text" placeholder="Étage"></input>
+          <label class="foodkeeper-add-form-item-label" for="floor">Étage</label>
+        </div>
+      </div>
+      <div class="foodkeeper-add-form-inline-wrapper">
+        <div class="foodkeeper-add-form-item">
+          <input id="code-postal" v-model="form.zipcode" class="foodkeeper-add-form-item-input" type="text" placeholder="Code postal"></input>
+          <label class="foodkeeper-add-form-item-label" for="infos">Code postal</label>
+        </div>
+        <div class="foodkeeper-add-form-item foodkeeper-add-form-item-city">
+          <input id="ville" v-model="form.city" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
+          <label class="foodkeeper-add-form-item-label" for="infos">Ville</label>
         </div>
       </div>
       <div class="foodkeeper-add-form-item">
@@ -32,16 +42,8 @@
         <input id="address2" v-model="form.additional" class="foodkeeper-add-form-item-input" type="text" placeholder="Complément d'adresse"></input>
       </div>
       <div class="foodkeeper-add-form-item">
-        <label class="foodkeeper-add-form-item-label" for="infos">Informations complémentaires</label>
         <input id="infos" v-model="form.infos" class="foodkeeper-add-form-item-input" type="text" placeholder="Informations complémentaires"></input>
-      </div>
-      <div class="foodkeeper-add-form-item">
-        <label class="foodkeeper-add-form-item-label" for="infos">Ville</label>
-        <input id="infos" v-model="form.city" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
-      </div>
-      <div class="foodkeeper-add-form-item">
-        <label class="foodkeeper-add-form-item-label" for="infos">Code postal</label>
-        <input id="infos" v-model="form.zipcode" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
+        <label class="foodkeeper-add-form-item-label" for="infos">Informations complémentaires</label>
       </div>
       <div class="foodkeeper-add-form-btn" v-on:click="callAddApi">Ajouter</div>
     </div>
@@ -66,6 +68,11 @@ export default {
       if (!this.form.zipcode) { console.log('ZICODE VIDE !!!'); }
 
       console.log(this.form);
+
+      /*Ouverture popup*/
+      event.preventDefault()
+      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
     }
   },
   data() {
@@ -128,6 +135,9 @@ export default {
       & > .foodkeeper-add-form-item {
         width: 80px;
       }
+      & > .foodkeeper-add-form-item-city {
+        width: 170px;
+      }
     }
 
     .foodkeeper-add-form-title {
@@ -171,7 +181,7 @@ export default {
       display: flex;
       flex-direction: column;
       width: 260px;
-      padding: 10px 0;
+      padding: 10px 0 20px;
       margin-bottom: 5px;
     }
 
@@ -215,4 +225,46 @@ export default {
       text-transform: uppercase;
       text-align: center;
     }
+
+    .foodkeeper-add-form-item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+      .foodkeeper-add-form-item-label {
+        position: absolute;
+        top: 0;
+        margin-bottom: 10px;
+        font: 1.2em 'Karla-Italic', sans-serif;
+        color: $color-text;
+      }
+
+      .foodkeeper-add-form-item-input {
+        margin-top: -5px;
+        padding-top: 15px;
+        padding-bottom: 5px;
+        font: 1.3em 'Karla-Regular', sans-serif;
+        border: none;
+        border-bottom: 1px solid $color-gray;
+        color: $color-text;
+
+        &:hover, &:focus {
+          font: 1.3em 'Karla-Bold', sans-serif;
+          border-bottom: 2px solid $color-green;
+          + label {
+            color: $color-green;
+          }
+        }
+
+        &.error {
+          &:hover, &:focus {
+            font: 1.3em 'Karla-Bold', sans-serif;
+            border-bottom: 2px solid $color-red;
+            + label {
+              color: $color-red;
+            }
+          }
+        }
+      }
 </style>

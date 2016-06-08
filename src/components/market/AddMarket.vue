@@ -69,7 +69,11 @@ export default {
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
     }
-  }
+  },
+  ready () {
+    document.getElementsByClassName('validation-popup-container')[0].classList.remove('active');
+    document.getElementsByClassName('validation-popup-overlay')[0].classList.remove('active');
+  },
 };
 </script>
 
@@ -102,7 +106,6 @@ export default {
 
   .market-add-form-wrapper {
     padding: 30px 0 0;
-    background: url('/static/img/bg-1.png') center center;
   }
 
     .market-add-form-select {
