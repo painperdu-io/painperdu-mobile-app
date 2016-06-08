@@ -68,6 +68,11 @@ export default {
       if (!this.form.zipcode) { console.log('ZICODE VIDE !!!'); }
 
       console.log(this.form);
+
+      /*Ouverture popup*/
+      event.preventDefault()
+      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
     }
   },
   data() {
