@@ -251,7 +251,7 @@ export default {
         width: 33%;
         label {
           display: inline-block;
-          width: 60px;
+          width: 70px;
         }
         input[type="radio"] {
           display: none;
@@ -276,7 +276,7 @@ export default {
           vertical-align: middle;
           text-transform: uppercase;
           color: $color-text;
-          font: 1.4em 'Karla-Italic', sans-serif;
+          font: 1.2em 'Karla-Bold', sans-serif;
           margin: 0px 0 0px 35px;
           max-width: 69px;
           display: inline-block;
