@@ -90,8 +90,10 @@ export default {
     }
   },
   ready() {
+    const userId = '575302fc5dacbac32540268d';
+
     // récupérer la liste des foodkeepers
-    this.$http({ url: 'users/575302fc5dacbac32540268d', method: 'GET' })
+    this.$http({ url: `users/${userId}`, method: 'GET' })
       .then((response) => { this.foodkeepers = response.data.foodkeepers; })
       .catch(err => { console.log(err); });
   }

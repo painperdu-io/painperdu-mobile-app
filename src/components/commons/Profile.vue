@@ -6,7 +6,7 @@
           <img :src="profile.picture"/>
         </div>
       </div>
-      <div class="profile-item-allie" v-if="profile.allie">
+      <div class="profile-item-allie" v-if="false">
         <svg viewBox="0 0 100 100" class="profile-icon ">
           <use xlink:href="#app-icon-infinite"></use>
         </svg>
