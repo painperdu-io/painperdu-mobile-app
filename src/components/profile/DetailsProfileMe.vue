@@ -2,16 +2,16 @@
   <div class="me-profile-container">
     <div class="me-profile-infos-wrapper">
       <profile :profile="profile" type="accomplice"></profile>
-      <div class="member-profile-statistics-wrapper">
-        <div class="member-profile-statistics">
-          <div class="member-profile-statistics-item">
+      <div class="me-profile-statistics-wrapper">
+        <div class="me-profile-statistics">
+          <div class="me-profile-statistics-item">
             <p class="legend">Nombre d'échanges</p>
             <p class="value">8</p>
             <span class="underline"></span>
           </div>
-          <div class="member-profile-statistics-item">
+          <div class="me-profile-statistics-item">
             <p class="legend">Avis moyen</p>
-            <p class="value green">Parfait</p> 
+            <p class="value green">Parfait</p>
             <span class="underline"></span>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default {
     margin: 20px 0 10px;
   }
 
-  .member-profile-statistics-wrapper {
+  .me-profile-statistics-wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -84,11 +84,11 @@ export default {
     background-repeat: no-repeat;
   }
 
-    .member-profile-statistics {
+    .me-profile-statistics {
       padding: 18px 0 50px 0;
     }
 
-      .member-profile-statistics-item {
+      .me-profile-statistics-item {
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -115,7 +115,7 @@ export default {
         }
       }
 
-  .member-profile-accomplices-wrapper {
+  .me-profile-accomplices-wrapper {
     margin: 0px auto 10px;
     width: 298px;
   }

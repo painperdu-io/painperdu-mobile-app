@@ -6,28 +6,28 @@
           <img :src="profile.picture"/>
         </div>
       </div>
-      <div class="app-icon-container">
+      <div class="profile-app-icon-container">
         <svg viewBox="0 0 50 50" class="app-icon">
           <use xlink:href="#app-icon-edit" ></use>
         </svg>
       </div>
       <div class="profile-item-allie" v-if="false">
         <svg viewBox="0 0 100 100" class="profile-icon ">
-          <use xlink:href="#app-icon-infinite"></use>
+          <use xlink:href="#profile-app-icon-infinite"></use>
         </svg>
       </div>
       <h3 class="profile-infos-name">{{ profile.name.first }} {{ profile.name.last }}</h3>
       <div class="profile-infos-separator"></div>
       <p class="profile-infos-status ">{{ statusName }}</p>
 
-      <div class="app-icon-status">
-        <svg viewBox="0 0 100 100" class="app-icon-status">
-          <use xlink:href="#app-icon-{{ statusName }}" ></use>
+      <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
+        <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+          <use xlink:href="#status-icon-{{ statusName }}-green" ></use>
         </svg>
       </div>
-      <div class="app-icon-container">
-        <svg viewBox="0 0 100 100" class="app-icon-status">
-          <use xlink:href="#app-icon-{{ statusName }}" ></use>
+      <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
+        <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+          <use xlink:href="#status-icon-{{ statusName }}-green" ></use>
         </svg>
       </div>
     </div>
@@ -66,35 +66,12 @@ export default {
 
 .profile-container {
   text-align: center;
+  max-width: 320px;
+  margin: auto;
 }
 
   .profile-infos {
     position: relative;
-    &:before,
-    &:after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      bottom: 0;
-      width: 140px;
-      height: 100px;
-    }
-    &:before { left: 0px; }
-    &:after { right: 0px; }
-
-    .menestrel {
-      &:before,
-      &:after {
-        background: url('/static/img/menestrel.png') bottom center no-repeat;
-      }
-    }
-
-    .ecuyer {
-      &:before,
-      &:after {
-        background: url('/static/img/ecuyer.png') bottom center no-repeat;
-      }
-    }
   }
 
     .profile-infos-photo {
@@ -150,7 +127,7 @@ export default {
     }
 
     .profile-infos-name {
-      font: bold 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
+      font: 300 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
       text-transform: capitalize;
       color: $color-red;
     }
@@ -166,7 +143,17 @@ export default {
     .status-ecuyer,
     .status-soldat,
     .status-menestrel {
-
+      .profile-profile-app-icon-status-container{
+        position: absolute;
+        bottom:20px;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+      }
+      .profile-profile-app-icon-status-left { transform: scaleX(-1);}
+      .profile-profile-app-icon-status-right {
+        right: 0;
+      }
     }
 
     .profile-description {
@@ -199,7 +186,7 @@ export default {
       border-radius: 50%;
     }
 
-    .app-icon-container {
+    .profile-app-icon-container {
       position: absolute;
       width: 35px;
       height: 35px;
