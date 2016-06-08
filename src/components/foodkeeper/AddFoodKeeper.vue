@@ -1,6 +1,9 @@
 <template>
   <div class="foodkeeper-add-container">
-    <div class="foodkeeper-add-image-wrapper" v-on:click="addPhoto">+</div>
+    <div class="foodkeeper-add-image-wrapper" v-on:click="addPhoto">
+      <div class="foodkeeper-add-image"></div>
+      <div class="foodkeeper-add-image-icon">+</div>
+    </div>
     <div class="foodkeeper-add-form-wrapper">
       <div class="foodkeeper-add-form-itemgreen">
         <input v-model="form.name" placeholder="Nom du garde manger" />
@@ -105,6 +108,7 @@ export default {
 }
 
   .foodkeeper-add-image-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,7 +119,26 @@ export default {
     font: 3em 'Karla-Regular', sans-serif;
     text-align: center;
     color: $color-red;
+    overflow: hidden;
   }
+
+    .foodkeeper-add-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    .foodkeeper-add-image-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
 
   .foodkeeper-add-form-wrapper {
     display: flex;

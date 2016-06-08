@@ -4,31 +4,70 @@
     <div class="popup-title-separator"></div>
       <div class="add-photo-popup-item-wrapper">
         <div class="add-photo-popup-item">
-          <div class="add-photo-camera">
-            Prendre <br />une photo
-          </div>
+          <div class="add-photo-camera" v-on:click="addPictureByPhoto">Prendre<br />une photo</div>
         </div>
         <div class="add-photo-popup-item">
-          <div class="add-photo-gallery">
-            Accéder à la  <br />bibliothèque
-          </div>
+          <div class="add-photo-gallery" v-on:click="addPictureByLibrary">Accéder à la<br />bibliothèque</div>
         </div>
       </div>
-      <div class="add-photo-popup-item">
-        <div id="add-photo-preview-wrapper"></div>
-      </div>
-    <div class="add-photo-accomplice-button">Ajouter</div>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    closeAddAccomplice(event) {
+    addPictureByLibrary(event) {
+      event.preventDefault();
+
+      // image récupérée
+      const success = function(imageURI) {
+        const el = document.getElementsByClassName('foodkeeper-add-image')[0];
+        const img = 'data:image/jpeg;base64,' + imageURI;
+        el.style.backgroundImage = 'url(' + img + ')';
+      }
+
+      // erreur
+      const fail = function() {
+        console.log('Error: Add photo by library');
+      }
+
+      // récupérer l'image à partir d'une source définie
+      navigator.camera.getPicture(success, fail, {
+        quality: 80,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+      });
+
+      // fermer la popup
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
-      event.preventDefault()
-    }
+    },
+    addPictureByPhoto(event) {
+      event.preventDefault();
+
+      // image récupérée
+      const success = function(imageURI) {
+        const el = document.getElementsByClassName('foodkeeper-add-image')[0];
+        const img = 'data:image/jpeg;base64,' + imageURI;
+        el.style.backgroundImage = 'url(' + img + ')';
+      }
+
+      // erreur
+      const fail = function() {
+        console.log('Error: Add photo by library');
+      }
+
+      // récupérer l'image à partir d'une source définie
+      navigator.camera.getPicture(success, fail, {
+        quality: 80,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
+        sourceType: navigator.camera.PictureSourceType.CAMERA
+      });
+
+      // fermer la popup
+      document.getElementsByClassName('popup-container')[0].classList.remove('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
+    },
   }
 };
 </script>
@@ -59,6 +98,7 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 20px;
   }
 
     .add-photo-popup-item {
@@ -101,24 +141,4 @@ export default {
       font: 1.1em 'Karla-Bold', sans-serif;
       text-transform: uppercase;
     }
-
-    #add-photo-preview-wrapper {
-      width: 305px;
-      height: 95px;
-      margin: 20px auto 15px;
-      box-shadow: 0px 0px 5px $color-gray;
-    }
-
-  .add-photo-accomplice-button {
-    margin: 0 auto 20px;
-    width: 150px;
-    padding: 18px 0;
-    border-radius: 25px;
-    background-color: $color-beige;
-    font: 1.3em 'Karla-Bold', sans-serif;
-    color: $color-text;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="popup-overlay"></div>
   <div class="popup-container">
-    <div class="popup-close" v-on:click="closeCart">
+    <div class="popup-close" v-on:click="closePopup">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
@@ -45,7 +45,7 @@ export default {
     AddPicto,
   },
   methods: {
-    closeCart(event) {
+    closePopup(event) {
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()
