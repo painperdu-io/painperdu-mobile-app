@@ -20,7 +20,7 @@ import MenuBar from './components/commons/navigation/MenuBar'
 import SvgIcons from './components/commons/icons/SvgIcons'
 import FoodsIcons from './components/commons/icons/FoodsIcons'
 import store from './vuex/store'
- 
+
 export default {
   components: {
     Cart,
@@ -49,7 +49,7 @@ export default {
 
 body {
   margin: 0;
-  background: $color-red;
+  background: $color-white;
   font-size: 10px;
 }
 
@@ -62,6 +62,7 @@ body {
   background-size: cover;
   background-position: center center;
   overflow-y: auto;
+  background-color: $color-white;
 
   &.wrap-header-footer {
     min-height: calc(100vh - 135px);

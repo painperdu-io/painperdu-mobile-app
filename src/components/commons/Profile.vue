@@ -16,18 +16,18 @@
           <use xlink:href="#profile-app-icon-infinite"></use>
         </svg>
       </div>
-      <h3 class="profile-infos-name">{{ profile.name.first }} {{ profile.name.last }}</h3>
+      <h3 class="profile-infos-name">{{ profile.name.first }}</h3>
       <div class="profile-infos-separator"></div>
       <p class="profile-infos-status ">{{ statusName }}</p>
 
       <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
         <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
-          <use xlink:href="#status-icon-{{ statusName }}-green" ></use>
+          <use xlink:href="#status-icon-{{ statusName }}" ></use>
         </svg>
       </div>
       <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
         <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
-          <use xlink:href="#status-icon-{{ statusName }}-green" ></use>
+          <use xlink:href="#status-icon-{{ statusName }}" ></use>
         </svg>
       </div>
     </div>
@@ -146,8 +146,7 @@ export default {
       .profile-profile-app-icon-status-container{
         position: absolute;
         bottom:20px;
-        width: 50px;
-        height: 50px;
+        width: 40px;
         box-sizing: border-box;
       }
       .profile-profile-app-icon-status-left { transform: scaleX(-1);}

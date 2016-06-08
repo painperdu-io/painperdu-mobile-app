@@ -18,11 +18,12 @@
           <p class="value green">Parfait</p>
           <span class="underline"></span>
         </div>
-        <div class="member-profile-statistics-item">
-          <p class="legend">Ses compères <span class="underline"></span></p>
+        <div v-if="accomplices.length > 0" class="member-profile-statistics-item">
+          <p class="legend">Ses compères </p>
+          <span class="underline"></span>
         </div>
-        <div class="member-profile-accomplices-wrapper">
-          <members-list type="accomplices" add="false"></members-list>
+        <div v-if="accomplices.length > 0"  class="member-profile-accomplices-wrapper">
+          <members-list :members="accomplices" type="accomplices" add="false"></members-list>
         </div>
       </div>
     </div>
@@ -109,6 +110,7 @@ export default {
         .value {
           font: 1.2em 'Karla-Bold', sans-serif;
           color: $color-green;
+          z-index: 1;
           &.green {
             color: #4ce08a;
           }
@@ -124,7 +126,7 @@ export default {
     width: 298px;
   }
 
-  .legend { position: relative;
+  .legend { position: relative; z-index: 1;
     .underline { bottom: 0px; }
   }
 
@@ -135,7 +137,7 @@ export default {
     height: 6px;
     width: 100%;
     background-color: $color-white;
-    z-index: -1;
+    z-index: 0;
   }
 
   .already-allie {

@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="me-profile-btn-public">Voir le profil public</div>
+      <div class="me-profile-btn-public" v-link="{ name: 'MemberProfile', params: { id: '575302fc5dacbac32540268d' }}">Voir le profil public</div>
     </div>
     <div class="me-profile-form-wrapper">
       <div class="me-profile-form-item">
