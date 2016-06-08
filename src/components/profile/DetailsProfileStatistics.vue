@@ -1,18 +1,16 @@
 <template>
-  <div class="timeline-container">
-    <div class="timeline-products-wrapper">
-      <div class="timeline-product-text">Produits les plus échangés</div>
-
-    </div>
-
+  <div class="stats-container">
+      <statistics></statistics>
   </div>
-</template>
+</template> 
 
 <script>
+import Statistics from './../commons/Statistics'
+
 export default {
   data () {
     return {
-      timeline: {
+      stats: {
         share: { month: '2', begin: '6' },
         products: [
           { name: 'Tomate', percent: '96', priority: '1' },
@@ -24,18 +22,21 @@ export default {
       },
     };
   },
+  components : {
+    Statistics,
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
-.timeline-container {
+.stats-container {
   position: relative;
   width: 100%;
 }
 
-  .timeline-products-wrapper {
+  .stats-products-wrapper {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -44,19 +45,19 @@ export default {
     background: $color-white;
   }
 
-    .timeline-product-text {
+    .stats-product-text {
       font: 1.2em 'Karla-Regular', sans-serif;
       color: $color-text;
     }
 
-    .timeline-product-data {
+    .stats-product-data {
       position: relative;
       width: 100%;
       height: 140px;
     }
 
-      .timeline-product-data-lines,
-      .timeline-product-data-graphs {
+      .stats-product-data-lines,
+      .stats-product-data-graphs {
         position: absolute;
         top: 0;
         left: 0;
@@ -68,19 +69,19 @@ export default {
         height: 107px;
       }
 
-      .timeline-product-data-lines {
+      .stats-product-data-lines {
         flex-direction: column;
       }
 
 
 
-        .timeline-product-data-line {
+        .stats-product-data-line {
           width: 100%;
           height: 1px;
           background: $color-stats-line;
         }
 
-      .timeline-product-data-graphs {
+      .stats-product-data-graphs {
         flex-direction: row;
       }
 
@@ -89,7 +90,7 @@ export default {
         100% { height: 100%;}
       }
 
-        .timeline-product-data-graph {
+        .stats-product-data-graph {
           width: 20%;
           position: relative;
 
@@ -110,7 +111,7 @@ export default {
 
         }
 
-      .timeline-product-data-names{
+      .stats-product-data-names{
         position: absolute;
         top: 125px;
         left: 0;
@@ -120,7 +121,7 @@ export default {
         width: 100%;
       }
 
-      .timeline-product-data-totals {
+      .stats-product-data-totals {
         position: absolute;
         top: 5px;
         left: -15px;
@@ -131,20 +132,20 @@ export default {
         height: 110px;
       }
 
-        .timeline-product-data-name {
+        .stats-product-data-name {
           width: 20%;
           font: 0.9em 'Karla-Regular', sans-serif;
           color: #9b9b9b;
         }
 
-        .timeline-product-data-total {
+        .stats-product-data-total {
           &:first-child{ height: 4%;}
           height: 49%;
           font: 0.9em 'Karla-Regular', sans-serif;
           color: #9b9b9b;
         }
 
-  .timeline-infos-wrapper {
+  .stats-infos-wrapper {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -156,7 +157,7 @@ export default {
       100% { opacity: 1; transform: scale3d(1,1,1); }
     }
 
-    .timeline-infos-content {
+    .stats-infos-content {
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -166,7 +167,7 @@ export default {
       animation: apparition 1s normal;
     }
 
-      .timeline-infos-content-bg {
+      .stats-infos-content-bg {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -180,14 +181,14 @@ export default {
         -webkit-mask-size: 100% 100%;
       }
 
-      .timeline-infos-content-value {
+      .stats-infos-content-value {
         margin-top: -3px;
         text-align: center;
         font: 1.6em 'Karla-Bold', sans-serif;
         color: $color-white;
       }
 
-      .timeline-infos-content-legend {
+      .stats-infos-content-legend {
         display: flex;
         position: relative;
         margin: 0 10%;
