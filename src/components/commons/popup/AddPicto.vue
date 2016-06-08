@@ -6,21 +6,39 @@
       <p>Choisis l'illustration de la denrée que <span class="underline"></span><br /></p>
       <p>tu souhaites partager<span class="underline"></span></p>
     </div>
-    <div class="add-picto-pictos-wrapper">
-      <div class="add-picto-pictos-search">
-        <svg viewBox="0 0 100 100" class="add-picto-pictos-search-icon  add-picto-pictos-search-icon-left">
+    <div class="add-picto-wrapper">
+      <div class="add-picto-search">
+        <svg viewBox="0 0 100 100" class="add-picto-search-icon  add-picto-search-icon-left">
           <use xlink:href="#app-icon-search"></use>
         </svg>
-        <svg viewBox="0 0 100 100" class="add-picto-pictos-search-icon  add-picto-pictos-search-icon-right">
+        <svg viewBox="0 0 100 100" class="add-picto-search-icon  add-picto-search-icon-right">
           <use xlink:href="#app-icon-close"></use>
         </svg>
         <input placeholder="Nom du produit..." v-model="search" />
       </div>
 
-      <div class="pictos-container">
+      <div v-if="!filteredFoods.length" class="categories-container" >
+       <div class="add-picto-accomplice-subtitle">
+        <p>Sapristi ! Pain Perdu ne connaitrait<br /> pas cette mystérieuse denrée...</p>
+      </div>
+       <div class="add-picto-accomplice-text">
+         <p>Mais tu peux choisir la catégorie de<span class="underline"></span><br /></p>
+         <p>ton produit dans la liste ci-dessous : <span class="underline"></span></p>
+       </div>
+       <div class="categories-wrapper">
+         <template v-for="category in categories | orderBy 'name' ">
+           <div class="category-item-wrapper">
+             <input id="{{ category.shortName }}" class="category-item-input" type="radio" value="{{ category.shortName }}" v-model="selectedCategory">
+             <label for="{{ category.shortName }}" class="category-item-label">{{ category.longName }}</label>
+           </div>
+         </template>
+       </div>
+      </div>
+
+      <div v-else class="pictos-container">
         <template v-for="picto in pictos | filterBy search in 'name' | orderBy 'name' ">
           <div class="picto-item-wrapper">
-            <input name="{{ picto.name }}" class="picto" type="radio" value="{{ picto.name }}" v-model="picto">
+            <input id="{{ picto.name }}" class="picto" type="radio" value="{{ picto.name }}" v-model="selectedFood">
             <label for="{{ picto.name }}" class="picto-item-container">
               <svg viewBox="0 0 100 100" class="picto-item-icon">
                 <use xlink:href="#foods-icon-{{ picto.name }}"></use>
@@ -28,6 +46,7 @@
             </label>
           </div>
         </template>
+
       </div>
     </div>
     <div class="add-picto-accomplice-button">Ajouter</div>
@@ -38,13 +57,56 @@
 export default {
   data () {
     return {
+      search: '',
+      selectedFood: '',
+      categories: [
+        {shortName: 'legumes', longName : 'Légumes & Fruits'},
+        {shortName: 'viandes', longName : 'Viandes & Poissons'},
+        {shortName: 'laitiers', longName : 'Produits laitiers'},
+        {shortName: 'cereales', longName : 'Céréales & Dérivés'},
+        {shortName: 'boissons', longName : 'Boissons'},
+        {shortName: 'desserts', longName : 'Desserts'},
+        {shortName: 'autres', longName : 'Autres'},
+      ],
       pictos : [
         {name : 'salade'},
         {name : 'oeuf'},
         {name : 'sandwich'},
+        {name : 'poivron'},
+        {name : 'poisson'},
+        {name : 'viande'},
+        {name : 'pates'},
+        {name : 'croissant'},
+        {name : 'tomate'},
+        {name : 'orange'},
+        {name : 'pomme'},
+        {name : 'poire'},
+        {name : 'riz'},
+        {name : 'yaourt'},
+        {name : 'pizza'},
+        {name : 'patate'},
+        {name : 'muffin'},
+        {name : 'lait'},
+        {name : 'pates'},
+        {name : 'citron'},
+        {name : 'carotte'},
+        {name : 'pain'},
+        {name : 'banane'},
+        {name : 'emmental'},
+        {name : 'chou'},
+        {name : 'poulet'},
+        {name : 'chocolat'},
+        {name : 'painmie'},
       ],
     }
   },
+  computed: {
+    filteredFoods: function () {
+         return this.pictos.filter(function(picto){
+             return picto.name.indexOf(this.search) > -1;
+         }.bind(this));
+     }
+   },
 };
 </script>
 
@@ -84,7 +146,21 @@ export default {
       text-align: center;
     }
 
-    .add-picto-accomplice-text{margin: 30px auto 20px;}
+    .add-picto-accomplice-subtitle {
+      text-align: center;
+      p {
+        display: inline;
+        position: relative;
+        margin: 0;
+        font: 1.5em 'Karla-Italic', sans-serif;
+        color: $color-red;
+      }
+    }
+
+    .add-picto-accomplice-text{
+      margin: 20px auto;
+      text-align: center;
+    }
 
     .add-picto-accomplice-text p {
       display: inline;
@@ -92,6 +168,7 @@ export default {
       margin: 0;
       font: 1.5em 'Karla-Italic', sans-serif;
       color: $color-text;
+      text-align: center;
     }
 
     .underline {
@@ -116,11 +193,11 @@ export default {
     text-align: center;
   }
 
-  .add-picto-pictos-wrapper {
+  .add-picto-wrapper {
     text-align: center;
   }
 
-    .add-picto-pictos-search {
+    .add-picto-search {
       position: relative;
       margin: 0px auto 18px ;
       width: 262px;
@@ -142,7 +219,7 @@ export default {
       }
     }
 
-      .add-picto-pictos-search-icon {
+      .add-picto-search-icon {
         position: absolute;
         margin-top: 5px;
         width: 30px;
@@ -150,10 +227,10 @@ export default {
         fill: $color-white;
       }
 
-      .add-picto-pictos-search-icon-left {
+      .add-picto-search-icon-left {
         left: 15px;
       }
-      .add-picto-pictos-search-icon-right {
+      .add-picto-search-icon-right {
         right: 15px;
         opacity: 0;
         transition: all 0.5s;
@@ -163,27 +240,74 @@ export default {
       }
 
       .pictos-container {
-        display: flex;
-        flex-flow: row;
         max-width: 262px;
         margin: auto;
+        overflow: scroll;
+        height: 300px;
       }
       .picto-item-wrapper{
-        width: 33%;
         text-align: center;
+        display: inline-block;
+        width: 33%;
+        label {
+          display: inline-block;
+          width: 60px;
+        }
         input[type="radio"] {
           display: none;
-          &:checked {
-            + label {
-              transform: scale3d(1.2,1.2,1.2);
-            }
+          &:checked + label {
+            transform: scale3d(1.2,1.2,1.2);
           }
         }
       }
 
-      .picto-item-container {
-        svg {max-width: 60px;}
-
+      .categories-wrapper {
+        max-width: 270px;
+        margin-left: 50px;
+        text-align: left;
       }
+      .category-item-wrapper{
+        position: relative;
+        text-align: left;
+        display: inline-block;
+        width: 50%;
+        margin: 10px auto;
+        label {
+          vertical-align: middle;
+          text-transform: uppercase;
+          color: $color-text;
+          font: 1.4em 'Karla-Italic', sans-serif;
+          margin: 0px 0 0px 35px;
+          max-width: 69px;
+          display: inline-block;
+          &:before {
+            left: 0px;
+            top: 0px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid $color-sepia;
+          }
+          &:after {
+            left: 3px;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+          }
+          &:before,
+          &:after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            border-radius: 50%;
+          }
+        }
+        input[type="radio"] {
+          display: none;
+          &:checked + label:after {
+            background-color: $color-sepia;
+          }
+        }
+      }
+
 
 </style>
