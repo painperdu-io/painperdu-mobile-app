@@ -187,12 +187,13 @@ export default {
   }
 
 .header-icon-profile{
-  width: 40px;
-  height: 50px;
+  width: 30px;
+  margin-left: 15px;
 }
 
 .header-icon-flag{ width: 32px; margin: 0;}
 .header-icon-previous{ width: 35px;}
+.header-icon-add{ width: 45px;}
 .header-icon-add-product{ width: 30px;}
 .header-icon-basket{ width: 35px;}
 .header-icon-menu{ width: 35px;}
