@@ -3,7 +3,7 @@
     <div class="market-add-form-wrapper">
       <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
       <select class="market-add-form-select" v-model="slectedAddress">
-        <option v-for="place in places" v-bind:value="place">
+        <option v-for="place in places" :value="place">
           {{ place.name }}
         </option>
       </select>

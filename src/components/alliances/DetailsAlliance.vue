@@ -11,8 +11,8 @@
           <h3 class="profile-infos-name">Adrien</h3>
         </div>
       </div>
-      <div class="product animated bounceInLeft" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
-        <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
+      <div class="product animated bounceInLeft" :class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
+        <div class="product-item-circle type" :class="{ 'type-prepare': !product.brut }">
           <svg viewBox="0 0 100 100" class="foods-icon animated tada">
             <use xlink:href="#foods-icon-chou"></use>
           </svg>

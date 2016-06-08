@@ -1,7 +1,7 @@
 <template>
   <div class="product-container">
     <div class="product-wrapper">
-      <div class="product" v-bind:class="{ 'inactive': !product.status }">
+      <div class="product" :class="{ 'inactive': !product.status }">
         <div class="product-item-circle {{ product.type }}">
           <svg viewBox="0 0 100 100" class="foods-icon">
             <use xlink:href="#foods-icon-{{ product.icon }}"></use>

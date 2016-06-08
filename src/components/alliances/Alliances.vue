@@ -3,8 +3,8 @@
     <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
       <template v-for="alliance in alliances | orderBy 'name'">
-        <div class="alliances-product-item" v-bind:class="{ 'inactive': !alliance.status }" v-link="{ path: '/alliances/details' }" v-for="product in alliance.product">
-          <div class="alliances-product-icon type" v-bind:class="{ 'type-prepare': product.brut }">
+        <div class="alliances-product-item" :class="{ 'inactive': !alliance.status }" v-link="{ path: '/alliances/details' }" v-for="product in alliance.product">
+          <div class="alliances-product-icon type" :class="{ 'type-prepare': product.brut }">
             <svg viewBox="0 0 100 100">
               <use xlink:href="#foods-icon-{{ product.name }}"></use>
             </svg>

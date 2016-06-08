@@ -2,7 +2,7 @@
   <div class="residence-slider-container">
     <div class="residence-slider-item" v-link="{ name: 'DetailsMarketLocation', params: { id: market._id }}">
       <div class="residence-slider-image">
-        <img v-bind:src="{{ market.foodkeeper.picture }}" />
+        <img :src="market.foodkeeper.picture" />
       </div>
       <div class="residence-slider-item-name">
         <div class="residence-slider-item-name-content">

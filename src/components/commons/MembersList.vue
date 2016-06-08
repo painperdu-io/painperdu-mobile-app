@@ -4,12 +4,12 @@
       <div v-if="type == 'ally' " class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div class="members-name">{{ member.name.first }}</div>
         <div class="members-image">
-          <img v-bind:src="member.picture"/>
+          <img :src="member.picture"/>
         </div>
       </div>
       <div v-else class="members-item accomplice-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div v-if="index < 4" class="members-image">
-          <img v-bind:src="member.picture"/>
+          <img :src="member.picture"/>
         </div>
       </div>
     </template>
