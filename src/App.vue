@@ -1,7 +1,7 @@
 <template>
   <header-bar v-if="$route.page.header.enable"></header-bar>
   <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
-    <router-view transition="fade" transition-mode="out-in"></router-view>
+    <router-view transition="painperdu" transition-mode="out-in"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>
@@ -33,9 +33,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import './styles/animate.css';
 @import './styles/reset.scss';
 @import './styles/fonts.scss';
+@import './styles/animate.css';
+@import './styles/transitions.scss';
 @import './styles/variables.scss';
 
 ::-webkit-scrollbar {
