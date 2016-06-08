@@ -1,9 +1,9 @@
 <template>
   <div class="profile-container">
     <div class="profile-infos {{ statusName }}">
-      <div class="profile-infos-photo {{ type }}" v-bind:class="{ 'profile-accomplice': type == 'accomplice' }">
+      <div class="profile-infos-photo {{ type }}" :class="{ 'profile-accomplice': type == 'accomplice' }">
         <div class="profile-infos-photo-img">
-          <img v-bind:src="profile.picture"/>
+          <img :src="profile.picture"/>
         </div>
       </div>
       <div class="profile-item-allie" v-if="profile.allie">

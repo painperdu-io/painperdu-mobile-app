@@ -1,12 +1,12 @@
 <template>
   <div class="products-container">
     <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'name' ">
-      <div class="product-item-wrapper" v-bind:class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
+      <div class="product-item-wrapper" :class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
         <div class="product-item-circle {{ product.type }}">
           <svg viewBox="0 0 100 100" class="product-item-icon">
             <use xlink:href="#foods-icon-{{ product.icon}}"></use>
           </svg>
-          <div class="product-item-quantity" v-bind:class="{ 'emergency': product.emergency }">
+          <div class="product-item-quantity" :class="{ 'emergency': product.emergency }">
             {{ product.quantity }}
             <div class="product-item-dlc" v-if="product.emergency">
               <span v-for="n in 6" class="square square-{{n}}"></span>
