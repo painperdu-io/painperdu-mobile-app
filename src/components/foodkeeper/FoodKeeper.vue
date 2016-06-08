@@ -129,7 +129,7 @@ export default {
   flex: 1 100%;
   height: 125px;
   margin: 7px 0;
-  background: $color-green-lite;
+  background: rgba(0,224,201,0.5);
   opacity: 0.8;
 }
 

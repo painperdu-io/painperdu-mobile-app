@@ -1,6 +1,6 @@
 <template>
   <div class="details-foodkeeper-timeline-wrapper">
-    <statistics></statistics>
+    <img width="375" src="../../../static/img/screen-timeline.png" />
   </div>
 </template>
 
@@ -16,9 +16,8 @@ export default {
 
 <style lang="scss" scoped>
 .details-foodkeeper-timeline-wrapper {
-  position: relative;
-  top: 0;
-  left: 0;
-  margin: 12px;
+  img {
+    width: 100%;
+  }
 }
 </style>

@@ -299,7 +299,7 @@ export default {
 
     .controls-quantity {
       position: absolute;
-      top: 13%;
+      top: 155px;
       left: 50%;
       background-color: $color-gray-lite;
       width: 60%;
