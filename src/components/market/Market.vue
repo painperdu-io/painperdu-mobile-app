@@ -1,6 +1,5 @@
 <template>
-  <div v-show="show" class="markets-container animated" transition="fade">
-
+  <div class="markets-container animated">
     <div class="markets-slider">
       <div class="controls">
         <div class="previous" v-on:click="moveLeft">
@@ -41,9 +40,6 @@
             :type="type"
             :search="search">
           </producst-list>
-
-          <div v-gesture:touchstart.stop.prevent="handle($event, 'touchstart')">touchstart</div>
-
         </div>
       </div>
 

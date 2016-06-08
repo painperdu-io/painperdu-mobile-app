@@ -17,6 +17,20 @@ export default {
       el.style.left = `${position * (100 / 3)}%`;
       this.$route.router.go({ name: route });
     }
+  },
+  ready() {
+    const route = this.$route.name;
+    const el = document.getElementsByClassName('footer-active')[0];
+
+    if (route === 'Foodkeeper') {
+      el.style.left = `${0 * (100 / 3)}%`;
+    }
+    if (route === 'Market') {
+      el.style.left = `${1 * (100 / 3)}%`;
+    }
+    if (route === 'Alliances') {
+      el.style.left = `${2 * (100 / 3)}%`;
+    }
   }
 };
 </script>

@@ -14,7 +14,7 @@
         <svg viewBox="0 0 100 100" class="add-picto-pictos-search-icon  add-picto-pictos-search-icon-right">
           <use xlink:href="#app-icon-close"></use>
         </svg>
-        <input placeholder="Nom du produit..." v-on:click="displayClose" v-model="search" />
+        <input placeholder="Nom du produit..." v-model="search" />
       </div>
 
       <div class="pictos-container">

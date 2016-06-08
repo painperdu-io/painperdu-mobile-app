@@ -44,7 +44,7 @@
 <script>
 export default {
   methods: {
-    closeAddAccomplice: (event) => {
+    closeAddAccomplice(event) {
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()

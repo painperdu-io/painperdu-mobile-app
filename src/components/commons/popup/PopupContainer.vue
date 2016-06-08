@@ -45,18 +45,18 @@ export default {
     AddPicto,
   },
   methods: {
-    closeCart: (event) => {
+    closeCart(event) {
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()
     },
   },
-  data () {
+  data() {
     return {
       cart : false,
     }
   },
-  ready () {
+  ready() {
     document.getElementsByClassName('wrap')[0].addEventListener("click", this.checkPop);
   },
 };

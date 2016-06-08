@@ -1,6 +1,5 @@
 <template>
-  <div v-show="show" class="alliances-container animated" transition="fade">
-
+  <div class="alliances-container animated">
     <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
       <template v-for="alliance in alliances | orderBy 'name'">

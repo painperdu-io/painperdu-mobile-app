@@ -8,78 +8,93 @@
         </div>
         <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
-          <input id="product-item-count" value="0" v-model="quantity" number hidden>
-          <div class="product-item-quantity">{{ quantity }}</div>
+          <input id="product-item-count" value="0" v-model="form.quantity" number hidden>
+          <div class="product-item-quantity">{{ form.quantity }}</div>
         </div>
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
-        <svg viewBox="0 0 100 100" class="foodkeeper-add-product-form1-itemgreen-icon right">
-          <use xlink:href="#app-icon-star"></use>
-        </svg>
-        <input type="text" placeholder="Nom du produit" />
+        <input v-model="form.name" type="text" placeholder="Nom du produit" />
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
-        <input type="text" placeholder="Description du produit" />
+        <input v-model="form.description" type="text" placeholder="Description du produit" />
       </div>
       <div class="foodkeeper-add-product-form1-filters">
-        <input id="brut" class="filter" type="radio" value="false" v-model="type">
-        <label for="brut" >Plats Préparés</label>
-        <input id="prepare" class="filter" type="radio" value="true" v-model="type">
-        <label for="prepare">Produits Bruts</label>
+        <input id="raw" class="filter" type="radio" value="true" v-model="form.type" checked>
+        <label for="raw">Produits Bruts</label>
+        <input id="homemade" class="filter" type="radio" value="false" v-model="form.type">
+        <label for="homemade">Plats Préparés</label>
       </div>
-      <div class="foodkeeper-add-product-form1-question">Dans quel <span>garde-manger</span> proposez-vous ce produit ?</div>
-      <select class="foodkeeper-add-product-form1-select" v-model="slectedAddress">
-        <svg viewBox="0 0 100 100" class="foodkeeper-add-product-form1-itemgreen-icon right">
-          <use xlink:href="#app-icon-previous"></use>
-        </svg>
-        <option v-for="place in places" v-bind:value="place">
-          {{ place.name }}
-        </option>
-      </select>
+      <div class="foodkeeper-add-product-form1-question">
+        Dans quel <span>garde-manger</span> proposez-vous ce produit ?
+      </div>
+      <div class="foodkeeper-add-product-form1-foodkeepers" v-for="foodkeeper in foodkeepers">
+        {{ foodkeeper.name }}
+        <input id="cart" type="checkbox" v-model="form.foodkeepers">
+        <label for="cart"></label>
+      </div>
     </div>
     <div class="foodkeeper-add-product-form2-wrapper">
       <h3 class="foodkeeper-add-product-form2-title">À consommer sous</h3>
       <div class="foodkeeper-add-product-form2-dlc-range">
-        <input id="product-item-dlc" value="0" v-model="dlc" number hidden>
-        <label class="product-dlc" for="product-dlc">{{ dlc }} jours</label>
-        <input type="range" name="product-dlc" value="1" max="10" min="0" step="1"/>
+        <label class="product-dlc" for="product-dlc">{{ form.dlc }} jours</label>
+        <input type="range" name="product-dlc" value="1" max="10" min="1" step="1" v-model="form.dlc"/>
         <div class="foodkeeper-add-product-form2-label-range">
-            <p>0 jours</p>
-            <p>10 jours</p>
+          <p>1 jour</p>
+          <p>10 jours</p>
         </div>
       </div>
-      <div class="foodkeeper-add-product-form2-button">Ajouter</div>
+      <div class="foodkeeper-add-product-form2-button" v-on:click="callAddApi">Ajouter</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      dlc: 0,
-      quantity: 0,
-      places: [
-        { name: 'maison', addressL1: '12 rue du Trésum', addressL2: '74000 Annecy' },
-        { name: 'boulot', addressL1: '63 route du Périmètre', addressL2: '74000 Annecy' },
-      ]
-    }
-  },
   methods: {
-    increment: function (event) {
-      this.quantity++;
+    increment(event) {
+      this.form.quantity++;
     },
-    decrement: function (event) {
-      if (this.quantity > 0){
-        this.quantity--;
+    decrement(event) {
+      if (this.form.quantity > 1) {
+        this.form.quantity--;
       }
     },
-    addPicto: (event) => {
+    addPicto(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
+    },
+    callAddApi(event) {
+      console.log('CALL ADD API');
+
+      if (!this.form.icon) { console.log('ICON VIDE !!!'); }
+      if (!this.form.name) { console.log('NOM VIDE !!!'); }
+      if (!this.form.description) { console.log('DESCRIPTION VIDE !!!'); }
+      if (!this.form.foodkeepers) { console.log('FOODKEEPERS VIDE !!!'); }
+
+      console.log(this.form);
     }
   },
+  data() {
+    return {
+      foodkeepers: [],
+      form: {
+        icon: '',
+        name: '',
+        description: '',
+        type: true,
+        dlc: 1,
+        quantity: 1,
+        foodkeepers: []
+      },
+    }
+  },
+  ready() {
+    // récupérer la liste des foodkeepers
+    this.$http({ url: 'users/575302fc5dacbac32540268d', method: 'GET' })
+      .then((response) => { this.foodkeepers = response.data.foodkeepers; })
+      .catch(err => { console.log(err); });
+  }
 };
 </script>
 
@@ -125,24 +140,6 @@ export default {
         font: 3em 'Karla-Regular', sans-serif;
         color: $color-red;
       }
-
-    .foodkeeper-add-product-form1-select {
-      margin: 20px auto 15px;
-      padding: 0 25px;
-      width: 262px;
-      height: 40px;
-      background: $color-green-lite;
-      box-sizing: border-box;
-      border: none;
-      border-radius: 20px;
-      text-transform: capitalize;
-      color: $color-white;
-      font: 1.5em 'Karla-Italic', sans-serif;
-
-      option {
-        text-transform: capitalize;
-      }
-    }
 
     .foodkeeper-add-product-form1-filters {
       text-align: center;
@@ -202,23 +199,6 @@ export default {
 
       ::-webkit-input-placeholder {
         color: $color-white;
-      }
-    }
-
-    .foodkeeper-add-product-form1-itemgreen-icon {
-      position: absolute;
-      top: 0;
-      margin-top: 5px;
-      width: 30px;
-      height: 30px;
-      fill: $color-white;
-
-      &.left {
-        left: 20px;
-      }
-
-      &.right {
-        right: 20px;
       }
     }
 
@@ -288,10 +268,13 @@ export default {
     }
 
     .product-dlc {
-      background-color: $color-green;
-      color: $color-white;
-      border-radius: 50px;
-      padding: 5px 10px;
+      // background-color: $color-green;
+      // color: $color-white;
+      // border-radius: 50px;
+      // padding: 5px 10px;
+      text-align: center;
+      color: $color-green;
+      font: 1.6em 'Karla-BoldItalic', sans-serif;
     }
 
     .product-item-quantity {

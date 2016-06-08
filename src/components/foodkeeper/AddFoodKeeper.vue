@@ -1,44 +1,49 @@
 <template>
   <div class="foodkeeper-add-container">
-    <div class="foodkeeper-add-image-wrapper"  v-on:click="addPhoto" >+</div>
+    <div class="foodkeeper-add-image-wrapper" v-on:click="addPhoto">+</div>
     <div class="foodkeeper-add-form-wrapper">
       <div class="foodkeeper-add-form-itemgreen">
-        <svg viewBox="0 0 100 100" class="foodkeeper-add-form-itemgreen-icon">
-          <use xlink:href="#app-icon-star"></use>
-        </svg>
-        <input placeholder="Nom du garde manger" />
+        <input v-model="form.name" placeholder="Nom du garde manger" />
       </div>
       <div class="foodkeeper-add-form-itemgreen">
-        <input placeholder="Description du garde manger" />
+        <input v-model="form.description" placeholder="Description du garde manger" />
       </div>
       <h3 class="foodkeeper-add-form-title">Renseigner l'adresse du garde manger</h3>
       <div class="foodkeeper-add-form-item">
         <label class="foodkeeper-add-form-item-label" for="address1">Rue, route, impasse</label>
-        <input id="address1" class="foodkeeper-add-form-item-input" type="text" placeholder="Rue, route, impasse"></input>
+        <input id="address1" v-model="form.street" class="foodkeeper-add-form-item-input" type="text" placeholder="Rue, route, impasse"></input>
       </div>
       <div class="foodkeeper-add-form-inline-wrapper">
         <div class="foodkeeper-add-form-item">
           <label class="foodkeeper-add-form-item-label" for="number">Numéro</label>
-          <input id="number" class="foodkeeper-add-form-item-input" type="text" placeholder="Numéro"></input>
+          <input id="number" v-model="form.number" class="foodkeeper-add-form-item-input" type="text" placeholder="Numéro"></input>
         </div>
         <div class="foodkeeper-add-form-item">
           <label class="foodkeeper-add-form-item-label" for="apartment">Appartement</label>
-          <input id="apartment" class="foodkeeper-add-form-item-input" type="text" placeholder="Appart."></input>
+          <input id="apartment" v-model="form.apartment" class="foodkeeper-add-form-item-input" type="text" placeholder="Appart."></input>
         </div>
         <div class="foodkeeper-add-form-item">
           <label class="foodkeeper-add-form-item-label" for="floor">Étage</label>
-          <input id="floor" class="foodkeeper-add-form-item-input" type="text" placeholder="Étage"></input>
+          <input id="floor" v-model="form.floor" class="foodkeeper-add-form-item-input" type="text" placeholder="Étage"></input>
         </div>
       </div>
       <div class="foodkeeper-add-form-item">
         <label class="foodkeeper-add-form-item-label" for="address2">Complément d'adresse</label>
-        <input id="address2" class="foodkeeper-add-form-item-input" type="text" placeholder="Complément d'adresse"></input>
+        <input id="address2" v-model="form.additional" class="foodkeeper-add-form-item-input" type="text" placeholder="Complément d'adresse"></input>
       </div>
       <div class="foodkeeper-add-form-item">
         <label class="foodkeeper-add-form-item-label" for="infos">Informations complémentaires</label>
-        <input id="infos" class="foodkeeper-add-form-item-input" type="text" placeholder="Informations complémentaires"></input>
+        <input id="infos" v-model="form.infos" class="foodkeeper-add-form-item-input" type="text" placeholder="Informations complémentaires"></input>
       </div>
-      <div class="foodkeeper-add-form-btn">Ajouter</div>
+      <div class="foodkeeper-add-form-item">
+        <label class="foodkeeper-add-form-item-label" for="infos">Ville</label>
+        <input id="infos" v-model="form.city" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
+      </div>
+      <div class="foodkeeper-add-form-item">
+        <label class="foodkeeper-add-form-item-label" for="infos">Code postal</label>
+        <input id="infos" v-model="form.zipcode" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
+      </div>
+      <div class="foodkeeper-add-form-btn" v-on:click="callAddApi">Ajouter</div>
     </div>
   </div>
 </template>
@@ -46,10 +51,37 @@
 <script>
 export default {
   methods: {
-    addPhoto: (event) => {
+    addPhoto(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
+    },
+    callAddApi(event) {
+      console.log('CALL ADD API');
+
+      if (!this.form.name) { console.log('NOM VIDE !!!'); }
+      if (!this.form.description) { console.log('DESCRIPTION VIDE !!!'); }
+      if (!this.form.street) { console.log('RUE VIDE !!!'); }
+      if (!this.form.city) { console.log('CITY VIDE !!!'); }
+      if (!this.form.zipcode) { console.log('ZICODE VIDE !!!'); }
+
+      console.log(this.form);
+    }
+  },
+  data() {
+    return {
+      form: {
+        name: '',
+        description: '',
+        street: '',
+        number: '',
+        apartment: '',
+        floor: '',
+        additional: '',
+        infos: '',
+        city: '',
+        zicode: ''
+      }
     }
   }
 };
