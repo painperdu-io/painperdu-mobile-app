@@ -18,7 +18,7 @@
         </div>
         <h1 v-else>{{ $route.page.title }}</h1>
       </div>
-      <div class="header-item  header-item-25" :class="{'header-with-close' : $route.page.header.close}">
+      <div class="header-item  header-item-25" :class="{'header-item-center' : $route.page.header.close ||  $route.page.header.flag}">
         <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-basket">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
@@ -134,7 +134,7 @@ export default {
       &:last-child {
         justify-content: flex-end;
       }
-      &.header-with-close {
+      &.header-item-center {
         justify-content: center;;
       }
     }
@@ -191,7 +191,7 @@ export default {
   height: 50px;
 }
 
-.header-icon-flag{ width: 35px;}
+.header-icon-flag{ width: 32px; margin: 0;}
 .header-icon-previous{ width: 35px;}
 .header-icon-add-product{ width: 40px;}
 .header-icon-basket{ width: 35px;}
