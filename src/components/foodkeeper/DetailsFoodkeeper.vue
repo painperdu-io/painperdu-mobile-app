@@ -74,7 +74,7 @@ export default {
       content: "";
       display: inline-block;
       position: absolute;
-      top: 0;
+      top: -1px;
       left: 0;
       width: 100%;
       height: 100%;
