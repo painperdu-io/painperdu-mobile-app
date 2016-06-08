@@ -1,5 +1,5 @@
 <template>
-  <div v-show="true" class="markets-container" transition="fade">
+  <div class="markets-container">
 
     <div class="markets-slider">
       <div class="controls">

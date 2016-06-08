@@ -22,11 +22,11 @@
       <div class="product-status">
         <div class="value">
           <svg viewBox="0 0 100 100" class="check-icon">
-            <use v-if="{{ product.status }}" xlink:href="#app-icon-check"></use>
-            <use v-else xlink:href="#app-icon-close"></use>
+            <use xlink:href="#app-icon-check"></use>
           </svg>
         </div>
-        <p class="legend">Disponible</p>
+        <p v-if="product.available" class="legend">Disponible</p>
+        <p v-else class="legend">Non disponible</p>
       </div>
       <div class="product-quantity">
         <span class="value">{{ product.quantity }}</span>

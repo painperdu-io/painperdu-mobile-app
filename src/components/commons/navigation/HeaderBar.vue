@@ -13,8 +13,8 @@
         </svg>
       </div>
       <div class="header-item  header-item-50">
-        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances' " class="header-logo">
-          <img width="132" height="30" src="../../../../static/img/logo-pain-perdu.png" />
+        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances'" class="header-logo">
+          <img width="132" height="30" src="./../../../../static/img/logo-pain-perdu.png" />
         </div>
         <h1 v-else>{{ $route.page.title }}</h1>
       </div>
@@ -22,7 +22,7 @@
         <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-basket">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
-        <svg v-if="$route.page.header.add && $route.name == 'Market' " v-link="{ name: 'AddMarket' }" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-add">
+        <svg v-if="$route.page.header.add && $route.name == 'Market'" v-link="{ name: 'AddMarket' }" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-add">
           <use xlink:href="#header-icon-add"></use>
         </svg>
         <svg v-if="$route.page.header.product" v-link="{ name: 'AddProductFoodkeeper' }" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-add-product">
@@ -49,13 +49,41 @@ export default {
     },
     goPrevious(event) {
       event.preventDefault();
-      this.$route.router.go(history.go(0));
+
+      const route = this.$route.name;
+      // foodkeepers
+      if (route === 'DetailsFoodkeeperProducts' ||
+          route === 'DetailsFoodkeeperStats' ||
+          route === 'DetailsFoodkeeperTimeline' ||
+          route === 'AddFoodkeeper' ||
+          route === 'AddProductFoodkeeper') {
+          this.$route.router.go({ name: 'Foodkeeper' });
+      }
+      // markets
+      if (route === 'DetailsMarketMembers' ||
+          route === 'DetailsMarketLocation' ||
+          route === 'DetailsMarketStats' ||
+          route === 'AddMarket' ||
+          route === 'ProductMarket') {
+          this.$route.router.go({ name: 'Market' });
+      }
+      // alliances
+      if (route === 'DetailsAlliance') {
+        this.$route.router.go({ name: 'Alliances' });
+      }
+      // profile
+      if (route === 'MemberProfile' ||
+          route === 'DetailsProfileMe' ||
+          route === 'DetailsProfileReviews' ||
+          route === 'DetailsProfileStatistics') {
+          this.$route.router.go({ name: 'Market' });
+      }
     },
     openMenu(event) {
       event.preventDefault();
       document.getElementsByClassName('menu-bar-container')[0].classList.add('active');
     },
-  },
+  }
 };
 </script>
 

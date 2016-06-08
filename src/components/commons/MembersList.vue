@@ -25,7 +25,7 @@
 export default {
   props: ['members', 'type', 'add'],
   methods: {
-    addAccomplice: (event) => {
+    addAccomplice(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()

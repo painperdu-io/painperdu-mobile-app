@@ -12,21 +12,35 @@
       </div>
       <div class="foodkeeper-add-popup-item">
         <div class="foodkeeper-add-accomplice-mail">
-          <input type="email" placeholder="Indiquer l'adresse mail" />
+          <input v-model="form.email" type="email" placeholder="Indiquer l'adresse mail" />
         </div>
       </div>
     </div>
-    <div class="foodkeeper-add-accomplice-button">Ajouter</div>
+    <div v-on:click="callAddApi" class="foodkeeper-add-accomplice-button">Ajouter</div>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    closeAddAccomplice: (event) => {
+    closeAddAccomplice(event) {
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
       event.preventDefault()
+    },
+    callAddApi(event) {
+      console.log('CALL ADD API');
+
+      if (!this.form.email) { console.log('MAIL VIDE !!!'); }
+
+      console.log(this.form);
+    }
+  },
+  data() {
+    return {
+      form: {
+        email: '',
+      }
     }
   }
 };

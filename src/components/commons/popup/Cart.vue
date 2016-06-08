@@ -72,7 +72,7 @@
 <script>
 export default {
   methods: {
-    closeCart: (event) => {
+    closeCart(event) {
       document.getElementsByClassName('cart-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('cart-popup-overlay')[0].classList.remove('active');
       event.preventDefault()

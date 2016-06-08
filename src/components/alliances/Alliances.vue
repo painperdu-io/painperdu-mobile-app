@@ -1,5 +1,5 @@
 <template>
-  <div class="alliances-container" transition="popIn">
+  <div class="alliances-container">
 
     <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
