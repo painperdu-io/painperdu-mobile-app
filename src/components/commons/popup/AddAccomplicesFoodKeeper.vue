@@ -23,11 +23,6 @@
 <script>
 export default {
   methods: {
-    closeAddAccomplice(event) {
-      document.getElementsByClassName('popup-container')[0].classList.remove('active');
-      document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
-      event.preventDefault()
-    },
     callAddApi(event) {
       console.log('CALL ADD API');
 
