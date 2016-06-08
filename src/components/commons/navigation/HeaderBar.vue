@@ -99,7 +99,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 60px;
+  height: 75px;
   background: $color-red;
   z-index: 900;
   animation: apparition-header 2s;
@@ -109,7 +109,7 @@ export default {
   display: flex;
   flex-flow: row wrap;
   margin-top: 15px;
-  height: 40px;
+  height: 60px;
   width: 100%;
 }
 
