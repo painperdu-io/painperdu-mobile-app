@@ -59,10 +59,11 @@ body {
   height: 100%;
   min-height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
   overflow-y: auto;
   background-color: $color-white;
+  background-attachment: fixed;
 
   &.wrap-header-footer {
     min-height: calc(100vh - 135px);
@@ -85,19 +86,19 @@ body {
   }
 
   .background1 {
-    background: $color-white url('/static/img/bg-1.png');
+    background-image: url('/static/img/bg-1.png');
   }
 
   .background2 {
-    background: $color-white url('/static/img/bg-2.png');
+    background-image: url('/static/img/bg-2.png');
   }
 
   .background3 {
-    background: $color-white url('/static/img/bg-3.jpg');
+    background-image: url('/static/img/bg-3.png');
   }
 
   .background4 {
-    background: $color-white url('/static/img/bg-4.png');
+    background-image: url('/static/img/bg-4.png');
     /*background-size: 375px 796px;
     background-position: center 120px;
     position: fixed;*/

@@ -94,7 +94,7 @@ router.map({
     page: {
       title: 'Ajouter un garde-manger',
       wrap: 'wrap-header',
-      bgClass: 'background2',
+      bgClass: 'background3',
       header: {
         enable: true,
         previous: true,
@@ -110,7 +110,7 @@ router.map({
     page: {
       title: 'Ajouter une denrée',
       wrap: 'wrap-header',
-      bgClass: 'background1',
+      bgClass: 'background3',
       header: {
         enable: true,
         previous: true,
@@ -126,7 +126,7 @@ router.map({
     page: {
       title: 'Mon garde-manger',
       wrap: 'wrap-header',
-      bgClass: 'background1',
+      bgClass: 'background2',
       header: {
         enable: true,
         previous: true,
@@ -292,6 +292,7 @@ router.map({
     page: {
       title: 'Mon profil',
       wrap: 'wrap-header',
+      bgClass: 'backgroundWhite',
       header: {
         enable: true,
         menu: true,
