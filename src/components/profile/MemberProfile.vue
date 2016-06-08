@@ -5,7 +5,7 @@
         <use xlink:href="#header-icon-flag"></use>
       </svg>
     </div>
-    <profile :profile="profile" :type="accomplice" ></profile>
+    <profile :profile="profile" type="accomplice"></profile>
     <div class="member-profile-statistics-wrapper">
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
@@ -22,7 +22,7 @@
           <p class="legend">Ses compères <span class="underline"></span></p>
         </div>
         <div class="member-profile-accomplices-wrapper">
-          <members-list :type="accomplices" :add="false"></members-list>
+          <members-list type="accomplices" add="false"></members-list>
         </div>
       </div>
     </div>
@@ -49,8 +49,6 @@ export default {
   },
   data() {
     return {
-      allie: true,
-      type: {},
       profile: {},
       accomplices: {},
     };

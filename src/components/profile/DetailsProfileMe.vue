@@ -1,7 +1,7 @@
 <template>
   <div class="me-profile-container">
     <div class="me-profile-infos-wrapper">
-      <profile></profile>
+      <profile :profile="profile" type="accomplice"></profile>
       <div class="me-profile-btn-public">Voir le profil public</div>
     </div>
     <div class="me-profile-form-wrapper">
@@ -24,6 +24,19 @@ export default {
   components: {
     Profile,
   },
+  data() {
+    return {
+      profile: {}
+    }
+  },
+  ready() {
+    const userId = '575302fc5dacbac32540268d';
+
+    // récupérer le profile en fonction de l'id de l'utilisateur
+    this.$http({ url: `users/${userId}`, method: 'GET' })
+      .then((response) => this.profile = response.data)
+      .catch(err => console.log(err));
+  }
 };
 </script>
 
