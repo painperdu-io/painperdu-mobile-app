@@ -292,7 +292,6 @@ router.map({
     page: {
       title: 'Mon profil',
       wrap: 'wrap-header',
-      bgClass: 'background1',
       header: {
         enable: true,
         menu: true,

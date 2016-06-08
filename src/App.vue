@@ -1,12 +1,13 @@
 <template>
   <header-bar v-if="$route.page.header.enable"></header-bar>
   <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
-    <router-view transition="fade" transition-mode="out-in"></router-view>
+    <router-view></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>
   <popup :route="$route.name"></popup>
   <cart></cart>
+  <foods-icons></foods-icons>
   <svg-icons></svg-icons>
 </template>
 
@@ -17,6 +18,7 @@ import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
 import MenuBar from './components/commons/navigation/MenuBar'
 import SvgIcons from './components/commons/icons/SvgIcons'
+import FoodsIcons from './components/commons/icons/FoodsIcons'
 import store from './vuex/store'
 
 export default {
@@ -27,6 +29,7 @@ export default {
     FooterBar,
     MenuBar,
     SvgIcons,
+    FoodsIcons,
   },
   store
 };
@@ -46,7 +49,7 @@ export default {
 
 body {
   margin: 0;
-  background: $color-red;
+  background: $color-white;
   font-size: 10px;
 }
 
@@ -59,6 +62,7 @@ body {
   background-size: cover;
   background-position: center center;
   overflow-y: auto;
+  background-color: $color-white;
 
   &.wrap-header-footer {
     min-height: calc(100vh - 135px);

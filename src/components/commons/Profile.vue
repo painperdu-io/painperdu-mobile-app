@@ -1,21 +1,37 @@
 <template>
   <div class="profile-container">
-    <div class="profile-infos {{ statusName }}">
-      <div class="profile-infos-photo {{ type }}" :class="{ 'profile-accomplice': type == 'accomplice' }">
+    <div class="profile-infos status-{{ statusName }}">
+      <div class="profile-infos-photo" :class="{ 'profile-accomplice': type == 'accomplice' }">
         <div class="profile-infos-photo-img">
           <img :src="profile.picture"/>
         </div>
       </div>
-      <div class="profile-item-allie" v-if="false">
-        <svg viewBox="0 0 100 100" class="profile-icon ">
-          <use xlink:href="#app-icon-infinite"></use>
+      <div class="profile-app-icon-container">
+        <svg viewBox="0 0 50 50" class="app-icon">
+          <use xlink:href="#app-icon-edit" ></use>
         </svg>
       </div>
-      <h3 class="profile-infos-name">{{ profile.name.first }} {{ profile.name.last }}</h3>
+      <div class="profile-item-allie" v-if="false">
+        <svg viewBox="0 0 100 100" class="profile-icon ">
+          <use xlink:href="#profile-app-icon-infinite"></use>
+        </svg>
+      </div>
+      <h3 class="profile-infos-name">{{ profile.name.first }}</h3>
       <div class="profile-infos-separator"></div>
       <p class="profile-infos-status ">{{ statusName }}</p>
+
+      <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
+        <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+          <use xlink:href="#status-icon-{{ statusName }}" ></use>
+        </svg>
+      </div>
+      <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
+        <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+          <use xlink:href="#status-icon-{{ statusName }}" ></use>
+        </svg>
+      </div>
     </div>
-    <div class="profile-description">
+    <div v-if="profile.profile.description" class="profile-description">
       <p class="profile-description-text">{{ profile.profile.description }}</p>
     </div>
   </div>
@@ -27,12 +43,12 @@ export default {
   computed: {
     statusName() {
       const status = [
-        { score: 10, name: 'Artisan' },
-        { score: 20, name: 'Soldat' },
-        { score: 30, name: 'Menestrel' },
-        { score: 40, name: 'Écuyer' },
-        { score: 50, name: 'Chevalier' },
-        { score: 60, name: 'Seigneur' },
+        { score: 10, name: 'artisan' },
+        { score: 20, name: 'soldat' },
+        { score: 30, name: 'menestrel' },
+        { score: 40, name: 'ecuyer' },
+        { score: 50, name: 'chevalier' },
+        { score: 60, name: 'seigneur' },
       ];
 
       for (let i = 0; i < status.length; i++) {
@@ -50,35 +66,12 @@ export default {
 
 .profile-container {
   text-align: center;
+  max-width: 320px;
+  margin: auto;
 }
 
   .profile-infos {
     position: relative;
-    &:before,
-    &:after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      bottom: 0;
-      width: 140px;
-      height: 100px;
-    }
-    &:before { left: 0px; }
-    &:after { right: 0px; }
-
-    .menestrel {
-      &:before,
-      &:after {
-        background: url('/static/img/menestrel.png') bottom center no-repeat;
-      }
-    }
-
-    .ecuyer {
-      &:before,
-      &:after {
-        background: url('/static/img/ecuyer.png') bottom center no-repeat;
-      }
-    }
   }
 
     .profile-infos-photo {
@@ -107,8 +100,6 @@ export default {
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        background-color: $color-sepia;
-
         img {
           width: 125px;
           height: 125px;
@@ -132,10 +123,11 @@ export default {
       margin: 5px 0;
       color: $color-text;
       z-index: 10;
+
     }
 
     .profile-infos-name {
-      font: bold 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
+      font: 300 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
       text-transform: capitalize;
       color: $color-red;
     }
@@ -143,6 +135,24 @@ export default {
     .profile-infos-status {
       font: 1.3em 'Karla-Regular', sans-serif;
       text-transform: capitalize;
+    }
+
+    .status-artisan,
+    .status-chevalier,
+    .status-seigneur,
+    .status-ecuyer,
+    .status-soldat,
+    .status-menestrel {
+      .profile-profile-app-icon-status-container{
+        position: absolute;
+        bottom:20px;
+        width: 40px;
+        box-sizing: border-box;
+      }
+      .profile-profile-app-icon-status-left { transform: scaleX(-1);}
+      .profile-profile-app-icon-status-right {
+        right: 0;
+      }
     }
 
     .profile-description {
@@ -173,5 +183,19 @@ export default {
       fill: $color-white;
       background: $color-blue;
       border-radius: 50%;
+    }
+
+    .profile-app-icon-container {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      padding: 3px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      background-color: $color-green;
+      fill: $color-white;
+      z-index: 10;
+      right: 40px;
+      top: 0px;
     }
 </style>
