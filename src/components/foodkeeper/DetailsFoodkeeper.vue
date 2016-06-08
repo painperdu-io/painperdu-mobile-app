@@ -35,7 +35,6 @@ export default {
   },
   ready() {
     const foodkeeperId = this.$route.params.id;
-    const userId = '575302fc5dacbac32540268d';
 
     // récupére les informations sur le foodkeeper
     this.$http({ url: `foodkeepers/${foodkeeperId}`, method: 'GET' })
@@ -43,7 +42,7 @@ export default {
       .catch(err => console.log(err));
 
     // récupére les informations sur les compères
-    this.$http({ url: `users/${userId}/foodkeeper/${foodkeeperId}`, method: 'GET' })
+    this.$http({ url: `users/${global.currentUserId}/foodkeeper/${foodkeeperId}`, method: 'GET' })
       .then((response) => this.accomplices = response.data)
       .catch(err => console.log(err));
   }

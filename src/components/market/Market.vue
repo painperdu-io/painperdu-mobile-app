@@ -129,10 +129,8 @@ export default {
     };
   },
   ready() {
-    const userId = '575302fc5dacbac32540268d';
-
     // récupérer les markets en fonction de l'id d'un utilisateur
-    this.$http({ url: `markets/user/${userId}`, method: 'GET' })
+    this.$http({ url: `markets/user/${global.currentUserId}`, method: 'GET' })
       .then((response) => {
         this.markets = response.data;
         this.updateMarketBySlideId(0);

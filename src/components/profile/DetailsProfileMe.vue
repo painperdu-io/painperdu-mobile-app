@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="me-profile-btn-public" v-link="{ name: 'MemberProfile', params: { id: '575302fc5dacbac32540268d' }}">Voir le profil public</div>
+      <div class="me-profile-btn-public" v-link="{ name: 'MemberProfile', params: { id: currentUserId }}">Voir le profil public</div>
     </div>
     <div class="me-profile-form-wrapper">
       <div class="me-profile-form-item">
@@ -40,6 +40,7 @@ export default {
   },
   data() {
     return {
+      currentUserId: global.currentUserId,
       profile: {
         name: {
           first: '',
@@ -52,10 +53,8 @@ export default {
     }
   },
   ready() {
-    const userId = '575302fc5dacbac32540268d';
-
     // récupérer le profile en fonction de l'id de l'utilisateur
-    this.$http({ url: `users/${userId}`, method: 'GET' })
+    this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })
       .then((response) => this.profile = response.data)
       .catch(err => console.log(err));
   }

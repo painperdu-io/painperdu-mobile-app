@@ -34,10 +34,8 @@ export default {
     };
   },
   ready() {
-    const userId = '575302fc5dacbac32540268d';
-
     // récupérer la liste des alliances en fonction de l'id utilisateur
-    this.$http({ url: `alliances/user/${userId}`, method: 'GET' })
+    this.$http({ url: `alliances/user/${global.currentUserId}`, method: 'GET' })
       .then((response) => this.alliances = response.data)
       .catch(err => console.log(err));
   }

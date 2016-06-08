@@ -8,7 +8,7 @@
         <svg v-if="$route.page.header.previous" v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-previous">
           <use xlink:href="#header-icon-previous"></use>
         </svg>
-        <svg v-if="$route.page.header.profile" v-link="{ name: 'DetailsProfileMe', params: { id: '575302fc5dacbac32540268d' }}" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-profile">
+        <svg v-if="$route.page.header.profile" v-link="{ name: 'DetailsProfileMe', params: { id: currentUserId }}" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-profile">
           <use xlink:href="#header-icon-profile"></use>
         </svg>
       </div>
@@ -83,6 +83,11 @@ export default {
       event.preventDefault();
       document.getElementsByClassName('menu-bar-container')[0].classList.add('active');
     },
+  },
+  data() {
+    return {
+      currentUserId: global.currentUserId,
+    }
   }
 };
 </script>

@@ -7,7 +7,7 @@
   <menu-bar></menu-bar>
   <popup :route="$route.name"></popup>
   <cart></cart>
-  <validation></validation> 
+  <validation></validation>
   <foods-icons></foods-icons>
   <svg-icons></svg-icons>
 </template>
@@ -34,7 +34,7 @@ export default {
     SvgIcons,
     FoodsIcons,
   },
-  store
+  store,
 };
 </script>
 

@@ -128,10 +128,9 @@ export default {
   },
   ready() {
     const allianceId = this.$route.params.id;
-    const userId = '575302fc5dacbac32540268d';
 
     // récupérer une alliance en fonction de son id
-    this.$http({ url: `alliances/${allianceId}/user/${userId}`, method: 'GET' })
+    this.$http({ url: `alliances/${allianceId}/user/${global.currentUserId}`, method: 'GET' })
       .then(response => this.alliance = response.data)
       .catch(err => console.log(err));
   }
