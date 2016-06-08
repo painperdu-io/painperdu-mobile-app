@@ -101,11 +101,11 @@ export default {
       }
 
       .alliances-product-icon.raw {
-        background: url('/static/img/product-brut.png') center center repeat $color-white;
+        background: url('/static/img/product-raw.png') center center repeat $color-white;
       }
 
       .alliances-product-icon.homemade {
-        background: url('/static/img/product-prepare.png') center center repeat $color-white;
+        background: url('/static/img/product-homemade.png') center center repeat $color-white;
       }
 
       .alliances-product-description {
