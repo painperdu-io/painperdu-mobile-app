@@ -26,7 +26,15 @@ export default {
   },
   data() {
     return {
-      profile: {}
+      profile: {
+        name: {
+          first: '',
+          last: '',
+        },
+        profile: {
+          description: '',
+        },
+      },
     }
   },
   ready() {
