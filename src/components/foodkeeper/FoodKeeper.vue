@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-container">
+  <div class="foodkeeper-container"  transition="fade" transition-mode="out-in">
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}">
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
@@ -63,15 +63,23 @@ export default {
   height: 125px;
   margin-bottom: 7px;
   text-align: center;
-  background-color: $color-sepia;
+  &:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 }
 
   .foodkeeper-item-background {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    //filter: grayscale(100%);
-    filter: blur(1px);
     position: absolute;
     top: 0;
     left: 0;

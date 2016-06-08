@@ -1,7 +1,7 @@
 <template>
   <header-bar v-if="$route.page.header.enable"></header-bar>
   <div class="wrap {{ $route.page.bgClass }}  {{ $route.page.wrap }}">
-    <router-view transition="painperdu" transition-mode="out-in"></router-view>
+    <router-view transition="fade" transition-mode="out-in"></router-view>
   </div>
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>
@@ -61,18 +61,18 @@ body {
   overflow-y: auto;
 
   &.wrap-header-footer {
-    min-height: calc(100vh - 120px);
-    padding: 60px 0;
+    min-height: calc(100vh - 135px);
+    padding: 75px 0 60px;
   }
 
   &.wrap-header {
-    min-height: calc(100vh - 60px);
-    padding-top: 60px;
+    min-height: calc(100vh - 75px);
+    padding-top: 75px;
   }
 
   &.wrap-footer {
-    min-height: calc(100vh - 60px);
-    padding-bottom: 60px;
+    min-height: calc(100vh - 75px);
+    padding-bottom: 75px;
   }
 }
 

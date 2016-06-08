@@ -63,6 +63,7 @@ export default {
         height: 55px;
         mask-image: none;
         -webkit-mask-image: none;
+        border-radius: 50%;
       }
     }
   }

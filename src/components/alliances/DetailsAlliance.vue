@@ -1,5 +1,5 @@
 <template>
-  <div class="alliance-details-container" transition="moveHorizontal">
+  <div class="alliance-details-container animated" transition="moveHorizontal">
     <div class="alliance-summary">
       <div class="profile-container animated bounceInRight" v-show="show" >
         <div class="profile-infos">
@@ -175,7 +175,6 @@ export default {
         img {
           width: 125px;
           height: 125px;
-          filter: grayscale(100%);
           mix-blend-mode: multiply;
         }
       }

@@ -1,5 +1,5 @@
 <template>
-  <div class="markets-container animated">
+  <div class="markets-container">
     <div class="markets-slider">
       <div class="controls">
         <div class="previous" v-on:click="moveLeft">
@@ -228,7 +228,7 @@ export default {
 
     .controls {
       position: absolute;
-      top: 65px;
+      top: 135px;
       width: 100%;
       z-index: 99;
       .controls-icon {

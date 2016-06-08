@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div v-on:click="callAddApi" class="foodkeeper-add-accomplice-button">Ajouter</div>
+    <div v-on:click="callAddApi" class="foodkeeper-add-accomplice-button">Envoyer</div>
   </div>
 </template>
 
