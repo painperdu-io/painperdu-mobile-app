@@ -1,6 +1,5 @@
 <template>
-  <div class="alliances-container">
-
+  <div class="alliances-container animated">
     <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
       <template v-for="alliance in alliances | orderBy 'name'">
@@ -37,6 +36,11 @@ export default {
     getters: {
       alliances: alliancesList,
     },
+  },
+  data() {
+    return {
+      show: true,
+    };
   },
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
-  <div class="markets-container">
-
+  <div class="markets-container animated">
     <div class="markets-slider">
       <div class="controls">
         <div class="previous" v-on:click="moveLeft">
@@ -41,9 +40,6 @@
             :type="type"
             :search="search">
           </producst-list>
-
-          <div v-gesture:touchstart.stop.prevent="handle($event, 'touchstart')">touchstart</div>
-
         </div>
       </div>
 
@@ -65,7 +61,6 @@
 <script>
 import ProductsList from './../commons/ProductsList'
 import ResidenceSlider from './../commons/ResidenceSlider'
-
 
 export default {
   components: {
@@ -142,7 +137,7 @@ export default {
         this.updateMarketBySlideId(0);
       })
       .catch(err => console.log(err));
-  }
+  },
 };
 </script>
 

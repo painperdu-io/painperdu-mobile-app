@@ -35,7 +35,10 @@
 <script>
 export default {
   data() {
-    return { foodkeepers: [] };
+    return {
+      foodkeepers: [],
+      show: true,
+    };
   },
   ready() {
     // récupérer la liste des foodkeepers

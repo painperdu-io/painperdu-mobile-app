@@ -39,6 +39,17 @@ import DetailsProfileStatistics from './components/profile/DetailsProfileStatist
 Vue.config.debug = true
 Vue.config.devtools = true
 
+// définition des transitions de l'application
+Vue.transition('fade', {
+  enterClass: 'fadeIn',
+  leaveClass: 'fadeOut',
+})
+
+Vue.transition('moveHorizontal', {
+  enterClass: 'bounceInRight',
+  leaveClass: 'bounceOutRight',
+})
+
 // définition des routes de l'application
 router.map({
 

@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ['products', 'search', 'type']
+  props: ['products', 'search', 'type'],
 };
 </script>
 
@@ -35,13 +35,27 @@ export default {
   margin: 20px 0;
 }
 
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
   .product-item-wrapper {
     display: inline-block;
     margin: 20px 15px;
 
+    &.animate {
+      animation: fadeIn 1s;
+    }
+
     &.inactive {
       filter: grayscale(1);
       -webkit-filter: grayscale(1);
+
+      .product-item-circle.raw,
+      .product-item-circle.homemade {
+        background: none;
+      }
 
       .product-item-quantity {
         background-color: $color-inactive;
