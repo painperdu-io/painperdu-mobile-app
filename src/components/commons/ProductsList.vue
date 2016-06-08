@@ -106,18 +106,12 @@ export default {
         animation-direction: alternate;
         animation-delay: 0.2s;
 
-        @keyframes shake-item {
-          0% {right:0px; top:0px;}
-          100% {right:-7px; top:-7px;}
-        }
-
         @keyframes fade {
           0% {opacity: 0;}
           100% {opacity: 1;}
         }
 
         &.emergency {
-          animation: shake-item 0.2s infinite alternate;
           .square {
             position: absolute;
             display: inline-block;
