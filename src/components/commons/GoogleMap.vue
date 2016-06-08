@@ -62,7 +62,7 @@ export default {
       center : { lng: 0, lat: 0 },
       markers: [{ 'position': { lng: 0, lat: 0 } }],
       markersIcon : [{
-        url: '/static/img/stats-value.png',
+        url: '/static/img/logo-pain-perdu',
         size: { width: 40, height: 30 },
         origin: { x: 0, y: 0},
         anchor: { x: 0, y: 30},

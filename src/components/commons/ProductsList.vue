@@ -78,11 +78,11 @@ export default {
     }
 
       .product-item-circle.raw {
-        background: url('/static/img/product-brut.png') center center no-repeat $color-white;
+        background: url('/static/img/product-raw.png') center center no-repeat $color-white;
       }
 
       .product-item-circle.homemade {
-        background: url('/static/img/product-prepare.png') center center no-repeat $color-white;
+        background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
       }
 
       .product-item-icon {
