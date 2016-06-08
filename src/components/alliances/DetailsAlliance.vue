@@ -1,111 +1,113 @@
 <template>
-  <div class="alliance-summary">
-    <div class="profile-container">
-      <div class="profile-infos">
-        <div class="profile-infos-photo">
-          <div class="profile-infos-photo-img">
-            <img src="https://randomuser.me/api/portraits/men/12.jpg"/>
+  <div class="alliance-details-container" transition="moveHorizontal">
+    <div class="alliance-summary">
+      <div class="profile-container animated bounceInRight" v-show="show" >
+        <div class="profile-infos">
+          <div class="profile-infos-photo">
+            <div class="profile-infos-photo-img">
+              <img src="https://randomuser.me/api/portraits/men/12.jpg"/>
+            </div>
           </div>
+          <h3 class="profile-infos-name">Adrien</h3>
         </div>
-        <h3 class="profile-infos-name">Adrien</h3>
+      </div>
+      <div class="product animated bounceInLeft" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
+        <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
+          <svg viewBox="0 0 100 100" class="foods-icon animated tada">
+            <use xlink:href="#foods-icon-chou"></use>
+          </svg>
+          <div class="product-quantity">2</div>
+        </div>
+        <div class="product-name">Chou</div>
       </div>
     </div>
-    <div class="product" v-bind:class="{ 'inactive': !product.status }" v-link="{ path: '/market/product/:id' }">
-      <div class="product-item-circle type" v-bind:class="{ 'type-prepare': !product.brut }">
-        <svg viewBox="0 0 100 100" class="foods-icon">
-          <use xlink:href="#foods-icon-chou"></use>
-        </svg>
-        <div class="product-quantity">2</div>
+
+    <div class="steps-summary">
+      <h3 class="title-section">Suivi de vos actions</h3>
+      <div class="steps-summary-separator"></div>
+
+      <fieldset class="step final-step">
+        <form>
+          <svg viewBox="0 0 100 100" class="alliance-icon">
+            <use xlink:href="#app-icon-note"></use>
+          </svg>
+          <h3>
+            Laissez un avis à Ludovic <br>
+            Votre échange était :
+          </h3>
+          <select class="alliance-form-vote-select" v-model="selectedProductType">
+            <option>Parfait</option>
+            <option>Moyen</option>
+          </select>
+        </form>
+      </fieldset>
+      <div class="alliance-action-button">Valider</div>
+
+      <fieldset class="step user-side">
+        <legend>
+          <svg viewBox="0 0 100 100" class="alliance-icon">
+            <use xlink:href="#app-icon-bugle"></use>
+          </svg>
+        </legend>
+        <form>
+          <h3>Avez-vous récupéré le produit ?</h3>
+        </form>
+      </fieldset>
+      <div class="alliance-action-button">Oui</div> <div class="alliance-action-button">Non</div>
+
+      <div class="user-address">
+        Les coordonnées de Ludovic sont :<br>
+        <span class="user-address-details">Appartement 5, étage 2 <br>
+        20 rue du Trésum <br>
+        74000 Annecy</span>
       </div>
-      <div class="product-name">Chou</div>
+
+      <fieldset class="step my-side">
+        <legend>
+          <svg viewBox="0 0 100 100" class="alliance-icon">
+            <use xlink:href="#app-icon-helmet"></use>
+          </svg>
+        </legend>
+          <h3>Ludovic est disponible :</h3>
+          <div class="date-hours">Entre 10h et 12h</div>
+          <span class="date-day">Jeudi 28/02/16</span>
+      </fieldset>
+
+      <fieldset class="step user-side">
+        <legend>
+          <svg viewBox="0 0 100 100" class="alliance-icon">
+            <use xlink:href="#app-icon-bugle"></use>
+          </svg>
+        </legend>
+        <form>
+          <h3>Ludovic n'est pas disponible aujourd'hui mais il vous propose les créneaux suivants</h3>
+          <div class="multiple-dates">
+            <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
+            <label for="date-1" >
+              <div class="date-hours">Entre 10h et 12h</div>
+              <span class="date-day">Jeudi 28/02/16</span>
+            </label>
+            <input type="radio" id="date-2"  class="filter" value="true" v-model="productType">
+            <label for="date-2">
+              <div class="date-hours">Entre 18h et 20h</div>
+              <span class="date-day">Jeudi 28/02/16<span class="underline"></span></span>
+            </label>
+          </div>
+        </form>
+      </fieldset>
+      <div class="alliance-action-button">Refuser</div> <div class="alliance-action-button">Accepter</div>
+
+      <fieldset class="step my-side">
+        <legend>
+          <svg viewBox="0 0 100 100" class="alliance-icon">
+            <use xlink:href="#app-icon-helmet"></use>
+          </svg>
+        </legend>
+          <h3>Vous avez contacté Ludovic le :</h3>
+          <div class="date-day">28/02/16</div>
+      </fieldset>
+
     </div>
-  </div>
-
-  <div class="steps-summary">
-    <h3 class="title-section">Suivi de vos actions</h3>
-    <div class="steps-summary-separator"></div>
-
-    <fieldset class="step final-step">
-      <form>
-        <svg viewBox="0 0 100 100" class="alliance-icon">
-          <use xlink:href="#app-icon-note"></use>
-        </svg>
-        <h3>
-          Laissez un avis à Ludovic <br>
-          Votre échange était :
-        </h3>
-        <select class="alliance-form-vote-select" v-model="selectedProductType">
-          <option>Parfait</option>
-          <option>Moyen</option>
-        </select>
-      </form>
-    </fieldset>
-    <div class="alliance-action-button">Valider</div>
-
-    <fieldset class="step user-side">
-      <legend>
-        <svg viewBox="0 0 100 100" class="alliance-icon">
-          <use xlink:href="#app-icon-bugle"></use>
-        </svg>
-      </legend>
-      <form>
-        <h3>Avez-vous récupéré le produit ?</h3>
-      </form>
-    </fieldset>
-    <div class="alliance-action-button">Oui</div> <div class="alliance-action-button">Non</div>
-
-    <div class="user-address">
-      Les coordonnées de Ludovic sont :<br>
-      <span class="user-address-details">Appartement 5, étage 2 <br>
-      20 rue du Trésum <br>
-      74000 Annecy</span>
-    </div>
-
-    <fieldset class="step my-side">
-      <legend>
-        <svg viewBox="0 0 100 100" class="alliance-icon">
-          <use xlink:href="#app-icon-helmet"></use>
-        </svg>
-      </legend>
-        <h3>Ludovic est disponible :</h3>
-        <div class="date-hours">Entre 10h et 12h</div>
-        <span class="date-day">Jeudi 28/02/16</span>
-    </fieldset>
-
-    <fieldset class="step user-side">
-      <legend>
-        <svg viewBox="0 0 100 100" class="alliance-icon">
-          <use xlink:href="#app-icon-bugle"></use>
-        </svg>
-      </legend>
-      <form>
-        <h3>Ludovic n'est pas disponible aujourd'hui mais il vous propose les créneaux suivants</h3>
-        <div class="multiple-dates">
-          <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
-          <label for="date-1" >
-            <div class="date-hours">Entre 10h et 12h</div>
-            <span class="date-day">Jeudi 28/02/16</span>
-          </label>
-          <input type="radio" id="date-2"  class="filter" value="true" v-model="productType">
-          <label for="date-2">
-            <div class="date-hours">Entre 18h et 20h</div>
-            <span class="date-day">Jeudi 28/02/16<span class="underline"></span></span>
-          </label>
-        </div>
-      </form>
-    </fieldset>
-    <div class="alliance-action-button">Refuser</div> <div class="alliance-action-button">Accepter</div>
-
-    <fieldset class="step my-side">
-      <legend>
-        <svg viewBox="0 0 100 100" class="alliance-icon">
-          <use xlink:href="#app-icon-helmet"></use>
-        </svg>
-      </legend>
-        <h3>Vous avez contacté Ludovic le :</h3>
-        <div class="date-day">28/02/16</div>
-    </fieldset>
-
   </div>
 
 </template>
@@ -114,6 +116,11 @@
 import Profile from './../commons/Profile'
 
 export default {
+  data() {
+    return {
+      show: true,
+    };
+  },
   components: {
     Profile,
   },
@@ -133,6 +140,7 @@ export default {
   z-index: 99;
   width: 100%;
   justify-content: center;
+  top: 60px;
 }
 
 .profile-container,
@@ -186,8 +194,11 @@ export default {
     }
 
     .product {
-      display: inline-block;;
+      display: flex;
       .product-item-circle {
+        vertical-align: middle;
+        display: flex;
+        justify-content: center;
         position: relative;
         width: 125px;
         height: 125px;
@@ -198,7 +209,7 @@ export default {
         box-sizing: border-box;
         margin: auto;
         .foods-icon {
-          transform: scale(0.7);
+          width: 80px;
         }
         .product-quantity {
           position: absolute;

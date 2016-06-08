@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-container" transition="fade">
+  <div v-show="show" class="foodkeeper-container" transition="fade">
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}">
         <div class="foodkeeper-item-background" style="background-image: url('{{ foodkeeper.picture }}');"></div>
@@ -35,7 +35,10 @@
 <script>
 export default {
   data() {
-    return { foodkeepers: [] };
+    return {
+      foodkeepers: [],
+      show: true,
+    };
   },
   ready() {
     // récupérer la liste des foodkeepers

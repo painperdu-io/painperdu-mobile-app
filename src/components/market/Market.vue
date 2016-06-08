@@ -1,5 +1,5 @@
 <template>
-  <div v-show="true" class="markets-container" transition="fade">
+  <div v-show="show" class="markets-container animated" transition="fade">
 
     <div class="markets-slider">
       <div class="controls">
@@ -65,7 +65,6 @@
 <script>
 import ProductsList from './../commons/ProductsList'
 import ResidenceSlider from './../commons/ResidenceSlider'
-
 
 export default {
   components: {
@@ -142,7 +141,7 @@ export default {
         this.updateMarketBySlideId(0);
       })
       .catch(err => console.log(err));
-  }
+  },
 };
 </script>
 

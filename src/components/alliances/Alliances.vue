@@ -1,5 +1,5 @@
 <template>
-  <div class="alliances-container" transition="popIn">
+  <div v-show="show" class="alliances-container animated" transition="fade">
 
     <div class="alliances-list-title active">Aujourd'hui</div>
     <div class="alliances-list-product">
@@ -37,6 +37,11 @@ export default {
     getters: {
       alliances: alliancesList,
     },
+  },
+  data() {
+    return {
+      show: true,
+    };
   },
 };
 </script>
