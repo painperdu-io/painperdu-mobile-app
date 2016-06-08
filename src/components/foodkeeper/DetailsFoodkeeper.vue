@@ -70,7 +70,17 @@ export default {
     height: 105px;
     margin-bottom: 7px;
     text-align: center;
-    background-color: $color-sepia;
+    &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
   }
 
     .foodkeeper-details-item-background {
