@@ -14,11 +14,11 @@
       </div>
       <div class="header-item  header-item-50">
         <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances'" class="header-logo">
-          <img width="132" height="30" src="./../../../../static/img/logo-pain-perdu.png" />
+          <img width="145" height="32" src="./../../../../static/img/logo-pain-perdu.png" />
         </div>
         <h1 v-else>{{ $route.page.title }}</h1>
       </div>
-      <div class="header-item  header-item-25">
+      <div class="header-item  header-item-25" :class="{'header-with-close' : $route.page.header.close}">
         <svg v-if="$route.page.header.basket" v-on:click="openCart" viewBox="0 0 100 100" class="header-icon  header-icon-right header-icon-basket">
           <use xlink:href="#header-icon-basket"></use>
         </svg>
@@ -119,10 +119,10 @@ export default {
     align-items: center;
 
     h1 {
-      font: 1.5em 'Avenir-Book', sans-serif;
+      font: 1.4em 'Avenir-Book', sans-serif;
       color: $color-white;
       text-align: center;
-      margin-top: 7px;
+      margin: 7px auto;
     }
   }
 
@@ -134,15 +134,19 @@ export default {
       &:last-child {
         justify-content: flex-end;
       }
+      &.header-with-close {
+        justify-content: center;;
+      }
     }
 
     .header-item-50 {
       flex: 1 50%;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .header-logo {
+      display: flex;
       width: auto;
       height: 40px;
       vertical-align: top;
@@ -161,7 +165,7 @@ export default {
 }
 
   .header-icon-left {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .header-icon-right {
@@ -175,23 +179,21 @@ export default {
   .header-icon-close {
     color: $color-white;
     text-decoration: underline;
-    font: 1.5em 'Avenir-Book', sans-serif;
+    font: 1.4em 'Avenir-Book', sans-serif;
     font-weight: 300;
     width: auto;
-    height: 35px;
-    margin-top: 6px;
-    margin-right: 33px;
+    height: auto;
     align-items: initial;
   }
 
 .header-icon-profile{
   width: 40px;
-  height: 40px;
+  height: 50px;
 }
 
 .header-icon-flag{ width: 35px;}
 .header-icon-previous{ width: 35px;}
-.header-icon-add-product{ width: 65px;}
-.header-icon-basket{ width: 55px;}
-.header-icon-menu{ width: 36px;}
+.header-icon-add-product{ width: 40px;}
+.header-icon-basket{ width: 35px;}
+.header-icon-menu{ width: 35px;}
 </style>
