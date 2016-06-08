@@ -7,7 +7,7 @@
   <menu-bar></menu-bar>
   <popup :route="$route.name"></popup>
   <cart></cart>
-  <validation></validation>
+  <error></error>
   <foods-icons></foods-icons>
   <svg-icons></svg-icons>
 </template>
@@ -15,6 +15,7 @@
 <script>
 import Cart from './components/commons/popup/Cart'
 import Validation from './components/commons/popup/Validation'
+import Error from './components/commons/popup/Error'
 import Popup from './components/commons/popup/PopupContainer'
 import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
@@ -27,6 +28,7 @@ export default {
   components: {
     Cart,
     Validation,
+    Error,
     Popup,
     HeaderBar,
     FooterBar,
