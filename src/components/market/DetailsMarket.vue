@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      market: {},
+      market: { foodkeeper: { _id: '', picture: '', favorite: false }},
     };
   },
   ready() {

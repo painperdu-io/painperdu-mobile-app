@@ -2,7 +2,7 @@
   <div class="foodkeeper-container">
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}">
-        <div class="foodkeeper-item-background" style="background-image: url('{{ foodkeeper.picture }}');"></div>
+        <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
         <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
           <use xlink:href="#app-icon-star"></use>
         </svg>

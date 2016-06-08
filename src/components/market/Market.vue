@@ -121,10 +121,11 @@ export default {
   data() {
     return {
       marketCurrent: 0,
-      market: {},
+      market: { foodkeeper: { _id: '', picture: '', favorite: false }},
       markets: [],
       products: [],
-      show: true,
+      type: 'raw',
+      search: '',
     };
   },
   ready() {

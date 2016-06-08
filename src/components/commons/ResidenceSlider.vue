@@ -6,8 +6,7 @@
       </div>
       <div class="residence-slider-item-name">
         <div class="residence-slider-item-name-content">
-          {{ market.foodkeeper.name }}
-          <svg v-if={{ market.foodkeeper.favorite }} viewBox="0 0 100 100" class="residence-slider-item-star-icon">
+          <svg v-if="market.foodkeeper.favorite" viewBox="0 0 100 100" class="residence-slider-item-star-icon">
             <use xlink:href="#app-icon-star"></use>
           </svg>
         </div>
