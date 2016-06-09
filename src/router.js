@@ -14,7 +14,7 @@ global.currentUserId = '575302fc5dacbac32540268d';
 Vue.http.options.root = 'http://127.0.0.1:1337/api/v1';
 //Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 Vue.http.options.xhr = { withCredentials: true }
-Vue.http.options.emulateHTTP = true;
+//Vue.http.options.emulateHTTP = true;
 
 const router = new VueRouter({
   abstract: true,

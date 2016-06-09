@@ -6,16 +6,17 @@
   <footer-bar v-if="$route.page.footer.enable"></footer-bar>
   <menu-bar></menu-bar>
   <popup :route="$route.name"></popup>
-  <cart></cart>
-  <error></error>
+  <popup-cart></popup-cart>
+  <popup-error></popup-error>
+  <popup-validation></popup-validation>
   <foods-icons></foods-icons>
   <svg-icons></svg-icons>
 </template>
 
 <script>
-import Cart from './components/commons/popup/Cart'
-import Validation from './components/commons/popup/Validation'
-import Error from './components/commons/popup/Error'
+import PopupCart from './components/commons/popup/Cart'
+import PopupValidation from './components/commons/popup/Validation'
+import PopupError from './components/commons/popup/Error'
 import Popup from './components/commons/popup/PopupContainer'
 import HeaderBar from './components/commons/navigation/HeaderBar'
 import FooterBar from './components/commons/navigation/FooterBar'
@@ -26,9 +27,9 @@ import store from './vuex/store'
 
 export default {
   components: {
-    Cart,
-    Validation,
-    Error,
+    PopupCart,
+    PopupValidation,
+    PopupError,
     Popup,
     HeaderBar,
     FooterBar,
