@@ -106,8 +106,8 @@ export default {
   },
   data() {
     return {
-      previous : 'false',
-      next: 'false',
+      previous : 'true',
+      next: 'true',
       sliderAnimation: 'fadeIn',
       marketCurrent: 0,
       market: { foodkeeper: { _id: '', picture: '', favorite: false }},
@@ -118,9 +118,9 @@ export default {
     };
   },
   ready() {
-    //Initialise controls slider
-    if(this.markets.length <= 1 ){ this.previous = false; this.next= false;}
-    else { this.previous = true; this.next= true; }
+    //Initialise controls slide
+    /*if(this.markets.length >= 1 ){ this.previous = true; this.next= true;}
+    else { this.previous = false; this.next= false; }*/
     // récupérer les markets en fonction de l'id d'un utilisateur
     this.$http({ url: `markets/user/${global.currentUserId}`, method: 'GET' })
       .then(response => {
