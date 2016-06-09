@@ -1,5 +1,5 @@
 <template>
-  <div class="members-container">
+  <div class="members-container {{type}}s-container">
     <template v-for="(index, member) in members">
       <div v-if="type == 'ally' " class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div class="members-name">{{ member.name.first }}</div>
@@ -43,6 +43,11 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px 20px;
+
+  &.accomplices-container {
+    justify-content: flex-start;
+    padding: 10px 20px;
+  }
 }
 
   .members-item {

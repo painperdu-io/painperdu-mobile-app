@@ -32,10 +32,6 @@ export function tabsNavigation () {
 export function popupsList () {
   const popups = [
     {
-      route: 'Market',
-      tip: true,
-    },
-    {
       route: 'AddFoodkeeper',
       addPhoto: true,
     },
@@ -52,8 +48,8 @@ export function popupsList () {
       addAccomplice: true,
     },
     {
-      route: 'Market',
-      recipe: true,
+      route: 'ProductMarket', 
+      tip: true,
     },
     {
       route: 'DetailsFoodkeeperProducts',

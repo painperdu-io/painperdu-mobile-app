@@ -25,12 +25,22 @@
         <label for="homemade">Plats Préparés</label>
       </div>
       <div class="foodkeeper-add-product-form1-question">
-        Dans quel <span>garde-manger</span> proposez-vous ce produit ?
+        Dans quel(s) <span>garde(s)-manger(s)</span> proposez-vous ce produit ?
       </div>
-      <div class="foodkeeper-add-product-form1-foodkeepers" v-for="foodkeeper in foodkeepers">
-        {{ foodkeeper.name }}
-        <input id="cart" type="checkbox" v-model="form.foodkeepers">
-        <label for="cart"></label>
+      <div class="foodkeeper-add-product-form1-foodkeepers">
+        <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="foodkeepersSelected" hidden multiple >
+          <template  v-for="foodkeeper in foodkeepers">
+            <option value="{{foodkeeper.name}}">  {{ foodkeeper.name }}</option>
+          </template>
+        </select>
+        <label v-on:click="openSelect" class="product-dlc" for="foodkeepersSelect">
+          <div v-if="foodkeepersSelected.length">
+            <template v-for="item in foodkeepersSelected">
+              <div>{{ item }}</div>
+            </template>
+          </div>
+          <div v-else>Sélectionnez...</div>
+        </label>
       </div>
     </div>
     <div class="foodkeeper-add-product-form2-wrapper">
@@ -59,6 +69,10 @@ export default {
         this.form.quantity--;
       }
     },
+    openSelect(event){
+      console.log('je suis dedans');
+      document.getElementById('foodkeepersSelect').focus();
+    },
     addPicto(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
@@ -70,7 +84,7 @@ export default {
       if (!this.form.icon) { console.log('ICON VIDE !!!'); }
       if (!this.form.name) { console.log('NOM VIDE !!!'); }
       if (!this.form.description) { console.log('DESCRIPTION VIDE !!!'); }
-      if (!this.form.foodkeepers) { console.log('FOODKEEPERS VIDE !!!'); }
+      if (!this.form.foodkeepersSelected) { console.log('FOODKEEPERS VIDE !!!'); }
 
       console.log(this.form);
     }
@@ -85,7 +99,7 @@ export default {
         type: true,
         dlc: 1,
         quantity: 1,
-        foodkeepers: []
+        foodkeepersSelected: []
       },
     }
   },
@@ -171,6 +185,29 @@ export default {
             background: $color-white;
           }
         }
+      }
+    }
+
+    .foodkeeper-add-product-form1-foodkeepers{ text-align: center; }
+
+    .foodkeeper-add-product-form-select {
+      margin: 10px 0 10px;
+      width: 262px;
+      height: 40px;
+      background: $color-green-lite;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 20px;
+      font-style: italic;
+      text-align-last: center;
+      text-transform: capitalize;
+      color: $color-white;
+      font-size: 1.1em;
+
+
+      option {
+        text-align: center;
+        text-transform: capitalize;
       }
     }
 

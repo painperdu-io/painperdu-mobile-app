@@ -28,7 +28,7 @@
         <svg v-if="$route.page.header.product" v-link="{ name: 'AddProductFoodkeeper' }" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-add-product">
           <use xlink:href="#header-icon-add-product"></use>
         </svg>
-        <svg v-if="$route.page.header.flag" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-flag">
+        <svg v-if="$route.page.header.flag" v-on:click="openTip" viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-flag">
           <use xlink:href="#header-icon-flag"></use>
         </svg>
         <div v-if="$route.page.header.close" v-on:click="goPrevious" class="header-icon  header-icon-right header-icon-close">
@@ -40,12 +40,17 @@
 </template>
 
 <script>
-export default {
+export default { 
   methods: {
     openCart(event) {
       event.preventDefault()
       document.getElementsByClassName('cart-popup-container')[0].classList.add('active');
       document.getElementsByClassName('cart-popup-overlay')[0].classList.add('active');
+    },
+    openTip(event) {
+      event.preventDefault()
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
     },
     goPrevious(event) {
       event.preventDefault();

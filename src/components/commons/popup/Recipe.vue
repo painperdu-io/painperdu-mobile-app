@@ -1,57 +1,57 @@
 <template transition="popIn">
-  <div class="tip-popup-container">
-    <h3 class="tip-popup-title">Trucs & Astuces</h3>
-    <div class="tip-popup-title-separator"></div>
-    <div class="tip-popup-item-wrapper">
-      <div class="tip-popup-item-subtitle-wrapper">
-        <div class="tip-popup-app-icon-status-container tip-popup-app-icon-status-left">
-          <svg viewBox="0 0 100 100" class="tip-popup-app-icon-status">
+  <div class="recipe-popup-container">
+    <h3 class="recipe-popup-title">Au menu <br /> cette semaine</h3>
+    <div class="recipe-popup-title-separator"></div>
+    <div class="recipe-popup-item-wrapper">
+      <div class="recipe-popup-item-subtitle-wrapper">
+        <div class="recipe-popup-app-icon-status-container recipe-popup-app-icon-status-left">
+          <svg viewBox="0 0 100 100" class="recipe-popup-app-icon-status">
             <use xlink:href="#app-icon-bugle" ></use>
           </svg>
         </div>
-        <div class="tip-popup-item-subtitle">
+        <div class="recipe-popup-item-subtitle">
           " Oyé, Oyé ! "
         </div>
-        <div class="tip-popup-app-icon-status-container tip-popup-app-icon-status-right">
-          <svg viewBox="0 0 100 100" class="tip-popup-app-icon-status">
+        <div class="recipe-popup-app-icon-status-container recipe-popup-app-icon-status-right">
+          <svg viewBox="0 0 100 100" class="recipe-popup-app-icon-status">
             <use xlink:href="#app-icon-bugle" ></use>
           </svg>
         </div>
       </div>
-      <div class="tip-popup-item">
-        <div class="tip-popup-item-text-wrapper">
-          <p class="tip-popup-item-text">Ton <span class="text-bold text-uppercase">avocat</span> et tes <span class="text-bold text-uppercase">yaourts</span> n'ont pas été<span class="underline"></span></p><br/>
-          <p class="tip-popup-item-text">récupérés à temps<span class="underline"></span></p>
+      <div class="recipe-popup-item">
+        <div class="recipe-popup-item-text-wrapper">
+          <p class="recipe-popup-item-text">Des <span class="text-bold text-uppercase">carottes</span> et <span class="text-bold text-uppercase">pommes dde terres</span> sont<span class="underline"></span></p><br/>
+          <p class="recipe-popup-item-text">disponibles sur la place du marché<span class="underline"></span></p>
         </div>
       </div>
-      <div class="tip-popup-item">
-        <div class="tip-popup-product">
-          <div class="tip-popup-product-item-circle type">
+      <div class="recipe-popup-item">
+        <div class="recipe-popup-product">
+          <div class="recipe-popup-product-item-circle type">
             <svg viewBox="0 0 100 100" class="foods-icon">
-              <use xlink:href="#foods-icon-avocat"></use>
+              <use xlink:href="#foods-icon-carotte"></use>
             </svg>
           </div>
-          <div class="tip-popup-product-name">Avocat</div>
+          <div class="recipe-popup-product-name">Carotte</div>
         </div>
-        <div class="tip-popup-product">
-          <div class="tip-popup-product-item-circle">
+        <div class="recipe-popup-product">
+          <div class="recipe-popup-product-item-circle">
             <svg viewBox="0 0 100 100" class="foods-icon">
-              <use xlink:href="#foods-icon-yaourt"></use>
+              <use xlink:href="#foods-icon-patate"></use>
             </svg>
           </div>
-          <div class="tip-popup-product-name">Yaourts</div>
+          <div class="recipe-popup-product-name">Pomme<br /> de terre</div>
         </div>
       </div>
       <div>
-      <div class="tip-popup-item tip-popup-border-red">
-        <div class="tip-popup-item-text-wrapper">
-          <p class="tip-popup-item-subtitle-red"><span class="underline"></span>Ne les jetez pas !<br /></p>
-          <p class="tip-popup-item-text"><span class="underline"></span>Découvre comment les recycler<br /></p>
-          <p class="tip-popup-item-text"><span class="underline"></span>sur notre blog !</p>
+      <div class="recipe-popup-item recipe-popup-border-red">
+        <div class="recipe-popup-item-text-wrapper">
+          <p class="recipe-popup-item-subtitle-red"><span class="underline"></span>Cuisine les donc ensemble !<br /></p>
+          <p class="recipe-popup-item-text"><span class="underline"></span>Découvre la recette conseillée par<br /></p>
+          <p class="recipe-popup-item-text"><span class="underline"></span>Pain Perdu sur notre blog !</p>
         </div>
       </div>
     </div>
-    <div class="tip-popup-validation-button">Sauver les produits</div>
+    <div class="recipe-popup-validation-button">Voir la recette</div>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {};
 <style lang="scss" scoped>
 @import './../../../styles/variables.scss';
 
-.tip-popup-title-separator {
+.recipe-popup-title-separator {
   width: 56px;
   height: 5px;
   margin: 0 auto;
@@ -70,24 +70,24 @@ export default {};
   background: url('/static/img/separator-green.png') center center no-repeat;
 }
 
-.tip-popup-container {
+.recipe-popup-container {
   width: 100%;
 }
 
-  .tip-popup-title {
+  .recipe-popup-title {
     margin-top: 30px;
     font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
     color: $color-red;
   }
 
-  .tip-popup-item-wrapper {
+  .recipe-popup-item-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
 
-    .tip-popup-item {
+    .recipe-popup-item {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -98,7 +98,7 @@ export default {};
     }
 
 
-  .tip-popup-validation-button {
+  .recipe-popup-validation-button {
     margin: 0 auto 30px;
     width: 150px;
     padding: 18px 15px;
@@ -110,7 +110,7 @@ export default {};
     text-align: center;
   }
 
-  .tip-popup-item-wrapper {
+  .recipe-popup-item-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -118,7 +118,7 @@ export default {};
     height: auto;
   }
 
-      .tip-popup-item-text-wrapper {
+      .recipe-popup-item-text-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -132,7 +132,7 @@ export default {};
         }
       }
 
-        .tip-popup-item-text {
+        .recipe-popup-item-text {
           position: relative;
           margin: 0 auto -2px;
           z-index: 1;
@@ -159,7 +159,7 @@ export default {};
           }
         }
 
-        .tip-popup-item-subtitle-red {
+        .recipe-popup-item-subtitle-red {
           position: relative;
           margin: 0 auto;
           z-index: 1;
@@ -168,35 +168,36 @@ export default {};
           color: $color-red;
         }
 
-        .tip-popup-product {
+        .recipe-popup-product {
           display: flex;
           flex-direction: column;
           margin: 0 10px;
         }
 
-        .tip-popup-product-item-circle {
+        .recipe-popup-product-item-circle {
           position: relative;
           width: 100px;
           height: 100px;
           border-radius: 50%;
           text-align: center;
-          border: 10px solid $color-beige;
+          background: $color-white;
+          border: 10px solid $color-white;
           box-sizing: border-box;
-          background: url('/static/img/product-raw.png') center center no-repeat $color-beige;
+          background: url('/static/img/product-raw.png') center center no-repeat $color-white;
         }
 
 
-          .tip-popup-product-item-icon {
+          .recipe-popup-product-item-icon {
             transform: scale(0.8);
           }
 
-          .tip-popup-product-name {
+          .recipe-popup-product-name {
             margin: 10px auto 5px;
             font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
-            color: $color-text;
+            color: $color-red;
           }
 
-          .tip-popup-border-red{
+          .recipe-popup-border-red{
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -211,21 +212,21 @@ export default {};
             border: 0;
           }
 
-          .tip-popup-item-subtitle-wrapper {
+          .recipe-popup-item-subtitle-wrapper {
             position: relative;
             width: 160px;
             color: $color-text;
             margin: 20px auto;
             font: bold 1.3em 'Karla-Italic', sans-serif;
           }
-          .tip-popup-app-icon-status-container{
+          .recipe-popup-app-icon-status-container{
             position: absolute;
             top:-12px;
             width: 35px;
             box-sizing: border-box;
           }
-          .tip-popup-app-icon-status-left { transform: scaleX(-1); left:  0}
-          .tip-popup-app-icon-status-right {
+          .recipe-popup-app-icon-status-left { transform: scaleX(-1); left:  0}
+          .recipe-popup-app-icon-status-right {
             right: 0;
           }
 </style>

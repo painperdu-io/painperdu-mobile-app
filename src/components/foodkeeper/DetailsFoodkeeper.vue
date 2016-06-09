@@ -129,6 +129,7 @@ export default {
 
   .foodkeeper-details-accomplice-wrapper {
     padding: 10px 30px 20px;
+    .accomplices-container {padding: 10px 0px !important;}
   }
 
     .foodkeeper-details-accomplice-title {
