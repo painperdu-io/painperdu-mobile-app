@@ -32,7 +32,7 @@
       </div>
       <div class="residence-slider-item">
         <div class="residence-slider-image">
-          <img :src="currentFoodkeeper.picture" />
+          <img :src="form.current.picture" />
         </div>
         <div class="residence-slider-item-name">
           <div class="residence-slider-item-name-content">
