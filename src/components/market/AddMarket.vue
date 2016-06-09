@@ -44,16 +44,19 @@
     <div class="market-add-map-wrapper">
       <google-map></google-map>
     </div>
-    <div class="market-add-form-perimeter-add">Ajouter</div>
+    <div class="market-add-form-perimeter-add" v-on:click="callAddApi">Ajouter</div>
   </div>
-</template>
+  <validation destination="Market" add="Market"></validation>
+</template> 
 
 <script>
 import GoogleMap from './../commons/GoogleMap'
+import Validation from './../commons/popup/Validation'
 
 export default {
   components: {
     GoogleMap,
+    Validation
   },
   data() {
     return {
@@ -68,6 +71,14 @@ export default {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
+    },
+    callAddApi(event) {
+      console.log('CALL ADD API');
+
+      /*Ouverture popup*/
+      event.preventDefault()
+      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
     }
   },
   ready () {

@@ -8,14 +8,12 @@
   <popup :route="$route.name"></popup>
   <cart></cart>
   <error></error>
-  <validation></validation>
   <foods-icons></foods-icons>
   <svg-icons></svg-icons>
 </template>
 
 <script>
 import Cart from './components/commons/popup/Cart'
-import Validation from './components/commons/popup/Validation'
 import Error from './components/commons/popup/Error'
 import Popup from './components/commons/popup/PopupContainer'
 import HeaderBar from './components/commons/navigation/HeaderBar'
@@ -28,7 +26,6 @@ import store from './vuex/store'
 export default {
   components: {
     Cart,
-    Validation,
     Error,
     Popup,
     HeaderBar,

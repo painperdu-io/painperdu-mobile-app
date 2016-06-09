@@ -1,12 +1,12 @@
 <template>
   <div class="validation-popup-overlay"></div>
   <div class="validation-popup-container">
-    <div class="validation-popup-close" v-on:click="closevalidation">
+    <div class="validation-popup-close" v-on:click="closevalidation(destination)">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
     </div>
-    <div class="validation-popup-container-content">
+    <div v-if="add == 'FoodKeeper'" class="validation-popup-container-content">
       <h3 class="validation-popup-title">Bravo à toi !</h3>
       <div class="validation-popup-title-separator"></div>
       <div class="validation-popup-item-wrapper">
@@ -22,7 +22,46 @@
         </div>
       </div>
       <div class="validation-popup-redirect-button" v-link="{name : 'AddMarket'}">Configurer</div>
-      <div class="validation-popup-add-button" v-on:click="closevalidation">Remettre à plus tard</div>
+      <div class="validation-popup-add-button" v-on:click="closevalidation(destination)">Remettre à plus tard</div>
+    </div>
+    <div v-if="add == 'Market'" class="validation-popup-container-content">
+      <h3 class="validation-popup-title">Bravo à toi !</h3>
+      <div class="validation-popup-title-separator"></div>
+      <div class="validation-popup-item-wrapper">
+        <div class="validation-popup-item">
+          <div class="validation-popup-item-text-wrapper">
+            <p class="validation-popup-item-text"><span class="underline"></span>Tu viens de créer<br /></p>
+            <p class="validation-popup-item-text text-bold"><span class="underline"></span>une nouvelle place du marché !<br /></p>
+          </div>
+        </div>
+      </div>
+      <div class="validation-popup-redirect-button" v-on:click="closevalidation(destination)">Fermer</div>
+    </div>
+    <div v-if="add == 'Product'" class="validation-popup-container-content">
+      <h3 class="validation-popup-title">Bravo à toi !</h3>
+      <div class="validation-popup-title-separator"></div>
+      <div class="validation-popup-item-wrapper">
+        <div class="validation-popup-item">
+          <div class="validation-popup-item-text-wrapper">
+            <p class="validation-popup-item-text"><span class="underline"></span>Tu viens d'ajouter'<br /></p>
+            <p class="validation-popup-item-text text-bold"><span class="underline"></span>une nouvelle denrée !<br /></p>
+          </div>
+        </div>
+      </div>
+      <div class="validation-popup-redirect-button" v-on:click="closevalidation(destination)">Fermer</div>
+    </div>
+    <div v-if="add == 'AskProduct'" class="validation-popup-container-content">
+      <h3 class="validation-popup-title">Alliance demandée !</h3>
+      <div class="validation-popup-title-separator"></div>
+      <div class="validation-popup-item-wrapper">
+        <div class="validation-popup-item">
+          <div class="validation-popup-item-text-wrapper">
+            <p class="validation-popup-item-text"><span class="underline"></span>Votre demande de denrée<br /></p>
+            <p class="validation-popup-item-text text-bold"><span class="underline"></span>est validée<br /></p>
+          </div>
+        </div>
+      </div>
+      <div class="validation-popup-redirect-button" v-on:click="closevalidation(destination)">Fermer</div>
     </div>
   <div class="popup-overlay"></div>
   </div>
@@ -30,13 +69,16 @@
 
 <script>
 export default {
+  props: ['destination', 'add'],
   methods: {
-    closevalidation(event) {
+    closevalidation(destination) {
       document.getElementsByClassName('validation-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('validation-popup-overlay')[0].classList.remove('active');
+      console.log('destination:' + destination);
+      this.$route.router.go({ name: destination });
       event.preventDefault()
-    }
-  }
+    },
+  },
 };
 </script>
 
