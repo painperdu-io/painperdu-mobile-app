@@ -1,20 +1,20 @@
 <template>
-  <div class="markets-container">
+  <div class="markets-container" >
     <div v-if="markets.length" class="markets-slider">
       <div class="controls">
-        <div class="previous" v-on:click="moveLeft">
+        <div v-show="previous" class="previous animated fadeIn" v-on:click="moveLeft">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-previous">
             <use xlink:href="#header-icon-previous"></use>
           </svg>
         </div>
-        <div class="next" v-on:click="moveRight">
+        <div v-show="next" class="next animated fadeIn" v-on:click="moveRight">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-next">
             <use xlink:href="#header-icon-previous"></use>
           </svg>
         </div>
       </div>
 
-      <div class="market-container">
+      <div class="market-container  animated {{ sliderAnimation }}">
         <residence-slider :market="market"></residence-slider>
 
         <div class="market-products-wrapper">
@@ -78,6 +78,8 @@ export default {
         this.marketCurrent = this.markets.length - 1;
         this.updateMarketBySlideId(this.marketCurrent);
       }
+      this.sliderAnimation = 'fadeInLeft';
+      setTimeout(() => this.sliderAnimation = '', 1000);
     },
     moveRight(event) {
       if (this.marketCurrent !== this.markets.length - 1) {
@@ -87,6 +89,8 @@ export default {
         this.updateMarketBySlideId(0);
         this.marketCurrent = 0;
       }
+      this.sliderAnimation = 'fadeInRight';
+      setTimeout(() => this.sliderAnimation = '', 1000);
     },
     displayRemove(event) {
       document.getElementsByClassName('market-products-search-icon-right')[0].classList.add('active');
@@ -102,6 +106,9 @@ export default {
   },
   data() {
     return {
+      previous : 'false',
+      next: 'false',
+      sliderAnimation: 'fadeIn',
       marketCurrent: 0,
       market: { foodkeeper: { _id: '', picture: '', favorite: false }},
       markets: [],
@@ -111,6 +118,9 @@ export default {
     };
   },
   ready() {
+    //Initialise controls slider
+    if(this.markets.length <= 1 ){ this.previous = false; this.next= false;}
+    else { this.previous = true; this.next= true; }
     // récupérer les markets en fonction de l'id d'un utilisateur
     this.$http({ url: `markets/user/${global.currentUserId}`, method: 'GET' })
       .then(response => {
