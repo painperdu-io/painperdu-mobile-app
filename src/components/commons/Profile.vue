@@ -103,7 +103,6 @@ export default {
         img {
           width: 125px;
           height: 125px;
-          filter: grayscale(100%);
           //mix-blend-mode: multiply;
         }
 
