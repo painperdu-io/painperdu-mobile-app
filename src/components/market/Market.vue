@@ -1,6 +1,6 @@
 <template>
   <div class="markets-container">
-    <div class="markets-slider">
+    <div v-if="markets.length" class="markets-slider">
       <div class="controls">
         <div class="previous" v-on:click="moveLeft">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-previous">
@@ -42,7 +42,8 @@
           </producst-list>
         </div>
       </div>
-
+    </div>
+    <div v-else>
       <div class="market-container">
         <div class="add-market" v-link="{ name: 'AddMarket' }">
           <div class="add-market-blason"><span>+</span></div>
