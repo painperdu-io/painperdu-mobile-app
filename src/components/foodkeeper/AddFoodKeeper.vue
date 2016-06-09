@@ -6,46 +6,46 @@
     </div>
     <div class="foodkeeper-add-form-wrapper">
       <div class="foodkeeper-add-form-itemgreen">
-        <input v-model="form.name" placeholder="Nom du garde manger" />
+        <input name="form-name" v-model="form.name" placeholder="Nom du garde manger" />
       </div>
       <div class="foodkeeper-add-form-itemgreen">
-        <input v-model="form.description" placeholder="Description du garde manger" />
+        <input name="form-description" v-model="form.description" placeholder="Description du garde manger" />
       </div>
       <h3 class="foodkeeper-add-form-title">Renseigner l'adresse du garde manger</h3>
       <div class="foodkeeper-add-form-item">
-        <input id="address1" v-model="form.street" class="foodkeeper-add-form-item-input" type="text" placeholder="Rue, route, impasse"></input>
+        <input id="address1" name="form-street" v-model="form.location.street" class="foodkeeper-add-form-item-input" type="text" placeholder="Rue, route, impasse"></input>
         <label class="foodkeeper-add-form-item-label" for="address1">Rue, route, impasse</label>
       </div>
       <div class="foodkeeper-add-form-inline-wrapper">
         <div class="foodkeeper-add-form-item">
-          <input id="number" v-model="form.number" class="foodkeeper-add-form-item-input" type="text" placeholder="Numéro"></input>
+          <input id="number" v-model="form.location.number" class="foodkeeper-add-form-item-input" type="text" placeholder="Numéro"></input>
           <label class="foodkeeper-add-form-item-label" for="number">Numéro</label>
         </div>
         <div class="foodkeeper-add-form-item">
-          <input id="apartment" v-model="form.apartment" class="foodkeeper-add-form-item-input" type="text" placeholder="Appart."></input>
+          <input id="apartment" v-model="form.location.apartment" class="foodkeeper-add-form-item-input" type="text" placeholder="Appart."></input>
           <label class="foodkeeper-add-form-item-label" for="apartment">Appartement</label>
         </div>
         <div class="foodkeeper-add-form-item">
-          <input id="floor" v-model="form.floor" class="foodkeeper-add-form-item-input" type="text" placeholder="Étage"></input>
+          <input id="floor" v-model="form.location.floor" class="foodkeeper-add-form-item-input" type="text" placeholder="Étage"></input>
           <label class="foodkeeper-add-form-item-label" for="floor">Étage</label>
         </div>
       </div>
       <div class="foodkeeper-add-form-inline-wrapper">
         <div class="foodkeeper-add-form-item">
-          <input id="code-postal" v-model="form.zipcode" class="foodkeeper-add-form-item-input" type="text" placeholder="Code postal"></input>
+          <input id="code-postal" name="form-zipcode" v-model="form.location.zipcode" class="foodkeeper-add-form-item-input" type="text" placeholder="Code postal"></input>
           <label class="foodkeeper-add-form-item-label" for="infos">Code postal</label>
         </div>
         <div class="foodkeeper-add-form-item foodkeeper-add-form-item-city">
-          <input id="ville" v-model="form.city" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
+          <input id="ville" name="form-city" v-model="form.location.city" class="foodkeeper-add-form-item-input" type="text" placeholder="Ville"></input>
           <label class="foodkeeper-add-form-item-label" for="infos">Ville</label>
         </div>
       </div>
       <div class="foodkeeper-add-form-item">
         <label class="foodkeeper-add-form-item-label" for="address2">Complément d'adresse</label>
-        <input id="address2" v-model="form.additional" class="foodkeeper-add-form-item-input" type="text" placeholder="Complément d'adresse"></input>
+        <input id="address2" v-model="form.location.additional" class="foodkeeper-add-form-item-input" type="text" placeholder="Complément d'adresse"></input>
       </div>
       <div class="foodkeeper-add-form-item">
-        <input id="infos" v-model="form.infos" class="foodkeeper-add-form-item-input" type="text" placeholder="Informations complémentaires"></input>
+        <input id="infos" v-model="form.location.infos" class="foodkeeper-add-form-item-input" type="text" placeholder="Informations complémentaires"></input>
         <label class="foodkeeper-add-form-item-label" for="infos">Informations complémentaires</label>
       </div>
       <div class="foodkeeper-add-form-btn" v-on:click="callAddApi">Ajouter</div>
@@ -69,20 +69,53 @@ export default {
       event.preventDefault()
     },
     callAddApi(event) {
-      console.log('CALL ADD API');
+      event.preventDefault();
 
-      if (!this.form.name) { console.log('NOM VIDE !!!'); }
-      if (!this.form.description) { console.log('DESCRIPTION VIDE !!!'); }
-      if (!this.form.street) { console.log('RUE VIDE !!!'); }
-      if (!this.form.city) { console.log('CITY VIDE !!!'); }
-      if (!this.form.zipcode) { console.log('ZICODE VIDE !!!'); }
+      // vérification des champs
+      if (!this.form.name) {
+        document.getElementsByName('form-name')[0].classList.add('error');
+      }
+      if (!this.form.description) {
+        document.getElementsByName('form-description')[0].classList.add('error');
+      }
+      if (!this.form.location.street) {
+        document.getElementsByName('form-street')[0].classList.add('error');
+      }
+      if (!this.form.location.city) {
+        document.getElementsByName('form-city')[0].classList.add('error');
+      }
+      if (!this.form.location.zipcode) {
+        document.getElementsByName('form-zipcode')[0].classList.add('error');
+      }
 
-      console.log(this.form);
+      // si tout les champs sont remplis, on enregistre les données
+      if (this.form.name &&
+          this.form.description &&
+          this.form.location.street &&
+          this.form.location.city &&
+          this.form.location.zipcode) {
+        // enregistrer les données dans la base
+        this.form.userId = global.currentUserId
+        const formDatas = JSON.stringify(this.form);
 
-      /*Ouverture popup*/
-      event.preventDefault()
-      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
-      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+        this.$http.post('foodkeepers', formDatas, { emulateJSON: true })
+          .then((response) =>  {
+            // ouverture popup validation
+            document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+            document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+          })
+          .catch(err => {
+            console.log(err);
+
+            // ouverture popup error
+            document.getElementsByClassName('error-popup-container')[0].classList.add('active');
+            document.getElementsByClassName('error-popup-overlay')[0].classList.add('active');
+          });
+      } else {
+        // ouverture popup error
+        document.getElementsByClassName('error-popup-container')[0].classList.add('active');
+        document.getElementsByClassName('error-popup-overlay')[0].classList.add('active');
+      }
     }
   },
   data() {
@@ -90,14 +123,17 @@ export default {
       form: {
         name: '',
         description: '',
-        street: '',
-        number: '',
-        apartment: '',
-        floor: '',
-        additional: '',
-        infos: '',
-        city: '',
-        zicode: ''
+        picture: '',
+        location: {
+          street: '',
+          number: '',
+          apartment: '',
+          floor: '',
+          additional: '',
+          infos: '',
+          city: '',
+          zicode: ''
+        }
       }
     }
   }
@@ -191,6 +227,10 @@ export default {
         font: 1.5em 'Karla-Italic', sans-serif;
         color: $color-white;
         background: $color-green-lite;
+
+        &.error {
+          background: $color-stats-red2;
+        }
       }
 
       ::-webkit-input-placeholder {
@@ -288,12 +328,10 @@ export default {
         }
 
         &.error {
-          &:hover, &:focus {
-            font: 1.3em 'Karla-Bold', sans-serif;
-            border-bottom: 2px solid $color-red;
-            + label {
-              color: $color-red;
-            }
+          font: 1.3em 'Karla-Bold', sans-serif;
+          border-bottom: 2px solid $color-red;
+          + label {
+            color: $color-red;
           }
         }
       }
