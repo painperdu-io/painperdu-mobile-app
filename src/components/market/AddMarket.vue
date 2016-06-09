@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!foodkeepers.length" class="market-add-container">
+    <div v-if="foodkeepers.length" class="market-add-container">
       <div class="market-add-form-wrapper">
         <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
         <select class="market-add-form-select" v-model="form.current">
