@@ -47,14 +47,17 @@
     </div>
     <div class="market-add-form-perimeter-add" v-on:click="callAddApi">Ajouter</div>
   </div>
+  <validation destination="Market" add="Market"></validation>
 </template>
 
 <script>
 import GoogleMap from './../commons/GoogleMap'
+import Validation from './../commons/popup/Validation'
 
 export default {
   components: {
     GoogleMap,
+    Validation
   },
   methods: {
     addBlason(event) {

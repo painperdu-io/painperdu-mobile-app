@@ -51,10 +51,17 @@
       <div class="foodkeeper-add-form-btn" v-on:click="callAddApi">Ajouter</div>
     </div>
   </div>
+
+  <validation destination="Foodkeeper" add="FoodKeeper"></validation>
 </template>
 
 <script>
+import Validation from './../commons/popup/Validation'
+
 export default {
+  components : {
+    Validation,
+  },
   methods: {
     addPhoto(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');

@@ -87,13 +87,19 @@
         </div>
 
       </div>
-      <div class="ask-product-button">Demander</div>
+      <div class="ask-product-button" v-on:click="callAddApi">Demander</div>
     </div>
   </div>
+  <validation destination="Alliances" add="AskProduct"></validation>
 </template>
 
 <script>
+import Validation from './../commons/popup/Validation'
+
 export default {
+  components : {
+    Validation,
+  },
   computed: {
     statusName() {
       const status = [
@@ -123,6 +129,14 @@ export default {
         this.quantity--;
       }
     },
+    callAddApi(event) {
+      console.log('CALL ADD API');
+
+      /*Ouverture popup*/
+      event.preventDefault()
+      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+    }
   },
   data() {
     return {

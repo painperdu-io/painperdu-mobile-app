@@ -33,7 +33,7 @@
             <option value="{{foodkeeper.name}}">  {{ foodkeeper.name }}</option>
           </template>
         </select>
-        <label v-on:click="openSelect" class="product-dlc" for="foodkeepersSelect">
+        <label v-on:click="openSelect" class="foodkeepersSelect" for="foodkeepersSelect">
           <div v-if="foodkeepersSelected.length">
             <template v-for="item in foodkeepersSelected">
               <div>{{ item }}</div>
@@ -56,10 +56,16 @@
       <div class="foodkeeper-add-product-form2-button" v-on:click="callAddApi">Ajouter</div>
     </div>
   </div>
+  <validation destination="Market" add="Product"></validation>
 </template>
 
 <script>
+import Validation from './../commons/popup/Validation'
+
 export default {
+  components : {
+    Validation,
+  },
   methods: {
     increment(event) {
       this.form.quantity++;
@@ -70,8 +76,8 @@ export default {
       }
     },
     openSelect(event){
-      console.log('je suis dedans');
-      document.getElementById('foodkeepersSelect').focus();
+      console.log("Test");
+      document.getElementById('foodkeepersSelect').click();
     },
     addPicto(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
@@ -87,6 +93,11 @@ export default {
       if (!this.form.foodkeepersSelected) { console.log('FOODKEEPERS VIDE !!!'); }
 
       console.log(this.form);
+
+      /*Ouverture popup*/ 
+      event.preventDefault()
+      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
     }
   },
   data() {
@@ -188,7 +199,9 @@ export default {
       }
     }
 
-    .foodkeeper-add-product-form1-foodkeepers{ text-align: center; }
+    .foodkeeper-add-product-form1-foodkeepers{
+      text-align: center;
+    }
 
     .foodkeeper-add-product-form-select {
       margin: 10px 0 10px;
