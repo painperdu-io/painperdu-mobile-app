@@ -26,7 +26,7 @@
         <p class="no-products-item-text text-bold"><span class="underline"></span>nulle denrée n'est proposée<br /></p>
       </div>
     </div>
-    <div class="add-products-button">Ajouter une denrée</div>
+    <div class="add-products-button" v-link="{ name: 'AddProductFoodkeeper' }">Ajouter une denrée</div> 
   </div>
 </template>
 
