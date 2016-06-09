@@ -5,8 +5,8 @@
         <div class="profile-infos">
           <div class="profile-infos-photo">
             <div class="profile-infos-photo-img">
-              <img v-if="alliance.type == 'giver'" :src="alliance.users.applicant.picture"/>
-              <img v-else :src="alliance.users.giver.picture"/>
+              <img v-if="alliance.type == 'giver'" :src="alliance.users.applicant.picture" v-link="{ name: 'MemberProfile', params: { id: alliance.users.applicant._id }}" />
+              <img v-else :src="alliance.users.giver.picture" v-link="{ name: 'MemberProfile', params: { id: alliance.users.giver._id }}"/>
             </div>
           </div>
           <h3 v-if="alliance.type == 'giver'" class="profile-infos-name">{{ alliance.users.applicant.name.first }}</h3>
