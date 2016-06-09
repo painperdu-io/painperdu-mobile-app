@@ -30,7 +30,7 @@ import AddPicto from './AddPicto';
 import { popupsList } from './../../../vuex/getters';
 
 export default {
-  props: ['route'],
+  props: ['route', 'show'],
   vuex: {
     getters: {
       popups: popupsList,
@@ -45,11 +45,11 @@ export default {
     AddPicto,
   },
   methods: {
-    closePopup(event) {
+    closePopup: function () {
+      event.preventDefault()
       document.getElementsByClassName('popup-container')[0].classList.remove('active');
       document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
-      event.preventDefault()
-    },
+    }
   },
   data() {
     return {

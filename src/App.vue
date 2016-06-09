@@ -8,6 +8,7 @@
   <popup :route="$route.name"></popup>
   <cart></cart>
   <error></error>
+  <validation></validation>
   <foods-icons></foods-icons>
   <svg-icons></svg-icons>
 </template>
