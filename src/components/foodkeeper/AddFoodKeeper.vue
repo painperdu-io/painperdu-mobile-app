@@ -88,7 +88,9 @@ export default {
           this.form.location.city &&
           this.form.location.zipcode) {
         // enregistrer les données dans la base
+        this.form.userId = global.currentUserId
         const formDatas = JSON.stringify(this.form);
+
         this.$http.post('foodkeepers', formDatas, { emulateJSON: true })
           .then((response) =>  {
             // ouverture popup validation
