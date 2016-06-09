@@ -1,7 +1,7 @@
 <template>
   <div class="product-container">
     <div class="product-wrapper">
-      <div class="product" :class="{ 'inactive': !product.status }">
+      <div class="product" :class="{ 'inactive': !product.available }">
         <div class="product-item-circle {{ product.type }}">
           <svg viewBox="0 0 100 100" class="foods-icon">
             <use xlink:href="#foods-icon-{{ product.icon }}"></use>
@@ -75,10 +75,17 @@
         </label>
       </div>
       <div v-if="laterHours">
-        <label>Date</label>
-        <input type="text" />
-        <label>Créneau horaire</label>
-        <input type="text" />
+        <div class="add-rdv-form-item">
+          <input id="date"  class="add-rdv-form-item-input" type="date" v-model="date">
+          <label for="date" class="add-rdv-form-item-label">Date</label>
+        </div>
+        <div class="add-rdv-form-item">
+          <input for="heure-debut" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
+          <label id="heure-debut" class="add-rdv-form-item-label">Créneau horaire</label>
+          <input for="heure-fin" class="add-rdv-form-item-input" type="time" v-model="heureFin">
+          <label for="heure-fin" class="add-rdv-form-item-label">Créneau horaire</label>
+        </div>
+
       </div>
       <div class="ask-product-button">Demander</div>
     </div>
@@ -120,6 +127,9 @@ export default {
   data() {
     return {
       product: {},
+      heureDebut : '',
+      heureFin : '',
+      date: '',
     }
   },
   ready() {
@@ -466,5 +476,50 @@ export default {
     border-radius: 50%;
     z-index: 3;
   }
+
+  .add-rdv-form-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    position: relative;
+    min-height: 45px;
+  }
+
+    .add-rdv-form-item-label {
+      position: absolute;
+      top: 0;
+      margin-bottom: 10px;
+      font: 1.2em 'Karla-Italic', sans-serif;
+      color: $color-text;
+    }
+
+    .add-rdv-form-item-input {
+      margin-top: -5px;
+      padding-top: 15px;
+      padding-bottom: 5px;
+      font: 1.3em 'Karla-Regular', sans-serif;
+      border: none;
+      border-bottom: 1px solid $color-white;
+      color: $color-text;
+      background-color: $color-green;
+
+      &:hover, &:focus {
+        font: 1.3em 'Karla-Bold', sans-serif;
+        border-bottom: 3px solid $color-white;
+        + label {
+          font-weight: 700;
+        }
+      }
+
+      &.error {
+        &:hover, &:focus {
+          font: 1.3em 'Karla-Bold', sans-serif;
+          border-bottom: 2px solid $color-red;
+          + label {
+            color: $color-red;
+          }
+        }
+      }
+    }
 
 </style>
