@@ -1,53 +1,67 @@
 <template>
-  <div class="market-add-container">
-    <div class="market-add-form-wrapper">
-      <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
-      <select class="market-add-form-select" v-model="form.current">
-        <template v-for="(index, foodkeeper) in foodkeepers">
-          <option v-if="index == 0" default :value="foodkeeper">{{ foodkeeper.name }}</option>
-          <option v-else :value="foodkeeper">{{ foodkeeper.name }}</option>
-        </template>
-      </select>
+  <div>
+    <div v-if="foodkeepers.length" class="market-add-container">
+      <div class="market-add-form-wrapper">
+        <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
+        <select class="market-add-form-select" v-model="form.current">
+          <template v-for="(index, foodkeeper) in foodkeepers">
+            <option v-if="index == 0" default :value="foodkeeper">{{ foodkeeper.name }}</option>
+            <option v-else :value="foodkeeper">{{ foodkeeper.name }}</option>
+          </template>
+        </select>
 
-      <div class="market-add-form-perimeter-range">
-        <h3>Périmètre de recherche <span>pour cette place :</span></h3>
-        <input v-model="form.perimeter" type="range" value="1" max="2" min="0" step="1"/>
-        <div class="market-add-form-perimeter-range-label">
-          <span class="align-left">Lopin</span>
-          <span class="align-right">Canton</span>
-          <span>Contrée</span>
+        <div class="market-add-form-perimeter-range">
+          <h3>Périmètre de recherche <span>pour cette place :</span></h3>
+          <input v-model="form.perimeter" type="range" value="1" max="2" min="0" step="1"/>
+          <div class="market-add-form-perimeter-range-label">
+            <span class="align-left">Lopin</span>
+            <span class="align-right">Canton</span>
+            <span>Contrée</span>
+          </div>
+        </div>
+        <div class="market-add-form-perimeter-address">
+          <h3><span>L'adresse de </span>ta place du marché <span>est :</span></h3>
+          <div class="market-add-form-perimeter-separator"></div>
         </div>
       </div>
-      <div class="market-add-form-perimeter-address">
-        <h3><span>L'adresse de </span>ta place du marché <span>est :</span></h3>
-        <div class="market-add-form-perimeter-separator"></div>
-      </div>
-    </div>
 
-    <div class="market-add-form-blason" v-on:click="addBlason">
-      <div class="app-icon-container">
-        <svg viewBox="0 0 50 50" class="app-icon">
-          <use xlink:href="#app-icon-edit"></use>
-        </svg>
-      </div>
-      <div class="residence-slider-item">
-        <div class="residence-slider-image">
-          <img :src="form.current.picture" />
+      <div class="market-add-form-blason" v-on:click="addBlason">
+        <div class="app-icon-container">
+          <svg viewBox="0 0 50 50" class="app-icon">
+            <use xlink:href="#app-icon-edit"></use>
+          </svg>
         </div>
-        <div class="residence-slider-item-name">
-          <div class="residence-slider-item-name-content">
-            {{ form.current.location.street }}
+        <div class="residence-slider-item">
+          <div class="residence-slider-image">
+            <img :src="form.current.picture" />
+          </div>
+          <div class="residence-slider-item-name">
+            <div class="residence-slider-item-name-content">
+              {{ form.current.location.street }}
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="market-add-map-wrapper">
+        <google-map :center="form.current.location.googlemap"></google-map>
+      </div>
+      <div class="market-add-form-perimeter-add" v-on:click="callAddApi">Ajouter</div>
+    </div>
+    <div v-else class="no-foodskeeper-to-associate">
+      <div class="no-foodskeeper-item no-foodskeeper-border-red">
+        <div class="no-foodskeeper-item-text-wrapper">
+          <p class="no-foodskeeper-item-text text-bold"><span class="underline"></span>Tous vos gardes-manger <br /></p>
+          <p class="no-foodskeeper-item-text"><span class="underline"></span>sont déjà ralliés<br /></p>
+          <p class="no-foodskeeper-item-text text-bold"><span class="underline"></span>à une place de marché</p>
+        </div>
+      </div>
+      <div class="add-foodskeeper-button" v-link="{ name: 'AddFoodkeeper' }">Ajouter un garde-manger</div>
     </div>
 
-    <div class="market-add-map-wrapper">
-      <google-map :center="form.current.location.googlemap"></google-map>
-    </div>
-    <div class="market-add-form-perimeter-add" v-on:click="callAddApi">Ajouter</div>
+    <validation destination="Market" add="Market"></validation>
+
   </div>
-  <validation destination="Market" add="Market"></validation>
 </template>
 
 <script>
@@ -379,5 +393,76 @@ export default {
           top: 30%;
           transform: translate3d(-50%,-50%,0);
         }
+
+        .no-foodskeeper-to-associate {
+          min-height: 250px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+         }
+
+            .no-foodskeeper-item-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            & > svg {
+              margin: 0 10px;
+              width: 28px;
+              height: 28px;
+            }
+          }
+
+            .no-foodskeeper-item-text {
+              position: relative;
+              margin: 0 auto -2px;
+              z-index: 1;
+              display: inline-block;
+              font: 1.5em 'Karla-Italic', sans-serif;
+              color: $color-text;
+
+              &.text-bold {
+                font-weight: 700;
+              }
+
+              .underline {
+                position: absolute;
+                left: 0;
+                bottom: 2px;
+                height: 4px;
+                width: 100%;
+                background: $color-beige;
+                z-index: -1;
+              }
+            }
+
+            .no-foodskeeper-border-red{
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              flex-direction: column;
+              margin: 20px auto 0;
+              padding: 25px 0;
+              width: 255px;
+              background: url('/static/img/rectangle-red.png');
+              background-position: center center;
+              background-repeat: no-repeat;
+              background-size: 100% 100%;
+              border: 0;
+            }
+
+            .add-foodskeeper-button {
+              margin: 20px auto;
+              padding: 18px 15px;
+              border-radius: 25px;
+              background-color: $color-beige;
+              font: 1.3em 'Karla-Bold', sans-serif;
+              color: $color-text;
+              text-transform: uppercase;
+              text-align: center;
+            }
 
 </style>
