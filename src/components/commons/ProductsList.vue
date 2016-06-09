@@ -149,7 +149,14 @@ export default {
       color: $color-text;
     }
 
-    .no-products-container { text-align: center; }
+    .no-products-container {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+     }
 
         .no-products-item-text-wrapper {
         display: flex;
