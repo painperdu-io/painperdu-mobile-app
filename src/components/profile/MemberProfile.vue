@@ -82,7 +82,7 @@ export default {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 20px auto 0;
     width: 298px;
     background: url('/static/img/rectangle-red.png');
     background-size: 100% 100%;

@@ -11,19 +11,26 @@
           <use xlink:href="#profile-app-icon-infinite"></use>
         </svg>
       </div>
-      <h3 class="profile-infos-name">{{ profile.name.first }}</h3>
-      <div class="profile-infos-separator"></div>
-      <p class="profile-infos-status ">{{ statusName }}</p>
-
-      <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
-        <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
-          <use xlink:href="#status-icon-{{ statusName }}" ></use>
-        </svg>
-      </div>
-      <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
-        <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
-          <use xlink:href="#status-icon-{{ statusName }}" ></use>
-        </svg>
+      <div class="profile-infos-text">
+        <div class="col-25">
+          <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
+            <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+              <use xlink:href="#status-icon-{{ statusName }}" ></use>
+            </svg>
+          </div>
+        </div>
+        <div class="col-50">
+          <h3 class="profile-infos-name">{{ profile.name.first }}</h3>
+          <div class="profile-infos-separator"></div>
+          <p class="profile-infos-status ">{{ statusName }}</p>
+        </div>
+        <div class="col-25">
+          <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
+            <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+              <use xlink:href="#status-icon-{{ statusName }}" ></use>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
     <div v-if="profile.profile.description" class="profile-description">
@@ -112,6 +119,30 @@ export default {
       background: url('/static/img/separator-green.png') center center no-repeat;
     }
 
+    .profile-infos-text {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      width: 298px;
+      margin: auto;
+    }
+
+    .col-50 {
+      display: flex;
+      flex-direction: column;
+      flex: 1 50%;
+      justify-content: center;
+    }
+
+    .col-25 {
+      display: flex;
+      flex-direction: column;
+      flex: 1 25%;
+      justify-content: center;
+      text-align: center;
+      text-align: -webkit-center;
+    }
+
     .profile-infos-name,
     .profile-infos-status {
       margin: 5px 0;
@@ -138,15 +169,10 @@ export default {
     .status-soldat,
     .status-menestrel {
       .profile-profile-app-icon-status-container{
-        position: absolute;
-        bottom:20px;
         width: 40px;
         box-sizing: border-box;
       }
       .profile-profile-app-icon-status-left { transform: scaleX(-1);}
-      .profile-profile-app-icon-status-right {
-        right: 0;
-      }
     }
 
     .profile-description {
