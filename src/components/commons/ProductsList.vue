@@ -1,5 +1,5 @@
 <template>
-  <div class="products-container">
+  <div v-if="products.length" class="products-container">
     <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'name' ">
       <div class="product-item-wrapper" :class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
         <div class="product-item-circle {{ product.type }}">
@@ -18,6 +18,15 @@
         <div class="product-item-status" v-else>Indisponible</div>
       </div>
     </template>
+  </div>
+  <div v-else class="no-products-container">
+    <div class="no-products-item no-products-border-red">
+      <div class="no-products-item-text-wrapper">
+        <p class="no-products-item-text"><span class="underline"></span>En ce jour,<br /></p>
+        <p class="no-products-item-text text-bold"><span class="underline"></span>nulle denrée n'est proposée<br /></p>
+      </div>
+    </div>
+    <div class="add-products-button">Ajouter une denrée</div>
   </div>
 </template>
 
@@ -139,4 +148,69 @@ export default {
       font: 1.2em 'Karla-Italic', sans-serif;
       color: $color-text;
     }
+
+    .no-products-container { text-align: center; }
+
+        .no-products-item-text-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & > svg {
+          margin: 0 10px;
+          width: 28px;
+          height: 28px;
+        }
+      }
+
+        .no-products-item-text {
+          position: relative;
+          margin: 0 auto -2px;
+          z-index: 1;
+          display: inline-block;
+          font: 1.5em 'Karla-Italic', sans-serif;
+          color: $color-text;
+
+          &.text-bold {
+            font-weight: 700;
+          }
+
+          .underline {
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            height: 4px;
+            width: 100%;
+            background: $color-beige;
+            z-index: -1;
+          }
+        }
+
+        .no-products-border-red{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: column;
+          margin: 20px auto 0;
+          padding: 25px 0;
+          width: 255px;
+          background: url('/static/img/rectangle-red.png');
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          border: 0;
+        }
+
+        .add-products-button {
+          margin: 20px auto;
+          width: 150px;
+          padding: 18px 15px;
+          border-radius: 25px;
+          background-color: $color-beige;
+          font: 1.3em 'Karla-Bold', sans-serif;
+          color: $color-text;
+          text-transform: uppercase;
+          text-align: center;
+        }
 </style>
