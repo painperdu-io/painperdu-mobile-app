@@ -73,38 +73,19 @@ export default {
         this.marketCurrent--;
         this.updateMarketBySlideId(this.marketCurrent);
       } else {
-        this.market = this.markets[this.markets.length];
-        this.marketCurrent = this.markets.length;
-
-        this.market = { name: '', products: {} };
-        console.log('AJOUT PLACE DU MARCHÉ');
+        this.market = this.markets[this.markets.length - 1];
+        this.marketCurrent = this.markets.length - 1;
+        this.updateMarketBySlideId(this.marketCurrent);
       }
-      // const slides = document.getElementsByClassName('market-container');
-      // for (let i = 0; i < slides.length; i++) {
-      //   const x = slides[i].offsetLeft;
-      //   //slides[i].style.transform = `translate3d(${x + 375}px, 0, 0)`;
-      //   slides[i].style.transform = `translate3d(100%, 0, 0)`;
-      // }
-      //
     },
     moveRight(event) {
-      if (this.marketCurrent !== this.markets.length) {
+      if (this.marketCurrent !== this.markets.length - 1) {
         this.marketCurrent++;
-        if (this.marketCurrent === this.markets.length) {
-          this.market = { name: '', products: {} };
-          console.log('AJOUT PLACE DU MARCHÉ');
-        } else {
-          this.updateMarketBySlideId(this.marketCurrent);
-        }
+        this.updateMarketBySlideId(this.marketCurrent);
       } else {
         this.updateMarketBySlideId(0);
         this.marketCurrent = 0;
       }
-      // const slides = document.getElementsByClassName('market-container');
-      // for (let i = 0; i < slides.length; i++) {
-      //   const x = slides[i].offsetLeft;
-      //   slides[i].style.transform = `translate3d(-100%, 0, 0)`;
-      // }
     },
     displayRemove(event) {
       document.getElementsByClassName('market-products-search-icon-right')[0].classList.add('active');
