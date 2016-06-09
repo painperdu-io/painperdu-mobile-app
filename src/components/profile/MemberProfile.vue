@@ -23,7 +23,7 @@
           <span class="underline"></span>
         </div>
         <div v-if="accomplices.length > 0"  class="member-profile-accomplices-wrapper">
-          <members-list :members="accomplices" type="accomplices" add="false"></members-list>
+          <members-list :members="accomplices" type="accomplice" add="false"></members-list>
         </div>
       </div>
     </div>
