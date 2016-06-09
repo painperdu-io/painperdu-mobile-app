@@ -6,7 +6,7 @@
           <svg viewBox="0 0 100 100" class="product-item-icon">
             <use xlink:href="#foods-icon-{{ product.icon}}"></use>
           </svg>
-          <div class="product-item-quantity" :class="{ 'emergency': product.emergency }">
+          <div class="product-item-quantity" :class="{ 'animated emergency': product.emergency }">
             {{ product.quantity }}
             <div class="product-item-dlc" v-if="product.emergency">
               <span v-for="n in 6" class="square square-{{n}}"></span>
@@ -26,7 +26,7 @@
         <p class="no-products-item-text text-bold"><span class="underline"></span>nulle denrée n'est proposée<br /></p>
       </div>
     </div>
-    <div class="add-products-button" v-link="{ name: 'AddProductFoodkeeper' }">Ajouter une denrée</div> 
+    <div class="add-products-button" v-link="{ name: 'AddProductFoodkeeper' }">Ajouter une denrée</div>
   </div>
 </template>
 
@@ -110,10 +110,9 @@ export default {
         color: $color-white;
         background: $color-red;
         border-radius: 50%;
-        animation-name: shake-item;
-        animation-iteration-count: 3;
-        animation-direction: alternate;
-        animation-delay: 0.2s;
+        animation-name: tada;
+        animation-iteration-count: infinite;
+        animation-delay: 0s;
 
         @keyframes fade {
           0% {opacity: 0;}
