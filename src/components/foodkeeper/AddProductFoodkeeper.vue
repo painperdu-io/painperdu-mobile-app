@@ -25,14 +25,22 @@
         <label for="homemade">Plats Préparés</label>
       </div>
       <div class="foodkeeper-add-product-form1-question">
-        Dans quel <span>garde-manger</span> proposez-vous ce produit ?
+        Dans quel(s) <span>garde(s)-manger(s)</span> proposez-vous ce produit ?
       </div>
       <div class="foodkeeper-add-product-form1-foodkeepers">
-        <select name="le_nom" class="foodkeeper-add-product-form-select" id="le_nom" v-model="foodkeepersSelected" multiple >
+        <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="foodkeepersSelected" hidden multiple >
           <template  v-for="foodkeeper in foodkeepers">
             <option value="{{foodkeeper.name}}">  {{ foodkeeper.name }}</option>
           </template>
         </select>
+        <label v-on:click="openSelect" class="product-dlc" for="foodkeepersSelect">
+          <div v-if="foodkeepersSelected.length">
+            <template v-for="item in foodkeepersSelected">
+              <div>{{ item }}</div>
+            </template>
+          </div>
+          <div v-else>Sélectionnez...</div>
+        </label>
       </div>
     </div>
     <div class="foodkeeper-add-product-form2-wrapper">
@@ -60,6 +68,10 @@ export default {
       if (this.form.quantity > 1) {
         this.form.quantity--;
       }
+    },
+    openSelect(event){
+      console.log('je suis dedans');
+      document.getElementById('foodkeepersSelect').focus();
     },
     addPicto(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
