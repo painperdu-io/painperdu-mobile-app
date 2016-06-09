@@ -1,7 +1,7 @@
 <template>
   <div class="members-container {{type}}s-container">
     <template v-for="(index, member) in members">
-      <div v-if="type == 'ally' " class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
+      <div v-if="type == 'ally'" class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
         <div class="members-name">{{ member.name.first }}</div>
         <div class="members-image">
           <img :src="member.picture"/>
@@ -13,7 +13,7 @@
         </div>
       </div>
     </template>
-    <div v-if="add && type == 'accomplice' " class="accomplices-add-icon" v-on:click="addAccomplice">
+    <div v-if="add && type == 'accomplice'" class="accomplices-add-icon" v-on:click="addAccomplice">
       <div class="accomplices-add-icon-bg">
         <span class="accomplices-add-icon-text">+</span>
       </div>

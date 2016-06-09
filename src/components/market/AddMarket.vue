@@ -2,15 +2,16 @@
   <div class="market-add-container">
     <div class="market-add-form-wrapper">
       <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>
-      <select class="market-add-form-select" v-model="slectedAddress">
-        <option v-for="place in places" :value="place">
-          {{ place.name }}
-        </option>
+      <select class="market-add-form-select" v-model="form.current">
+        <template v-for="(index, foodkeeper) in foodkeepers">
+          <option v-if="index == 0" default :value="foodkeeper">{{ foodkeeper.name }}</option>
+          <option v-else :value="foodkeeper">{{ foodkeeper.name }}</option>
+        </template>
       </select>
 
       <div class="market-add-form-perimeter-range">
         <h3>Périmètre de recherche <span>pour cette place :</span></h3>
-        <input type="range" value="1" max="2" min="0" step="1"/>
+        <input v-model="form.perimeter" type="range" value="1" max="2" min="0" step="1"/>
         <div class="market-add-form-perimeter-range-label">
           <span class="align-left">Lopin</span>
           <span class="align-right">Canton</span>
@@ -31,20 +32,20 @@
       </div>
       <div class="residence-slider-item">
         <div class="residence-slider-image">
-          <img src="" />
+          <img :src="currentFoodkeeper.picture" />
         </div>
         <div class="residence-slider-item-name">
           <div class="residence-slider-item-name-content">
-            {{ slectedAddress.addressL1 }}
+            {{ form.current.location.street }}
           </div>
         </div>
       </div>
     </div>
 
     <div class="market-add-map-wrapper">
-      <google-map></google-map>
+      <google-map :center="form.current.location.googlemap"></google-map>
     </div>
-    <div class="market-add-form-perimeter-add">Ajouter</div>
+    <div class="market-add-form-perimeter-add" v-on:click="callAddApi">Ajouter</div>
   </div>
 </template>
 
@@ -55,25 +56,65 @@ export default {
   components: {
     GoogleMap,
   },
-  data() {
-    return {
-      places: [
-        { name: 'maison', addressL1: '12 rue du Trésum', addressL2: '74000 Annecy' },
-        { name: 'boulot', addressL1: '63 route du Périmètre', addressL2: '74000 Annecy' },
-      ]
-    }
-  },
   methods: {
     addBlason(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
-      event.preventDefault()
+      event.preventDefault();
+    },
+    callAddApi(event) {
+      // enregistrer les données dans la base
+      const datas = {
+        perimeter: this.form.perimeter,
+        foodkeeper: this.form.current._id,
+      };
+      this.$http.post('markets', datas, { emulateJSON: true })
+        .then((response) =>  {
+          // ouverture popup validation
+          document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+          document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+        })
+        .catch(err => {
+          // ouverture popup error
+          document.getElementsByClassName('error-popup-container')[0].classList.add('active');
+          document.getElementsByClassName('error-popup-overlay')[0].classList.add('active');
+        });
     }
   },
-  ready () {
-    document.getElementsByClassName('validation-popup-container')[0].classList.remove('active');
-    document.getElementsByClassName('validation-popup-overlay')[0].classList.remove('active');
+  data() {
+    return {
+      form: {
+        current: {},
+        perimeter: 1,
+      },
+      foodkeepers: [
+        {
+          id: '',
+          name: '',
+          picture: '',
+          location: {
+            street: '',
+            googlemap: []
+          }
+        }
+      ]
+    }
   },
+  ready() {
+    // récupérer la liste des foodkeepers
+    this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })
+      .then(response => {
+        this.foodkeepers = response.data.foodkeepers;
+        for (let i = 0; i < this.foodkeepers.length; i++) {
+          this.foodkeepers[i].location.googlemap = {
+              lng: this.foodkeepers[i].location.coordinates[0],
+              lat: this.foodkeepers[i].location.coordinates[1],
+          };
+        }
+        this.form.current = this.foodkeepers[0];
+      })
+      .catch(err => console.log(err));
+  }
 };
 </script>
 
@@ -98,7 +139,7 @@ export default {
 }
 
   .market-add-map-wrapper {
-    height: 320px;
+    height: 305px;
     background: $color-white;
     overflow: hidden;
     margin-top: 50px;
@@ -256,7 +297,7 @@ export default {
           background-color: $color-gray;
         }
         img {
-          width: 100%;
+          height: 100%;
         }
       }
 

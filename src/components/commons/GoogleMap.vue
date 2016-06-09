@@ -34,7 +34,7 @@ export default {
     Marker,
     Circle,
   },
-  props: ['type', 'objectid'],
+  props: ['type', 'objectid', 'center'],
   computed: {
     mapStyles() {
       switch(this.mapStyle) {
