@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="recipe-popup-validation-button">Voir la recette</div>
+    <a href="http://blog.painperdu.io/" target="_self" class="recipe-popup-validation-button">Voir la recette</a>
   </div>
 </template>
 
