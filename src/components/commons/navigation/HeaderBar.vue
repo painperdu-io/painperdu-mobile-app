@@ -2,12 +2,16 @@
   <div class="header-bar">
     <div class="header-navigation">
       <div class="header-item  header-item-25">
-        <svg v-if="$route.page.header.menu" v-on:click="openMenu" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-menu">
-          <use xlink:href="#header-icon-menu"></use>
-        </svg>
-        <svg v-if="$route.page.header.previous" v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-previous">
-          <use xlink:href="#header-icon-previous"></use>
-        </svg>
+        <div class="app-contener" v-if="$route.page.header.menu"  v-on:click="openMenu" >
+          <svg viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-menu">
+            <use xlink:href="#header-icon-menu"></use>
+          </svg>
+        </div>
+        <div class="app-contener" v-if="$route.page.header.previous"  v-on:click="goPrevious"  >
+          <svg v-on:click="goPrevious" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-previous">
+            <use xlink:href="#header-icon-previous"></use>
+          </svg>
+        </div>
         <svg v-if="$route.page.header.profile" v-link="{ name: 'DetailsProfileMe', params: { id: currentUserId }}" viewBox="0 0 50 50" class="header-icon  header-icon-left header-icon-profile">
           <use xlink:href="#header-icon-profile"></use>
         </svg>
@@ -40,7 +44,7 @@
 </template>
 
 <script>
-export default { 
+export default {
   methods: {
     openCart(event) {
       event.preventDefault()
@@ -207,4 +211,6 @@ export default {
 .header-icon-add-product{ width: 30px;}
 .header-icon-basket{ width: 35px;}
 .header-icon-menu{ width: 35px;}
+
+.app-contener { display: inline-block;}
 </style>
