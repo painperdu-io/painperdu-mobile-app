@@ -131,9 +131,8 @@ export default {
   ready() {
     // récupérer les markets en fonction de l'id d'un utilisateur
     this.$http({ url: `markets/user/${global.currentUserId}`, method: 'GET' })
-      .then((response) => {
+      .then(response => {
         this.markets = response.data;
-        console.log(this.markets);
         this.updateMarketBySlideId(0);
       })
       .catch(err => console.log(err));

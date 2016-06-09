@@ -70,6 +70,7 @@ export default {
       const datas = {
         perimeter: this.form.perimeter,
         foodkeeper: this.form.current._id,
+        userId: global.currentUserId,
       };
       this.$http.post('markets', datas, { emulateJSON: true })
         .then((response) =>  {
