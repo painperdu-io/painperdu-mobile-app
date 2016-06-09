@@ -2,12 +2,12 @@
   <div class="markets-container" >
     <div v-if="markets.length" class="markets-slider">
       <div class="controls">
-        <div v-show="previous" class="previous animated fadeIn" v-on:click="moveLeft">
+        <div v-show="sliderControls" class="previous animated fadeIn" v-on:click="moveLeft">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-previous">
             <use xlink:href="#header-icon-previous"></use>
           </svg>
         </div>
-        <div v-show="next" class="next animated fadeIn" v-on:click="moveRight">
+        <div v-show="sliderControls" class="next animated fadeIn" v-on:click="moveRight">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-next">
             <use xlink:href="#header-icon-previous"></use>
           </svg>
@@ -105,8 +105,7 @@ export default {
   },
   data() {
     return {
-      previous : true,
-      next: true,
+      sliderControls: false,
       sliderAnimation: 'fadeIn',
       marketCurrent: 0,
       market: { foodkeeper: { _id: '', picture: '', favorite: false }},
@@ -117,19 +116,15 @@ export default {
     };
   },
   ready() {
-    //Initialise controls slide
-    if (this.markets.length > 1 ) {
-       this.previous = true;
-       this.next= true;
-    } else {
-      this.previous = false;
-      this.next= false;
-    }
     // récupérer les markets en fonction de l'id d'un utilisateur
     this.$http({ url: `markets/user/${global.currentUserId}`, method: 'GET' })
       .then(response => {
         this.markets = response.data;
         this.updateMarketBySlideId(0);
+
+        if (this.markets.length > 1 ) {
+          this.sliderControls = true;
+        }
       })
       .catch(err => console.log(err));
   },
