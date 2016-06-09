@@ -5,7 +5,7 @@
         <use xlink:href="#header-icon-flag"></use>
       </svg>
     </div>
-    <profile :profile="profile" type="accomplice"></profile>
+    <profile :profile="profile" type="type"></profile>
     <div class="member-profile-statistics-wrapper">
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
@@ -18,11 +18,11 @@
           <p class="value green">Parfait</p>
           <span class="underline"></span>
         </div>
-        <div v-if="accomplices.length > 0" class="member-profile-statistics-item">
+        <div v-if="accomplices.length" class="member-profile-statistics-item">
           <p class="legend">Ses compères </p>
           <span class="underline"></span>
         </div>
-        <div v-if="accomplices.length > 0"  class="member-profile-accomplices-wrapper">
+        <div v-if="accomplices.length"  class="member-profile-accomplices-wrapper">
           <members-list :members="accomplices" type="accomplice" add="false"></members-list>
         </div>
       </div>

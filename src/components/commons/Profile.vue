@@ -6,11 +6,6 @@
           <img :src="profile.picture"/>
         </div>
       </div>
-      <div class="profile-app-icon-container">
-        <svg viewBox="0 0 50 50" class="app-icon">
-          <use xlink:href="#app-icon-edit" ></use>
-        </svg>
-      </div>
       <div class="profile-item-allie" v-if="false">
         <svg viewBox="0 0 100 100" class="profile-icon ">
           <use xlink:href="#profile-app-icon-infinite"></use>

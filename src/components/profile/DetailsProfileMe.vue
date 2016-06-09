@@ -1,6 +1,11 @@
 <template>
   <div class="me-profile-container">
     <div class="me-profile-infos-wrapper">
+      <div class="me-profile-app-icon-container">
+        <svg viewBox="0 0 50 50" class="app-icon">
+          <use xlink:href="#app-icon-edit" ></use>
+        </svg>
+      </div>
       <profile :profile="profile" type="accomplice"></profile>
       <div class="me-profile-statistics-wrapper">
         <div class="me-profile-statistics">
@@ -67,6 +72,7 @@ export default {
 .me-profile-container {}
 
   .me-profile-infos-wrapper {
+    position: relative;
     margin: 20px 0 10px;
   }
 
@@ -133,6 +139,20 @@ export default {
     width: 100%;
     background-color: $color-beige;
     z-index: 0;
+  }
+
+  .me-profile-app-icon-container {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: $color-green;
+    fill: $color-white;
+    z-index: 10;
+    right: 40px;
+    top: 0px;
   }
 
     .me-profile-btn-public {
