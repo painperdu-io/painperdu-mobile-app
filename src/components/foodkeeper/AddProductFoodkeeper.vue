@@ -35,7 +35,7 @@
           <option value="" default>Sélectionnez ...</option>
         </select>
         <label v-on:click="openSelect" class="foodkeepersSelect" for="foodkeepersSelect">
-          <div class="foodkeeperLabel-wrapper" v-if="form.foodkeepers.length">
+          <div class="foodkeeperLabel-wrapper" v-if="form.foodkeepers.length > 1">
             Denrée ajoutée sur :
             <template v-for="id in form.foodkeepers">
               <template v-for="foodkeeper in foodkeepers">
@@ -252,6 +252,7 @@ export default {
       padding-left: 25px;
       overflow: hidden;
       position: relative;
+      -webkit-appareance : none;
 
       option {
         text-align: left;
@@ -275,6 +276,7 @@ export default {
     .foodkeeperLabel {
       display: inline-block;
       font-family: 'Karla-Bold', sans-serif;
+      margin: 0 2px;
     }
 
     .foodkeeper-add-product-form1-itemgreen {
@@ -436,6 +438,7 @@ export default {
       margin: 20px auto 0;
       font: 1.1em 'Karla-Italic', sans-serif;
       color: $color-text;
+      text-align: center;
       &.text-focus, .text-focus{
         text-transform: uppercase;
         font-weight: 700;
