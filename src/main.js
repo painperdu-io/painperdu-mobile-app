@@ -50,6 +50,11 @@ Vue.transition('moveHorizontal', {
   leaveClass: 'bounceOutDown',
 })
 
+Vue.transition('zoom', {
+  enterClass: 'zoomIn',
+  leaveClass: 'zoomOut',
+})
+
 // définition des routes de l'application
 router.map({
 
