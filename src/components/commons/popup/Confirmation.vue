@@ -30,6 +30,7 @@
         </div>
       </div>
     </div>
+    <div class="slot-popup-redirect-button" v-on:click="closeSlot">Proposer</div>
   </div>
 </template>
 
@@ -158,6 +159,18 @@ export default {
             background: $color-beige;
             z-index: -1;
           }
+        }
+
+        .confirmation-popup-redirect-button {
+          margin: 0 auto 20px;
+          width: 150px;
+          padding: 18px 0;
+          border-radius: 25px;
+          background-color: $color-beige;
+          font: 1.3em 'Karla-Bold', sans-serif;
+          color: $color-text;
+          text-transform: uppercase;
+          text-align: center;
         }
 
   .confirmation-popup-overlay {

@@ -1,5 +1,5 @@
 <template>
-  <div class="slot-popup-overlay"></div> 
+  <div class="slot-popup-overlay"></div>
   <div class="slot-popup-container">
     <div class="slot-popup-close" v-on:click="closeSlot">
       <svg viewBox="0 0 100 100" class="app-icon">
@@ -44,7 +44,7 @@
           </div>
       </div>
     </div>
-    <div class="validation-popup-redirect-button" v-on:click="closeSlot">Proposer</div>
+    <div class="slot-popup-redirect-button" v-on:click="closeSlot">Proposer</div>
   </div>
 </template>
 
@@ -264,6 +264,18 @@ export default {
       width: 60%;
       min-width: 115px;
       margin: auto;
+    }
+
+    .slot-popup-redirect-button {
+      margin: 0 auto 20px;
+      width: 150px;
+      padding: 18px 0;
+      border-radius: 25px;
+      background-color: $color-beige;
+      font: 1.3em 'Karla-Bold', sans-serif;
+      color: $color-text;
+      text-transform: uppercase;
+      text-align: center;
     }
 
 </style>
