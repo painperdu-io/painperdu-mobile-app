@@ -14,7 +14,7 @@
       <members-list :members="accomplices" type="accomplice" add="true"></members-list>
     </div>
     <tabs-navigation :objectid="$route.params.id" route="DetailsFoodkeeper"></tabs-navigation>
-    <router-view></router-view>
+    <router-view class="animated" transition="moveHorizontal" transition-mode="out-in"></router-view>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="alliance-details-container animated" transition="moveHorizontal">
+  <div class="alliance-details-container" >
     <div class="alliance-summary">
       <div class="profile-container animated bounceInRight">
         <div class="profile-infos">

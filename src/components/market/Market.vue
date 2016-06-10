@@ -1,7 +1,7 @@
 <template>
   <div class="markets-container" >
     <div v-if="markets.length" class="markets-slider">
-      <div class="controls">
+      <div class="controls animated bounceIn">
         <div v-show="sliderControls" class="previous animated fadeIn" v-on:click="moveLeft">
           <svg viewBox="0 0 50 50" class="controls-icon  controls-icon-previous">
             <use xlink:href="#header-icon-previous"></use>
@@ -25,7 +25,7 @@
             <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-right">
               <use xlink:href="#app-icon-close"></use>
             </svg>
-            <input class="market-products-search-input" placeholder="Nom du produit..." v-on:click="displayRemove" v-model="search" />
+            <input class="market-products-search-input animated bounceIn" placeholder="Nom du produit..." v-on:click="displayRemove" v-model="search" />
           </div>
 
           <div class="market-products-filters">

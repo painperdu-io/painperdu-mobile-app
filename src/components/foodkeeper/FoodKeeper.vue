@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-container"  transition="fade" transition-mode="out-in">
+  <div class="foodkeeper-container">
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}">
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
