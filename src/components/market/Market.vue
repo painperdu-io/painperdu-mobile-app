@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveLeft" v-touch:swiperight="moveRight">
+      <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveRight" v-touch:swiperight="moveLeft">
         <residence-slider :market="market"></residence-slider>
 
         <div class="market-products-wrapper">
