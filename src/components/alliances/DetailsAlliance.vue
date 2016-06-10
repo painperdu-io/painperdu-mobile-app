@@ -24,28 +24,49 @@
       </div>
     </div>
 
-    <template v-if="alliance.type == 'applicant'">
-      DEMANDEUR
+    <!-- Alliance en cours -->
+    <template v-if="alliance.status == 'current'">
 
-      <template v-if="alliance.steps.length == 0">
-        --> VOTRE DEMANDE A ÉTÉ ENVOYÉ
+      <!-- DEMANDEUR -->
+      <template v-if="alliance.type == 'applicant'">
+
+        <!-- Demande envoyée -->
+        <template v-if="alliance.request.completed && !alliance.availability.completed">
+          DEMANDEUR --> VOTRE DEMANDE A BIEN ETE ENVOYE
+        </template>
+
+
       </template>
+
+
+      <!-- DONNEUR -->
+      <template v-if="alliance.type == 'giver'">
+
+        <!-- Nouvelle demande -->
+        <template v-if="alliance.request.completed && !alliance.availability.completed">
+          DONNEUR --> NOUVELLE DEMANDE REÇU (ACCEPTER LA DEMANDE ?)
+        </template>
+      </template>
+
+
     </template>
 
-    <template v-if="alliance.type == 'giver'">
-      DONNEUR
 
-      <template v-if="alliance.steps.length == 0">
-        --> NOUVELLE DEMANDE REÇU (ACCEPTER LA DEMANDE ?)
-      </template>
+    <!-- Produit échangé, alliance terminée -->
+    <template v-if="alliance.status == 'terminated'">
+      <div class="steps-summary">
+        ECHANGE OK, Alliance terminé
+      </div>
     </template>
 
 
-
-    <div class="steps-summary">
-    </div>
+    <!-- Produit non échangé, alliance terminée -->
+    <template v-if="alliance.status == 'abandoned'">
+      <div class="steps-summary">
+        ECHANGE NON OK, Alliance terminé
+      </div>
+    </template>
   </div>
-
 </template>
 
 <script>
@@ -76,7 +97,15 @@ export default {
             }
           },
         },
-        steps: [],
+        request: {
+          completed: false,
+        },
+        availability: {
+          completed: false,
+        },
+        exchange: {
+          completed: false,
+        },
       },
     };
   },
@@ -85,7 +114,9 @@ export default {
 
     // récupérer une alliance en fonction de son id
     this.$http({ url: `alliances/${allianceId}/user/${global.currentUserId}`, method: 'GET' })
-      .then(response => this.alliance = response.data)
+      .then(response => {
+        this.alliance = response.data;
+      })
       .catch(err => console.log(err));
   }
 };
