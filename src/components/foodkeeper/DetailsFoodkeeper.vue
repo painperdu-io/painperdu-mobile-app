@@ -66,7 +66,8 @@ export default {
     justify-content: center;
     flex-direction: column;
     flex: 1 100%;
-    height: 105px;
+    min-height: 125px;
+    height: 125px;
     margin-bottom: 7px;
     text-align: center;
     &:before {
