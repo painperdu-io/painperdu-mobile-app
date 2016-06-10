@@ -13,7 +13,7 @@
         </div>
       </div>
     </template>
-    <div v-if="add && type == 'accomplice'" class="accomplices-add-icon" v-on:click="addAccomplice">
+    <div v-if="add == 'true' && type == 'accomplice' " class="accomplices-add-icon" v-on:click="addAccomplice">
       <div class="accomplices-add-icon-bg">
         <span class="accomplices-add-icon-text">+</span>
       </div>

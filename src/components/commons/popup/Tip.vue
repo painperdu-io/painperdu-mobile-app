@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="tip-popup-validation-button">Sauver les produits</div>
+    <a href="http://blog.painperdu.io/" target="_self" class="tip-popup-validation-button">Sauver les produits</a>
   </div>
 </template>
 

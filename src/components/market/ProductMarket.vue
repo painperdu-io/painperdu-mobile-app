@@ -368,8 +368,9 @@ export default {
       color: $color-text;
       font-size: 1.3em;
       font-family: 'Karla-Italic';
-      margin: 60px auto;
+      margin: 20px auto;
       width: 298px;
+      text-align: center;
     }
 
     .ask-product-wrapper {
