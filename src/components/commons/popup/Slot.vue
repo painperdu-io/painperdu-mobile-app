@@ -1,7 +1,7 @@
 <template>
   <div class="slot-popup-overlay"></div>
   <div class="slot-popup-container">
-    <div class="slot-popup-close" v-on:click="closeSlot">
+    <div class="slot-popup-close" v-on:click="closeSlot()">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
@@ -44,7 +44,7 @@
           </div>
       </div>
     </div>
-    <div class="slot-popup-redirect-button" v-on:click="closeSlot">Proposer</div>
+    <div class="slot-popup-redirect-button" v-on:click="closeSlot()">Proposer</div>
   </div>
 </template>
 
