@@ -1,7 +1,7 @@
 <template>
   <div class="confirmation-popup-overlay"></div>
   <div class="confirmation-popup-container">
-    <div class="confirmation-popup-close" v-on:click="closeconfirmation()">
+    <div class="confirmation-popup-close" v-on:click="closeConfirmation()">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
@@ -37,7 +37,7 @@
 export default {
   props:['answer'],
   methods: {
-    closeconfirmation() {
+    closeConfirmation() {
       document.getElementsByClassName('confirmation-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('confirmation-popup-overlay')[0].classList.remove('active');
       update();
