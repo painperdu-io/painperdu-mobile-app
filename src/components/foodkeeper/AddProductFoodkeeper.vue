@@ -25,21 +25,24 @@
         <label for="homemade">Plats Préparés</label>
       </div>
       <div class="foodkeeper-add-product-form1-question">
-        Dans quel(s) <span>garde(s)-manger(s)</span> proposez-vous ce produit ?
+        Dans quel(s) <span class="text-focus">garde(s)-manger(s)</span> proposez-vous ce produit ?
       </div>
       <div class="foodkeeper-add-product-form1-foodkeepers">
         <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="form.foodkeepers" multiple>
           <template v-for="foodkeeper in foodkeepers">
             <option value="{{ foodkeeper._id }}">{{ foodkeeper.name }}</option>
           </template>
+          <option value="" default>Sélectionnez...</option>
         </select>
         <label v-on:click="openSelect" class="foodkeepersSelect" for="foodkeepersSelect">
-          <div v-if="foodkeepersSelected.length">
-            <template v-for="item in foodkeepersSelected">
-              <div>{{ item }}</div>
+          <div class="foodkeeperLabel-wrapper" v-if="form.foodkeepers.length">
+            Denrée ajoutée sur :
+            <template v-for="id in form.foodkeepers">
+              <template v-for="foodkeeper in foodkeepers">
+                <span class="foodkeeperLabel" v-if="id == foodkeeper._id">{{ foodkeeper.name }}</span>
+              </template>
             </template>
           </div>
-          <div v-else>Sélectionnez...</div>
         </label>
       </div>
     </div>
@@ -162,7 +165,6 @@ export default {
   justify-content: space-between;
   align-content: center;
   flex-direction: column;
-  height: calc(100vh - 60px);
 }
 
   .foodkeeper-add-product-form1-wrapper {
@@ -231,6 +233,7 @@ export default {
     }
 
     .foodkeeper-add-product-form1-foodkeepers{
+      margin-bottom: 20px;
       text-align: center;
     }
 
@@ -243,16 +246,35 @@ export default {
       border: none;
       border-radius: 20px;
       font-style: italic;
-      text-align-last: center;
+      text-align-last: left;
       text-transform: capitalize;
       color: $color-white;
-      font-size: 1.1em;
-
+      padding-left: 25px;
+      overflow: hidden;
+      position: relative;
 
       option {
-        text-align: center;
+        text-align: left;
         text-transform: capitalize;
+        height: 40px;
+        padding-top: 10px;
+        font: 1.4em 'Karla-Italic', sans-serif;
+        background-color: $color-green-lite;
+        position: absolute;
+        top: 0;
+        left: 25px;
+        width: 100%;
       }
+    }
+
+    .foodkeeperLabel-wrapper {
+      font: 1.1em 'Karla-Italic', sans-serif;
+      color: $color-text;
+    }
+
+    .foodkeeperLabel {
+      display: inline-block;
+      font-family: 'Karla-Bold', sans-serif;
     }
 
     .foodkeeper-add-product-form1-itemgreen {
@@ -292,7 +314,7 @@ export default {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    padding: 0 60px;
+    padding: 20px 60px 30px;
     height: 195px;
     background: $color-white;
   }
@@ -338,6 +360,9 @@ export default {
       margin-top: -5px;
       font: 1.1em 'Karla-Italic', sans-serif;
       color: $color-text;
+      p {
+        margin-top: 20px;
+      }
     }
 
     .foodkeeper-add-product-form2-button {
@@ -409,6 +434,11 @@ export default {
 
     .foodkeeper-add-product-form1-question {
       margin: 20px auto 0;
+      font: 1.1em 'Karla-Italic', sans-serif;
       color: $color-text;
+      &.text-focus, .text-focus{
+        text-transform: uppercase;
+        font-weight: 700;
+      }
     }
 </style>
