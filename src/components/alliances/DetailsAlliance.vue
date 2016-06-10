@@ -32,7 +32,69 @@
 
         <!-- Demande envoyée -->
         <template v-if="alliance.request.completed && !alliance.availability.completed">
-          DEMANDEUR --> VOTRE DEMANDE A BIEN ETE ENVOYE
+          <div class="steps-summary">
+            Ta requête à bien été envoyé à {{ alliance.users.giver.name.first }}
+          </div>
+        </template>
+
+        <!-- Nouvelle réponse donneeur -->
+        <template v-if="alliance.request.completed && alliance.availability.completed && !alliance.exchange">
+          <div class="steps-summary">
+
+            <div v-if="alliance.availability.accepted">
+              Tu es un sacré vénard ! {{ alliance.users.giver.name.first }}
+              est disponible pour le créneau:
+                {{ alliance.request.date }}
+                {{ alliance.request.timeStart }}
+                {{ alliance.request.timeEnd }}
+
+              Tu le trouveras à l'adresse suivante:
+                {{ alliance.users.giver.location.street }}
+                {{ alliance.users.giver.location.zipcode }}
+                {{ alliance.users.giver.location.city }}
+
+              <div v-if="alliance.users.giver.location.infos">
+                Voici des informations complèmentaires:
+                {{ alliance.users.giver.location.infos }}
+              </div>
+
+            </div>
+            <div v-else>
+              Fichtre, {{ alliance.users.giver.name.first }} n'est pas disponible
+              <template v-if="alliance.request.delayed">pour le créneau horaire que tu lui a indiqué</template>
+              <template v-else>maintenant</template>
+
+              <br />
+              Mais il te propose le créneau horaire suivant:
+                {{ alliance.availability.date }}
+                {{ alliance.availability.timeStart }}
+                {{ alliance.availability.timeEnd }}
+
+              <br />
+              Ce créneau te convient-il ?
+              <div class="alliance-action-button" v-on:click="allianceAvailability(true)">Oui</div>
+              <div class="alliance-action-button" v-on:click="allianceAvailability(false)">Non</div>
+            </div>
+          </div>
+        </template>
+
+        <template v-if="alliance.request.completed && alliance.availability.completed && alliance.exchange">
+          <div class="steps-summary">
+            Qu'à tu pensé de cette alliance ?
+            Elle était :
+
+            <select class="market-add-form-select" v-model="form.review">
+                <option value="0">Naze</option>
+                <option value="1">Bof</option>
+                <option value="2">Ça va</option>
+                <option value="3" selected>Passable</option>
+                <option value="4">Bien</option>
+                <option value="5">Très bien</option>
+                <!-- MARION côté back: DE 0 à 5 uniquement !!!! -->
+            </select>
+
+            <div class="alliance-action-button" v-on:click="allianceReview">Valider</div>
+          </div>
         </template>
 
 
@@ -44,7 +106,31 @@
 
         <!-- Nouvelle demande -->
         <template v-if="alliance.request.completed && !alliance.availability.completed">
-          DONNEUR --> NOUVELLE DEMANDE REÇU (ACCEPTER LA DEMANDE ?)
+          <div class="steps-summary">
+            Tu viens de recevoir une requête de {{ alliance.users.applicant.name.first }}
+
+            <div v-if="alliance.request.delayed">
+              Pour la récupération de ta denrée, {{ alliance.users.applicant.name.first }}
+              te propose le créneau suivant:
+              {{ alliance.request.date }}
+              {{ alliance.request.timeStart }}
+              {{ alliance.request.timeEnd }}
+            </div>
+            <div v-else>Es-tu disponible dès maintenant ?</div>
+
+            <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
+            <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
+          </div>
+        </template>
+
+        <!-- Produit échangé -->
+        <template v-if="alliance.request.completed && alliance.availability.completed">
+          <div class="steps-summary">
+            As-tu donné la denrée desirée ?
+
+            <div class="alliance-action-button" v-on:click="allianceExchange(true)">Oui</div>
+            <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
+          </div>
         </template>
       </template>
 
@@ -55,7 +141,8 @@
     <!-- Produit échangé, alliance terminée -->
     <template v-if="alliance.status == 'terminated'">
       <div class="steps-summary">
-        ECHANGE OK, Alliance terminé
+        Hip Hip Hip Houra !
+        Une étape de plus a été franchie dans la quête du Pain Perdu !
       </div>
     </template>
 
@@ -63,7 +150,8 @@
     <!-- Produit non échangé, alliance terminée -->
     <template v-if="alliance.status == 'abandoned'">
       <div class="steps-summary">
-        ECHANGE NON OK, Alliance terminé
+        Diatre, votre alliance s'avère compliquée pour aujourd'hui,
+        réessayer plus tard lorsque les conditions seront plus favorable !
       </div>
     </template>
   </div>
@@ -75,6 +163,53 @@ import Profile from './../commons/Profile'
 export default {
   components: {
     Profile,
+  },
+  methods: {
+    allianceRequest(response) {
+      if (response) {
+        console.log(' request --> OUI');
+      } else {
+        console.log(' request --> NON');
+        // --> proposition créneau horraire
+      }
+
+      this.$route.router.go({ name: 'Alliances' })
+    },
+    allianceAvailability(response) {
+      if (response) {
+        console.log('  request --> OUI');
+        // --> affichage adresse
+      } else {
+        console.log('  request --> NON');
+        // --> abandonné
+      }
+
+      this.$route.router.go({ name: 'Alliances' })
+    },
+    allianceExchange(response) {
+      if (response) {
+        console.log('  exchange --> OUI');
+        // --> exchange true
+      } else {
+        console.log('  exchange --> NON');
+        // --> abandonné
+      }
+
+      this.$route.router.go({ name: 'Alliances' })
+    },
+    allianceReview() {
+      console.log('ALLIANCE REVIEW');
+
+      console.log(this.form.review);
+
+      // --> terminated
+      //
+      // --> Supprimer produit éventuellement.
+      //
+      // --> Penser au notification et ajouter le status "new" dans la liste quand non lu
+
+      this.$route.router.go({ name: 'Alliances' });
+    }
   },
   data() {
     return {
@@ -103,9 +238,7 @@ export default {
         availability: {
           completed: false,
         },
-        exchange: {
-          completed: false,
-        },
+        exchange: false,
       },
     };
   },
