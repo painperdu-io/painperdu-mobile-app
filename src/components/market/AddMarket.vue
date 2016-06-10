@@ -182,6 +182,8 @@ export default {
       text-transform: capitalize;
       color: $color-white;
       font-size: 1.1em;
+      -webkit-appearance: none;
+      appearance: none;
 
       option {
         text-align: center;

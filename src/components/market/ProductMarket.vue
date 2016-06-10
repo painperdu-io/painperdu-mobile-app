@@ -558,6 +558,8 @@ export default {
       border-bottom: 1px solid $color-white;
       color: $color-text;
       background-color: $color-green;
+      -webkit-appearance: none;
+      appearance: none;
 
       &:hover, &:focus {
         font: 1.3em 'Karla-Bold', sans-serif;
