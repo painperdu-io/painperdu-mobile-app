@@ -25,12 +25,8 @@
     </div>
     <div class="me-profile-form-wrapper">
       <div class="me-profile-form-item">
-        <input id="mail" class="me-profile-form-item-input" type="email"></input>
+        <input id="mail" class="me-profile-form-item-input" type="email" value="{{ profile.email }}"></input>
         <label class="me-profile-form-item-label" for="mail">Email</label>
-      </div>
-      <div class="me-profile-form-item">
-        <input id="address" class="me-profile-form-item-input" type="text"></input>
-        <label class="me-profile-form-item-label" for="address">Adresse</label>
       </div>
     </div>
   </div>
@@ -51,6 +47,7 @@ export default {
           first: '',
           last: '',
         },
+        email: '',
         profile: {
           description: '',
         },
