@@ -110,7 +110,7 @@ router.map({
     page: {
       title: 'Ajouter une denrée',
       wrap: 'wrap-header',
-      bgClass: 'background3',
+      bgClass: 'background1',
       header: {
         enable: true,
         previous: true,
