@@ -14,7 +14,7 @@
       <members-list :members="accomplices" type="accomplice" add="true"></members-list>
     </div>
     <tabs-navigation :objectid="$route.params.id" route="DetailsFoodkeeper"></tabs-navigation>
-    <router-view></router-view>
+    <router-view class="animated" transition="moveHorizontal" transition-mode="out-in"></router-view>
   </div>
 </template>
 
@@ -66,7 +66,8 @@ export default {
     justify-content: center;
     flex-direction: column;
     flex: 1 100%;
-    height: 105px;
+    min-height: 125px;
+    height: 125px;
     margin-bottom: 7px;
     text-align: center;
     &:before {

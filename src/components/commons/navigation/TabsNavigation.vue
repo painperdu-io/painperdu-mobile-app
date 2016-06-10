@@ -50,6 +50,7 @@ export default {
   background: $color-white;
   z-index: 400;
   overflow: hidden;
+  min-height: 60px;
 }
 
   .tabs-navigation-active {
@@ -87,7 +88,6 @@ export default {
       }
 
       &.active {
-        font-weight: bold;
         color: $color-red;
       }
     }

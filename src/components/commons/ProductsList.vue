@@ -1,9 +1,9 @@
 <template>
   <div v-if="products.length" class="products-container">
     <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'name' ">
-      <div class="product-item-wrapper" :class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
+      <div class="product-item-wrapper animated bounceIn" :class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
         <div class="product-item-circle {{ product.type }}">
-          <svg viewBox="0 0 100 100" class="product-item-icon">
+          <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
             <use xlink:href="#foods-icon-{{ product.icon}}"></use>
           </svg>
           <div class="product-item-quantity" :class="{ 'animated emergency': product.emergency }">
@@ -96,6 +96,7 @@ export default {
 
       .product-item-icon {
         transform: scale(0.8);
+        animation-iteration-count: infinite;
       }
 
       .product-item-quantity {

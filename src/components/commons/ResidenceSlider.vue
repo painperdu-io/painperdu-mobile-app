@@ -1,10 +1,10 @@
 <template>
   <div class="residence-slider-container">
-    <div class="residence-slider-item" v-link="{ name: 'DetailsMarketLocation', params: { id: market._id }}">
+    <div class="residence-slider-item animated slideInDown" v-link="{ name: 'DetailsMarketLocation', params: { id: market._id }}">
       <div class="residence-slider-image">
         <img :src="market.foodkeeper.picture" />
       </div>
-      <div class="residence-slider-item-name">
+      <div class="residence-slider-item-name animated rubberBand">
         {{ market.foodkeeper.name }}
         <div class="residence-slider-item-name-content">
           <svg v-if="market.foodkeeper.favorite" viewBox="0 0 100 100" class="residence-slider-item-star-icon">
@@ -35,6 +35,7 @@ export default {
     position: relative;
     text-align: center;
     display: inline-block;
+    animation-delay: 0.2s;
     .residence-slider-image {
       width: 100px;
       height: 115px;
@@ -54,7 +55,7 @@ export default {
       bottom: 18px;
       left: 50%;
       min-width: 130px;
-      transform: translate3d(-50%, 0, 0);
+      margin-left: -65px;
       font: 1.25em 'Karla-Bold', sans-serif;
       text-transform: uppercase;
       color: $color-text;
@@ -62,6 +63,8 @@ export default {
       background-color: $color-white;
       z-index: 99;
       min-height: 18px;
+      box-sizing: border-box;
+      animation-delay: 0.7s;
 
       &:before, &:after {
          content: '';

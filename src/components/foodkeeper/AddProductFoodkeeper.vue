@@ -48,7 +48,7 @@
     <div class="foodkeeper-add-product-form2-wrapper">
       <h3 class="foodkeeper-add-product-form2-title">À consommer sous</h3>
       <div class="foodkeeper-add-product-form2-dlc-range">
-        <label class="product-dlc" for="product-dlc">{{ form.dlc }} jours</label>
+        <label class="product-dlc" for="product-dlc">{{ form.dlc }} <span v-if="form.dlc== '1' ">jour</span> <span v-else>jours</span></label>
         <input type="range" name="product-dlc" value="1" max="10" min="1" step="1" v-model="form.dlc"/>
         <div class="foodkeeper-add-product-form2-label-range">
           <p>1 jour</p>
@@ -285,7 +285,7 @@ export default {
       width: 260px;
 
       input {
-        padding: 0 55px 0 25px;
+        padding: 0 25px 0 25px;
         width: 100%;
         height: 40px;
         border: none;
