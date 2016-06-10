@@ -8,29 +8,29 @@
         </div>
         <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
-          <input id="product-item-count" value="0" v-model="form.quantity" number hidden>
+          <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
           <div class="product-item-quantity">{{ form.quantity }}</div>
         </div>
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
-        <input v-model="form.name" type="text" placeholder="Nom du produit" />
+        <input name="form-name" v-model="form.name" type="text" placeholder="Nom du produit" />
       </div>
       <div class="foodkeeper-add-product-form1-itemgreen">
-        <input v-model="form.description" type="text" placeholder="Description du produit" />
+        <input name="form-description" v-model="form.description" type="text" placeholder="Description du produit" />
       </div>
       <div class="foodkeeper-add-product-form1-filters">
-        <input id="raw" class="filter" type="radio" value="true" v-model="form.type" checked>
+        <input id="raw" class="filter" type="radio" value="raw" v-model="form.type" checked>
         <label for="raw">Produits Bruts</label>
-        <input id="homemade" class="filter" type="radio" value="false" v-model="form.type">
+        <input id="homemade" class="filter" type="radio" value="homemade" v-model="form.type">
         <label for="homemade">Plats Préparés</label>
       </div>
       <div class="foodkeeper-add-product-form1-question">
         Dans quel(s) <span>garde(s)-manger(s)</span> proposez-vous ce produit ?
       </div>
       <div class="foodkeeper-add-product-form1-foodkeepers">
-        <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="foodkeepersSelected" hidden multiple >
-          <template  v-for="foodkeeper in foodkeepers">
-            <option value="{{foodkeeper.name}}">  {{ foodkeeper.name }}</option>
+        <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="form.foodkeepers" multiple>
+          <template v-for="foodkeeper in foodkeepers">
+            <option value="{{ foodkeeper._id }}">{{ foodkeeper.name }}</option>
           </template>
         </select>
         <label v-on:click="openSelect" class="foodkeepersSelect" for="foodkeepersSelect">
@@ -76,7 +76,6 @@ export default {
       }
     },
     openSelect(event){
-      console.log("Test");
       document.getElementById('foodkeepersSelect').click();
     },
     addPicto(event) {
@@ -85,36 +84,68 @@ export default {
       event.preventDefault()
     },
     callAddApi(event) {
-      console.log('CALL ADD API');
-
-      if (!this.form.icon) { console.log('ICON VIDE !!!'); }
-      if (!this.form.name) { console.log('NOM VIDE !!!'); }
-      if (!this.form.description) { console.log('DESCRIPTION VIDE !!!'); }
-      if (!this.form.foodkeepersSelected) { console.log('FOODKEEPERS VIDE !!!'); }
-
-      console.log(this.form);
-
-      /*Ouverture popup*/ 
       event.preventDefault()
-      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
-      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+
+      // vérification des champs
+      if (!global.setIconAddProduct) {
+        console.log('ICON VIDE !!!');
+      }
+      if (!this.form.name) {
+        document.getElementsByName('form-name')[0].classList.add('error');
+      }
+      if (!this.form.description) {
+        document.getElementsByName('form-description')[0].classList.add('error');
+      }
+      if (!this.form.foodkeepers) {
+        console.log('FOODKEEPERS VIDE !!!');
+      }
+
+      // si tout les champs sont remplis, on enregistre les données
+      if (global.setIconAddProduct &&
+          this.form.name &&
+          this.form.description &&
+          this.form.foodkeepers) {
+        // enregistrer les données dans la base
+        this.form.icon = global.setIconAddProduct;
+        const datas = JSON.stringify(this.form);
+
+        this.$http.post('products', datas, { emulateJSON: true })
+          .then((response) =>  {
+            // ouverture popup validation
+            document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+            document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+          })
+          .catch(err => {
+            console.log(err);
+
+            // ouverture popup error
+            document.getElementsByClassName('error-popup-container')[0].classList.add('active');
+            document.getElementsByClassName('error-popup-overlay')[0].classList.add('active');
+          });
+      } else {
+        // ouverture popup error
+        document.getElementsByClassName('error-popup-container')[0].classList.add('active');
+        document.getElementsByClassName('error-popup-overlay')[0].classList.add('active');
+      }
     }
   },
   data() {
     return {
       foodkeepers: [],
       form: {
-        icon: '',
         name: '',
         description: '',
         type: true,
         dlc: 1,
         quantity: 1,
-        foodkeepersSelected: []
+        foodkeepers: []
       },
     }
   },
   ready() {
+    // intialiser le produit sélectionné
+    global.setIconAddProduct = '';
+
     // récupérer la liste des foodkeepers
     this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })
       .then((response) => { this.foodkeepers = response.data.foodkeepers; })
@@ -239,6 +270,10 @@ export default {
         font: 1.5em 'Karla-Italic', sans-serif;
         color: $color-white;
         background: $color-green-lite;
+
+        &.error {
+          background: $color-stats-red2;
+        }
 
         &.quantity {
           font: 1.5em 'Karla-Bold', sans-serif;

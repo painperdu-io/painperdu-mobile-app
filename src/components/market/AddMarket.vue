@@ -81,11 +81,11 @@ export default {
     },
     callAddApi(event) {
       // enregistrer les données dans la base
-      const datas = {
+      const datas = JSON.stringify({
         perimeter: this.form.perimeter,
         foodkeeper: this.form.current._id,
         userId: global.currentUserId,
-      };
+      });
       this.$http.post('markets', datas, { emulateJSON: true })
         .then((response) =>  {
           // ouverture popup validation

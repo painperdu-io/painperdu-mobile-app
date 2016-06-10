@@ -49,7 +49,7 @@
 
       </div>
     </div>
-    <div class="add-picto-accomplice-button">Ajouter</div>
+    <div class="add-picto-accomplice-button" v-on:click="addProductIcon">Ajouter</div>
   </div>
 </template>
 
@@ -102,11 +102,19 @@ export default {
   },
   computed: {
     filteredFoods: function () {
-         return this.pictos.filter(function(picto){
-             return picto.name.indexOf(this.search) > -1;
-         }.bind(this));
-     }
-   },
+      return this.pictos.filter(function(picto){
+        return picto.name.indexOf(this.search) > -1;
+      }.bind(this));
+    },
+  },
+  methods: {
+    addProductIcon(event) {
+      global.setIconAddProduct = this.selectedFood;
+      event.preventDefault()
+      document.getElementsByClassName('popup-container')[0].classList.remove('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
+    }
+  },
 };
 </script>
 

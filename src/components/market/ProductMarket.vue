@@ -6,8 +6,11 @@
           <svg viewBox="0 0 100 100" class="foods-icon">
             <use xlink:href="#foods-icon-{{ product.icon }}"></use>
           </svg>
-          <div class="product-item-quantity">{{ quantity }}</div>
-          <input id="product-item-count" number value="1" v-model="quantity" hidden>
+          <svg class="product-quantity-circle" viewPort="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle class="product-quantity-circle-quantity" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+          </svg>
+          <div class="product-item-quantity">{{ form.quantity }}</div>
+          <input id="product-item-count" number value="1" v-model="form.quantity" hidden>
         </div>
         <div class="controls-quantity">
           <button class="btn btn-more" v-on:click="increment">+</button>
@@ -46,7 +49,7 @@
             <use xlink:href="#app-icon-infinite"></use>
           </svg>
         </div>
-        <div class="member-profile-img"><img src="{{ product.author.picture }}"/></div>
+        <div class="member-profile-img"><img :src="product.author.picture"/></div>
         <div class="member-profile-text">
           <h2 class="member-profile-name">{{ product.author.name.first }}</h2>
           <p class="member-profile-status">{{ statusName }}</p>
@@ -120,27 +123,66 @@ export default {
   },
   methods: {
     increment(event) {
-      if (this.quantity < this.product.quantity) {
-        this.quantity++;
+      if (this.form.quantity < this.product.quantity) {
+        this.form.quantity++;
+        this.updateProductCircle();
       }
     },
     decrement(event) {
-      if (this.quantity > 1) {
-        this.quantity--;
+      if (this.form.quantity > 1) {
+        this.form.quantity--;
+        this.updateProductCircle();
       }
     },
-    callAddApi(event) {
-      console.log('CALL ADD API');
+    updateProductCircle() {
+      let value = ((this.form.quantity * 100) / this.product.quantity);
+      if (value < 0) { value = 0; }
+      if (value > 100) { value = 100; }
 
-      /*Ouverture popup*/
-      event.preventDefault()
-      document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
-      document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+      const pct = ((100 - value) / 100) * (Math.PI * (90 * 2));
+      document.getElementsByClassName('product-quantity-circle-quantity')[0].setAttribute('stroke-dashoffset', pct);
+    },
+    callAddApi(event) {
+      event.preventDefault();
+
+      // enregistrer les données dans la base
+      const datas = JSON.stringify({
+        quantity: this.form.quantity,
+        product: this.product._id,
+        users: {
+          giver: this.product.author._id,
+          applicant: global.currentUserId,
+        }
+      });
+      this.$http.post('alliances', datas, { emulateJSON: true })
+        .then((response) =>  {
+          // ouverture popup validation
+          document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
+          document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+        })
+        .catch(err => {
+          console.log(err);
+
+          // ouverture popup error
+          document.getElementsByClassName('error-popup-container')[0].classList.add('active');
+          document.getElementsByClassName('error-popup-overlay')[0].classList.add('active');
+        });
     }
   },
   data() {
     return {
-      product: {},
+      form: {
+        quantity: 1,
+      },
+      product: {
+        author: {
+          picture: '',
+          name: {
+            first: '',
+            last: '',
+          },
+        },
+      },
       heureDebut : '',
       heureFin : '',
       date: '',
@@ -155,7 +197,6 @@ export default {
       .catch(err => console.log(err));
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
@@ -536,4 +577,14 @@ export default {
       }
     }
 
+  .product-quantity-circle {
+    width: 200px;
+    height: 200px;
+    transition: stroke-dashoffset 1s ease;
+    stroke-width: 4px;
+
+    circle {
+      stroke: $color-red;
+    }
+  }
 </style>
