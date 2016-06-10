@@ -7,7 +7,7 @@
     </div>
     <residence-slider :market="market"></residence-slider>
     <tabs-navigation :objectid="$route.params.id" route="DetailsMarket"></tabs-navigation>
-    <router-view></router-view>
+    <router-view class="animated" transition="moveHorizontal" transition-mode="out-in"></router-view>
   </div>
 </template>
 

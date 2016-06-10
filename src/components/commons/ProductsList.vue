@@ -3,9 +3,11 @@
     <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'name' ">
       <div class="product-item-wrapper animated bounceIn" :class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
         <div class="product-item-circle {{ product.type }}">
-          <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
-            <use xlink:href="#foods-icon-{{ product.icon}}"></use>
-          </svg>
+          <div class="product-item-icon-container">
+            <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
+              <use xlink:href="#foods-icon-{{ product.icon}}"></use>
+            </svg>
+          </div>
           <div class="product-item-quantity" :class="{ 'animated emergency': product.emergency }">
             {{ product.quantity }}
             <div class="product-item-dlc" v-if="product.emergency">
@@ -94,8 +96,10 @@ export default {
         background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
       }
 
-      .product-item-icon {
+      .product-item-icon-container {
         transform: scale(0.8);
+      }
+      .product-item-icon {
         animation-iteration-count: infinite;
       }
 
@@ -124,8 +128,8 @@ export default {
           .square {
             position: absolute;
             display: inline-block;
-            width: 5px;
-            height: 6px;
+            width: 2px;
+            height: 5px;
             background-color: $color-red;
             &.square-0 { top: -12px; right: 11px; transform: rotate(0deg); animation: fade 0.2s infinite alternate 0.1s ;}
             &.square-1 { top: -10px; right: 0; transform: rotate(25deg); animation: fade 0.2s infinite alternate 0.2s ;}
