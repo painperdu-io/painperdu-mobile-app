@@ -145,7 +145,7 @@ export default {
       margin: 0 auto;
       width: 80px;
       height: 80px;
-      background: url('/static/img/bg-3.png') no-repeat;
+      background-color: $color-white;
       border-radius: 50%;
     }
 

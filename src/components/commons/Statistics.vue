@@ -108,8 +108,6 @@ export default {
         flex-direction: column;
       }
 
-
-
         .statistics-product-data-line {
           width: 100%;
           height: 1px;
@@ -121,8 +119,8 @@ export default {
       }
 
       @keyframes increase {
-        0% { height: 0px;}
-        100% { height: 100%;}
+        0% { height: 0px; opacity: 0}
+        100% { height: 100%; opacity: 1}
       }
 
         .statistics-product-data-graph {
@@ -134,7 +132,7 @@ export default {
             width: 100%;
             height: 100%;
             background: $color-stats-line;
-            animation: increase 1s normal;
+            animation: increase 1s 0.5s normal;
             position: absolute;
             bottom: 0;
             &.top-1 { background: $color-stats-red1; }
