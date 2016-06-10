@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="market-container  animated {{ sliderAnimation }}" v-gesture:swipeRight="moveRight" v-gesture:swipeLeft="moveLeft">
+      <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveLeft" v-touch:swiperight="moveRight">
         <residence-slider :market="market"></residence-slider>
 
         <div class="market-products-wrapper">
@@ -168,6 +168,7 @@ export default {
         width: 30px;
         height: 30px;
         fill: $color-white;
+        z-index: 1;
       }
 
       .market-products-search-icon-left {
