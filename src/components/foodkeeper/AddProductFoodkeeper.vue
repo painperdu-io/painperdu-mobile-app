@@ -32,18 +32,7 @@
           <template v-for="foodkeeper in foodkeepers">
             <option value="{{ foodkeeper._id }}">{{ foodkeeper.name }}</option>
           </template>
-          <option value="" default>Sélectionnez...</option>
         </select>
-        <label v-on:click="openSelect" class="foodkeepersSelect" for="foodkeepersSelect">
-          <div class="foodkeeperLabel-wrapper" v-if="form.foodkeepers.length">
-            Denrée ajoutée sur :
-            <template v-for="id in form.foodkeepers">
-              <template v-for="foodkeeper in foodkeepers">
-                <span class="foodkeeperLabel" v-if="id == foodkeeper._id">{{ foodkeeper.name }}</span>
-              </template>
-            </template>
-          </div>
-        </label>
       </div>
     </div>
     <div class="foodkeeper-add-product-form2-wrapper">
@@ -256,14 +245,13 @@ export default {
       option {
         text-align: left;
         text-transform: capitalize;
-        height: 40px;
-        padding-top: 10px;
+        margin: 5px 1px 0;
+        padding: 5px;
         font: 1.4em 'Karla-Italic', sans-serif;
-        background-color: $color-green-lite;
-        position: absolute;
-        top: 0;
-        left: 25px;
-        width: 100%;
+        background-color: $color-green;
+        display: inline-block;
+        border: 1px solid $color-green;
+        border-radius: 20px;
       }
     }
 
