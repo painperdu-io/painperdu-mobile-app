@@ -118,8 +118,8 @@
             </div>
             <div v-else>Es-tu disponible dès maintenant ?</div>
 
-            <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
-            <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
+            <div class="alliance-action-button" v-on:click="allianceRequest()">Oui</div>
+            <div class="alliance-action-button" v-on:click="allianceRequest()">Non</div>
           </div>
         </template>
 
@@ -151,26 +151,38 @@
     <template v-if="alliance.status == 'abandoned'">
       <div class="steps-summary">
         Diatre, votre alliance s'avère compliquée pour aujourd'hui,
-        réessayer plus tard lorsque les conditions seront plus favorable !
+        réessayer plus tard lorsque les conditions seront plus favorables !
       </div>
     </template>
+
+    <!-- Popups--> 
+    <slot :ask="userAsk"></slot>
+    <confirmation :answer="answerGiven"></confirmation>
+
   </div>
 </template>
 
 <script>
 import Profile from './../commons/Profile'
+import Confirmation from './../commons/popup/Confirmation'
+import Slot from './../commons/popup/Slot'
+
 
 export default {
   components: {
     Profile,
+    Slot,
+    Confirmation
   },
   methods: {
     allianceRequest(response) {
       if (response) {
         console.log(' request --> OUI');
+            OpenConfirmation();
       } else {
         console.log(' request --> NON');
         // --> proposition créneau horraire
+            OpenSlot();
       }
 
       this.$route.router.go({ name: 'Alliances' })
@@ -178,27 +190,30 @@ export default {
     allianceAvailability(response) {
       if (response) {
         console.log('  request --> OUI');
-        // --> affichage adresse
+        this.answerGiven = true;
       } else {
         console.log('  request --> NON');
-        // --> abandonné
+        this.answerGiven = false;
       }
+      OpenConfirmation();
 
       this.$route.router.go({ name: 'Alliances' })
     },
     allianceExchange(response) {
       if (response) {
-        console.log('  exchange --> OUI');
-        // --> exchange true
+        console.log('  request --> OUI');
+        this.answerGiven = true;
       } else {
-        console.log('  exchange --> NON');
-        // --> abandonné
+        console.log('  request --> NON');
+        this.answerGiven = false;
       }
+      OpenConfirmation();
 
       this.$route.router.go({ name: 'Alliances' })
     },
     allianceReview() {
       console.log('ALLIANCE REVIEW');
+        OpenConfirmation();
 
       console.log(this.form.review);
 
@@ -209,10 +224,25 @@ export default {
       // --> Penser au notification et ajouter le status "new" dans la liste quand non lu
 
       this.$route.router.go({ name: 'Alliances' });
+    },
+    openConfirmation() {
+      // ouverture popup confirmation
+      document.getElementsByClassName('confirmation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('confirmation-popup-overlay')[0].classList.add('active');
+    },
+    openSlot() {
+      // ouverture popup confirmation
+      document.getElementsByClassName('slot-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('slot-popup-overlay')[0].classList.add('active');
+    },
+    update(){
+      console.log("methode updated");
     }
   },
   data() {
     return {
+      userAsk: false,
+      answerGiven : false,
       alliance: {
         type: '',
         product: {

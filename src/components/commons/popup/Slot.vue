@@ -1,5 +1,5 @@
 <template>
-  <div class="slot-popup-overlay"></div>
+  <div class="slot-popup-overlay"></div> 
   <div class="slot-popup-container">
     <div class="slot-popup-close" v-on:click="closeSlot">
       <svg viewBox="0 0 100 100" class="app-icon">
@@ -23,7 +23,7 @@
           </div>
 
       </div>
-
+  Ò
       <div v-else class="slot-popup-item-wrapper">
         <div class="slot-popup-item">
           <div class="slot-popup-item-text-wrapper">
@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  props['ask'],
+  props:['ask'],
   methods: {
     closeSlot(event) {
       document.getElementsByClassName('slot-popup-container')[0].classList.remove('active');

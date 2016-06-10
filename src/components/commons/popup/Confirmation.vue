@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  props['answerGiven'],
+  props:['answer'],
   methods: {
     closeconfirmation() {
       document.getElementsByClassName('confirmation-popup-container')[0].classList.remove('active');
