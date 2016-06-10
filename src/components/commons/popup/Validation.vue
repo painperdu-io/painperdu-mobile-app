@@ -74,7 +74,6 @@ export default {
     closevalidation(destination) {
       document.getElementsByClassName('validation-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('validation-popup-overlay')[0].classList.remove('active');
-      console.log('destination:' + destination);
       this.$route.router.go({ name: destination });
       event.preventDefault()
     },

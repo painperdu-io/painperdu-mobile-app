@@ -81,11 +81,11 @@ export default {
     },
     callAddApi(event) {
       // enregistrer les données dans la base
-      const datas = {
+      const datas = JSON.stringify({
         perimeter: this.form.perimeter,
         foodkeeper: this.form.current._id,
         userId: global.currentUserId,
-      };
+      });
       this.$http.post('markets', datas, { emulateJSON: true })
         .then((response) =>  {
           // ouverture popup validation
@@ -123,13 +123,15 @@ export default {
     this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })
       .then(response => {
         this.foodkeepers = response.data.foodkeepers;
-        for (let i = 0; i < this.foodkeepers.length; i++) {
-          this.foodkeepers[i].location.googlemap = {
-              lng: this.foodkeepers[i].location.coordinates[0],
-              lat: this.foodkeepers[i].location.coordinates[1],
-          };
+        if (this.foodkeepers.length) {
+          for (let i = 0; i < this.foodkeepers.length; i++) {
+            this.foodkeepers[i].location.googlemap = {
+                lng: this.foodkeepers[i].location.coordinates[0],
+                lat: this.foodkeepers[i].location.coordinates[1],
+            };
+          }
+          this.form.current = this.foodkeepers[0];
         }
-        this.form.current = this.foodkeepers[0];
       })
       .catch(err => console.log(err));
   }
