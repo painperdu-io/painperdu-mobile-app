@@ -124,7 +124,7 @@
         </template>
 
         <!-- Produit échangé -->
-        <template v-if="alliance.request.completed && alliance.availability.completed">
+        <template v-if="alliance.request.completed && alliance.availability.completed && !alliance.exchange">
           <div class="steps-summary">
             As-tu donné la denrée desirée ?
 
@@ -132,9 +132,14 @@
             <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
           </div>
         </template>
+
+        <!-- En attente d'évaluation -->
+        <template v-if="alliance.request.completed && alliance.availability.completed && alliance.exchange">
+          <div class="steps-summary">
+            Ton allié ne t'a toujours pas évalué pour cet échange (VALIDER CE TEXTE)
+          </div>
+        </template>
       </template>
-
-
     </template>
 
 
@@ -154,56 +159,85 @@
         réessayer plus tard lorsque les conditions seront plus favorable !
       </div>
     </template>
+
+    <!-- Popups-->
+    <slot-popup :ask="userAsk"></slot-popup>
+    <confirmation
+      :user-selection="userSelection"
+      :update-alliance="updateCurrentAlliance">
+    </confirmation>
+
   </div>
 </template>
 
 <script>
 import Profile from './../commons/Profile'
+import Confirmation from './../commons/popup/Confirmation'
+import SlotPopup from './../commons/popup/Slot'
+
 
 export default {
   components: {
     Profile,
+    SlotPopup,
+    Confirmation
   },
   methods: {
     allianceRequest(response) {
-      if (response) {
-        console.log(' request --> OUI');
-      } else {
-        console.log(' request --> NON');
-        // --> proposition créneau horraire
-      }
+      const allianceId = this.$route.params.id;
+      this.userSelection = response;
 
-      this.$route.router.go({ name: 'Alliances' })
+      // si non, on doit définir des horaires,
+      // si oui, c'est terminé on affiche l'adresse au demandeur :)
+      if (response) {
+        this.openConfirmation();
+        const datas = JSON.stringify({ availability: { completed: true, accepted: true } });
+        this.$http.put(`alliances/${allianceId}`, datas, { emulateJSON: true })
+          .catch(err => console.log(err));
+      } else {
+        this.openSlot(); // TODO: a gerer
+      }
     },
     allianceAvailability(response) {
-      if (response) {
-        console.log('  request --> OUI');
-        // --> affichage adresse
-      } else {
-        console.log('  request --> NON');
-        // --> abandonné
-      }
+      const allianceId = this.$route.params.id;
 
-      this.$route.router.go({ name: 'Alliances' })
+      // ouvrir la popup de confirmation
+      this.userSelection = response;
+      this.openConfirmation();
+
+      // définir si le demandeur accepte le créneau horaire du donneur
+      if (response) {
+        // TODO: AFFICHER ADRESSE + prevoir un enregistrerment pour determiner qu'il a accepté
+      } else {
+        // si non, on abandonne l'alliance
+        const abandoned = JSON.stringify({ status: 'abandoned' });
+        this.$http.put(`alliances/${allianceId}`, abandoned, { emulateJSON: true })
+          .catch(err => console.log(err));
+      }
     },
     allianceExchange(response) {
       const allianceId = this.$route.params.id;
-      let datas;
-      if (response) {
-        datas = JSON.stringify({ exchange: true });
-      } else {
-        datas = JSON.stringify({ exchange: false });
-      }
+      const datas = JSON.stringify({ exchange: response });
+
+      // ouvrir la popup de confirmation
+      this.userSelection = response;
+      this.openConfirmation();
 
       // définir si le produit a été échangé
-      this.$http.put(`alliances/${allianceId}/exchange`, datas, { emulateJSON: true })
-        .then(response => console.log('PRODUIT ECHANGE'))
+      this.$http.put(`alliances/${allianceId}`, datas, { emulateJSON: true })
+        .then(() => {
+          if (!response) {
+            // si non, on abandonne cette alliance
+            const abandoned = JSON.stringify({ status: 'abandoned' });
+            this.$http.put(`alliances/${allianceId}`, abandoned, { emulateJSON: true })
+              .catch(err => console.log(err));
+          }
+        })
         .catch(err => console.log(err));
-
-      this.$route.router.go({ name: 'Alliances' })
     },
     allianceReview() {
       console.log('ALLIANCE REVIEW');
+        this.openConfirmation();
 
       console.log(this.form.review);
 
@@ -214,10 +248,46 @@ export default {
       // --> Penser au notification et ajouter le status "new" dans la liste quand non lu
 
       this.$route.router.go({ name: 'Alliances' });
+    },
+    openConfirmation() {
+      // ouverture popup confirmation
+      document.getElementsByClassName('confirmation-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('confirmation-popup-overlay')[0].classList.add('active');
+    },
+    openSlot() {
+      // ouverture popup créneau horaire
+      console.log(document.getElementsByClassName('slot-popup-container'));
+      console.log(document.getElementsByClassName('slot-popup-container')[0]);
+      document.getElementsByClassName('slot-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('slot-popup-overlay')[0].classList.add('active');
+    },
+    updateCurrentAlliance() {
+      const allianceId = this.$route.params.id;
+
+      // récupérer une alliance en fonction de son id
+      this.$http({ url: `alliances/${allianceId}/user/${global.currentUserId}`, method: 'GET' })
+        .then(response => {
+          this.alliance = response.data;
+
+          // on met à jour la date de lecture
+          let datas;
+          if (this.alliance.type == 'applicant') {
+            this.$http({ url: `alliances/${allianceId}/read/applicant`, method: 'PUT' })
+              .then(response => {})
+              .catch(err => console.log(err));
+          } else {
+            this.$http({ url: `alliances/${allianceId}/read/giver`, method: 'PUT' })
+              .then(response => {})
+              .catch(err => console.log(err));
+          }
+        })
+        .catch(err => console.log(err));
     }
   },
   data() {
     return {
+      userAsk: false,
+      userSelection: false,
       alliance: {
         type: '',
         product: {
@@ -248,26 +318,7 @@ export default {
     };
   },
   ready() {
-    const allianceId = this.$route.params.id;
-
-    // récupérer une alliance en fonction de son id
-    this.$http({ url: `alliances/${allianceId}/user/${global.currentUserId}`, method: 'GET' })
-      .then(response => {
-        this.alliance = response.data;
-
-        // on met à jour la date de lecture
-        let datas;
-        if (this.alliance.type == 'applicant') {
-          this.$http({ url: `alliances/${allianceId}/read/applicant`, method: 'PUT' })
-            .then(response => {})
-            .catch(err => console.log(err));
-        } else {
-          this.$http({ url: `alliances/${allianceId}/read/giver`, method: 'PUT' })
-            .then(response => {})
-            .catch(err => console.log(err));
-        }
-      })
-      .catch(err => console.log(err));
+    this.updateCurrentAlliance();
   }
 };
 </script>

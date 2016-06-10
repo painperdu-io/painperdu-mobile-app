@@ -63,7 +63,6 @@
       </div>
       <div class="validation-popup-redirect-button" v-on:click="closevalidation(destination)">Fermer</div>
     </div>
-  <div class="popup-overlay"></div>
   </div>
 </template>
 
