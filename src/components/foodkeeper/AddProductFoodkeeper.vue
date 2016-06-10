@@ -25,14 +25,13 @@
         <label for="homemade">Plats Préparés</label>
       </div>
       <div class="foodkeeper-add-product-form1-question">
-        Dans quel(s) <span class="text-focus">garde(s)-manger(s)</span> proposez-vous ce produit ?
+        Dans quel(s) <span class="text-focus">garde(s)-manger(s)</span> associez-vous ce produit ?
       </div>
       <div class="foodkeeper-add-product-form1-foodkeepers">
         <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="form.foodkeepers" multiple>
           <template v-for="foodkeeper in foodkeepers">
             <option value="{{ foodkeeper._id }}">{{ foodkeeper.name }}</option>
           </template>
-          <option value="" default>Sélectionnez ...</option>
         </select>
         <label v-on:click="openSelect" class="foodkeepersSelect" for="foodkeepersSelect">
           <div class="foodkeeperLabel-wrapper" v-if="form.foodkeepers.length > 1">
@@ -252,7 +251,8 @@ export default {
       padding-left: 25px;
       overflow: hidden;
       position: relative;
-      -webkit-appareance : none;
+      -webkit-appearance: none;
+      appearance: none;
 
       option {
         text-align: left;
