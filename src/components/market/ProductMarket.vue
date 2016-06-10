@@ -71,21 +71,21 @@
 
     <div class="ask-product-wrapper">
       <div class="ask-product-text">
-        <input type="checkbox" id="later" class="later" value="false" v-model="laterHours">
-        <label for="later" >
+        <input type="checkbox" id="later" class="later" value="false" v-model="form.delayed">
+        <label for="later">
           Je ne suis pas disponible maintenant. <br>
           Je veux récupérer ma demande plus tard.
         </label>
       </div>
-      <div v-if="laterHours">
+      <div v-if="form.delayed">
         <div class="add-rdv-form-item">
-          <input id="date"  class="add-rdv-form-item-input" type="date" v-model="date">
+          <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" v-model="date">
           <label for="date" class="add-rdv-form-item-label">Date</label>
         </div>
         <div class="add-rdv-form-item">
-          <input for="heure-debut" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
+          <input for="heure-debut" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
           <label id="heure-debut" class="add-rdv-form-item-label">Créneau horaire</label>
-          <input for="heure-fin" class="add-rdv-form-item-input" type="time" v-model="heureFin">
+          <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
           <label for="heure-fin" class="add-rdv-form-item-label">Créneau horaire</label>
         </div>
 
@@ -152,7 +152,13 @@ export default {
         users: {
           giver: this.product.author._id,
           applicant: global.currentUserId,
-        }
+        },
+        delayed: this.form.delayed,
+        datas: {
+          date: this.form.date,
+          timeStart: this.form.timeStart,
+          timeEnd: this.form.timeEnd,
+        },
       });
       this.$http.post('alliances', datas, { emulateJSON: true })
         .then((response) =>  {
@@ -173,6 +179,12 @@ export default {
     return {
       form: {
         quantity: 1,
+        delayed: false,
+        datas: {
+          date: '',
+          timeStart : '',
+          timeEnd : '',
+        },
       },
       product: {
         author: {
@@ -183,9 +195,6 @@ export default {
           },
         },
       },
-      heureDebut : '',
-      heureFin : '',
-      date: '',
     }
   },
   ready() {

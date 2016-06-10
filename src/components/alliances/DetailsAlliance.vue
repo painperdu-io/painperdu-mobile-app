@@ -24,92 +24,26 @@
       </div>
     </div>
 
-    <!--<div class="steps-summary">
-      <h3 class="title-section">Suivi de vos actions</h3>
-      <div class="steps-summary-separator"></div>
+    <template v-if="alliance.type == 'applicant'">
+      DEMANDEUR
 
-      <fieldset class="step final-step">
-        <form>
-          <svg viewBox="0 0 100 100" class="alliance-icon">
-            <use xlink:href="#app-icon-note"></use>
-          </svg>
-          <h3>
-            Laissez un avis à Ludovic <br>
-            Votre échange était :
-          </h3>
-          <select class="alliance-form-vote-select" v-model="selectedProductType">
-            <option>Parfait</option>
-            <option>Moyen</option>
-          </select>
-        </form>
-      </fieldset>
-      <div class="alliance-action-button">Valider</div>
+      <template v-if="alliance.steps.length == 0">
+        --> VOTRE DEMANDE A ÉTÉ ENVOYÉ
+      </template>
+    </template>
 
-      <fieldset class="step user-side">
-        <legend>
-          <svg viewBox="0 0 100 100" class="alliance-icon">
-            <use xlink:href="#app-icon-bugle"></use>
-          </svg>
-        </legend>
-        <form>
-          <h3>Avez-vous récupéré le produit ?</h3>
-        </form>
-      </fieldset>
-      <div class="alliance-action-button">Oui</div> <div class="alliance-action-button">Non</div>
+    <template v-if="alliance.type == 'giver'">
+      DONNEUR
 
-      <div class="user-address">
-        Les coordonnées de Ludovic sont :<br>
-        <span class="user-address-details">Appartement 5, étage 2 <br>
-        20 rue du Trésum <br>
-        74000 Annecy</span>
-      </div>
+      <template v-if="alliance.steps.length == 0">
+        --> NOUVELLE DEMANDE REÇU (ACCEPTER LA DEMANDE ?)
+      </template>
+    </template>
 
-      <fieldset class="step my-side">
-        <legend>
-          <svg viewBox="0 0 100 100" class="alliance-icon">
-            <use xlink:href="#app-icon-helmet"></use>
-          </svg>
-        </legend>
-          <h3>Ludovic est disponible :</h3>
-          <div class="date-hours">Entre 10h et 12h</div>
-          <span class="date-day">Jeudi 28/02/16</span>
-      </fieldset>
 
-      <fieldset class="step user-side">
-        <legend>
-          <svg viewBox="0 0 100 100" class="alliance-icon">
-            <use xlink:href="#app-icon-bugle"></use>
-          </svg>
-        </legend>
-        <form>
-          <h3>Ludovic n'est pas disponible aujourd'hui mais il vous propose les créneaux suivants</h3>
-          <div class="multiple-dates">
-            <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
-            <label for="date-1" >
-              <div class="date-hours">Entre 10h et 12h</div>
-              <span class="date-day">Jeudi 28/02/16</span>
-            </label>
-            <input type="radio" id="date-2"  class="filter" value="true" v-model="productType">
-            <label for="date-2">
-              <div class="date-hours">Entre 18h et 20h</div>
-              <span class="date-day">Jeudi 28/02/16<span class="underline"></span></span>
-            </label>
-          </div>
-        </form>
-      </fieldset>
-      <div class="alliance-action-button">Refuser</div> <div class="alliance-action-button">Accepter</div>
 
-      <fieldset class="step my-side">
-        <legend>
-          <svg viewBox="0 0 100 100" class="alliance-icon">
-            <use xlink:href="#app-icon-helmet"></use>
-          </svg>
-        </legend>
-          <h3>Vous avez contacté Ludovic le :</h3>
-          <div class="date-day">28/02/16</div>
-      </fieldset>
-
-    </div>-->
+    <div class="steps-summary">
+    </div>
   </div>
 
 </template>
@@ -123,7 +57,27 @@ export default {
   },
   data() {
     return {
-      alliance: {},
+      alliance: {
+        type: '',
+        product: {
+          name: '',
+        },
+        users: {
+          applicant: {
+            name: {
+              first: '',
+              last: '',
+            }
+          },
+          giver: {
+            name: {
+              first: '',
+              last: '',
+            }
+          },
+        },
+        steps: [],
+      },
     };
   },
   ready() {
@@ -263,7 +217,6 @@ export default {
 }
 
 .steps-summary {
-  background-color: $color-white;
   font-size: 1.3em;
   font-family: 'Karla-Italic';
   margin-top: 280px;
