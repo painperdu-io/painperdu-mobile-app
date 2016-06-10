@@ -116,6 +116,18 @@ export default {
     this.$http({ url: `alliances/${allianceId}/user/${global.currentUserId}`, method: 'GET' })
       .then(response => {
         this.alliance = response.data;
+
+        // on met à jour la date de lecture
+        let datas;
+        if (this.alliance.type == 'applicant') {
+          this.$http({ url: `alliances/${allianceId}/read/applicant`, method: 'PUT' })
+            .then(response => {})
+            .catch(err => console.log(err));
+        } else {
+          this.$http({ url: `alliances/${allianceId}/read/giver`, method: 'PUT' })
+            .then(response => {})
+            .catch(err => console.log(err));
+        }
       })
       .catch(err => console.log(err));
   }
