@@ -101,7 +101,7 @@
       </template>
 
 
-      <!-- DONNEUR -->
+      <!-- Intéractions du donneur -->
       <template v-if="alliance.type == 'giver'">
 
         <!-- Nouvelle demande -->
@@ -138,19 +138,19 @@
     </template>
 
 
-    <!-- Produit échangé, alliance terminée -->
+    <!-- Produit échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'terminated'">
       <div class="steps-summary">
-        Hip Hip Hip Houra !
+        <h3>Hip Hip Hip Houra !</h3>
         Une étape de plus a été franchie dans la quête du Pain Perdu !
       </div>
     </template>
 
-
-    <!-- Produit non échangé, alliance terminée -->
+    <!-- Produit non échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'abandoned'">
       <div class="steps-summary">
-        Diatre, votre alliance s'avère compliquée pour aujourd'hui,
+        <h3>Diatre,</h3>
+        votre alliance s'avère compliquée pour aujourd'hui,
         réessayer plus tard lorsque les conditions seront plus favorable !
       </div>
     </template>
@@ -187,13 +187,18 @@ export default {
       this.$route.router.go({ name: 'Alliances' })
     },
     allianceExchange(response) {
+      const allianceId = this.$route.params.id;
+      let datas;
       if (response) {
-        console.log('  exchange --> OUI');
-        // --> exchange true
+        datas = JSON.stringify({ exchange: true });
       } else {
-        console.log('  exchange --> NON');
-        // --> abandonné
+        datas = JSON.stringify({ exchange: false });
       }
+
+      // définir si le produit a été échangé
+      this.$http.put(`alliances/${allianceId}/exchange`, datas, { emulateJSON: true })
+        .then(response => console.log('PRODUIT ECHANGE'))
+        .catch(err => console.log(err));
 
       this.$route.router.go({ name: 'Alliances' })
     },
