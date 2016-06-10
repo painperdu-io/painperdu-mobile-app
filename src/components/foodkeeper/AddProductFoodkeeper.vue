@@ -28,7 +28,7 @@
         Dans quel(s) <span>garde(s)-manger(s)</span> proposez-vous ce produit ?
       </div>
       <div class="foodkeeper-add-product-form1-foodkeepers">
-        <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="foodkeepersSelected" hidden multiple >
+        <select name="foodkeepersSelect" class="foodkeeper-add-product-form-select" id="foodkeepersSelect" v-model="foodkeepersSelected" multiple >
           <template  v-for="foodkeeper in foodkeepers">
             <option value="{{foodkeeper.name}}">  {{ foodkeeper.name }}</option>
           </template>
@@ -80,6 +80,7 @@ export default {
       document.getElementById('foodkeepersSelect').click();
     },
     addPicto(event) {
+      console.log('overlay : ' + document.getElementsByClassName('popup-overlay')[0].classList);
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
@@ -94,7 +95,7 @@ export default {
 
       console.log(this.form);
 
-      /*Ouverture popup*/ 
+      /*Ouverture popup*/
       event.preventDefault()
       document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
       document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
@@ -201,6 +202,7 @@ export default {
 
     .foodkeeper-add-product-form1-foodkeepers{
       text-align: center;
+      margin-bottom: 20px;
     }
 
     .foodkeeper-add-product-form-select {
@@ -257,7 +259,7 @@ export default {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    padding: 0 60px;
+    padding: 20px 60px;
     height: 195px;
     background: $color-white;
   }
@@ -270,14 +272,14 @@ export default {
     }
 
     .foodkeeper-add-product-form2-dlc-range {
-      margin: 25px 0;
+      margin: 25px 0 20px;
       text-align: center;
 
       input[type="range"] {
         -webkit-appearance:none;
         width: 100%;
         height: 4px;
-        margin: 10px 0px 0px;
+        margin: 15px 0px 0px;
         background: $color-green-lite;
         border-radius: 4px;
       }
@@ -303,6 +305,9 @@ export default {
       margin-top: -5px;
       font: 1.1em 'Karla-Italic', sans-serif;
       color: $color-text;
+      p {
+        margin: 20px 0px 0px;
+      }
     }
 
     .foodkeeper-add-product-form2-button {
@@ -364,7 +369,7 @@ export default {
       font-size: 2em;
       width: 28px;
       height: 28px;
-      line-height: 20px;
+      line-height: 22px;
       padding: 0;
       background-color: $color-gray-lite;
     }
