@@ -79,7 +79,7 @@
       </div>
       <div v-if="form.delayed">
         <div class="add-rdv-form-item">
-          <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" v-model="date">
+          <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" min="{{ datemin }}" v-model="date">
           <label for="date" class="add-rdv-form-item-label">Date</label>
         </div>
         <div class="add-rdv-form-item">
@@ -97,6 +97,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import Validation from './../commons/popup/Validation'
 
 export default {
@@ -177,6 +178,7 @@ export default {
   },
   data() {
     return {
+      datemin: moment().format('YYYY-MM-DD'),
       form: {
         quantity: 1,
         delayed: false,
