@@ -1,5 +1,5 @@
 <template>
-  <div class="product-container">
+  <div class="product-container animated" transition="moveHorizontal" transition-mode="in-out">
     <div class="product-wrapper">
       <div class="product" :class="{ 'inactive': !product.available }">
         <div class="product-item-circle {{ product.type }}">
