@@ -7,56 +7,71 @@
       </svg>
     </div>
     <div class="slot-popup-container-content">
-      <h3 class="slot-popup-title">Pourparler !</h3>
+      <h3 class="slot-popup-title">À toi de jouer !</h3>
       <div class="slot-popup-title-separator"></div>
-      <div class="slot-popup-item-wrapper">
-        <div v-if="ask" class="slot-popup-item">
-          <div class="slot-popup-item-text-wrapper">
-            <p class="slot-popup-item-text"><span class="underline"></span>Votre allié vous propose<br /></p>
-            <p class="slot-popup-item-text"><span class="underline"></span>un nouvel horaire de rencontre<br /></p>
-          </div>
-        </div>
-
-          <div class="slot-popup-item">
-            <div class="date-hours">Entre 10h et 12h</div>
-            <span class="date-day">Jeudi 28/02/16</span>
-          </div>
-
-      </div>
       <div v-else class="slot-popup-item-wrapper">
         <div class="slot-popup-item">
           <div class="slot-popup-item-text-wrapper">
-            <p class="slot-popup-item-text"><span class="underline"></span>Proposez un nouvel<br /></p>
-            <p class="slot-popup-item-text"><span class="underline"></span>horaire de rencontre<br /></p>
+            <p class="slot-popup-item-text"><span class="underline"></span>Propose un nouvel<br/></p>
+            <p class="slot-popup-item-text"><span class="underline"></span>horaire de rencontre</p>
           </div>
         </div>
-
-          <div class="slot-popup-item">
-            <input id="date" v-model="form.date" class="slot-form-item-input" type="date" min="{{ datemin }}" v-model="date">
-            <label for="date" class="slot-form-item-label">Date</label>
-          </div>
-          <div class="slot-popup-item">
-            <input for="heure-debut" v-model="form.timeStart" class="slot-form-item-input" type="time" v-model="heureDebut">
-            <label id="heure-debut" class="slot-form-item-label">Créneau horaire</label>
-            <input for="heure-fin" v-model="form.timeEnd" class="slot-form-item-input" type="time" v-model="heureFin">
-            <label for="heure-fin" class="slot-form-item-label">Créneau horaire</label>
-          </div>
+        <div class="slot-popup-item">
+          <input v-model="form.date" class="slot-form-item-input" type="date" min="{{ datemin }}" v-model="date">
+        </div>
+        <div class="slot-popup-item">
+          <input v-model="form.timeStart" class="slot-form-item-input" type="time" v-model="heureDebut">
+          <input v-model="form.timeEnd" class="slot-form-item-input" type="time" v-model="heureFin">
+        </div>
       </div>
     </div>
-    <div class="slot-popup-redirect-button" v-on:click="closePopup">Proposer</div>
+    <div class="slot-popup-redirect-button" v-on:click="updateAllianceDate">Proposer</div>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
-  props:['ask'],
+  props:['allianceId', 'updateAlliance'],
   methods: {
     closePopup(event) {
       document.getElementsByClassName('slot-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('slot-popup-overlay')[0].classList.remove('active');
-      event.preventDefault()
-    }
-  }
+      event.preventDefault();
+    },
+    updateAllianceDate(event) {
+      event.preventDefault();
+      const datas = JSON.stringify({ availability: {
+        completed: true,
+        giver: false,
+        applicant: false,
+        date: this.form.date,
+        timeStart: this.form.timeStart,
+        timeEnd: this.form.timeEnd,
+      } });
+
+      this.$http.put(`alliances/${this.allianceId}`, datas, { emulateJSON: true })
+        .then(() => {
+          this.updateAlliance();
+
+          // fermer la popup
+          document.getElementsByClassName('slot-popup-container')[0].classList.remove('active');
+          document.getElementsByClassName('slot-popup-overlay')[0].classList.remove('active');
+        })
+        .catch(err => console.log(err));
+    },
+  },
+  data() {
+    return {
+      datemin: moment().format('YYYY-MM-DD'),
+      form: {
+        date: '',
+        timeStart: '',
+        timeEnd: '',
+      },
+    };
+  },
 };
 </script>
 
@@ -276,5 +291,4 @@ export default {
       text-transform: uppercase;
       text-align: center;
     }
-
 </style>

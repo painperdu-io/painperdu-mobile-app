@@ -75,9 +75,6 @@ export default {
       if (!this.form.name) {
         document.getElementsByName('form-name')[0].classList.add('error');
       }
-      if (!this.form.description) {
-        document.getElementsByName('form-description')[0].classList.add('error');
-      }
       if (!this.form.location.street) {
         document.getElementsByName('form-street')[0].classList.add('error');
       }
@@ -90,7 +87,6 @@ export default {
 
       // si tout les champs sont remplis, on enregistre les données
       if (this.form.name &&
-          this.form.description &&
           this.form.location.street &&
           this.form.location.city &&
           this.form.location.zipcode) {

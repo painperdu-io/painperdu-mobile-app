@@ -9,8 +9,8 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(VueTouch)
 
-//global.currentUserId = '575302fc5dacbac32540268d';
-global.currentUserId = '575302fc5dacbac32540268e';
+global.currentUserId = '575302fc5dacbac32540268d';
+//global.currentUserId = '575302fc5dacbac32540268e';
 
 Vue.http.options.root = 'http://127.0.0.1:1337/api/v1'; 
 //Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
