@@ -42,14 +42,16 @@
           <div class="steps-summary">
 
             <div v-if="alliance.availability.giver || alliance.availability.applicant">
-              Tu es un sacré vénard ! {{ alliance.users.giver.name.first }}
-              est disponible pour le créneau:
                 <div v-if="alliance.availability.applicant">
+                  {{ alliance.users.giver.name.first }}
+                  est disponible pour le créneau:
                   {{ alliance.availability.date }}
                   {{ alliance.availability.timeStart }}
                   {{ alliance.availability.timeEnd }}
                 </div>
                 <div v-else>
+                  Tu es un sacré vénard ! {{ alliance.users.giver.name.first }}
+                  est disponible pour le créneau:
                   {{ alliance.request.date }}
                   {{ alliance.request.timeStart }}
                   {{ alliance.request.timeEnd }}
@@ -161,8 +163,15 @@
     <!-- Produit échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'terminated'">
       <div class="steps-summary">
-        <h3>Hip Hip Hip Houra !</h3>
-        Une étape de plus a été franchie dans la quête du Pain Perdu !
+        <template alliance.type == 'applicant'>
+          <h3>Hip Hip Hip Houra !</h3>
+          Une étape de plus a été franchie dans la quête du Pain Perdu !
+        </template>
+        <template v-else>
+          <h3>Hip Hip Hip Houra !</h3>
+          Une étape de plus a été franchie dans la quête du Pain Perdu !
+          --> LIEN GARGE MANGER NOTATION
+        </template>
       </div>
     </template>
 

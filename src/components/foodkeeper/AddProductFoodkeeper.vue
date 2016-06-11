@@ -7,6 +7,9 @@
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>
         <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
+          <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
+            <use xlink:href="#foods-icon-{{ form.icon }}"></use>
+          </svg>
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
           <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
           <div class="product-item-quantity">{{ form.quantity }}</div>
@@ -131,6 +134,7 @@ export default {
     return {
       foodkeepers: [],
       form: {
+        icon: '',
         name: '',
         description: '',
         type: true,
