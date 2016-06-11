@@ -61,7 +61,14 @@
         <div class="member-profile-img"><img :src="product.author.picture"/></div>
         <div class="member-profile-text">
           <h2 class="member-profile-name">{{ product.author.name.first }}</h2>
-          <p class="member-profile-status">{{ statusName }}</p>
+          <p class="member-profile-status">
+            <template v-if="product.author.score < 10">Artisan</template>
+            <template v-if="product.author.score > 10 && product.author.score < 20">Soldat</template>
+            <template v-if="product.author.score > 20 && product.author.score < 30">Menestrel</template>
+            <template v-if="product.author.score > 30 && product.author.score < 40">Écuyer</template>
+            <template v-if="product.author.score > 40 && product.author.score < 50">Chevalier</template>
+            <template v-if="product.author.score > 50">Seigneur</template>
+          </p>
         </div>
       </legend>
       <div class="member-profile-statistics">
@@ -112,24 +119,6 @@ import Validation from './../commons/popup/Validation'
 export default {
   components : {
     Validation,
-  },
-  computed: {
-    statusName() {
-      const status = [
-        { score: 10, name: 'Artisan' },
-        { score: 20, name: 'Soldat' },
-        { score: 30, name: 'Menestrel' },
-        { score: 40, name: 'Écuyer' },
-        { score: 50, name: 'Chevalier' },
-        { score: 60, name: 'Seigneur' },
-      ];
-
-      for (let i = 0; i < status.length; i++) {
-        if (3 < status[i].score) {
-          return status[i].name;
-        }
-      }
-    },
   },
   methods: {
     increment(event) {

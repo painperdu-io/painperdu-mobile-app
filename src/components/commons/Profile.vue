@@ -22,7 +22,14 @@
         <div class="col-50">
           <h3 class="profile-infos-name">{{ profile.name.first }}</h3>
           <div class="profile-infos-separator"></div>
-          <p class="profile-infos-status ">{{ statusName }}</p>
+          <p class="profile-infos-status ">
+            <template v-if="profile.score < 10">Artisan</template>
+            <template v-if="profile.score > 10 && profile.score < 20">Soldat</template>
+            <template v-if="profile.score > 20 && profile.score < 30">Menestrel</template>
+            <template v-if="profile.score > 30 && profile.score < 40">Écuyer</template>
+            <template v-if="profile.score > 40 && profile.score < 50">Chevalier</template>
+            <template v-if="profile.score > 50">Seigneur</template>
+          </p>
         </div>
         <div class="col-25">
           <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
@@ -42,24 +49,6 @@
 <script>
 export default {
   props: ['profile', 'type'],
-  computed: {
-    statusName() {
-      const status = [
-        { score: 10, name: 'artisan' },
-        { score: 20, name: 'soldat' },
-        { score: 30, name: 'menestrel' },
-        { score: 40, name: 'ecuyer' },
-        { score: 50, name: 'chevalier' },
-        { score: 60, name: 'seigneur' },
-      ];
-
-      for (let i = 0; i < status.length; i++) {
-        if (3 < status[i].score) {
-          return status[i].name;
-        }
-      }
-    },
-  },
 };
 </script>
 
