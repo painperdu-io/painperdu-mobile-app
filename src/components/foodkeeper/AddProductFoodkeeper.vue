@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-add-product-container">
+  <div class="foodkeeper-add-product-container animated" transition="slide" transition-mode="in-out">
     <div class="foodkeeper-add-product-form1-wrapper">
       <div class="foodkeeper-add-product-form1-add-icon">
         <div class="controls-quantity">

@@ -1,5 +1,5 @@
 <template>
-  <div class="alliance-details-container animated" transition="moveHorizontal" transition-mode="in-out" >
+  <div class="alliance-details-container animated bounceInRight" v-touch:swiperight="loadAlliancesListing('bounceOutRight')">
     <div class="alliance-summary">
       <div class="profile-container animated bounceInRight">
         <div class="profile-infos">
@@ -321,7 +321,23 @@ export default {
           }
         })
         .catch(err => console.log(err));
+    },
+
+    loadAlliancesListing(transition){
+      console.log(transition);
+      var el = document.getElementsByClassName('alliance-details-container')[0];
+      if (el.classList.contains('animated') ) {
+        el.classList.remove('animated');
+      }
+      if (el.classList.contains(transition) ) {
+        el.classList.remove(transition);
+      } else {
+        el.classList.add('animated');
+        el.classList.add(transition);
+      }
+      setTimeout(() => this.$route.router.go({ name: 'Alliances'}), 1000);
     }
+
   },
   data() {
     return {
@@ -371,7 +387,6 @@ export default {
   flex-direction: row;
   flex: 1 100%;
   padding: 45px 0 30px;
-  position: fixed;
   background: url('/static/img/bg-3.jpg');
   z-index: 99;
   width: 100%;
@@ -443,6 +458,7 @@ export default {
         border: 10px solid $color-white;
         box-sizing: border-box;
         margin: auto;
+        align-items: center;
         .product-item-icon-container {
           width: 80px;
         }
@@ -494,7 +510,6 @@ export default {
 .steps-summary {
   font-size: 1.3em;
   font-family: 'Karla-Italic';
-  margin-top: 280px;
 }
 
 .steps-summary-separator {

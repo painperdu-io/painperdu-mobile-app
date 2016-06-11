@@ -1,5 +1,5 @@
 <template>
-  <div class="member-profile-container animated" transition="moveHorizontal" transition-mode="in-out">
+  <div class="member-profile-container animated" transition="slide" transition-mode="in-out">
     <div class="app-icon-container">
       <svg viewBox="0 0 50 50" class="app-icon">
         <use xlink:href="#header-icon-flag"></use>
@@ -74,6 +74,7 @@ export default {
 @import './../../styles/variables.scss';
 
 .member-profile-container {
+  position: relative;
   margin-top: 40px;
 }
 

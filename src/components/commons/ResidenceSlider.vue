@@ -1,6 +1,6 @@
 <template>
   <div class="residence-slider-container">
-    <div class="residence-slider-item animated slideInDown" v-link="{ name: 'DetailsMarketLocation', params: { id: market._id }}">
+    <div class="residence-slider-item" :class="{ 'animated slideInDown': animate }">
       <div class="residence-slider-image">
         <img :src="market.foodkeeper.picture" />
       </div>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ['market'],
+  props: ['market','animate'],
 };
 </script>
 
