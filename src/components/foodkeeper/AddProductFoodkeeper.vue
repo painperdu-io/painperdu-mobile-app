@@ -6,11 +6,13 @@
           <button class="btn btn-more" v-on:click="increment">+</button>
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>
-        <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
-          <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
-            <use xlink:href="#foods-icon-{{ form.icon }}"></use>
-          </svg>
-          <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
+        <div class="foodkeeper-add-product-form1-add-icon-bg {{form.type}}" v-on:click="addPicto">
+          <div v-if="form.icon" class="product-item-icon-container">
+            <svg  viewBox="0 0 100 100" class="product-item-icon animated pulse">
+              <use xlink:href="#foods-icon-{{ form.icon }}"></use>
+            </svg>
+          </div>
+          <span v-else class="foodkeeper-add-product-form1-add-icon-text">+</span>
           <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
           <div class="product-item-quantity">{{ form.quantity }}</div>
         </div>
@@ -139,7 +141,7 @@ export default {
     return {
       foodkeepers: [],
       form: {
-        icon: '',
+        icon: 'banane',
         name: '',
         description: '',
         type: true,
@@ -178,6 +180,14 @@ export default {
     flex-direction: column;
   }
 
+    .product-item-icon-container{
+      transform: scale(0.8);
+    }
+
+    .product-item-icon{
+        animation-iteration-count: infinite;
+    }
+
     .foodkeeper-add-product-form1-add-icon {
       display: flex;
       justify-content: center;
@@ -195,6 +205,15 @@ export default {
         height: 115px;
         background: $color-white;
         border-radius: 50%;
+        border: 10px solid $color-white;
+
+        &.raw {
+          background: url('/static/img/product-raw.png') center center no-repeat $color-white;
+        }
+
+        &.homemade {
+          background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
+        }
       }
 
       .foodkeeper-add-product-form1-add-icon-text {
@@ -269,7 +288,6 @@ export default {
         position: absolute;
         top: 0;
         left: 25px;
-        width: 100%;
       }
     }
 
