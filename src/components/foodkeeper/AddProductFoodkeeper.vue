@@ -62,7 +62,7 @@
     </div>
   </div>
   <validation destination="Market" add="Product"></validation>
-  <addPicto></addPicto>
+  <add-picto></add-picto>
 
 
 </template>
