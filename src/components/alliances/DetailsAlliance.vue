@@ -280,10 +280,8 @@ export default {
           // une fois noté, l'alliance est terminé
           const terminated = JSON.stringify({ status: 'terminated' });
           this.$http.put(`alliances/${allianceId}`, terminated, { emulateJSON: true })
+            .then(() => this.$route.router.go({ name: 'Alliances' }))
             .catch(err => console.log(err));
-
-          // on redirige sur les alliances
-          this.$route.router.go({ name: 'Alliances' });
         })
         .catch(err => console.log(err));
     },
