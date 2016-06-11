@@ -1,6 +1,6 @@
 <template>
   <div v-if="products.length" class="products-container">
-    <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'name' ">
+    <template v-for="product in products | filterBy search in 'name' | filterBy type in 'type' | orderBy 'emergency' | orderBy 'name'  ">
       <div class="product-item-wrapper animated bounceIn" :class="{ 'inactive': !product.available }" v-link="{ name: 'ProductMarket', params: { id: product._id }}">
         <div class="product-item-circle {{ product.type }}">
           <div class="product-item-icon-container">
@@ -44,6 +44,7 @@ export default {
 .products-container {
   text-align: center;
   margin: 20px 0;
+  overflow-y: scroll;
 }
 
   @keyframes fadeIn {
