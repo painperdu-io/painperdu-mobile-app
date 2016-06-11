@@ -1,56 +1,66 @@
 <template transition="popIn">
-  <div class="add-picto-popup-container">
-    <h3 class="add-picto-popup-title">Choix de la denrée</h3>
-    <div class="popup-title-separator"></div>
-    <div class="add-picto-accomplice-text">
-      <p>Choisis l'illustration de la denrée que <span class="underline"></span><br /></p>
-      <p>tu souhaites partager<span class="underline"></span></p>
-    </div>
-    <div class="add-picto-wrapper">
-      <div class="add-picto-search">
-        <svg viewBox="0 0 100 100" class="add-picto-search-icon  add-picto-search-icon-left">
-          <use xlink:href="#app-icon-search"></use>
-        </svg>
-        <svg viewBox="0 0 100 100" class="add-picto-search-icon  add-picto-search-icon-right">
+  <template>
+    <div class="add-picto-popup-overlay"></div>
+    <div class="add-picto-popup-container">
+      <div class="add-picto-popup-close" v-on:click="closePopup">
+        <svg viewBox="0 0 100 100" class="app-icon">
           <use xlink:href="#app-icon-close"></use>
         </svg>
-        <input placeholder="Nom du produit..." v-model="search" />
       </div>
 
-      <div v-if="!filteredFoods.length" class="categories-container" >
-       <div class="add-picto-accomplice-subtitle">
-        <p>Sapristi ! Pain Perdu ne connaitrait<br /> pas cette mystérieuse denrée...</p>
-      </div>
-       <div class="add-picto-accomplice-text">
-         <p>Mais tu peux choisir la catégorie de<span class="underline"></span><br /></p>
-         <p>ton produit dans la liste ci-dessous : <span class="underline"></span></p>
-       </div>
-       <div class="categories-wrapper">
-         <template v-for="category in categories | orderBy 'name' ">
-           <div class="category-item-wrapper">
-             <input id="{{ category.shortName }}" class="category-item-input" type="radio" value="{{ category.shortName }}" v-model="selectedCategory">
-             <label for="{{ category.shortName }}" class="category-item-label">{{ category.longName }}</label>
-           </div>
-         </template>
-       </div>
-      </div>
-
-      <div v-else class="pictos-container">
-        <template v-for="picto in pictos | filterBy search in 'name' | orderBy 'name' ">
-          <div class="picto-item-wrapper">
-            <input id="{{ picto.name }}" class="picto" type="radio" value="{{ picto.name }}" v-model="selectedFood">
-            <label for="{{ picto.name }}" class="picto-item-container">
-              <svg viewBox="0 0 100 100" class="picto-item-icon">
-                <use xlink:href="#foods-icon-{{ picto.name }}"></use>
-              </svg>
-            </label>
+      <div class="add-picto-popup-wrapper">
+        <h3 class="add-picto-popup-title">Choix de la denrée</h3>
+        <div class="add-picto-popup-title-separator"></div>
+        <div class="add-picto-accomplice-text">
+          <p>Choisis l'illustration de la denrée que <span class="underline"></span><br /></p>
+          <p>tu souhaites partager<span class="underline"></span></p>
+        </div>
+        <div class="add-picto-wrapper">
+          <div class="add-picto-search">
+            <svg viewBox="0 0 100 100" class="add-picto-search-icon  add-picto-search-icon-left">
+              <use xlink:href="#app-icon-search"></use>
+            </svg>
+            <svg viewBox="0 0 100 100" class="add-picto-search-icon  add-picto-search-icon-right">
+              <use xlink:href="#app-icon-close"></use>
+            </svg>
+            <input placeholder="Nom du produit..." v-model="search" />
           </div>
-        </template>
 
+          <div v-if="!filteredFoods.length" class="categories-container" >
+           <div class="add-picto-accomplice-subtitle">
+            <p>Sapristi ! Pain Perdu ne connaitrait<br /> pas cette mystérieuse denrée...</p>
+          </div>
+           <div class="add-picto-accomplice-text">
+             <p>Mais tu peux choisir la catégorie de<span class="underline"></span><br /></p>
+             <p>ton produit dans la liste ci-dessous : <span class="underline"></span></p>
+           </div>
+           <div class="categories-wrapper">
+             <template v-for="category in categories | orderBy 'name' ">
+               <div class="category-item-wrapper">
+                 <input id="{{ category.shortName }}" class="category-item-input" type="radio" value="{{ category.shortName }}" v-model="selectedCategory">
+                 <label for="{{ category.shortName }}" class="category-item-label">{{ category.longName }}</label>
+               </div>
+             </template>
+           </div>
+          </div>
+
+          <div v-else class="pictos-container">
+            <template v-for="picto in pictos | filterBy search in 'name' | orderBy 'name' ">
+              <div class="picto-item-wrapper">
+                <input id="{{ picto.name }}" class="picto" type="radio" value="{{ picto.name }}" v-model="selectedFood">
+                <label for="{{ picto.name }}" class="picto-item-container">
+                  <svg viewBox="0 0 100 100" class="picto-item-icon">
+                    <use xlink:href="#foods-icon-{{ picto.name }}"></use>
+                  </svg>
+                </label>
+              </div>
+            </template>
+
+          </div>
+        </div>
+        <div class="add-picto-accomplice-button" v-on:click="addProductIcon">Ajouter</div>
       </div>
     </div>
-    <div class="add-picto-accomplice-button" v-on:click="addProductIcon">Ajouter</div>
-  </div>
 </template>
 
 <script>
@@ -111,8 +121,8 @@ export default {
     addProductIcon(event) {
       global.setIconAddProduct = this.selectedFood;
       event.preventDefault()
-      document.getElementsByClassName('popup-container')[0].classList.remove('active');
-      document.getElementsByClassName('popup-overlay')[0].classList.remove('active');
+      document.getElementsByClassName('add-picto-popup-popup-container')[0].classList.remove('active');
+      document.getElementsByClassName('add-picto-popup-popup-overlay')[0].classList.remove('active');
     }
   },
 };
@@ -129,7 +139,7 @@ export default {
   background: url('/static/img/separator-green.png') center center no-repeat;
 }
 
-.add-picto-popup-container {
+.add-picto-popup-wrapper {
   width: 100%;
 }
 

@@ -62,14 +62,19 @@
     </div>
   </div>
   <validation destination="Market" add="Product"></validation>
+  <addPicto></addPicto>
+
+
 </template>
 
 <script>
 import Validation from './../commons/popup/Validation'
+import AddPicto from './../commons/popup/AddPicto'
 
 export default {
   components : {
     Validation,
+    AddPicto
   },
   methods: {
     increment(event) {
@@ -84,8 +89,8 @@ export default {
       document.getElementById('foodkeepersSelect').click();
     },
     addPicto(event) {
-      document.getElementsByClassName('popup-container')[0].classList.add('active');
-      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+      document.getElementsByClassName('add-picto-popup-container')[0].classList.add('active');
+      document.getElementsByClassName('add-picto-popup-overlay')[0].classList.add('active');
       event.preventDefault()
     },
     callAddApi(event) {
