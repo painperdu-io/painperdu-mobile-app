@@ -8,7 +8,7 @@
         </div>
         <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
           <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
-            <use xlink:href="#foods-icon-{{ form.icon }}"></use>
+            <use id="product-item-icon-svguse" xlink:href="#foods-icon"></use>
           </svg>
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
           <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
