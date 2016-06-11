@@ -1,12 +1,12 @@
 <template>
   <div class="confirmation-popup-overlay"></div>
   <div class="confirmation-popup-container">
-    <div class="confirmation-popup-close" v-on:click="closeConfirmation()">
+    <div class="confirmation-popup-close" v-on:click="closePopup">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
     </div>
-    <div v-if="answerGiven" class="confirmation-popup-container-content">
+    <div v-if="userSelection" class="confirmation-popup-container-content">
       <h3 class="confirmation-popup-title">Parbleu !</h3>
       <div class="confirmation-popup-title-separator"></div>
       <div class="confirmation-popup-item-wrapper">
@@ -30,19 +30,21 @@
         </div>
       </div>
     </div>
-    <div class="confirmation-popup-redirect-button" v-on:click="closeConfirmation()">Proposer</div>
+    <div class="confirmation-popup-redirect-button" v-on:click="closePopup">Proposer</div>
   </div>
 </template>
 
 <script>
 export default {
-  props:['answer'],
+  props:['userSelection', 'updateAlliance'],
   methods: {
-    closeConfirmation() {
+    closePopup() {
+      event.preventDefault();
       document.getElementsByClassName('confirmation-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('confirmation-popup-overlay')[0].classList.remove('active');
-      update();
-      event.preventDefault()
+
+      // on met à jour les alliances
+      this.updateAlliance();
     }
   }
 };

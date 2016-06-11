@@ -1,7 +1,7 @@
 <template>
   <div class="slot-popup-overlay"></div>
   <div class="slot-popup-container">
-    <div class="slot-popup-close" v-on:click="closeSlot()">
+    <div class="slot-popup-close" v-on:click="closePopup">
       <svg viewBox="0 0 100 100" class="app-icon">
         <use xlink:href="#app-icon-close"></use>
       </svg>
@@ -23,7 +23,6 @@
           </div>
 
       </div>
-  
       <div v-else class="slot-popup-item-wrapper">
         <div class="slot-popup-item">
           <div class="slot-popup-item-text-wrapper">
@@ -44,7 +43,7 @@
           </div>
       </div>
     </div>
-    <div class="slot-popup-redirect-button" v-on:click="closeSlot()">Proposer</div>
+    <div class="slot-popup-redirect-button" v-on:click="closePopup">Proposer</div>
   </div>
 </template>
 
@@ -52,7 +51,7 @@
 export default {
   props:['ask'],
   methods: {
-    closeSlot(event) {
+    closePopup(event) {
       document.getElementsByClassName('slot-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('slot-popup-overlay')[0].classList.remove('active');
       event.preventDefault()
