@@ -1,18 +1,18 @@
 <template>
-  <div class="foodkeeper-add-product-container animated" transition="slide" transition-mode="in-out">
+  <div class="foodkeeper-add-product-container">
     <div class="foodkeeper-add-product-form1-wrapper">
       <div class="foodkeeper-add-product-form1-add-icon">
         <div class="controls-quantity">
           <button class="btn btn-more" v-on:click="increment">+</button>
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>
-        <div class="foodkeeper-add-product-form1-add-icon-bg " v-on:click="addPicto">
-          <div v-if="form.icon" class="product-item-icon-container">
-            <svg  viewBox="0 0 100 100" class="product-item-icon animated pulse">
-              <use xlink:href="#foods-icon-{{ form.icon }}"></use>
+        <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
+          <div class="product-item-icon-container">
+            <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
+              <use id="product-item-icon-svguse" xlink:href=""></use>
             </svg>
           </div>
-          <span v-else class="foodkeeper-add-product-form1-add-icon-text">+</span>
+          <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
           <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
           <div class="product-item-quantity">{{ form.quantity }}</div>
         </div>
@@ -65,8 +65,6 @@
   </div>
   <validation destination="Market" add="Product"></validation>
   <add-picto></add-picto>
-
-
 </template>
 
 <script>
@@ -141,7 +139,7 @@ export default {
     return {
       foodkeepers: [],
       form: {
-        icon: 'banane',
+        icon: '',
         name: '',
         description: '',
         type: true,
@@ -181,6 +179,7 @@ export default {
   }
 
     .product-item-icon-container{
+      position: relative;
       transform: scale(0.8);
     }
 
@@ -217,6 +216,10 @@ export default {
       }
 
       .foodkeeper-add-product-form1-add-icon-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
         text-align: center;
         font: 3em 'Karla-Regular', sans-serif;
         color: $color-red;

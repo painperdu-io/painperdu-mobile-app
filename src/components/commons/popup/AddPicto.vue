@@ -122,6 +122,7 @@ export default {
       event.preventDefault()
       document.getElementsByClassName('add-picto-popup-container')[0].classList.remove('active'); 
       document.getElementsByClassName('add-picto-popup-overlay')[0].classList.remove('active');
+      document.getElementById('product-item-icon-svguse').setAttribute('xlink:href','#foods-icon-' + this.selectedFood);
     }
   },
 };
