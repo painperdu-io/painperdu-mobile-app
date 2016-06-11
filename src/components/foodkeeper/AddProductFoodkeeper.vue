@@ -74,7 +74,7 @@ import AddPicto from './../commons/popup/AddPicto'
 export default {
   components : {
     Validation,
-    AddPicto
+    AddPicto,
   },
   methods: {
     increment(event) {
