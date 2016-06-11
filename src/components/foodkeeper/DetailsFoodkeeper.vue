@@ -1,7 +1,7 @@
 <template>
-  <div class="foodkeeper-details-container animated" transition="moveHorizontal" transition-mode="in-out">
+  <div class="foodkeeper-details-container animated bounceInRight" v-touch:swiperight="loadFoodkeeperListing('bounceOutRight')">
     <div class="foodkeeper-details-item-wrapper">
-      <div class="foodkeeper-details-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
+      <div class="foodkeeper-details-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }" ></div>
       <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
         <use xlink:href="#app-icon-star"></use>
       </svg>
@@ -14,7 +14,7 @@
       <members-list :members="accomplices" type="accomplice" add="true"></members-list>
     </div>
     <tabs-navigation :objectid="$route.params.id" route="DetailsFoodkeeper"></tabs-navigation>
-    <router-view class="animated" transition="moveHorizontal" transition-mode="out-in"></router-view>
+    <router-view class="router-view animated" transition="slide" transition-mode="out-in"></router-view>
   </div>
 </template>
 
@@ -32,6 +32,22 @@ export default {
       foodkeeper: {},
       accomplices: [],
     };
+  },
+  methods: {
+    loadFoodkeeperListing(transition){
+      console.log(transition);
+      var el = document.getElementsByClassName('foodkeeper-details-container')[0];
+      if (el.classList.contains('animated') ) {
+        el.classList.remove('animated');
+      }
+      if (el.classList.contains(transition) ) {
+        el.classList.remove(transition);
+      } else {
+        el.classList.add('animated');
+        el.classList.add(transition);
+      }
+      setTimeout(() => this.$route.router.go({ name: 'Foodkeeper'}), 1000);
+    }
   },
   ready() {
     const foodkeeperId = this.$route.params.id;
@@ -58,6 +74,7 @@ export default {
   flex-direction: column;
   flex: 1 100%;
   position: relative;
+  min-height: 667px;
 }
 
   .foodkeeper-details-item-wrapper {
@@ -151,4 +168,5 @@ export default {
         z-index: -1;
       }
     }
+
 </style>

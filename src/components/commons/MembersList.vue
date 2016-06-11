@@ -1,13 +1,13 @@
 <template>
   <div class="members-container {{type}}s-container">
     <template v-for="(index, member) in members">
-      <div v-if="type == 'ally'" class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
+      <div v-if="type == 'ally'" class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }, append: true}">
         <div class="members-name">{{ member.name.first }}</div>
         <div class="members-image">
           <img :src="member.picture"/>
         </div>
       </div>
-      <div v-else class="members-item accomplice-item" v-link="{ name: 'MemberProfile', params: { id: member._id }}">
+      <div v-else class="members-item accomplice-item" v-on:click="loadProfile('MemberProfile',member._id)" >
         <div v-if="index < 4" class="members-image">
           <img :src="member.picture"/>
         </div>
@@ -29,8 +29,12 @@ export default {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault()
+    },
+    loadProfile(destination, member){
+      console.log(destination + " et " + member);
+      this.$route.router.go({ name: destination, params: { id: member }, append: true });
     }
-  }
+  },
 };
 </script>
 
@@ -64,11 +68,10 @@ export default {
     &.accomplice-item {
       border-radius: 50%;
       .members-image {
-        width: 55px;
-        height: 55px;
-        mask-image: none;
-        -webkit-mask-image: none;
-        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        mask-size: inherit;
+        -webkit-mask-size : inherit;
       }
     }
   }
@@ -87,6 +90,7 @@ export default {
       display: flex;
       width: 55px;
       height: 65px;
+      border-radius: 50%;
       justify-content: center;
       align-content: center;
       flex-direction: row;
@@ -98,7 +102,6 @@ export default {
       img {
         width: auto;
         height: 65px;
-        filter: grayscale(100%);
         mix-blend-mode: multiply;
       }
     }

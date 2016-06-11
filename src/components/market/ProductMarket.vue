@@ -1,5 +1,5 @@
 <template>
-  <div class="product-container animated" transition="moveHorizontal" transition-mode="in-out">
+  <div class="product-container animated" transition="slide" transition-mode="in-out">
     <div class="product-wrapper">
       <div class="product" :class="{ 'inactive': !product.available }">
         <div class="product-item-circle {{ product.type }}">
@@ -528,7 +528,7 @@ export default {
   .member-profile-wrapper {
     width: 100%;
     position: relative;
-    animation: float 1s infinite alternate;
+    animation: float 1s infinite linear alternate;
     text-align: center;
   }
 
@@ -536,8 +536,10 @@ export default {
     display: inline-block;
     width: 75px;
     height: 100px;
-    clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
-    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    mask-image: url('/static/img/blason-1.png');
+    -webkit-mask-image: url('/static/img/blason-1.png');
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
     background-color: $color-gray;
     overflow: hidden;
     img {

@@ -1,8 +1,8 @@
 <template>
-  <div class="alliances-container">
+  <div class="alliances-container animated fadeIn">
     <div class="alliances-list-product">
       <template v-for="alliance in alliances">
-        <div class="alliances-product-item {{ alliance.status }} {{ alliance.type }}" v-link="{ name: 'DetailsAlliance', params: { id: alliance._id }}">
+        <div class="alliances-product-item {{ alliance.status }} {{ alliance.type }}" v-link="{ name: 'DetailsAlliance', params: { id: alliance._id }}"  v-touch:swipeleft="loadAllianceDetails(alliance._id, 'slideOutLeft')">
           <div class="alliances-product-icon {{ alliance.product.type }}">
             <svg viewBox="0 0 100 100">
               <use xlink:href="#foods-icon-{{ alliance.product.icon }}"></use>
@@ -38,6 +38,17 @@ export default {
     this.$http({ url: `alliances/user/${global.currentUserId}`, method: 'GET' })
       .then((response) => this.alliances = response.data)
       .catch(err => console.log(err));
+  },
+  methods : {
+    loadAllianceDetails(allianceId, transition){
+      var el = event.target
+      if (el.classList.contains(transition) ) {
+        el.classList.remove(transition);
+      } else {
+        el.classList.add(transition);
+      }
+      setTimeout(() => this.$route.router.go({ name: 'DetailsAlliance', params: { id: allianceId }}), 1000);
+    }
   }
 };
 </script>

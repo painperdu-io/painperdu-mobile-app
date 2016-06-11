@@ -1,7 +1,7 @@
 <template>
-  <div class="foodkeeper-container">
+  <div class="foodkeeper-container animated fadeIn">
     <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}">
+      <div class="foodkeeper-item animated" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
         <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
           <use xlink:href="#app-icon-star"></use>
@@ -40,6 +40,17 @@ export default {
       show: true,
     };
   },
+  methods: {
+    loadFoodkeeperDetails(foodkeeperId, transition){
+      var el = event.target;
+      if (el.classList.contains(transition) ) {
+        el.classList.remove(transition);
+      } else {
+        el.classList.add(transition);
+      }
+      setTimeout(() => this.$route.router.go({ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeperId }}), 100);
+    }
+  },
   ready() {
     // récupérer la liste des foodkeepers
     this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })
@@ -51,6 +62,10 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
+
+.foodkeeper-container {
+  min-height:100vh;
+}
 
 .foodkeeper-item {
   position: relative;

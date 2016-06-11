@@ -1,13 +1,15 @@
 <template>
   <div class="market-details-container" >
-    <div class="app-icon-container">
+    <div class="app-icon-container animated fadeIn">
       <svg viewBox="0 0 50 50" class="app-icon">
         <use xlink:href="#app-icon-edit" ></use>
       </svg>
     </div>
     <residence-slider :market="market"></residence-slider>
-    <tabs-navigation :objectid="$route.params.id" route="DetailsMarket"></tabs-navigation>
-    <router-view class="animated" transition="moveHorizontal" transition-mode="out-in"></router-view>
+    <div class="animated slideInUp">
+      <tabs-navigation :objectid="$route.params.id" route="DetailsMarket"></tabs-navigation>
+      <router-view class="animated" transition="slide" transition-mode="out-in"></router-view>
+    </div>
   </div>
 </template>
 

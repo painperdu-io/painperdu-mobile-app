@@ -1,5 +1,5 @@
 <template>
-  <div class="markets-container" >
+  <div class="markets-container">
     <div v-if="markets.length" class="markets-slider">
       <div class="controls animated bounceIn">
         <div v-show="sliderControls" class="previous animated fadeIn" v-on:click="moveLeft">
@@ -15,9 +15,9 @@
       </div>
 
       <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveRight" v-touch:swiperight="moveLeft">
-        <residence-slider :market="market"></residence-slider>
+        <residence-slider :market="market" :animate="true" v-on:click="loadMarketDetails(market._id)"></residence-slider>
 
-        <div class="market-products-wrapper">
+        <div class="market-products-wrapper animated">
           <div class="market-products-search">
             <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
               <use xlink:href="#app-icon-search"></use>
@@ -102,6 +102,15 @@ export default {
         .then(response => this.products = response.data)
         .catch(err => console.log(err));
     },
+    loadMarketDetails(marketId){
+      var el = document.getElementsByClassName('market-products-wrapper')[0];
+      if (el.classList.contains('slideOutDown') ) {
+        el.classList.remove('slideOutDown');
+      } else {
+        el.classList.add('slideOutDown');
+      }
+      setTimeout(() => this.$route.router.go({ name: 'DetailsMarketLocation', params: { id: marketId }}), 1000);
+    }
   },
   data() {
     return {
@@ -134,7 +143,9 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
-.markets-container {}
+.markets-container {
+  min-height:100vh;
+}
 
   .market-products-wrapper {
     text-align: center;
