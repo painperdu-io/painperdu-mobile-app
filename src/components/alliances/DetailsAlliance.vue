@@ -178,11 +178,11 @@ export default {
     allianceRequest(response) {
       if (response) {
         console.log(' request --> OUI');
-            openConfirmation();
+            this.openConfirmation();
       } else {
         console.log(' request --> NON');
         // --> proposition créneau horraire
-            openSlot();
+            this.openSlot();
       }
 
       this.$route.router.go({ name: 'Alliances' })
@@ -195,7 +195,7 @@ export default {
         console.log('  request --> NON');
         this.answerGiven = false;
       }
-      openConfirmation();
+      this.openConfirmation();
 
       this.$route.router.go({ name: 'Alliances' })
     },
@@ -207,13 +207,13 @@ export default {
         console.log('  request --> NON');
         this.answerGiven = false;
       }
-      openConfirmation();
+      this.openConfirmation();
 
       this.$route.router.go({ name: 'Alliances' })
     },
     allianceReview() {
       console.log('ALLIANCE REVIEW');
-        openConfirmation();
+        this.openConfirmation();
 
       console.log(this.form.review);
 
