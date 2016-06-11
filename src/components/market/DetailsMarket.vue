@@ -6,7 +6,7 @@
       </svg>
     </div>
     <residence-slider :market="market"></residence-slider>
-    <div class="animated slideInUp">
+    <div class="market-tabs-wrapper animated slideInUp" v-touch:swipedown="loadMarketListing('slideOutDown')">
       <tabs-navigation :objectid="$route.params.id" route="DetailsMarket"></tabs-navigation>
       <router-view class="animated" transition="slide" transition-mode="out-in"></router-view>
     </div>
@@ -34,6 +34,17 @@ export default {
     this.$http({ url: `markets/${marketId}`, method: 'GET' })
       .then(response => this.market = response.data)
       .catch(err => console.log(err));
+  },
+  methods: {
+    loadMarketListing(transition){
+      var el = document.getElementsByClassName('market-tabs-wrapper')[0];
+      if (el.classList.contains(transition) ) {
+        el.classList.remove(transition);
+      } else {
+        el.classList.add(transition);
+      }
+      setTimeout(() => this.$route.router.go({ name: 'Market'}), 1000);
+    }
   }
 };
 </script>

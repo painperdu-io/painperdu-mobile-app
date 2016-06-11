@@ -14,10 +14,10 @@
         </div>
       </div>
 
-      <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveRight" v-touch:swiperight="moveLeft">
+      <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveRight" v-touch:swiperight="moveLeft" v-touch:swipedown="loadMarketDetails">
         <residence-slider :market="market" :animate="true" v-on:click="loadMarketDetails(market._id)"></residence-slider>
 
-        <div class="market-products-wrapper animated">
+        <div class="market-products-wrapper animated slideInUp">
           <div class="market-products-search">
             <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
               <use xlink:href="#app-icon-search"></use>
