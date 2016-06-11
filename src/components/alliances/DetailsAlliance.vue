@@ -163,7 +163,7 @@
     <!-- Produit échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'terminated'">
       <div class="steps-summary">
-        <template alliance.type == 'applicant'>
+        <template v-if="alliance.type == 'applicant'"">
           <h3>Hip Hip Hip Houra !</h3>
           Une étape de plus a été franchie dans la quête du Pain Perdu !
         </template>
