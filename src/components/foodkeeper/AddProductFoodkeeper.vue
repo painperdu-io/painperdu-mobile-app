@@ -7,9 +7,11 @@
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>
         <div class="foodkeeper-add-product-form1-add-icon-bg" v-on:click="addPicto">
-          <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
-            <use id="product-item-icon-svguse" xlink:href="#foods-icon"></use>
-          </svg>
+          <div class="product-item-icon-container">
+            <svg viewBox="0 0 100 100" class="product-item-icon animated pulse">
+              <use id="product-item-icon-svguse" xlink:href=""></use>
+            </svg>
+          </div>
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
           <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
           <div class="product-item-quantity">{{ form.quantity }}</div>
@@ -63,8 +65,6 @@
   </div>
   <validation destination="Market" add="Product"></validation>
   <add-picto></add-picto>
-
-
 </template>
 
 <script>
@@ -178,6 +178,15 @@ export default {
     flex-direction: column;
   }
 
+    .product-item-icon-container{
+      position: relative;
+      transform: scale(0.8);
+    }
+
+    .product-item-icon{
+        animation-iteration-count: infinite;
+    }
+
     .foodkeeper-add-product-form1-add-icon {
       display: flex;
       justify-content: center;
@@ -195,9 +204,22 @@ export default {
         height: 115px;
         background: $color-white;
         border-radius: 50%;
+        border: 10px solid $color-white;
+
+        &.raw {
+          background: url('/static/img/product-raw.png') center center no-repeat $color-white;
+        }
+
+        &.homemade {
+          background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
+        }
       }
 
       .foodkeeper-add-product-form1-add-icon-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
         text-align: center;
         font: 3em 'Karla-Regular', sans-serif;
         color: $color-red;
@@ -269,7 +291,6 @@ export default {
         position: absolute;
         top: 0;
         left: 25px;
-        width: 100%;
       }
     }
 
