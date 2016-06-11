@@ -35,7 +35,15 @@
         <!-- Demande envoyée -->
         <template v-if="alliance.request.completed && !alliance.availability.completed">
           <div class="steps-summary">
-            Ta requête à bien été envoyé à {{ alliance.users.giver.name.first }}
+            <fieldset class="step my-side">
+              <legend>
+                <svg viewBox="0 0 100 100" class="alliance-icon">
+                  <use xlink:href="#app-icon-helmet"></use>
+                </svg>
+              </legend>
+                <h3>Ta requête à bien été envoyé à {{ alliance.users.giver.name.first }} le :</h3>
+                <div class="date-day">{{ alliance.createdAt }}</div>
+            </fieldset>
           </div>
         </template>
 
