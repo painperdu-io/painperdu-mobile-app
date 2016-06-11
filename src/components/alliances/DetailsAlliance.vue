@@ -1,5 +1,5 @@
 <template>
-  <div class="alliance-details-container" >
+  <div class="alliance-details-container animated" transition="moveHorizontal" transition-mode="in-out" >
     <div class="alliance-summary">
       <div class="profile-container animated bounceInRight">
         <div class="profile-infos">
@@ -15,9 +15,11 @@
       </div>
       <div class="product animated bounceInLeft">
         <div class="product-item-circle {{ alliance.product.type }}">
-          <svg viewBox="0 0 100 100" class="foods-icon animated tada">
-            <use xlink:href="#foods-icon-{{ alliance.product.icon }}"></use>
-          </svg>
+          <div class="product-item-icon-container">
+            <svg viewBox="0 0 100 100" class="foods-icon animated pulse">
+              <use xlink:href="#foods-icon-{{ alliance.product.icon }}"></use>
+            </svg>
+          </div>
           <div class="product-quantity">{{ alliance.quantity }}</div>
         </div>
         <div class="product-name">{{ alliance.product.name }}</div>
@@ -441,8 +443,11 @@ export default {
         border: 10px solid $color-white;
         box-sizing: border-box;
         margin: auto;
-        .foods-icon {
+        .product-item-icon-container {
           width: 80px;
+        }
+        .foods-icon {
+          animation-iteration-count: infinite;
         }
         .product-quantity {
           position: absolute;

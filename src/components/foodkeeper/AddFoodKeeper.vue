@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-add-container">
+  <div class="foodkeeper-add-container animated" transition="slide" transition-mode="in-out">
     <div class="foodkeeper-add-image-wrapper" v-on:click="addPhoto">
       <div class="foodkeeper-add-image"></div>
       <div class="foodkeeper-add-image-icon">+</div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add-product-container animated" transition="slide" transition-mode="in-out">
     <div v-if="foodkeepers.length" class="market-add-container">
       <div class="market-add-form-wrapper">
         <div class="market-add-form-question">Quel garde-manger souhaitez-vous associer à ce clan ?</div>

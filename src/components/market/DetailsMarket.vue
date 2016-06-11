@@ -1,5 +1,5 @@
 <template>
-  <div class="market-details-container">
+  <div class="market-details-container" >
     <div class="app-icon-container">
       <svg viewBox="0 0 50 50" class="app-icon">
         <use xlink:href="#app-icon-edit" ></use>

@@ -120,7 +120,7 @@ export default {
     addProductIcon(event) {
       global.setIconAddProduct = this.selectedFood;
       event.preventDefault()
-      document.getElementsByClassName('add-picto-popup-container')[0].classList.remove('active');
+      document.getElementsByClassName('add-picto-popup-container')[0].classList.remove('active'); 
       document.getElementsByClassName('add-picto-popup-overlay')[0].classList.remove('active');
     }
   },

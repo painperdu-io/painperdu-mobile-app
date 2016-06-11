@@ -1,12 +1,12 @@
 <template>
-  <div class="foodkeeper-add-product-container">
+  <div class="foodkeeper-add-product-container animated" transition="slide" transition-mode="in-out">
     <div class="foodkeeper-add-product-form1-wrapper">
       <div class="foodkeeper-add-product-form1-add-icon">
         <div class="controls-quantity">
           <button class="btn btn-more" v-on:click="increment">+</button>
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>
-        <div class="foodkeeper-add-product-form1-add-icon-bg {{form.type}}" v-on:click="addPicto">
+        <div class="foodkeeper-add-product-form1-add-icon-bg " v-on:click="addPicto">
           <div v-if="form.icon" class="product-item-icon-container">
             <svg  viewBox="0 0 100 100" class="product-item-icon animated pulse">
               <use xlink:href="#foods-icon-{{ form.icon }}"></use>

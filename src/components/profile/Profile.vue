@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-container">
+  <div class="profile-container animated" transition="slide" transition-mode="in-out">
     <tabs-navigation :objectid="$route.params.id" route="UserProfile"></tabs-navigation>
     <router-view></router-view>
   </div>

@@ -46,13 +46,18 @@ Vue.transition('fade', {
 })
 
 Vue.transition('moveHorizontal', {
-  enterClass: 'bounceInUp',
-  leaveClass: 'bounceOutDown',
+  enterClass: 'bounceInRight',
+  leaveClass: 'bounceOutLeft',
 })
 
 Vue.transition('zoom', {
   enterClass: 'zoomIn',
   leaveClass: 'zoomOut',
+})
+
+Vue.transition('slide', {
+  enterClass: 'bounceInUp',
+  leaveClass: 'bounceOutDown',
 })
 
 // définition des routes de l'application
