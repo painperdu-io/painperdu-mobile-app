@@ -41,21 +41,29 @@
         <template v-if="alliance.request.completed && alliance.availability.completed && !alliance.exchange">
           <div class="steps-summary">
 
-            <div v-if="alliance.availability.accepted">
+            <div v-if="alliance.availability.giver || alliance.availability.applicant">
               Tu es un sacré vénard ! {{ alliance.users.giver.name.first }}
               est disponible pour le créneau:
-                {{ alliance.request.date }}
-                {{ alliance.request.timeStart }}
-                {{ alliance.request.timeEnd }}
+                <div v-if="alliance.availability.applicant">
+                  {{ alliance.availability.date }}
+                  {{ alliance.availability.timeStart }}
+                  {{ alliance.availability.timeEnd }}
+                </div>
+                <div v-else>
+                  {{ alliance.request.date }}
+                  {{ alliance.request.timeStart }}
+                  {{ alliance.request.timeEnd }}
+                </div>
 
               Tu le trouveras à l'adresse suivante:
-                {{ alliance.users.giver.location.street }}
-                {{ alliance.users.giver.location.zipcode }}
-                {{ alliance.users.giver.location.city }}
+                {{ foodkeeper.location.street }}
+                {{ foodkeeper.location.additional }}
+                {{ foodkeeper.location.zipcode }}
+                {{ foodkeeper.location.city }}
 
-              <div v-if="alliance.users.giver.location.infos">
+              <div v-if="foodkeeper.location.infos">
                 Voici des informations complèmentaires:
-                {{ alliance.users.giver.location.infos }}
+                {{ foodkeeper.location.infos }}
               </div>
 
             </div>
@@ -108,7 +116,7 @@
         <template v-if="alliance.request.completed && !alliance.availability.completed">
           <div class="steps-summary">
             Tu viens de recevoir une requête de {{ alliance.users.applicant.name.first }}
-
+            (ATTENTION WORDING !) GARDE MANGER --> {{ foodkeeper.name }}
             <div v-if="alliance.request.delayed">
               Pour la récupération de ta denrée, {{ alliance.users.applicant.name.first }}
               te propose le créneau suivant:
@@ -125,12 +133,19 @@
 
         <!-- Produit échangé -->
         <template v-if="alliance.request.completed && alliance.availability.completed && !alliance.exchange">
-          <div class="steps-summary">
-            As-tu donné la denrée desirée ?
+          <template v-if="alliance.availability.applicant || alliance.availability.giver">
+            <div class="steps-summary">
+              As-tu donné la denrée desirée ?
 
-            <div class="alliance-action-button" v-on:click="allianceExchange(true)">Oui</div>
-            <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
-          </div>
+              <div class="alliance-action-button" v-on:click="allianceExchange(true)">Oui</div>
+              <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="steps-summary">
+              En attante de la confirmation de la disponibilité du demandeur...
+            </div>
+          </template>
         </template>
 
         <!-- En attente d'évaluation -->
@@ -160,19 +175,21 @@
       </div>
     </template>
 
-    <!-- Popups-->
-    <slot-popup :ask="userAsk"></slot-popup>
-    <confirmation
+    <!-- popups-->
+    <slot-popup
+      :alliance-id="$route.params.id"
+      :update-alliance="updateCurrentAlliance">
+    </slot-popup>
+    <confirmation-popup
       :user-selection="userSelection"
       :update-alliance="updateCurrentAlliance">
-    </confirmation>
-
+    </confirmation-popup>
   </div>
 </template>
 
 <script>
 import Profile from './../commons/Profile'
-import Confirmation from './../commons/popup/Confirmation'
+import ConfirmationPopup from './../commons/popup/Confirmation'
 import SlotPopup from './../commons/popup/Slot'
 
 
@@ -180,7 +197,7 @@ export default {
   components: {
     Profile,
     SlotPopup,
-    Confirmation
+    ConfirmationPopup
   },
   methods: {
     allianceRequest(response) {
@@ -191,7 +208,7 @@ export default {
       // si oui, c'est terminé on affiche l'adresse au demandeur :)
       if (response) {
         this.openConfirmation();
-        const datas = JSON.stringify({ availability: { completed: true, accepted: true } });
+        const datas = JSON.stringify({ availability: { completed: true, giver: true } });
         this.$http.put(`alliances/${allianceId}`, datas, { emulateJSON: true })
           .catch(err => console.log(err));
       } else {
@@ -207,7 +224,8 @@ export default {
 
       // définir si le demandeur accepte le créneau horaire du donneur
       if (response) {
-        // TODO: AFFICHER ADRESSE + prevoir un enregistrerment pour determiner qu'il a accepté
+        this.$http.put(`alliances/${allianceId}/applicant/accepted`)
+          .catch(err => console.log(err));
       } else {
         // si non, on abandonne l'alliance
         const abandoned = JSON.stringify({ status: 'abandoned' });
@@ -231,23 +249,34 @@ export default {
             const abandoned = JSON.stringify({ status: 'abandoned' });
             this.$http.put(`alliances/${allianceId}`, abandoned, { emulateJSON: true })
               .catch(err => console.log(err));
+          } else {
+            // on met également à jour la quantité restante du produit
+            const product = JSON.stringify({ quantity: this.alliance.quantity });
+            this.$http.put(`products/${this.alliance.product._id}/quantity`, product, { emulateJSON: true })
+              .catch(err => console.log(err));
           }
         })
         .catch(err => console.log(err));
     },
     allianceReview() {
-      console.log('ALLIANCE REVIEW');
-        this.openConfirmation();
+      const allianceId = this.$route.params.id;
+      const datas = JSON.stringify({
+        note: this.form.review,
+        foodkeeper: this.foodkeeper._id,
+      });
 
-      console.log(this.form.review);
+      // ajouter une note pour le garde manger
+      this.$http.post(`reviews`, datas, { emulateJSON: true })
+        .then(() => {
+          // une fois noté, l'alliance est terminé
+          const terminated = JSON.stringify({ status: 'terminated' });
+          this.$http.put(`alliances/${allianceId}`, terminated, { emulateJSON: true })
+            .catch(err => console.log(err));
 
-      // --> terminated
-      //
-      // --> Supprimer produit éventuellement.
-      //
-      // --> Penser au notification et ajouter le status "new" dans la liste quand non lu
-
-      this.$route.router.go({ name: 'Alliances' });
+          // on redirige sur les alliances
+          this.$route.router.go({ name: 'Alliances' });
+        })
+        .catch(err => console.log(err));
     },
     openConfirmation() {
       // ouverture popup confirmation
@@ -256,8 +285,6 @@ export default {
     },
     openSlot() {
       // ouverture popup créneau horaire
-      console.log(document.getElementsByClassName('slot-popup-container'));
-      console.log(document.getElementsByClassName('slot-popup-container')[0]);
       document.getElementsByClassName('slot-popup-container')[0].classList.add('active');
       document.getElementsByClassName('slot-popup-overlay')[0].classList.add('active');
     },
@@ -269,15 +296,18 @@ export default {
         .then(response => {
           this.alliance = response.data;
 
+          // récupére le 1er foodkeeper associé au produit
+          this.$http({ url: `products/${this.alliance.product._id}`, method: 'GET' })
+            .then(response => this.foodkeeper = response.data.foodkeepers[0])
+            .catch(err => console.log(err));
+
           // on met à jour la date de lecture
           let datas;
           if (this.alliance.type == 'applicant') {
             this.$http({ url: `alliances/${allianceId}/read/applicant`, method: 'PUT' })
-              .then(response => {})
               .catch(err => console.log(err));
           } else {
             this.$http({ url: `alliances/${allianceId}/read/giver`, method: 'PUT' })
-              .then(response => {})
               .catch(err => console.log(err));
           }
         })
@@ -286,8 +316,8 @@ export default {
   },
   data() {
     return {
-      userAsk: false,
       userSelection: false,
+      foodkeeper: {},
       alliance: {
         type: '',
         product: {
@@ -318,6 +348,7 @@ export default {
     };
   },
   ready() {
+    // lorsque le componsant est prêt, mettre à jour les données
     this.updateCurrentAlliance();
   }
 };

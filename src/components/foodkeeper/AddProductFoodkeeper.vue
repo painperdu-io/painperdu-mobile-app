@@ -95,18 +95,14 @@ export default {
       if (!this.form.name) {
         document.getElementsByName('form-name')[0].classList.add('error');
       }
-      if (!this.form.description) {
-        document.getElementsByName('form-description')[0].classList.add('error');
-      }
-      if (!this.form.foodkeepers) {
+      if (!this.form.foodkeepers.length) {
         console.log('FOODKEEPERS VIDE !!!');
       }
 
       // si tout les champs sont remplis, on enregistre les données
       if (global.setIconAddProduct &&
           this.form.name &&
-          this.form.description &&
-          this.form.foodkeepers) {
+          this.form.foodkeepers.length) {
         // enregistrer les données dans la base
         this.form.icon = global.setIconAddProduct;
         const datas = JSON.stringify(this.form);
