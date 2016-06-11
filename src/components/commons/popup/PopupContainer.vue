@@ -40,7 +40,6 @@ export default {
     Tip,
     AddPhoto,
     AddBlason,
-    AddPicto,
   },
   methods: {
     closePopup: function () {
