@@ -23,7 +23,7 @@
           </div>
 
       </div>
-  Ò
+  
       <div v-else class="slot-popup-item-wrapper">
         <div class="slot-popup-item">
           <div class="slot-popup-item-text-wrapper">

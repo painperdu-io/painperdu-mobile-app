@@ -21,7 +21,7 @@
     <div v-else class="confirmation-popup-container-content">
       <h3 class="confirmation-popup-title">Diantre !</h3>
       <div class="confirmation-popup-title-separator"></div>
-      <div class="confirmation-popup-item-wrapper">
+      <div class="confirmation-popup-item-wrapper"> 
         <div  class="confirmation-popup-item">
           <div class="confirmation-popup-item-text-wrapper">
             <p class="confirmation-popup-item-text"><span class="underline"></span>Tout ceci s'annonce compliqué !<br /></p>

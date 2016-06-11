@@ -155,9 +155,9 @@
       </div>
     </template>
 
-    <!-- Popups--> 
-    <slot :ask="userAsk"></slot>
+    <!-- Popups-->
     <confirmation :answer="answerGiven"></confirmation>
+    <slot :ask="userAsk"></slot>
 
   </div>
 </template>
@@ -172,17 +172,17 @@ export default {
   components: {
     Profile,
     Slot,
-    Confirmation
+    Confirmation,
   },
   methods: {
     allianceRequest(response) {
       if (response) {
         console.log(' request --> OUI');
-            OpenConfirmation();
+            openConfirmation();
       } else {
         console.log(' request --> NON');
         // --> proposition créneau horraire
-            OpenSlot();
+            openSlot();
       }
 
       this.$route.router.go({ name: 'Alliances' })
@@ -195,7 +195,7 @@ export default {
         console.log('  request --> NON');
         this.answerGiven = false;
       }
-      OpenConfirmation();
+      openConfirmation();
 
       this.$route.router.go({ name: 'Alliances' })
     },
@@ -207,13 +207,13 @@ export default {
         console.log('  request --> NON');
         this.answerGiven = false;
       }
-      OpenConfirmation();
+      openConfirmation();
 
       this.$route.router.go({ name: 'Alliances' })
     },
     allianceReview() {
       console.log('ALLIANCE REVIEW');
-        OpenConfirmation();
+        openConfirmation();
 
       console.log(this.form.review);
 
