@@ -3,12 +3,21 @@
     <div class="product-wrapper">
       <div class="product" :class="{ 'inactive': !product.available }">
         <div class="product-item-circle {{ product.type }}">
-          <svg viewBox="0 0 100 100" class="foods-icon">
-            <use xlink:href="#foods-icon-{{ product.icon }}"></use>
-          </svg>
-          <svg class="product-quantity-circle" viewPort="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle class="product-quantity-circle-quantity" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
-          </svg>
+          <div class="product-item-icon-container">
+            <svg viewBox="0 0 100 100" class="foods-icon animated pulse">
+              <use xlink:href="#foods-icon-{{ product.icon }}"></use>
+            </svg>
+          </div>
+          <div>
+            <svg class="product-quantity-circle" viewPort="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="product-quantity-circle-quantity" r="55" cx="45" cy="45" fill="transparent" stroke-width="6" stroke-dasharray="345.575" stroke-dashoffset="276.46"></circle>
+              <g class="product-rotate">
+                <circle class="product-quantity-bubble" r="14" cx="45" cy="-10" stroke-width="0"></span></circle>
+                <text class="product-quantity-text" x="45" y="-6">{{ form.quantity }}</text>
+              </g>
+            </svg>
+            <div class="product-rotate product-item-quantity">{{ form.quantity }}</div>
+          </div>
           <div class="product-item-quantity">{{ form.quantity }}</div>
           <input id="product-item-count" number value="1" v-model="form.quantity" hidden>
         </div>
@@ -77,12 +86,12 @@
           Je veux récupérer ma demande plus tard.
         </label>
       </div>
-      <div v-if="form.delayed">
+      <div v-if="form.delayed" class="add-rdv-form-wrapper">
         <div class="add-rdv-form-item">
           <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" min="{{ datemin }}" v-model="date">
           <label for="date" class="add-rdv-form-item-label">Date</label>
         </div>
-        <div class="add-rdv-form-item">
+        <div class="add-rdv-form-item add-rdv-form-item-slot">
           <input for="heure-debut" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
           <label id="heure-debut" class="add-rdv-form-item-label">Créneau horaire</label>
           <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
@@ -140,8 +149,12 @@ export default {
       if (value < 0) { value = 0; }
       if (value > 100) { value = 100; }
 
-      const pct = ((100 - value) / 100) * (Math.PI * (90 * 2));
+      const pct = ((100 - value) / 100) * (Math.PI * (55 * 2));
+
       document.getElementsByClassName('product-quantity-circle-quantity')[0].setAttribute('stroke-dashoffset', pct);
+
+      const rotatedeg = value * 360 / 100
+      document.getElementsByClassName('product-rotate')[0].style.transform= 'rotate('+ rotatedeg +'deg)';
     },
     callAddApi(event) {
       event.preventDefault();
@@ -284,8 +297,11 @@ export default {
         border: 12px solid $color-white;
         box-sizing: border-box;
         z-index: 10;
-        .foods-icon {
+        .product-item-icon-container {
           transform: scale(0.8);
+        }
+        .foods-icon {
+          animation-iteration-count: infinite;
         }
       }
       .product-item-circle.raw {
@@ -294,6 +310,40 @@ export default {
 
       .product-item-circle.homemade {
         background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
+      }
+
+      .product-quantity-circle {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        overflow: inherit;
+        width: 91px;
+        height: 91px;
+      }
+
+      .product-quantity-circle-quantity {
+        transition: all linear 0.5s;
+        transform: rotate(-90deg);
+        transform-origin: center;
+      }
+
+      .product-quantity-bubble {
+        fill: $color-red;
+      }
+
+      .product-quantity-text {
+        position: absolute;
+        text-anchor: middle;
+        font-size: 1.3em;
+        font-family: 'Karla-Bold', sans-serif;
+        fill: $color-white;
+      }
+
+      .product-rotate{
+        position: relative;
+        transition: all linear 0.5s;
+        transform: rotate(72deg);
+        transform-origin: 45px 45px;
       }
 
       .product-item-quantity {
@@ -308,10 +358,7 @@ export default {
         color: $color-white;
         background: $color-red;
         border-radius: 50%;
-        animation-name: shake-item;
-        animation-iteration-count: 3;
-        animation-direction: alternate;
-        animation-delay: 2s;
+        display: none;
       }
 
 
@@ -322,7 +369,7 @@ export default {
         font-size: (3.6em / 2);
         font-family: 'IowanOldStyleBT-BlackItalic';
         font-weight: 300;
-        margin: (20px / 2) auto;
+        margin: 20px auto 10px;
       }
       &.inactive {
         filter: grayscale(100%);
@@ -400,7 +447,7 @@ export default {
       margin: 0 auto 20px;
       font-size: 1.3em;
       font-family: 'Karla-Bold';
-      font-weight: 700;
+      font-weight: 300;
       position: relative;
     }
 
@@ -447,7 +494,7 @@ export default {
     .product-infos-separator {
       width: 56px;
       height: 5px;
-      margin: 0 auto 30px;
+      margin: 0 auto 15px;
       transform: scale(0.5);
       background: url('/static/img/separator-green.png') center center no-repeat;
     }
@@ -544,12 +591,42 @@ export default {
     z-index: 3;
   }
 
+  .add-rdv-form-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 0 30px;
+  }
+
   .add-rdv-form-item {
     display: flex;
     flex-direction: column;
-    padding: 10px 30px;
+    padding: 10px 0px;
     position: relative;
     min-height: 45px;
+    padding-right: 10px;
+    flex: 1 65%;
+    &:first-child{
+      flex: 1 30%;
+    }
+  }
+
+  .add-rdv-form-item-slot {
+    position: relative;
+    min-height: 45px;
+    padding-right: 10px;
+    flex: 1 65%;
+    padding-bottom: 0px;
+    .add-rdv-form-item-input{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50%;
+      height: 45px;
+      &:first-child {
+        left: 0;
+        right: inherit;
+      }
+    }
   }
 
     .add-rdv-form-item-label {
@@ -562,7 +639,7 @@ export default {
 
     .add-rdv-form-item-input {
       margin-top: -5px;
-      padding-top: 15px;
+      padding-top: 20px;
       padding-bottom: 5px;
       font: 1.3em 'Karla-Regular', sans-serif;
       border: none;
