@@ -202,11 +202,15 @@ export default {
     }
   },
   ready() {
+
     const productId = this.$route.params.id;
 
     // récupérer un produit en fonction de son id
     this.$http({ url: `products/${productId}`, method: 'GET' })
-      .then((response) => this.product = response.data)
+      .then(response => {
+        this.product = response.data;
+        this.updateProductCircle();
+      })
       .catch(err => console.log(err));
   }
 };
@@ -331,7 +335,7 @@ export default {
       .product-rotate{
         position: relative;
         transition: all linear 0.5s;
-        transform: rotate(72deg);
+        transform: rotate(0deg);
         transform-origin: 45px 45px;
       }
 

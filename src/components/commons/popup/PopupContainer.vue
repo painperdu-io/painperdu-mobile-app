@@ -12,7 +12,6 @@
         <add-accomplice v-if="popup.addAccomplice"></add-accomplice>
         <add-photo v-if="popup.addPhoto"></add-photo>
         <add-blason v-if="popup.addBlason"></add-blason>
-        <add-picto v-if="popup.addPicto"></add-picto>
         <tip v-if="popup.tip"></tip>
       </template>
     </template>
@@ -26,7 +25,6 @@ import AddAccomplice from './AddAccomplicesFoodKeeper';
 import Tip from './Tip';
 import AddPhoto from './AddPhoto';
 import AddBlason from './AddBlason';
-import AddPicto from './AddPicto';
 import { popupsList } from './../../../vuex/getters';
 
 export default {
@@ -42,7 +40,6 @@ export default {
     Tip,
     AddPhoto,
     AddBlason,
-    AddPicto,
   },
   methods: {
     closePopup: function () {
