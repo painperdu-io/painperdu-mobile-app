@@ -154,7 +154,7 @@
     <!-- Produit non échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'abandoned'">
       <div class="steps-summary">
-        <h3>Diatre,</h3>
+        <h3>Diantre,</h3>
         votre alliance s'avère compliquée pour aujourd'hui,
         réessayer plus tard lorsque les conditions seront plus favorable !
       </div>
