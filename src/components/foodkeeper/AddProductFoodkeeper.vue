@@ -274,6 +274,7 @@ export default {
       font-style: italic;
       text-align-last: left;
       text-transform: capitalize;
+      font: 1em 'Karla-Bold', sans-serif;
       color: $color-white;
       padding-left: 25px;
       overflow: hidden;
@@ -286,7 +287,7 @@ export default {
         text-transform: capitalize;
         height: 40px;
         padding-top: 10px;
-        font: 1.4em 'Karla-Italic', sans-serif;
+        font: 1.5em 'Karla-Bold', sans-serif;
         background-color: $color-green-lite;
         position: absolute;
         top: 0;
@@ -317,7 +318,7 @@ export default {
         border: none;
         border-radius: 20px;
         box-sizing: border-box;
-        font: 1.5em 'Karla-Italic', sans-serif;
+        font: 1.5em 'Karla-Bold', sans-serif;
         color: $color-white;
         background: $color-green-lite;
 
