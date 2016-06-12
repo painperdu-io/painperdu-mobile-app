@@ -2,7 +2,7 @@
   <div class="members-container {{type}}s-container">
     <template v-for="(index, member) in members">
       <div v-if="type == 'ally'" class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }, append: true}">
-        <div class="members-image">
+        <div class="members-image  blason-{{ blason }}">
           <img :src="member.picture"/>
         </div>
       </div>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  props: ['members', 'type', 'add'],
+  props: ['members', 'type', 'add', 'blason'],
   methods: {
     addAccomplice(event) {
       document.getElementsByClassName('popup-container')[0].classList.add('active');
@@ -78,10 +78,10 @@ export default {
     &.ally-item {
       .members-image {
         width: 95px;
-        height: 95px;
+        height: 105px;
         border-radius: 0;
         img {
-          height: 95px;
+          height: 105px;
         }
       }
     }
@@ -95,10 +95,24 @@ export default {
       justify-content: center;
       align-content: center;
       flex-direction: row;
-      mask-image: url('/static/img/blason-1.png');
-      -webkit-mask-image: url('/static/img/blason-1.png');
       mask-size: 100% 100%;
       -webkit-mask-size: 100% 100%;
+      &.blason-1 {
+        mask-image: url('/static/img/blason-1.png');
+        -webkit-mask-image: url('/static/img/blason-1.png');
+      }
+      &.blason-2 {
+        mask-image: url('/static/img/blason-2.png');
+        -webkit-mask-image: url('/static/img/blason-2.png');
+      }
+      &.blason-3 {
+        mask-image: url('/static/img/blason-3.png');
+        -webkit-mask-image: url('/static/img/blason-3.png');
+      }
+      &.blason-4 {
+        mask-image: url('/static/img/blason-4.png');
+        -webkit-mask-image: url('/static/img/blason-4.png');
+      }
 
       img {
         width: auto;

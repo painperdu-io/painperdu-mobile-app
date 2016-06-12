@@ -204,8 +204,8 @@ export default {
     label {
       position: relative;
       display: inline-block;
-      width: 40px;
-      height: 20px;
+      width: 45px;
+      height: 25px;
       margin: 0 auto;
       transition: 0.3s;
       box-sizing: border-box;
