@@ -270,7 +270,7 @@ export default {
           padding: 10px;
           height: 40px;
           border: 2px solid $color-white;
-          border-radius: 15px;
+          border-radius: 50px;
           font: 1.15em 'Karla-Bold', sans-serif;
           color: $color-text;
           text-transform: uppercase;
@@ -473,7 +473,7 @@ export default {
       width: 60%;
       transform: translate3d(-50%,-50%,0);
       padding: 5px 10px;
-      border-radius: 15px;
+      border-radius: 50px;
       z-index: 0;
     }
 

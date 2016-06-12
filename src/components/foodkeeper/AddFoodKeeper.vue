@@ -213,7 +213,7 @@ input {
       width: 260px;
 
       input {
-        padding: 0 55px 0 25px;
+        padding: 0 25px 0 25px;
         width: 100%;
         height: 40px;
         border: none;
