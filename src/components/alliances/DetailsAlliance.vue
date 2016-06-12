@@ -604,9 +604,9 @@ export default {
         text-transform: capitalize;
         font-style: italic;
         color: $color-red;
-        font-size: 1.8em;
-        font-family: 'IowanOldStyleBT-BlackItalic';
-        font-weight: 700;
+        font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
+        text-transform: capitalize;
+        color: $color-red;
         margin: 10px auto;
         text-align: center;
       }
