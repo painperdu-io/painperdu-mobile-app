@@ -10,7 +10,7 @@
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
           <p class="legend">Nombre d'échanges</p>
-          <p class="value">8</p>
+          <p class="value">profile.score</p>
           <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item">
