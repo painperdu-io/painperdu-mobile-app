@@ -1,5 +1,5 @@
 <template>
-  <div class="alliances-container animated fadeIn">
+  <div class="alliances-container>
     <div class="alliances-list-product">
       <template v-for="alliance in alliances">
         <div class="alliances-product-item {{ alliance.status }} {{ alliance.type }}" v-link="{ name: 'DetailsAlliance', params: { id: alliance._id }}"  v-touch:swipeleft="loadAllianceDetails(alliance._id, 'slideOutLeft')">
@@ -59,7 +59,7 @@ export default {
 .alliances-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: -1px 0;
 }
