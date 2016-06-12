@@ -53,65 +53,108 @@
 
             <div v-if="alliance.availability.giver || alliance.availability.applicant">
                 <div v-if="alliance.availability.applicant">
-                  {{ alliance.users.giver.name.first }}
-                  est disponible pour le créneau:
-                  {{ alliance.availability.date }}
-                  {{ alliance.availability.timeStart }}
-                  {{ alliance.availability.timeEnd }}
+                  <fieldset class="step my-side">
+                    <legend>
+                      <svg viewBox="0 0 100 100" class="alliance-icon">
+                        <use xlink:href="#app-icon-helmet"></use>
+                      </svg>
+                    </legend>
+                      <h3>{{ alliance.users.giver.name.first }} est <br />
+                        disponible pour le créneau : </h3>
+                      <div class="date-hours">Entre {{ alliance.availability.timeStart }} et {{ alliance.availability.timeEnd }}</div>
+                      <span class="date-day">le {{ alliance.availability.date }}</span>
+                  </fieldset>
                 </div>
                 <div v-else>
-                  Tu es un sacré vénard ! {{ alliance.users.giver.name.first }}
-                  est disponible pour le créneau:
-                  {{ alliance.request.date }}
-                  {{ alliance.request.timeStart }}
-                  {{ alliance.request.timeEnd }}
+                  <fieldset class="step my-side">
+                    <legend>
+                      <svg viewBox="0 0 100 100" class="alliance-icon">
+                        <use xlink:href="#app-icon-helmet"></use>
+                      </svg>
+                    </legend>
+                      <h3>Tu es un sacré vénard ! {{ alliance.users.giver.name.first }} <br />
+                      est disponible pour le créneau:</h3>
+                      <div class="date-hours">Entre {{ alliance.request.timeStart }} et {{ alliance.request.timeEnd }}</div>
+                      <span class="date-day">{{ alliance.request.date }}</span>
+                  </fieldset>
+
                 </div>
 
-              Tu le trouveras à l'adresse suivante:
-                {{ foodkeeper.location.street }}
-                {{ foodkeeper.location.additional }}
-                {{ foodkeeper.location.zipcode }}
-                {{ foodkeeper.location.city }}
+                <div class="user-address">
+                  Tu le trouveras à l'adresse suivante:<br>
+                  <span class="user-address-details">  {{ foodkeeper.location.street }}<br>
+                  {{ foodkeeper.location.additional }}<br>
+                  {{ foodkeeper.location.zipcode }} {{ foodkeeper.location.city }}</span>
+                </div>
 
               <div v-if="foodkeeper.location.infos">
-                Voici des informations complèmentaires:
-                {{ foodkeeper.location.infos }}
+                <div class="user-address">
+                  Voici des informations complèmentaires:
+                  {{ foodkeeper.location.infos }}
+                </div>
               </div>
 
             </div>
             <div v-else>
-              Fichtre, {{ alliance.users.giver.name.first }} n'est pas disponible
-              <template v-if="alliance.request.delayed">pour le créneau horaire que tu lui a indiqué</template>
-              <template v-else>maintenant</template>
 
-              <br />
-              Mais il te propose le créneau horaire suivant:
-                {{ alliance.availability.date }}
-                {{ alliance.availability.timeStart }}
-                {{ alliance.availability.timeEnd }}
+              <fieldset class="step user-side">
+                <legend>
+                  <svg viewBox="0 0 100 100" class="alliance-icon">
+                    <use xlink:href="#app-icon-bugle"></use>
+                  </svg>
+                </legend>
+                <form>
+                  <h3>  Fichtre,</h3>
+                  {{ alliance.users.giver.name.first }} n'est pas disponible
+                    <template v-if="alliance.request.delayed"><br /> pour le créneau horaire que tu lui a indiqué</template>
+                    <template v-else>maintenant</template>
+                    <br />
+                    <h3>Mais il te propose l'horaire suivant:</h3>
+                  <div class="multiple-dates">
+                    <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
+                    <label for="date-1" >
+                      <div class="date-hours">Entre {{ alliance.availability.timeStart }} et
+                      {{ alliance.availability.timeEnd }}</div>
+                      <span class="date-day">le {{ alliance.availability.date }}</span>
+                    </label>
 
-              <br />
-              Ce créneau te convient-il ?
-              <div class="alliance-action-button" v-on:click="allianceAvailability(true)">Oui</div>
-              <div class="alliance-action-button" v-on:click="allianceAvailability(false)">Non</div>
+                  </div>
+                </form>
+              </fieldset>
+              <fieldset class="step final-step">
+                <form>
+                  <svg viewBox="0 0 100 100" class="alliance-icon">
+                    <use xlink:href="#app-icon-note"></use>
+                  </svg>
+                  <h3>Ce créneau te convient-il ? </h3>
+                  <div class="alliance-action-button" v-on:click="allianceAvailability(true)">Oui</div>
+                  <div class="alliance-action-button" v-on:click="allianceAvailability(false)">Non</div>
+                </form>
+              </fieldset>
             </div>
           </div>
         </template>
 
         <template v-if="alliance.request.completed && alliance.availability.completed && alliance.exchange">
           <div class="steps-summary">
-            Qu'à tu pensé de cette alliance ?
-            Elle était :
-
-            <select class="market-add-form-select" v-model="form.review">
-                <option value="0">Naze</option>
-                <option value="1">Bof</option>
-                <option value="2">Ça va</option>
-                <option value="3" selected>Passable</option>
-                <option value="4">Bien</option>
-                <option value="5">Très bien</option>
-                <!-- MARION côté back: DE 0 à 5 uniquement !!!! -->
-            </select>
+            <fieldset class="step final-step">
+                <svg viewBox="0 0 100 100" class="alliance-icon">
+                  <use xlink:href="#app-icon-note"></use>
+                </svg>
+                <h3>
+                  Qu'as tu pensé de cette alliance ? <br>
+                  Elle était :
+                </h3>
+                <select class="market-add-form-select" v-model="form.review">
+                    <option value="0">Naze</option>
+                    <option value="1">Bof</option>
+                    <option value="2">Ça va</option>
+                    <option value="3" selected>Passable</option>
+                    <option value="4">Bien</option>
+                    <option value="5">Très bien</option>
+                    <!-- MARION côté back: DE 0 à 5 uniquement !!!! -->
+                </select>
+            </fieldset>
 
             <div class="alliance-action-button" v-on:click="allianceReview">Valider</div>
           </div>
@@ -127,16 +170,30 @@
         <!-- Nouvelle demande -->
         <template v-if="alliance.request.completed && !alliance.availability.completed">
           <div class="steps-summary">
-            Tu viens de recevoir une requête de {{ alliance.users.applicant.name.first }}
-            (ATTENTION WORDING !) GARDE MANGER --> {{ foodkeeper.name }}
-            <div v-if="alliance.request.delayed">
-              Pour la récupération de ta denrée, {{ alliance.users.applicant.name.first }}
-              te propose le créneau suivant:
-              {{ alliance.request.date }}
-              {{ alliance.request.timeStart }}
-              {{ alliance.request.timeEnd }}
-            </div>
-            <div v-else>Es-tu disponible dès maintenant ?</div>
+            <fieldset class="step user-side">
+              <legend>
+                <svg viewBox="0 0 100 100" class="alliance-icon">
+                  <use xlink:href="#app-icon-bugle"></use>
+                </svg>
+              </legend>
+              <form>
+                <h3>Tu viens de recevoir une requête<br /> </h3>
+                  {{ alliance.users.applicant.name.first }} demande ta denrée située <br />
+                  dans ton garde-manger {{ foodkeeper.name }}
+                <div v-if="alliance.request.delayed">
+                  Pour la récupération de ta denrée, {{ alliance.users.applicant.name.first }}
+                  te propose le créneau suivant:
+                  <div class="multiple-dates">
+                    <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
+                    <label for="date-1" >
+                      <div class="date-hours">Entre {{ alliance.request.timeStart }} et {{ alliance.request.timeEnd }}</div>
+                      <span class="date-day">le {{ alliance.request.date }}</span>
+                    </label>
+                  </div>
+                </div>
+                <div v-else><h3>Es-tu disponible dès maintenant ?</h3></div>
+              </form>
+            </fieldset>
 
             <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
             <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
@@ -147,7 +204,16 @@
         <template v-if="alliance.request.completed && alliance.availability.completed && !alliance.exchange">
           <template v-if="alliance.availability.applicant || alliance.availability.giver">
             <div class="steps-summary">
-              As-tu donné la denrée desirée ?
+              <fieldset class="step user-side">
+                <legend>
+                  <svg viewBox="0 0 100 100" class="alliance-icon">
+                    <use xlink:href="#app-icon-bugle"></use>
+                  </svg>
+                </legend>
+                <form>
+                  <h3>As-tu donné la denrée desirée ?</h3>
+                </form>
+              </fieldset>
 
               <div class="alliance-action-button" v-on:click="allianceExchange(true)">Oui</div>
               <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
@@ -155,7 +221,14 @@
           </template>
           <template v-else>
             <div class="steps-summary">
-              En attante de la confirmation de la disponibilité du demandeur...
+              <fieldset class="step final-step">
+                <form>
+                  <svg viewBox="0 0 100 100" class="alliance-icon">
+                    <use xlink:href="#app-icon-note"></use>
+                  </svg>
+                  <h3>En attente de la confirmation de la disponibilité du demandeur...</h3>
+                </form>
+              </fieldset>
             </div>
           </template>
         </template>
@@ -163,7 +236,14 @@
         <!-- En attente d'évaluation -->
         <template v-if="alliance.request.completed && alliance.availability.completed && alliance.exchange">
           <div class="steps-summary">
-            Ton allié ne t'a toujours pas évalué pour cet échange (VALIDER CE TEXTE)
+            <fieldset class="step final-step">
+              <form>
+                <svg viewBox="0 0 100 100" class="alliance-icon">
+                  <use xlink:href="#app-icon-note"></use>
+                </svg>
+                <h3>Ton allié ne t'a toujours pas évalué<br /> pour cet échange</h3>
+              </form>
+            </fieldset>
           </div>
         </template>
       </template>
@@ -174,13 +254,27 @@
     <template v-if="alliance.status == 'terminated'">
       <div class="steps-summary">
         <template v-if="alliance.type == 'applicant'">
-          <h3>Hip Hip Hip Houra !</h3>
-          Une étape de plus a été franchie dans la quête du Pain Perdu !
+          <fieldset class="step final-step">
+            <form>
+              <svg viewBox="0 0 100 100" class="alliance-icon">
+                <use xlink:href="#app-icon-note"></use>
+              </svg>
+              <h3>Hip Hip Hip Houra !</h3>
+              Une étape de plus a été franchie dans la quête du Pain Perdu !
+            </form>
+          </fieldset>
         </template>
         <template v-else>
-          <h3>Hip Hip Hip Houra !</h3>
-          Une étape de plus a été franchie dans la quête du Pain Perdu !
-          --> LIEN GARGE MANGER NOTATION
+          <fieldset class="step final-step">
+            <form>
+              <svg viewBox="0 0 100 100" class="alliance-icon">
+                <use xlink:href="#app-icon-note"></use>
+              </svg>
+              <h3>Hip Hip Hip Houra !</h3>
+              Une étape de plus a été franchie dans la quête du Pain Perdu !<br/>
+            </form>
+          </fieldset>
+          <div class="alliance-action-button" v-link="{name: 'DetailsProfileReviews'}">Voir l'avis obtenu</div>
         </template>
       </div>
     </template>
@@ -188,9 +282,16 @@
     <!-- Produit non échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'abandoned'">
       <div class="steps-summary">
-        <h3>Diantre,</h3>
-        votre alliance s'avère compliquée pour aujourd'hui,
-        réessayer plus tard lorsque les conditions seront plus favorable !
+        <fieldset class="step final-step">
+          <form>
+            <svg viewBox="0 0 100 100" class="alliance-icon">
+              <use xlink:href="#app-icon-note"></use>
+            </svg>
+            <h3>Diantre,</h3>
+            Cette alliance s'avère compliquée ! <br />
+            Réessaye plus tard lorsque<br /> les conditions seront plus favorables !
+          </form>
+        </fieldset>
       </div>
     </template>
 
@@ -550,15 +651,15 @@ export default {
 
 .alliance-action-button {
   display: inline-block;
-  margin: 0 auto;
-  width: 150px;
-  padding: 18px 0;
+  margin: 0 8px;
   border-radius: 25px;
   background-color: $color-beige;
   font: 1.3em 'Karla-Bold', sans-serif;
   color: $color-text;
   text-transform: uppercase;
   text-align: center;
+  padding: 20px;
+  min-width: 60px;
 }
 
 .alliance-icon {
@@ -604,7 +705,7 @@ export default {
 
 .date-hours {
   background-color: $color-green;
-  height: 20px;
+  height: 40px;
   border-radius: 20px;
   text-transform: uppercase;
   color: $color-white;
@@ -612,7 +713,7 @@ export default {
   font-size: 1.3em;
   box-sizing: border-box;
   line-height: 40px;
-  width: 60%;
+  width: 70%;
   min-width: 115px;
   margin: auto;
 }
@@ -625,7 +726,8 @@ export default {
   margin-top: 10px;
   font-family: 'Karla-BoldItalic';
   font-size: 1.8em;
-  line-height: 1.4em;
+  line-height: 0.6em;
+  display: inline-block;
 }
 
 .multiple-dates {
@@ -651,4 +753,37 @@ export default {
 legend {
   text-align: center;
 }
+
+.market-add-form-select {
+  margin: 10px 0 10px;
+  width: 262px;
+  height: 40px;
+  background: $color-green-lite;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 20px;
+  font-style: italic;
+  text-align-last: left;
+  text-transform: capitalize;
+  color: $color-white;
+  font: 1em 'Karla-Bold', sans-serif;
+  padding-left: 25px;
+  overflow: hidden;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+
+  option {
+    text-align: left;
+    text-transform: capitalize;
+    height: 40px;
+    padding-top: 10px;
+    font: 1.4em 'Karla-Bold', sans-serif;
+    background-color: $color-green-lite;
+    position: absolute;
+    top: 0;
+    left: 25px;
+  }
+}
+
 </style>
