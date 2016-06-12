@@ -45,7 +45,6 @@ export default {
 @import './styles/reset.scss';
 @import './styles/fonts.scss';
 @import './styles/animate.css';
-@import './styles/transitions.scss';
 @import './styles/variables.scss';
 
 ::-webkit-scrollbar {
