@@ -64,7 +64,6 @@ export default {
 @import './../../styles/variables.scss';
 
 .foodkeeper-container {
-  min-height:100vh;
 }
 
 .foodkeeper-item {

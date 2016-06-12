@@ -70,7 +70,6 @@ body {
   overflow-y: auto;
   background-color: $color-white;
   background-attachment: fixed;
-  overflow-x: hidden;
 
   &.wrap-header-footer {
     min-height: calc(100vh - 135px);

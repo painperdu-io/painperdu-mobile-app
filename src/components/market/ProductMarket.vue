@@ -364,7 +364,6 @@ export default {
 
       .product-name {
         text-transform: capitalize;
-        font-style: italic;
         color: $color-red;
         font-size: (3.6em / 2);
         font-family: 'IowanOldStyleBT-BlackItalic';
@@ -444,7 +443,7 @@ export default {
     .ask-product-text {
       color: $color-white;
       padding-left: 35px;
-      width: 70%; 
+      width: 70%;
       margin: 0 auto 20px 60px;
       line-height: 1.2em;
       font-size: 1.2em;

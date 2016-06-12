@@ -182,7 +182,6 @@ export default {
       box-sizing: border-box;
       border: none;
       border-radius: 20px;
-      font-style: italic;
       text-transform: capitalize;
       font: 1em 'Karla-Bold', sans-serif;
       color: $color-white;
@@ -208,7 +207,6 @@ export default {
 
       .market-add-form-adress-data {
         font: 1.8em 'Baskerville-Bold', sans-serif;
-        font-style: italic;
         color: $color-red;
 
         p {
@@ -284,7 +282,6 @@ export default {
       .market-add-form-perimeter-address-data {
         margin-top: -15px;
         font: 1.8em 'Baskerville-Bold', sans-serif;
-        font-style: italic;
         color: $color-red;
       }
 
