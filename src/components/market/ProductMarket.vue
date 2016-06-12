@@ -85,7 +85,7 @@
       </div>
     </fieldset>
 
-    <div class="ask-product-wrapper">
+    <div class="ask-product-wrapper animated slideInUp">
       <div class="ask-product-text">
         <input type="checkbox" id="later" class="later" value="false" v-model="form.delayed">
         <label for="later">
@@ -93,12 +93,12 @@
           Je veux récupérer ma demande plus tard.
         </label>
       </div>
-      <div v-if="form.delayed" class="add-rdv-form-wrapper">
+      <div v-if="form.delayed" class="add-rdv-form-wrapper animated" transition="fade">
         <div class="add-rdv-form-item">
           <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" min="{{ datemin }}" v-model="date">
           <label for="date" class="add-rdv-form-item-label">Date</label>
         </div>
-        <div class="add-rdv-form-item add-rdv-form-item-slot">
+        <div class="add-rdv-form-item add-rdv-form-item-slot" >
           <input for="heure-debut" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
           <label id="heure-debut" class="add-rdv-form-item-label">Créneau horaire</label>
           <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
@@ -218,6 +218,13 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
+
+.product-container {
+  position: relative;
+  max-height: 667px;
+  height: 667px;
+  overflow-y: scroll;
+}
 
 .member-profile-statistics-wrapper {
   display: flex;
@@ -431,17 +438,20 @@ export default {
       bottom: 0px;
       width: 100%;
       z-index: 2;
+      animation-delay: 1s;
     }
 
     .ask-product-text {
       color: $color-white;
       padding-left: 20px;
       width: 70%;
-      margin: 0 auto 20px;
-      font-size: 1.3em;
+      margin: 0 auto 20px 60px;
+      line-height: 1.2em;
+      font-size: 1.2em;
       font-family: 'Karla-Bold';
       font-weight: 300;
       position: relative;
+      transition: all 0.5;
     }
 
     .ask-product-wrapper input[type="checkbox"] {
@@ -449,8 +459,8 @@ export default {
       + label:before {
         content: "";
         display: inline-block;
-        width: 17px;
-        height: 17px;
+        width: 24px;
+        height: 24px;
         border: 1px solid $color-white;
         border-radius: 50%;
         position: absolute;
@@ -461,13 +471,13 @@ export default {
       &:checked + label:after {
         content: "";
         display: inline-block;
-        width: 12px;
-        height: 12px;
+        width: 16px;
+        height: 16px;
         background-color: $color-red;
         border-radius: 50%;
         position: absolute;
-        top: 3px;
-        left: -2px;
+        top: 5px;
+        left: 0px;
         margin: 3px 0 0 0;
       }
     }
