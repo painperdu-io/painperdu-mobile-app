@@ -302,7 +302,7 @@ export default {
       background: $color-green-lite;
       box-sizing: border-box;
       border: none;
-      border-radius: 15px;
+      border-radius: 50px;
       text-align-last: left;
       text-transform: capitalize;
       font: 1em 'Karla-Bold', sans-serif;
@@ -347,7 +347,7 @@ export default {
         width: 100%;
         height: 40px;
         border: none;
-        border-radius: 15px;
+        border-radius: 50px;
         box-sizing: border-box;
         font: 1.5em 'Karla-Bold', sans-serif;
         color: $color-white;
