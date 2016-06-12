@@ -173,20 +173,21 @@ export default {
       margin: 10px 0 10px;
       width: 262px;
       height: 40px;
+      padding-left: 25px;
       background: $color-green-lite;
       box-sizing: border-box;
       border: none;
       border-radius: 20px;
       font-style: italic;
-      text-align-last: center;
       text-transform: capitalize;
+      font: 1em 'Karla-Bold', sans-serif;
       color: $color-white;
       font-size: 1.1em;
       -webkit-appearance: none;
       appearance: none;
 
       option {
-        text-align: center;
+        text-align: left;
         text-transform: capitalize;
       }
     }
