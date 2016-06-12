@@ -87,6 +87,7 @@ export default {
       background: $color-white;
       border: 10px solid $color-white;
       box-sizing: border-box;
+      margin: auto;
     }
 
       .product-item-circle.raw {

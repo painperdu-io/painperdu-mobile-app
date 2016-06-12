@@ -315,7 +315,7 @@ export default {
       }
 
       .product-quantity-circle-quantity {
-        transition: all linear 0.5s;
+        transition: all linear 0.2s;
         transform: rotate(-90deg);
         transform-origin: center;
       }
@@ -334,7 +334,7 @@ export default {
 
       .product-rotate{
         position: relative;
-        transition: all linear 0.5s;
+        transition: all linear 0.2s;
         transform: rotate(0deg);
         transform-origin: 45px 45px;
       }
