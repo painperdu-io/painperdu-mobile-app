@@ -115,15 +115,16 @@
       <div v-if="form.delayed" class="add-rdv-form-wrapper animated" transition="fade">
         <div class="add-rdv-form-item">
           <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" min="{{ datemin }}" v-model="date">
-          <label for="date" class="add-rdv-form-item-label">Date</label>
+          <label for="date" class="add-rdv-form-item-label">Le</label>
         </div>
         <div class="add-rdv-form-item add-rdv-form-item-slot" >
-          <input for="heure-debut" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
-          <label id="heure-debut" class="add-rdv-form-item-label">Créneau horaire</label>
-          <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
-          <label for="heure-fin" class="add-rdv-form-item-label">Créneau horaire</label>
+          <label id="heure-debut" class="add-rdv-form-item-label">à partir de</label>
+          <input for="heure-fin" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
         </div>
-
+        <div class="add-rdv-form-item add-rdv-form-item-slot" >
+          <label id="heure-debut" class="add-rdv-form-item-label">jusqu'à</label>
+          <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
+        </div>
       </div>
       <div class="ask-product-button" v-on:click="callAddApi">Demander</div>
     </div>
@@ -265,7 +266,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto 150px;
+  margin: 0 auto 200px;
   padding-bottom: 30px;
   width: 298px;
   background: url('/static/img/rectangle-red.png');
@@ -655,7 +656,7 @@ export default {
     position: relative;
     min-height: 45px;
     padding-right: 10px;
-    flex: 1 65%;
+    flex: 1 35%;
     &:first-child{
       flex: 1 30%;
     }
@@ -665,19 +666,7 @@ export default {
     position: relative;
     min-height: 45px;
     padding-right: 10px;
-    flex: 1 65%;
     padding-bottom: 0px;
-    .add-rdv-form-item-input{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 50%;
-      height: 45px;
-      &:first-child {
-        left: 0;
-        right: inherit;
-      }
-    }
   }
 
     .add-rdv-form-item-label {
@@ -692,21 +681,13 @@ export default {
       margin-top: -5px;
       padding-top: 20px;
       padding-bottom: 5px;
-      font: 1.3em 'Karla-Regular', sans-serif;
+      font: 1.3em 'Karla-Bold', sans-serif;
       border: none;
-      border-bottom: 1px solid $color-white;
+      border-bottom: 3px solid $color-white;
       color: $color-text;
       background-color: $color-green;
       -webkit-appearance: none;
       appearance: none;
-
-      &:hover, &:focus {
-        font: 1.3em 'Karla-Bold', sans-serif;
-        border-bottom: 3px solid $color-white;
-        + label {
-          font-weight: 700;
-        }
-      }
 
       &.error {
         &:hover, &:focus {
