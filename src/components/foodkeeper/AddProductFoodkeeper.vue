@@ -113,6 +113,7 @@ export default {
           this.form.foodkeepers.length) {
         // enregistrer les données dans la base
         this.form.icon = global.setIconAddProduct;
+        this.form.author = global.currentUserId;
         const datas = JSON.stringify(this.form);
 
         this.$http.post('products', datas, { emulateJSON: true })

@@ -329,5 +329,13 @@ router.map({
   },
 })
 
+// gestion de la mise à jour des alliances
+router.beforeEach((page) => {
+  if (page.from.name === 'DetailsAlliance') {
+    clearInterval(global.updateAlliance);
+  }
+  page.next();
+});
+
 // initialisation du routeur
 router.start(App, 'painperdu-app')
