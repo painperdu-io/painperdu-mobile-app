@@ -6,7 +6,7 @@
       </svg>
     </div>
     <residence-slider :market="market"></residence-slider>
-    <div class="market-tabs-wrapper animated slideInUp" v-touch:swipedown="loadMarketListing('slideOutDown')">
+    <div class="market-tabs-wrapper animated slideInUp">
       <tabs-navigation :objectid="$route.params.id" route="DetailsMarket"></tabs-navigation>
       <router-view class="animated" transition="slide" transition-mode="out-in"></router-view>
     </div>
