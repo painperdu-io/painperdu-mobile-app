@@ -35,7 +35,7 @@
         <!-- Demande envoyée -->
         <template v-if="alliance.request.completed && !alliance.availability.completed">
           <div class="steps-summary">
-            <fieldset class="step my-side">
+            <fieldset class="step my-side animated">
               <legend>
                 <svg viewBox="0 0 100 100" class="alliance-icon">
                   <use xlink:href="#app-icon-helmet"></use>
@@ -53,7 +53,7 @@
 
             <div v-if="alliance.availability.giver || alliance.availability.applicant">
                 <div v-if="alliance.availability.applicant">
-                  <fieldset class="step my-side">
+                  <fieldset class="step my-side animated">
                     <legend>
                       <svg viewBox="0 0 100 100" class="alliance-icon">
                         <use xlink:href="#app-icon-helmet"></use>
@@ -66,7 +66,7 @@
                   </fieldset>
                 </div>
                 <div v-else>
-                  <fieldset class="step my-side">
+                  <fieldset class="step my-side animated">
                     <legend>
                       <svg viewBox="0 0 100 100" class="alliance-icon">
                         <use xlink:href="#app-icon-helmet"></use>
@@ -97,7 +97,7 @@
             </div>
             <div v-else>
 
-              <fieldset class="step user-side">
+              <fieldset class="step user-side animated">
                 <legend>
                   <svg viewBox="0 0 100 100" class="alliance-icon">
                     <use xlink:href="#app-icon-bugle"></use>
@@ -121,7 +121,7 @@
                   </div>
                 </form>
               </fieldset>
-              <fieldset class="step final-step">
+              <fieldset class="step final-step animated">
                 <form>
                   <svg viewBox="0 0 100 100" class="alliance-icon">
                     <use xlink:href="#app-icon-note"></use>
@@ -137,7 +137,7 @@
 
         <template v-if="alliance.request.completed && alliance.availability.completed && alliance.exchange">
           <div class="steps-summary">
-            <fieldset class="step final-step">
+            <fieldset class="step final-step animated">
                 <svg viewBox="0 0 100 100" class="alliance-icon">
                   <use xlink:href="#app-icon-note"></use>
                 </svg>
@@ -170,7 +170,7 @@
         <!-- Nouvelle demande -->
         <template v-if="alliance.request.completed && !alliance.availability.completed">
           <div class="steps-summary">
-            <fieldset class="step user-side">
+            <fieldset class="step user-side animated">
               <legend>
                 <svg viewBox="0 0 100 100" class="alliance-icon">
                   <use xlink:href="#app-icon-bugle"></use>
@@ -204,7 +204,7 @@
         <template v-if="alliance.request.completed && alliance.availability.completed && !alliance.exchange">
           <template v-if="alliance.availability.applicant || alliance.availability.giver">
             <div class="steps-summary">
-              <fieldset class="step user-side">
+              <fieldset class="step user-side animated">
                 <legend>
                   <svg viewBox="0 0 100 100" class="alliance-icon">
                     <use xlink:href="#app-icon-bugle"></use>
@@ -221,7 +221,7 @@
           </template>
           <template v-else>
             <div class="steps-summary">
-              <fieldset class="step final-step">
+              <fieldset class="step final-step animated">
                 <form>
                   <svg viewBox="0 0 100 100" class="alliance-icon">
                     <use xlink:href="#app-icon-note"></use>
@@ -236,7 +236,7 @@
         <!-- En attente d'évaluation -->
         <template v-if="alliance.request.completed && alliance.availability.completed && alliance.exchange">
           <div class="steps-summary">
-            <fieldset class="step final-step">
+            <fieldset class="step final-step animated">
               <form>
                 <svg viewBox="0 0 100 100" class="alliance-icon">
                   <use xlink:href="#app-icon-note"></use>
@@ -254,7 +254,7 @@
     <template v-if="alliance.status == 'terminated'">
       <div class="steps-summary">
         <template v-if="alliance.type == 'applicant'">
-          <fieldset class="step final-step">
+          <fieldset class="step final-step animated">
             <form>
               <svg viewBox="0 0 100 100" class="alliance-icon">
                 <use xlink:href="#app-icon-note"></use>
@@ -265,7 +265,7 @@
           </fieldset>
         </template>
         <template v-else>
-          <fieldset class="step final-step">
+          <fieldset class="step final-step animated">
             <form>
               <svg viewBox="0 0 100 100" class="alliance-icon">
                 <use xlink:href="#app-icon-note"></use>
@@ -282,7 +282,7 @@
     <!-- Produit non échangé, fin de l'alliance -->
     <template v-if="alliance.status == 'abandoned'">
       <div class="steps-summary">
-        <fieldset class="step final-step">
+        <fieldset class="step final-step animated">
           <form>
             <svg viewBox="0 0 100 100" class="alliance-icon">
               <use xlink:href="#app-icon-note"></use>
@@ -681,6 +681,9 @@ export default {
   width: 75%;
   padding-bottom: 15px;
   border: 0px;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-delay: 0.5s;
 }
 
   .step.my-side {
