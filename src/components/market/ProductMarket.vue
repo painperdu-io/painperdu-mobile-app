@@ -55,7 +55,7 @@
     <fieldset class="member-profile-statistics-wrapper">
       <legend class="member-profile-wrapper" v-link="{ name: 'MemberProfile', params: { id: product.author._id }}">
         <div class="member-profile-item-allie">
-          <svg viewBox="0 0 100 100" class="profile-icon ">
+          <svg viewBox="0 0 50 50" class="profile-icon ">
             <use xlink:href="#app-icon-infinite"></use>
           </svg>
         </div>
@@ -330,7 +330,7 @@ export default {
         width: (230px / 2);
         height: (230px / 2);
         text-align: center;
-        border: 12px solid $color-white;
+        border: 13px solid $color-white;
         box-sizing: border-box;
         z-index: 10;
         .product-item-icon-container {
@@ -641,6 +641,10 @@ export default {
     background: $color-green;
     border-radius: 50%;
     z-index: 3;
+    svg {
+      width: 18px;
+      margin-left: 4px;
+    }
   }
 
   .add-rdv-form-wrapper {
@@ -656,9 +660,9 @@ export default {
     position: relative;
     min-height: 45px;
     padding-right: 10px;
-    flex: 1 35%;
+    flex: 1 30%;
     &:first-child{
-      flex: 1 30%;
+      flex: 1 40%;
     }
   }
 
@@ -688,6 +692,8 @@ export default {
       background-color: $color-green;
       -webkit-appearance: none;
       appearance: none;
+      height: 10px;
+      border-radius: 0px;
 
       &.error {
         &:hover, &:focus {

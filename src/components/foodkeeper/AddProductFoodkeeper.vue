@@ -2,7 +2,7 @@
   <div class="foodkeeper-add-product-container animated" transition="slide" transition-mode="in-out">
     <div class="foodkeeper-add-product-form1-wrapper">
       <div class="foodkeeper-add-product-form1-add-icon">
-        <div class="controls-quantity">
+        <div class="controls-quantity animated fadeIn">
           <button class="btn btn-more" v-on:click="increment">+</button>
           <button class="btn btn-less" v-on:click="decrement">-</button>
         </div>

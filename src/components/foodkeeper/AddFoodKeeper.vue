@@ -135,6 +135,10 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
+input {
+  border-radius: 0px;
+}
+
 .foodkeeper-add-container {
   display: flex;
   flex-direction: column;
@@ -191,10 +195,9 @@ export default {
       width: 260px;
 
       & > .foodkeeper-add-form-item {
-        width: 80px;
       }
       & > .foodkeeper-add-form-item-city {
-        width: 170px;
+        width: 400px;
       }
     }
 

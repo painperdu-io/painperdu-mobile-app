@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="profile-item-allie" v-if="false">
-        <svg viewBox="0 0 100 100" class="profile-icon ">
+        <svg viewBox="0 0 50 50" class="profile-icon ">
           <use xlink:href="#profile-app-icon-infinite"></use>
         </svg>
       </div>
@@ -214,6 +214,10 @@ export default {
       fill: $color-white;
       background: $color-blue;
       border-radius: 50%;
+      svg {
+        width: 18px;
+        margin-left: 4px;
+      }
     }
 
     .profile-app-icon-container {

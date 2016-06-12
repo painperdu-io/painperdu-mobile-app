@@ -1,9 +1,9 @@
 <template>
   <div class="foodkeeper-container animated">
-    <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item animated" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
+    <template v-for="(index,foodkeeper) in foodkeepers">
+      <div class="foodkeeper-item animated" :class="{ 'active': index }" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
         <div class="user-dispo-wrapper">
-          <input id="user-dispo" type="checkbox">
+          <input id="user-dispo" type="checkbox" v-model="index">
           <label for="userdispo"></label>
         </div>
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
@@ -16,7 +16,7 @@
       </div>
     </template>
 
-    <div class="foodkeeper-add" v-link="{ path: '/foodkeeper/add' }">
+    <div class="foodkeeper-add animated" v-link="{ path: '/foodkeeper/add' }">
       <div class="foodkeeper-add-icon">
         <div class="foodkeeper-add-icon-bg">
           <span class="foodkeeper-add-icon-text">+</span>
@@ -52,6 +52,7 @@ export default {
       }
       setTimeout(() => this.$route.router.go({ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeperId }}), 100);
     },
+
   },
   ready() {
     // récupérer la liste des foodkeepers
@@ -77,6 +78,7 @@ export default {
   height: 125px;
   margin-bottom: 7px;
   text-align: center;
+  filter:grayscale(1);
   &:before {
     content: "";
     display: inline-block;
@@ -87,6 +89,9 @@ export default {
     height: 100%;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.4);
+  }
+  &.active {
+    filter:grayscale(0);
   }
 }
 
@@ -217,7 +222,7 @@ export default {
 
     .user-dispo-wrapper {
       position: absolute;
-      top: 10px;
+      top: 50px;
       right: 10px;
       z-index: 1;
     }

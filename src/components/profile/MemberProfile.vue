@@ -92,7 +92,7 @@ export default {
   }
 
     .member-profile-statistics {
-      padding: 18px 0 15px 0;
+      padding: 18px 0 0 0;
     }
 
       .member-profile-statistics-item {
