@@ -1,5 +1,5 @@
 <template>
-  <div class="alliances-container>
+  <div class="alliances-container">
     <div class="alliances-list-product">
       <template v-for="alliance in alliances">
         <div class="alliances-product-item {{ alliance.status }} {{ alliance.type }}" v-link="{ name: 'DetailsAlliance', params: { id: alliance._id }}"  v-touch:swipeleft="loadAllianceDetails(alliance._id, 'slideOutLeft')">
