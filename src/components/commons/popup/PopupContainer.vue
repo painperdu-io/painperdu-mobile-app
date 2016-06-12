@@ -102,7 +102,7 @@ export default {
       content: "";
       display: inline-block;;
       width: 100%;
-      height: 100%;
+      height: 1%;
       background-color: $color-black;
       opacity: 0;
       position: fixed;
@@ -113,6 +113,6 @@ export default {
       z-index: -1;
   }
 
-  .popup-overlay.active {opacity: 0.7;   z-index: 999;}
+  .popup-overlay.active {opacity: 0.7; height: 100%; z-index: 999;}
 
 </style>
