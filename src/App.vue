@@ -10,7 +10,7 @@
   <popup-error></popup-error>
   <popup-validation></popup-validation>
   <foods-icons></foods-icons>
-  <svg-icons></svg-icons> 
+  <svg-icons></svg-icons>
 </template>
 
 <script>
@@ -70,6 +70,7 @@ body {
   overflow-y: auto;
   background-color: $color-white;
   background-attachment: fixed;
+  overflow-x: hidden;
 
   &.wrap-header-footer {
     min-height: calc(100vh - 135px);
