@@ -602,7 +602,6 @@ export default {
 
       .product-name {
         text-transform: capitalize;
-        font-style: italic;
         color: $color-red;
         font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
         text-transform: capitalize;
@@ -637,11 +636,11 @@ export default {
   box-sizing: border-box;
   border: none;
   border-radius: 20px;
-  font-style: italic;
   text-align-last: center;
   text-transform: capitalize;
   color: $color-white;
   font-size: 1.1em;
+  font-family: 'Karla-Bold';
 
   option {
     text-align: center;
@@ -762,7 +761,6 @@ legend {
   box-sizing: border-box;
   border: none;
   border-radius: 20px;
-  font-style: italic;
   text-align-last: left;
   text-transform: capitalize;
   color: $color-white;

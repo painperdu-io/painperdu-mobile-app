@@ -272,7 +272,6 @@ export default {
       box-sizing: border-box;
       border: none;
       border-radius: 20px;
-      font-style: italic;
       text-align-last: left;
       text-transform: capitalize;
       font: 1em 'Karla-Bold', sans-serif;
