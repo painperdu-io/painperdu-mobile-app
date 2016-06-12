@@ -12,7 +12,7 @@
 
         <div class="market-add-form-perimeter-range">
           <h3>Périmètre de recherche <span>pour cette place :</span></h3>
-          <input v-model="form.perimeter" type="range" value="1" max="2" min="0" step="1"/>
+          <input v-model="form.perimeter" type="range" value="2" max="3" min="1" step="1" />
           <div class="market-add-form-perimeter-range-label">
             <span class="align-left">Lopin</span>
             <span class="align-right">Canton</span>
@@ -44,7 +44,10 @@
       </div>
 
       <div class="market-add-map-wrapper">
-        <google-map :center="form.current.location.googlemap"></google-map>
+        <google-map
+          :center="form.current.location.googlemap"
+          :circle-radius="form.perimeter * 30">
+        </google-map>
       </div>
       <div class="market-add-form-perimeter-add" v-on:click="callAddApi">Ajouter</div>
     </div>
@@ -101,6 +104,7 @@ export default {
   },
   data() {
     return {
+      circleRadius: 60,
       form: {
         current: {},
         perimeter: 1,

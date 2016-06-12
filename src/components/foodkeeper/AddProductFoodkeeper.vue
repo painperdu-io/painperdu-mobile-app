@@ -96,20 +96,20 @@ export default {
     callAddApi(event) {
       event.preventDefault()
 
-      // vérification des champs
-      if (!global.setIconAddProduct) {
-        console.log('ICON VIDE !!!');
+      // si la categorie est vide,
+      // c'est peut être une complétion automatique
+      if (!this.form.name) {
+        this.form.name = global.setNameAddProduct;
       }
+
+      // vérification des champs
       if (!this.form.name) {
         document.getElementsByName('form-name')[0].classList.add('error');
-      }
-      if (!this.form.foodkeepers.length) {
-        console.log('FOODKEEPERS VIDE !!!');
       }
 
       // si tout les champs sont remplis, on enregistre les données
       if (global.setIconAddProduct &&
-          this.form.name &&
+          (this.form.name) &&
           this.form.foodkeepers.length) {
         // enregistrer les données dans la base
         this.form.icon = global.setIconAddProduct;
@@ -152,6 +152,7 @@ export default {
   ready() {
     // intialiser le produit sélectionné
     global.setIconAddProduct = '';
+    global.setNameAddProduct = '';
 
     // récupérer la liste des foodkeepers
     this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })

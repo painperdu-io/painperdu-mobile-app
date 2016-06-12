@@ -44,12 +44,12 @@
           </div>
 
           <div v-else class="pictos-container">
-            <template v-for="picto in pictos | filterBy search in 'name' | orderBy 'name' ">
+            <template v-for="picto in pictos | filterBy search in 'icon' | orderBy 'icon' ">
               <div class="picto-item-wrapper">
-                <input id="{{ picto.name }}" class="picto" type="radio" value="{{ picto.name }}" v-model="selectedFood">
-                <label for="{{ picto.name }}" class="picto-item-container">
+                <input id="{{ picto.icon }}" class="picto" type="radio" value="{{ picto.icon }}" v-model="selectedFood">
+                <label for="{{ picto.icon }}" class="picto-item-container">
                   <svg viewBox="0 0 100 100" class="picto-item-icon">
-                    <use xlink:href="#foods-icon-{{ picto.name }}"></use>
+                    <use xlink:href="#foods-icon-{{ picto.icon }}"></use>
                   </svg>
                 </label>
               </div>
@@ -63,50 +63,19 @@
 </template>
 
 <script>
+import { productsIcons, productsCategories } from './../../../vuex/getters';
+
 export default {
+  vuex: {
+    getters: {
+      categories: productsCategories,
+      pictos: productsIcons,
+    },
+  },
   data () {
     return {
       search: '',
       selectedFood: '',
-      categories: [
-        {shortName: 'legumes', longName : 'Légumes & Fruits'},
-        {shortName: 'viandes', longName : 'Viandes & Poissons'},
-        {shortName: 'laitiers', longName : 'Produits laitiers'},
-        {shortName: 'cereales', longName : 'Céréales & Dérivés'},
-        {shortName: 'boissons', longName : 'Boissons'},
-        {shortName: 'desserts', longName : 'Desserts'},
-        {shortName: 'autres', longName : 'Autres'},
-      ],
-      pictos : [
-        {name : 'salade'},
-        {name : 'oeuf'},
-        {name : 'sandwich'},
-        {name : 'poivron'},
-        {name : 'poisson'},
-        {name : 'viande'},
-        {name : 'pates'},
-        {name : 'croissant'},
-        {name : 'tomate'},
-        {name : 'orange'},
-        {name : 'pomme'},
-        {name : 'poire'},
-        {name : 'riz'},
-        {name : 'yaourt'},
-        {name : 'pizza'},
-        {name : 'patate'},
-        {name : 'muffin'},
-        {name : 'lait'},
-        {name : 'pates'},
-        {name : 'citron'},
-        {name : 'carotte'},
-        {name : 'pain'},
-        {name : 'banane'},
-        {name : 'emmental'},
-        {name : 'chou'},
-        {name : 'poulet'},
-        {name : 'chocolat'},
-        {name : 'painmie'},
-      ],
     }
   },
   computed: {
@@ -118,9 +87,18 @@ export default {
   },
   methods: {
     addProductIcon(event) {
+      // retourner le nom du produit
+      for (let i = 0; i < this.pictos.length; i++) {
+        if (this.pictos[i].icon == this.selectedFood) {
+          document.getElementsByName('form-name')[0].value = this.pictos[i].name;
+          global.setNameAddProduct = this.pictos[i].name;
+          break;
+        }
+      }
+
       global.setIconAddProduct = this.selectedFood;
       event.preventDefault()
-      document.getElementsByClassName('add-picto-popup-container')[0].classList.remove('active'); 
+      document.getElementsByClassName('add-picto-popup-container')[0].classList.remove('active');
       document.getElementsByClassName('add-picto-popup-overlay')[0].classList.remove('active');
       document.getElementById('product-item-icon-svguse').setAttribute('xlink:href','#foods-icon-' + this.selectedFood);
     }
