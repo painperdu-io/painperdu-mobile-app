@@ -443,8 +443,8 @@ export default {
 
     .ask-product-text {
       color: $color-white;
-      padding-left: 20px;
-      width: 70%;
+      padding-left: 35px;
+      width: 70%; 
       margin: 0 auto 20px 60px;
       line-height: 1.2em;
       font-size: 1.2em;
@@ -466,7 +466,7 @@ export default {
         position: absolute;
         top: 0px;
         left: -5px;
-        margin: 3px 0 0 0;
+        margin: 2px 0 0 0;
       }
       &:checked + label:after {
         content: "";
@@ -476,7 +476,7 @@ export default {
         background-color: $color-red;
         border-radius: 50%;
         position: absolute;
-        top: 5px;
+        top: 4px;
         left: 0px;
         margin: 3px 0 0 0;
       }
