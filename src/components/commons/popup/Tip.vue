@@ -36,7 +36,7 @@
         <div class="tip-popup-product">
           <div class="tip-popup-product-item-circle">
             <svg viewBox="0 0 100 100" class="foods-icon">
-              <use xlink:href="#foods-icon-yaourt"></use>
+              <use xlink:href="#foods-icon-yaourt-nature"></use>
             </svg>
           </div>
           <div class="tip-popup-product-name">Yaourts</div>
@@ -108,6 +108,7 @@ export default {};
     color: $color-text;
     text-transform: uppercase;
     text-align: center;
+    text-decoration: none;
   }
 
   .tip-popup-item-wrapper {

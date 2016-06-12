@@ -10,6 +10,7 @@
           </div>
           <div>
             <svg class="product-quantity-circle" viewPort="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="product-quantity-circle-base" r="55" cx="45" cy="45" fill="transparent" stroke-width="6" stroke-dasharray="345.575" stroke-dashoffset="0"></circle>
               <circle class="product-quantity-circle-quantity" r="55" cx="45" cy="45" fill="transparent" stroke-width="6" stroke-dasharray="345.575" stroke-dashoffset="276.46"></circle>
               <g class="product-rotate">
                 <circle class="product-quantity-bubble" r="14" cx="45" cy="-10" stroke-width="0"></span></circle>
@@ -22,8 +23,8 @@
           <input id="product-item-count" number value="1" v-model="form.quantity" hidden>
         </div>
         <div class="controls-quantity">
-          <button class="btn btn-more" v-on:click="increment">+</button>
-          <button class="btn btn-less" v-on:click="decrement">-</button>
+          <button class="btn btn-more" v-on:click="increment"><span>+</span></button>
+          <button class="btn btn-less" v-on:click="decrement"><span>-</span></button>
         </div>
         <div class="product-name">{{ product.name }}</div>
         <div class="product-infos-separator"></div>
@@ -59,16 +60,34 @@
           </svg>
         </div>
         <div class="member-profile-img"><img :src="product.author.picture"/></div>
-        <div class="member-profile-text">
-          <h2 class="member-profile-name">{{ product.author.name.first }}</h2>
-          <p class="member-profile-status">
-            <template v-if="product.author.score < 10">Artisan</template>
-            <template v-if="product.author.score > 10 && product.author.score < 20">Soldat</template>
-            <template v-if="product.author.score > 20 && product.author.score < 30">Menestrel</template>
-            <template v-if="product.author.score > 30 && product.author.score < 40">Écuyer</template>
-            <template v-if="product.author.score > 40 && product.author.score < 50">Chevalier</template>
-            <template v-if="product.author.score > 50">Seigneur</template>
-          </p>
+        <div class="member-profile-text-wrapper status-{{ statusName }}">
+          <div class="col-25">
+            <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
+              <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+                <use xlink:href="#status-icon-{{ statusName }}" ></use>
+              </svg>
+            </div>
+          </div>
+          <div class="col-50">
+            <div class="member-profile-text">
+              <h2 class="member-profile-name">{{ product.author.name.first }}</h2>
+              <p class="member-profile-status">
+                <template v-if="product.author.score < 10">Artisan</template>
+                <template v-if="product.author.score > 10 && product.author.score < 20">Soldat</template>
+                <template v-if="product.author.score > 20 && product.author.score < 30">Menestrel</template>
+                <template v-if="product.author.score > 30 && product.author.score < 40">Écuyer</template>
+                <template v-if="product.author.score > 40 && product.author.score < 50">Chevalier</template>
+                <template v-if="product.author.score > 50">Seigneur</template>
+              </p>
+            </div>
+          </div>
+          <div class="col-25">
+            <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
+              <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
+                <use xlink:href="#status-icon-{{ statusName }}" ></use>
+              </svg>
+            </div>
+          </div>
         </div>
       </legend>
       <div class="member-profile-statistics">
@@ -96,15 +115,16 @@
       <div v-if="form.delayed" class="add-rdv-form-wrapper animated" transition="fade">
         <div class="add-rdv-form-item">
           <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" min="{{ datemin }}" v-model="date">
-          <label for="date" class="add-rdv-form-item-label">Date</label>
+          <label for="date" class="add-rdv-form-item-label">Le</label>
         </div>
         <div class="add-rdv-form-item add-rdv-form-item-slot" >
-          <input for="heure-debut" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
-          <label id="heure-debut" class="add-rdv-form-item-label">Créneau horaire</label>
-          <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
-          <label for="heure-fin" class="add-rdv-form-item-label">Créneau horaire</label>
+          <label id="heure-debut" class="add-rdv-form-item-label">à partir de</label>
+          <input for="heure-fin" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
         </div>
-
+        <div class="add-rdv-form-item add-rdv-form-item-slot" >
+          <label id="heure-debut" class="add-rdv-form-item-label">jusqu'à</label>
+          <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
+        </div>
       </div>
       <div class="ask-product-button" v-on:click="callAddApi">Demander</div>
     </div>
@@ -180,6 +200,7 @@ export default {
   },
   data() {
     return {
+      statusName: '',
       datemin: moment().format('YYYY-MM-DD'),
       form: {
         quantity: 1,
@@ -212,6 +233,20 @@ export default {
         this.updateProductCircle();
       })
       .catch(err => console.log(err));
+
+      if(this.product.author.score < 10) {
+        this.statusName = 'artisan';
+      } else if (this.product.author.score > 10 && this.product.author.score < 20) {
+        this.statusName = 'soldat';
+      } else if (this.product.author.score > 20 && this.product.author.score < 30) {
+        this.statusName = 'menestrel';
+      } else if (this.product.author.score > 30 && this.product.author.score < 40) {
+        this.statusName = 'ecuyer';
+      } else if (this.product.author.score > 40 && this.product.author.score < 50) {
+        this.statusName = 'chevalier';
+      } else {
+        this.statusName = 'seigneur';
+      }
   }
 };
 </script>
@@ -231,7 +266,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto 150px;
+  margin: 0 auto 200px;
   padding-bottom: 30px;
   width: 298px;
   background: url('/static/img/rectangle-red.png');
@@ -243,6 +278,7 @@ export default {
 
   .member-profile-statistics {
     padding: 18px 0 0 0;
+    margin-top: 25px;
   }
 
     .member-profile-statistics-item {
@@ -328,7 +364,7 @@ export default {
       }
 
       .product-quantity-bubble {
-        fill: $color-red;
+        fill: $color-green;
       }
 
       .product-quantity-text {
@@ -504,7 +540,7 @@ export default {
 
   .controls-quantity {
     position: absolute;
-    top: 40%;
+    top: 80px;
     left: 50%;
     background-color: $color-gray-lite;
     width: 60%;
@@ -551,20 +587,31 @@ export default {
     -webkit-mask-size: 100% 100%;
     background-color: $color-gray;
     overflow: hidden;
+    margin-bottom: -120px;
     img {
       height: 100%;
       transform: translate3d(-10%,0 ,0);
     }
   }
 
+  .member-profile-text-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 298px;
+    margin: auto;
+    height: 100px;
+    overflow: hidden;
+  }
+
   .member-profile-text {
     position: absolute;
-    top: 50px;
+    top: 70px;
     left: 50%;
     transform: translate3d(-50%, 0, 0);
     width: 110px;
     background-color: $color-white;
-    padding: 5px 0;
+    padding: 0;
   }
 
   .member-profile-name {
@@ -579,12 +626,13 @@ export default {
   .member-profile-status {
     color: $color-text;
     margin: 2px 0;
+    font-family: 'Karla-Regular', sans-serif;
   }
 
   .member-profile-item-allie {
     position: absolute;
     right: 35%;
-    top: -10px;
+    top: 15px;
     width: 25px;
     height: 25px;
     line-height: 25px;
@@ -608,7 +656,7 @@ export default {
     position: relative;
     min-height: 45px;
     padding-right: 10px;
-    flex: 1 65%;
+    flex: 1 35%;
     &:first-child{
       flex: 1 30%;
     }
@@ -618,19 +666,7 @@ export default {
     position: relative;
     min-height: 45px;
     padding-right: 10px;
-    flex: 1 65%;
     padding-bottom: 0px;
-    .add-rdv-form-item-input{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 50%;
-      height: 45px;
-      &:first-child {
-        left: 0;
-        right: inherit;
-      }
-    }
   }
 
     .add-rdv-form-item-label {
@@ -645,21 +681,13 @@ export default {
       margin-top: -5px;
       padding-top: 20px;
       padding-bottom: 5px;
-      font: 1.3em 'Karla-Regular', sans-serif;
+      font: 1.3em 'Karla-Bold', sans-serif;
       border: none;
-      border-bottom: 1px solid $color-white;
+      border-bottom: 3px solid $color-white;
       color: $color-text;
       background-color: $color-green;
       -webkit-appearance: none;
       appearance: none;
-
-      &:hover, &:focus {
-        font: 1.3em 'Karla-Bold', sans-serif;
-        border-bottom: 3px solid $color-white;
-        + label {
-          font-weight: 700;
-        }
-      }
 
       &.error {
         &:hover, &:focus {
@@ -677,9 +705,41 @@ export default {
     height: 200px;
     transition: stroke-dashoffset 1s ease;
     stroke-width: 4px;
-
-    circle {
-      stroke: $color-red;
+    circle.product-quantity-circle-base {
+      stroke: $color-green-lite;
     }
+
+    circle.product-quantity-circle-quantity {
+      stroke: $color-green;
+    }
+  }
+
+  .col-50 {
+    display: flex;
+    flex-direction: column;
+    flex: 1 50%;
+    justify-content: center;
+  }
+
+  .col-25 {
+    display: flex;
+    flex-direction: column;
+    flex: 1 25%;
+    justify-content: flex-end;
+    text-align: center;
+    text-align: -webkit-center;
+  }
+
+  .status-artisan,
+  .status-chevalier,
+  .status-seigneur,
+  .status-ecuyer,
+  .status-soldat,
+  .status-menestrel {
+    .profile-profile-app-icon-status-container{
+      width: 40px;
+      box-sizing: border-box;
+    }
+    .profile-profile-app-icon-status-left { transform: scaleX(-1);}
   }
 </style>

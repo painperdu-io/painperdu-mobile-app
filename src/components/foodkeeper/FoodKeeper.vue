@@ -1,16 +1,18 @@
 <template>
   <div class="foodkeeper-container animated">
     <template v-for="foodkeeper in foodkeepers">
-      <div class="foodkeeper-item animated" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
+      <div class="foodkeeper-item animated" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
+        <div class="user-dispo-wrapper">
+          <input id="user-dispo" type="checkbox">
+          <label for="userdispo"></label>
+        </div>
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
         <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">
           <use xlink:href="#app-icon-star"></use>
         </svg>
-        <h3 class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
+        <h3 v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}" class="foodkeeper-item-title">{{ foodkeeper.name }}</h3>
         <div class="foodkeeper-item-separator"></div>
         <p class="foodkeeper-item-description">{{ foodkeeper.description }}</p>
-        <!--<input id="user-dispo" type="checkbox">
-        <label for="userdispo"></label>-->
       </div>
     </template>
 
@@ -49,7 +51,7 @@ export default {
         el.classList.add(transition);
       }
       setTimeout(() => this.$route.router.go({ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeperId }}), 100);
-    }
+    },
   },
   ready() {
     // récupérer la liste des foodkeepers
@@ -193,11 +195,6 @@ export default {
       font: 1.2em 'Karla-Italic', sans-serif;
     }
 
-    input[type="checkbox"] {
-      display: none;
-      z-index: 99;
-    }
-
     label {
       position: relative;
       display: inline-block;
@@ -216,6 +213,23 @@ export default {
         height: 20px;
         transition: 0.3s;
       }
+    }
+
+    .user-dispo-wrapper {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+    }
+
+    #user-dispo {
+      width: 100%;
+      height: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 1;
     }
 
     #user-dispo:checked + label{

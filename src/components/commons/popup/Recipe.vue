@@ -108,6 +108,7 @@ export default {};
     color: $color-text;
     text-transform: uppercase;
     text-align: center;
+    text-decoration: none;
   }
 
   .recipe-popup-item-wrapper {
