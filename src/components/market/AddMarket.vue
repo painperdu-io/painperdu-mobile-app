@@ -87,6 +87,8 @@ export default {
       const datas = JSON.stringify({
         perimeter: this.form.perimeter,
         foodkeeper: this.form.current._id,
+        color: 3,
+        blason: 3,
         userId: global.currentUserId,
       });
       this.$http.post('markets', datas, { emulateJSON: true })
@@ -130,8 +132,8 @@ export default {
         if (this.foodkeepers.length) {
           for (let i = 0; i < this.foodkeepers.length; i++) {
             this.foodkeepers[i].location.googlemap = {
-                lng: this.foodkeepers[i].location.coordinates[0],
-                lat: this.foodkeepers[i].location.coordinates[1],
+              lng: this.foodkeepers[i].location.coordinates[0],
+              lat: this.foodkeepers[i].location.coordinates[1],
             };
           }
           this.form.current = this.foodkeepers[0];
