@@ -243,7 +243,7 @@ export default {
     }
 
     #user-dispo:checked + label:after {
-      left: calc(100% - 18px);
+      left: calc(100% - 22px);
       background: $color-white;
     }
 
@@ -255,8 +255,6 @@ export default {
     #user-dispo + label:after{
       background: $color-white;
       border-radius: 50%;
-      width: 16px;
-      height: 16px;
       top: 2px;
       left: 2px;
     }
