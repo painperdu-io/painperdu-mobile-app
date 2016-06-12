@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-container animated" transition="fade">
+  <div class="foodkeeper-container animated">
     <template v-for="foodkeeper in foodkeepers">
       <div class="foodkeeper-item animated" v-link="{ name: 'DetailsFoodkeeperProducts', params: { id: foodkeeper._id }}" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
