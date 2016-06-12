@@ -3,7 +3,7 @@
     <template v-for="(index,foodkeeper) in foodkeepers">
       <div class="foodkeeper-item animated" :class="{ 'active': index }" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
         <div class="user-dispo-wrapper">
-          <input id="user-dispo" type="checkbox" v-model="index">
+          <input id="user-dispo" type="checkbox" v-model="index" checked>
           <label for="userdispo"></label>
         </div>
         <div class="foodkeeper-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }"></div>
@@ -79,6 +79,7 @@ export default {
   margin-bottom: 7px;
   text-align: center;
   filter:grayscale(1);
+  transition: all 1s;
   &:before {
     content: "";
     display: inline-block;
