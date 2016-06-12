@@ -13,14 +13,10 @@
       </div>
       <h3 class="foodkeeper-add-form-title">Renseigner l'adresse du garde manger</h3>
       <div class="foodkeeper-add-form-item">
-        <input id="address1" name="form-street" v-model="form.location.street" class="foodkeeper-add-form-item-input" type="text" placeholder="Rue, route, impasse"></input>
-        <label class="foodkeeper-add-form-item-label" for="address1">Rue, route, impasse</label>
+        <input id="address1" name="form-street" v-model="form.location.street" class="foodkeeper-add-form-item-input" type="text" placeholder="Adresse"></input>
+        <label class="foodkeeper-add-form-item-label" for="address1">Adresse</label>
       </div>
       <div class="foodkeeper-add-form-inline-wrapper">
-        <div class="foodkeeper-add-form-item">
-          <input id="number" v-model="form.location.number" class="foodkeeper-add-form-item-input" type="text" placeholder="Numéro"></input>
-          <label class="foodkeeper-add-form-item-label" for="number">Numéro</label>
-        </div>
         <div class="foodkeeper-add-form-item">
           <input id="apartment" v-model="form.location.apartment" class="foodkeeper-add-form-item-input" type="text" placeholder="Appart."></input>
           <label class="foodkeeper-add-form-item-label" for="apartment">Appartement</label>

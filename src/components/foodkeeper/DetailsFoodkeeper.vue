@@ -87,6 +87,7 @@ export default {
     height: 125px;
     margin-bottom: 7px;
     text-align: center;
+    overflow: hidden;
     &:before {
       content: "";
       display: inline-block;
