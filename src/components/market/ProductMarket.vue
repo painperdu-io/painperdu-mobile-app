@@ -234,6 +234,7 @@ export default {
       })
       .catch(err => console.log(err));
 
+      console.log(this.product.author.score);
       if(this.product.author.score < 10) {
         this.statusName = 'artisan';
       } else if (this.product.author.score > 10 && this.product.author.score < 20) {
@@ -632,7 +633,7 @@ export default {
   .member-profile-item-allie {
     position: absolute;
     right: 35%;
-    top: 15px;
+    top: 25px;
     width: 25px;
     height: 25px;
     line-height: 25px;
@@ -643,7 +644,7 @@ export default {
     z-index: 3;
     svg {
       width: 18px;
-      margin-left: 4px;
+      margin-top: 4px;
     }
   }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="residence-slider-container">
-    <div class="residence-slider-item" :class="{ 'animated slideInDown': animate }">
-      <div class="residence-slider-image">
+    <div class="residence-slider-item " :class="{ 'animated slideInDown': animate }">
+      <div class="residence-slider-image blason-1">
         <img :src="market.foodkeeper.picture" />
       </div>
       <div class="residence-slider-item-name animated rubberBand">
@@ -39,11 +39,25 @@ export default {
     .residence-slider-image {
       width: 100px;
       height: 115px;
-      mask-image: url('/static/img/blason-1.png');
-      -webkit-mask-image: url('/static/img/blason-1.png');
       mask-size: 100% 100%;
       -webkit-mask-size: 100% 100%;
       background-color: $color-gray;
+      &.blason-1 {
+        mask-image: url('/static/img/blason-1.png');
+        -webkit-mask-image: url('/static/img/blason-1.png');
+      }
+      &.blason-2 {
+        mask-image: url('/static/img/blason-2.png');
+        -webkit-mask-image: url('/static/img/blason-2.png');
+      }
+      &.blason-3 {
+        mask-image: url('/static/img/blason-3.png');
+        -webkit-mask-image: url('/static/img/blason-3.png');
+      }
+      &.blason-4 {
+        mask-image: url('/static/img/blason-4.png');
+        -webkit-mask-image: url('/static/img/blason-4.png');
+      }
     }
     img {
       height: 100%;

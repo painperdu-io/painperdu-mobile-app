@@ -652,7 +652,7 @@ export default {
 .alliance-action-button {
   display: inline-block;
   margin: 0 8px;
-  border-radius: 25px;
+  border-radius: 50px;
   background-color: $color-beige;
   font: 1.3em 'Karla-Bold', sans-serif;
   color: $color-text;
@@ -684,7 +684,7 @@ export default {
   border: 0px;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-  animation-delay: 0.5s; 
+  animation-delay: 0.5s;
 }
 
   .step.my-side {

@@ -216,7 +216,7 @@ export default {
       border-radius: 50%;
       svg {
         width: 18px;
-        margin-left: 4px;
+        margin-top: 4px;
       }
     }
 

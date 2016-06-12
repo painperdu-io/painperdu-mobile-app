@@ -145,6 +145,10 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
+input {
+  border-radius: 0px;
+}
+
 .txt-current-selected {
   text-transform: uppercase;
   font: bold 1em 'Karla-Italic', sans-serif;

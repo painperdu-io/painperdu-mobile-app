@@ -11,7 +11,7 @@
         <div class="me-profile-statistics">
           <div class="me-profile-statistics-item">
             <p class="legend">Nombre d'échanges</p>
-            <p class="value">8</p>
+            <p class="value">{{ profile.score }}</p>
             <span class="underline"></span>
           </div>
           <div class="me-profile-statistics-item">

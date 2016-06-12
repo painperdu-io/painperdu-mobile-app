@@ -2,7 +2,6 @@
   <div class="members-container {{type}}s-container">
     <template v-for="(index, member) in members">
       <div v-if="type == 'ally'" class="members-item ally-item" v-link="{ name: 'MemberProfile', params: { id: member._id }, append: true}">
-        <div class="members-name">{{ member.name.first }}</div>
         <div class="members-image">
           <img :src="member.picture"/>
         </div>
@@ -88,16 +87,6 @@ export default {
     }
   }
 
-  .members-name {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: row;
-    text-transform: uppercase;
-    font: 1.2em 'Karla-Italic', sans-serif;
-    color: $color-text;
-    margin-bottom: 5px;
-  }
     .members-image {
       display: flex;
       width: 55px;
