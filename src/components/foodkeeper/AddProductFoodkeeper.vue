@@ -97,14 +97,8 @@ export default {
       event.preventDefault()
 
       // vérification des champs
-      if (!global.setIconAddProduct) {
-        console.log('ICON VIDE !!!');
-      }
       if (!this.form.name) {
         document.getElementsByName('form-name')[0].classList.add('error');
-      }
-      if (!this.form.foodkeepers.length) {
-        console.log('FOODKEEPERS VIDE !!!');
       }
 
       // si tout les champs sont remplis, on enregistre les données

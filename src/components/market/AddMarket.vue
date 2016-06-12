@@ -82,10 +82,6 @@ export default {
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
       event.preventDefault();
     },
-    updateCircle() {
-      console.log('UPDATE CIRCLE');
-
-    },
     callAddApi(event) {
       // enregistrer les données dans la base
       const datas = JSON.stringify({
