@@ -1,5 +1,5 @@
 <template>
-  <div class="markets-container">
+  <div class="markets-container animated" transition="fade">
     <div v-if="markets.length" class="markets-slider">
       <div class="controls animated bounceIn">
         <div v-show="sliderControls" class="previous animated fadeIn" v-on:click="moveLeft">

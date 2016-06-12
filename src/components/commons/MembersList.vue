@@ -80,6 +80,10 @@ export default {
       .members-image {
         width: 95px;
         height: 95px;
+        border-radius: 0;
+        img {
+          height: 95px;
+        }
       }
     }
   }

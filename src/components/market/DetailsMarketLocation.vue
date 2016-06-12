@@ -1,6 +1,6 @@
 <template>
   <div class="details-market-location-wrapper">
-    <google-map type="market" :objectid="$route.params.id">
+    <google-map type="market" :circle-radius="60" :objectid="$route.params.id">
     </google-map>
   </div>
 </template>

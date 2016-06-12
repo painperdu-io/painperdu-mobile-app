@@ -70,7 +70,7 @@ export default {
 
 .foodkeeper-details-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   flex: 1 100%;
   position: relative;
@@ -83,7 +83,7 @@ export default {
     justify-content: center;
     flex-direction: column;
     flex: 1 100%;
-    min-height: 125px;
+    max-height: 125px;
     height: 125px;
     margin-bottom: 7px;
     text-align: center;
