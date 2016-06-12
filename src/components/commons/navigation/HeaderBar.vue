@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="header-item  header-item-50">
-        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances'" class="header-logo">
+        <div v-if="$route.name == 'Market' || $route.name == 'Foodkeeper' || $route.name == 'Alliances'" class="header-logo animated pulse">
           <img width="145" height="32" src="./../../../../static/img/logo-pain-perdu.png" />
         </div>
         <h1 v-else>{{ $route.page.title }}</h1>
@@ -43,7 +43,7 @@
         <div class="app-contener" v-if="$route.page.header.flag" v-on:click="openTip">
           <svg viewBox="0 0 50 50" class="header-icon  header-icon-right header-icon-flag">
             <use xlink:href="#header-icon-flag"></use>
-          </svg> 
+          </svg>
         </div>
         <div v-if="$route.page.header.close" v-on:click="goPrevious" class="header-icon  header-icon-right header-icon-close">
           Fermer
@@ -167,6 +167,9 @@ export default {
       flex: 1 50%;
       flex-direction: column;
       justify-content: center;
+      div {
+        animation-delay: 2s;
+      }
     }
 
     .header-logo {
