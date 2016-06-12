@@ -10,7 +10,7 @@
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
           <p class="legend">Nombre d'échanges</p>
-          <p class="value">profile.score</p>
+          <p class="value">{{ profile.score }}</p>
           <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item">
@@ -27,14 +27,14 @@
         </div>
       </div>
     </div>
-    <div class="already-allie" v-if="profile.allie">
+    <div class="already-allie">
       <div class="profile-item-allie">
         <svg viewBox="0 0 100 100" class="profile-icon">
           <use xlink:href="#app-icon-infinite"></use>
         </svg>
       </div>
-      <h3 class="text">Vous vous êtes déjà allié avec Laurie !<h3>
-      <p class="see-alliance">Voir l'historique de vos alliances</p>
+      <h3 class="text">Vous vous êtes déjà allié avec {{ profile.name.first }} !<h3>
+      <p class="see-alliance" v-link="{ name: 'Alliances'}">Voir l'historique de vos alliances</p>
     </div>
   </div>
 </template>
@@ -165,6 +165,9 @@ export default {
     fill: $color-white;
     background: $color-blue;
     border-radius: 50%;
+    svg {
+      width: 18px;
+    }
   }
 
   .app-icon-container {

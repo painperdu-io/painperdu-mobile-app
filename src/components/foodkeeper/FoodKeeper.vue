@@ -204,8 +204,8 @@ export default {
     label {
       position: relative;
       display: inline-block;
-      width: 40px;
-      height: 20px;
+      width: 45px;
+      height: 25px;
       margin: 0 auto;
       transition: 0.3s;
       box-sizing: border-box;
@@ -243,7 +243,7 @@ export default {
     }
 
     #user-dispo:checked + label:after {
-      left: calc(100% - 18px);
+      left: calc(100% - 22px);
       background: $color-white;
     }
 
@@ -255,8 +255,6 @@ export default {
     #user-dispo + label:after{
       background: $color-white;
       border-radius: 50%;
-      width: 16px;
-      height: 16px;
       top: 2px;
       left: 2px;
     }
