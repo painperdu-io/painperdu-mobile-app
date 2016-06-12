@@ -1,13 +1,13 @@
 <template>
   <div class="residence-slider-container">
     <div class="residence-slider-item " :class="{ 'animated slideInDown': animate }">
-      <div class="residence-slider-image blason-1">
+      <div class="residence-slider-image blason-{{ market.blason }}">
         <img :src="market.foodkeeper.picture" />
       </div>
       <div class="residence-slider-item-name animated rubberBand">
         {{ market.foodkeeper.name }}
         <div class="residence-slider-item-name-content">
-          <svg v-if="market.foodkeeper.favorite" viewBox="0 0 100 100" class="residence-slider-item-star-icon">
+          <svg v-if="market.favorite" viewBox="0 0 100 100" class="residence-slider-item-star-icon">
             <use xlink:href="#app-icon-star"></use>
           </svg>
         </div>
