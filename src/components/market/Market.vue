@@ -144,8 +144,7 @@ export default {
 @import './../../styles/variables.scss';
 
 .markets-container {
-  overflow-y: scroll;
-  min-height:100vh;
+
 }
 
   .market-products-wrapper {

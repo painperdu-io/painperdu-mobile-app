@@ -683,7 +683,7 @@ export default {
   border: 0px;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-  animation-delay: 0.5s;
+  animation-delay: 0.5s; 
 }
 
   .step.my-side {
