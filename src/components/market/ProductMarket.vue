@@ -93,7 +93,7 @@
       <div class="member-profile-statistics">
         <div class="member-profile-statistics-item">
           <p class="legend">Nombre d'échanges</p>
-          <p class="value">8</p>
+          <p class="value">{{ product.author.score }}</p>
           <span class="underline"></span>
         </div>
         <div class="member-profile-statistics-item membre-{{membre-status}}">
@@ -165,6 +165,22 @@ export default {
       const rotatedeg = value * 360 / 100
       document.getElementsByClassName('product-rotate')[0].style.transform= 'rotate('+ rotatedeg +'deg)';
     },
+    updateStatus() {
+      console.log('Status :' + this.product.author.score);
+      if(this.product.author.score < 10) {
+        this.statusName = 'artisan';
+      } else if (this.product.author.score > 10 && this.product.author.score < 20) {
+        this.statusName = 'soldat';
+      } else if (this.product.author.score > 20 && this.product.author.score < 30) {
+        this.statusName = 'menestrel';
+      } else if (this.product.author.score > 30 && this.product.author.score < 40) {
+        this.statusName = 'ecuyer';
+      } else if (this.product.author.score > 40 && this.product.author.score < 50) {
+        this.statusName = 'chevalier';
+      } else {
+        this.statusName = 'seigneur';
+      }
+    },
     callAddApi(event) {
       event.preventDefault();
 
@@ -188,6 +204,7 @@ export default {
           // ouverture popup validation
           document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
           document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
+          updateStatus();
         })
         .catch(err => {
           console.log(err);
@@ -233,21 +250,6 @@ export default {
         this.updateProductCircle();
       })
       .catch(err => console.log(err));
-
-      console.log(this.product.author.score);
-      if(this.product.author.score < 10) {
-        this.statusName = 'artisan';
-      } else if (this.product.author.score > 10 && this.product.author.score < 20) {
-        this.statusName = 'soldat';
-      } else if (this.product.author.score > 20 && this.product.author.score < 30) {
-        this.statusName = 'menestrel';
-      } else if (this.product.author.score > 30 && this.product.author.score < 40) {
-        this.statusName = 'ecuyer';
-      } else if (this.product.author.score > 40 && this.product.author.score < 50) {
-        this.statusName = 'chevalier';
-      } else {
-        this.statusName = 'seigneur';
-      }
   }
 };
 </script>
