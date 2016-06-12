@@ -50,7 +50,7 @@ export default {
 
   &.accomplices-container {
     justify-content: flex-start;
-    padding: 10px 20px;
+    padding: 10px 30px;
   }
 }
 
