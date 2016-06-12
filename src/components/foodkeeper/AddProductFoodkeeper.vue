@@ -14,9 +14,21 @@
           </div>
           <span class="foodkeeper-add-product-form1-add-icon-text">+</span>
           <input id="product-item-count" value="1" v-model="form.quantity" number hidden>
+          <div>
+            <svg class="product-quantity-circle" viewPort="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="product-quantity-circle-base" r="55" cx="45" cy="45" fill="transparent" stroke-width="6" stroke-dasharray="345.575" stroke-dashoffset="0"></circle>
+              <circle class="product-quantity-circle-quantity" r="55" cx="45" cy="45" fill="transparent" stroke-width="6" stroke-dasharray="345.575" stroke-dashoffset="276.46"></circle>
+              <g class="product-rotate">
+                <circle class="product-quantity-bubble" r="14" cx="45" cy="-10" stroke-width="0"></span></circle>
+                <text class="product-quantity-text" x="45" y="-6">{{ form.quantity }}</text>
+              </g>
+            </svg>
+            <div class="product-rotate product-item-quantity">{{ form.quantity }}</div>
+          </div>
           <div class="product-item-quantity">{{ form.quantity }}</div>
         </div>
       </div>
+
       <div class="foodkeeper-add-product-form1-itemgreen">
         <input name="form-name" v-model="form.name" type="text" placeholder="Nom du produit" />
       </div>
@@ -78,12 +90,28 @@ export default {
   },
   methods: {
     increment(event) {
-      this.form.quantity++;
+      if (this.form.quantity < 10) {
+        this.form.quantity++;
+        this.updateProductCircle();
+      }
     },
     decrement(event) {
       if (this.form.quantity > 1) {
         this.form.quantity--;
+        this.updateProductCircle();
       }
+    },
+    updateProductCircle() {
+      let value = ((this.form.quantity * 100) / 10);
+      if (value < 0) { value = 0; }
+      if (value > 100) { value = 100; }
+
+      const pct = ((100 - value) / 100) * (Math.PI * (55 * 2));
+
+      document.getElementsByClassName('product-quantity-circle-quantity')[0].setAttribute('stroke-dashoffset', pct);
+
+      const rotatedeg = value * 360 / 100
+      document.getElementsByClassName('product-rotate')[0].style.transform= 'rotate('+ rotatedeg +'deg)';
     },
     openSelect(event){
       document.getElementById('foodkeepersSelect').click();
@@ -156,7 +184,10 @@ export default {
 
     // récupérer la liste des foodkeepers
     this.$http({ url: `users/${global.currentUserId}`, method: 'GET' })
-      .then((response) => { this.foodkeepers = response.data.foodkeepers; })
+      .then(response => {
+        this.foodkeepers = response.data.foodkeepers;
+        this.updateProductCircle();
+      })
       .catch(err => { console.log(err); });
   }
 };
@@ -200,9 +231,9 @@ export default {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        margin: 20px 0;
-        width: 115px;
-        height: 115px;
+        margin: 15px 0;
+        width: 90px;
+        height: 90px;
         background: $color-white;
         border-radius: 50%;
         border: 10px solid $color-white;
@@ -239,7 +270,7 @@ export default {
           padding: 10px;
           height: 40px;
           border: 2px solid $color-white;
-          border-radius: 20px;
+          border-radius: 15px;
           font: 1.15em 'Karla-Bold', sans-serif;
           color: $color-text;
           text-transform: uppercase;
@@ -247,7 +278,7 @@ export default {
 
         &:first-child {
           + label {
-            margin-right: 20px;
+            margin-right: 15px;
           }
         }
 
@@ -260,7 +291,7 @@ export default {
     }
 
     .foodkeeper-add-product-form1-foodkeepers{
-      margin-bottom: 20px;
+      margin-bottom: 5px;
       text-align: center;
     }
 
@@ -271,7 +302,7 @@ export default {
       background: $color-green-lite;
       box-sizing: border-box;
       border: none;
-      border-radius: 20px;
+      border-radius: 15px;
       text-align-last: left;
       text-transform: capitalize;
       font: 1em 'Karla-Bold', sans-serif;
@@ -316,7 +347,7 @@ export default {
         width: 100%;
         height: 40px;
         border: none;
-        border-radius: 20px;
+        border-radius: 15px;
         box-sizing: border-box;
         font: 1.5em 'Karla-Bold', sans-serif;
         color: $color-white;
@@ -343,7 +374,7 @@ export default {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    padding: 20px 60px 30px;
+    padding: 15px 60px 30px;
     height: 195px;
     background: $color-white;
   }
@@ -356,7 +387,7 @@ export default {
     }
 
     .foodkeeper-add-product-form2-dlc-range {
-      margin: 25px 0;
+      margin: 10px 0;
       text-align: center;
 
       input[type="range"] {
@@ -390,7 +421,7 @@ export default {
       font: 1.1em 'Karla-Italic', sans-serif;
       color: $color-text;
       p {
-        margin-top: 20px;
+        margin-top: 15px;
       }
     }
 
@@ -442,7 +473,7 @@ export default {
       width: 60%;
       transform: translate3d(-50%,-50%,0);
       padding: 5px 10px;
-      border-radius: 20px;
+      border-radius: 15px;
       z-index: 0;
     }
 
@@ -453,7 +484,7 @@ export default {
       font-size: 2em;
       width: 28px;
       height: 28px;
-      line-height: 20px;
+      line-height: 15px;
       padding: 0;
       background-color: $color-gray-lite;
     }
@@ -462,7 +493,7 @@ export default {
     .controls-quantity .btn-more { float: right; }
 
     .foodkeeper-add-product-form1-question {
-      margin: 20px auto 0;
+      margin: 15px auto 0;
       font: 1.1em 'Karla-Italic', sans-serif;
       color: $color-text;
       text-align: center;
@@ -471,4 +502,69 @@ export default {
         font-weight: 700;
       }
     }
+
+    .product-quantity-circle {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      overflow: inherit;
+      width: 91px;
+      height: 91px;
+    }
+
+    .product-quantity-circle-quantity {
+      transition: all linear 0.2s;
+      transform: rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .product-quantity-bubble {
+      fill: $color-red;
+    }
+
+    .product-quantity-text {
+      position: absolute;
+      text-anchor: middle;
+      font-size: 1.3em;
+      font-family: 'Karla-Bold', sans-serif;
+      fill: $color-white;
+    }
+
+    .product-rotate{
+      position: relative;
+      transition: all linear 0.2s;
+      transform: rotate(0deg);
+      transform-origin: 45px 45px;
+    }
+
+    .product-item-quantity {
+      position: absolute;
+      right: -7px;
+      top: -7px;
+      width: 28px;
+      height: 28px;
+      font: 1.3em 'Karla-Bold', sans-serif;
+      line-height: 28px;
+      text-align: center;
+      color: $color-white;
+      background: $color-red;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .product-quantity-circle {
+      width: 100%;
+      height: 100%;
+      transition: stroke-dashoffset 1s ease;
+      stroke-width: 4px;
+      circle.product-quantity-circle-base {
+        stroke: $color-stats-red4;
+      }
+
+      circle.product-quantity-circle-quantity {
+        stroke: $color-red;
+      }
+    }
+
+
 </style>
