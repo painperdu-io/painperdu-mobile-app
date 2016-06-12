@@ -6,7 +6,7 @@
           <img :src="profile.picture"/>
         </div>
       </div>
-      <div class="profile-item-allie" v-if="false">
+      <div class="profile-item-allie">
         <svg viewBox="0 0 50 50" class="profile-icon ">
           <use xlink:href="#profile-app-icon-infinite"></use>
         </svg>
@@ -55,6 +55,7 @@ export default {
     }
   },
   ready () {
+    console.log(this.profile.score);
     if(this.profile.score < 10) {
       this.statusName = 'artisan';
     } else if (this.profile.score > 10 && this.profile.score < 20) {
