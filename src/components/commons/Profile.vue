@@ -49,6 +49,26 @@
 <script>
 export default {
   props: ['profile', 'type'],
+  data () {
+    return {
+      statusName: '',
+    }
+  },
+  ready () {
+    if(this.profile.score < 10) {
+      this.statusName = 'artisan';
+    } else if (this.profile.score > 10 && this.profile.score < 20) {
+      this.statusName = 'soldat';
+    } else if (this.profile.score > 20 && this.profile.score < 30) {
+      this.statusName = 'menestrel';
+    } else if (this.profile.score > 30 && this.profile.score < 40) {
+      this.statusName = 'ecuyer';
+    } else if (this.profile.score > 40 && this.profile.score < 50) {
+      this.statusName = 'chevalier';
+    } else {
+      this.statusName = 'seigneur';
+    }
+  }
 };
 </script>
 
@@ -67,7 +87,7 @@ export default {
 
     .profile-infos-photo {
       position: relative;
-      margin: 0 auto 20px;
+      margin: 0 auto;
       border-radius: 0;
       width: 100px;
       height: 115px;
@@ -171,16 +191,16 @@ export default {
       justify-content: center;
       flex-direction: row;
       flex: 1 100%;
-      height: 100px;
     }
 
     .profile-description-text {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      width: 75%;
+      width: 85%;
       font: 1.2em 'Karla-Italic', sans-serif;
       color: $color-text;
+      margin-top: 0px;
     }
 
     .profile-item-allie {
