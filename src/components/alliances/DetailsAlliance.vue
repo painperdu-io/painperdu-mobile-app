@@ -431,14 +431,12 @@ export default {
         })
         .catch(err => console.log(err));
     },
-
     loadAlliancesListing(transition){
-      console.log(transition);
-      var el = document.getElementsByClassName('alliance-details-container')[0];
-      if (el.classList.contains('animated') ) {
+      const el = document.getElementsByClassName('alliance-details-container')[0];
+      if (el.classList.contains('animated')) {
         el.classList.remove('animated');
       }
-      if (el.classList.contains(transition) ) {
+      if (el.classList.contains(transition)) {
         el.classList.remove(transition);
       } else {
         el.classList.add('animated');
@@ -482,6 +480,9 @@ export default {
     };
   },
   ready() {
+    // mettre à jour toute les 5s (pour la soutenance)
+    global.updateAlliance = setInterval(() => this.updateCurrentAlliance(), 5000);
+
     // lorsque le componsant est prêt, mettre à jour les données
     this.updateCurrentAlliance();
   }
