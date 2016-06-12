@@ -656,9 +656,9 @@ export default {
     position: relative;
     min-height: 45px;
     padding-right: 10px;
-    flex: 1 35%;
+    flex: 1 30%;
     &:first-child{
-      flex: 1 30%;
+      flex: 1 40%;
     }
   }
 
@@ -688,6 +688,7 @@ export default {
       background-color: $color-green;
       -webkit-appearance: none;
       appearance: none;
+      height: 10px;
 
       &.error {
         &:hover, &:focus {

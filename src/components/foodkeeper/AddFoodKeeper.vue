@@ -135,6 +135,10 @@ export default {
 <style lang="scss" scoped>
 @import './../../styles/variables.scss';
 
+input {
+  border-radius: 0px;
+}
+
 .foodkeeper-add-container {
   display: flex;
   flex-direction: column;
