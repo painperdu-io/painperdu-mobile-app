@@ -34,7 +34,7 @@ export default {
     Marker,
     Circle,
   },
-  props: ['type', 'objectid', 'center'],
+  props: ['type', 'objectid', 'center', 'perimeter'],
   computed: {
     mapStyles() {
       switch(this.mapStyle) {
@@ -69,7 +69,7 @@ export default {
       }],
       mapStyle: 'default',
       circleBounds: {},
-      circleRadius: 100,
+      circleRadius: 100 * this.perimeter,
       circleOptions: {
         editable: false,
         strokeColor: '#25dec9',
