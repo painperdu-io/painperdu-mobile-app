@@ -67,11 +67,19 @@ export default {
 
     &.accomplice-item {
       border-radius: 50%;
+      &:first-child { margin-left: 0;}
       .members-image {
         width: 60px;
         height: 60px;
         mask-size: inherit;
         -webkit-mask-size : inherit;
+      }
+    }
+
+    &.ally-item {
+      .members-image {
+        width: 95px;
+        height: 95px;
       }
     }
   }
@@ -89,7 +97,7 @@ export default {
     .members-image {
       display: flex;
       width: 55px;
-      height: 65px;
+      height: 55px;
       border-radius: 50%;
       justify-content: center;
       align-content: center;

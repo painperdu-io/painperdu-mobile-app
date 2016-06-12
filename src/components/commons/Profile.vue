@@ -114,6 +114,8 @@ export default {
       flex-direction: row;
       width: 298px;
       margin: auto;
+      height: 120px;
+      overflow: hidden;
     }
 
     .col-50 {
