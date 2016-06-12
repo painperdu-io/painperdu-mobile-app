@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .details-market-location-wrapper {
+  overflow-y: scroll;
   position: relative;
   width: 100%;
   height: 372px;

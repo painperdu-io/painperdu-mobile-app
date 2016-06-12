@@ -28,5 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.details-market-members-wrapper {}
+.details-market-members-wrapper {
+  overflow-y: scroll;
+}
 </style>

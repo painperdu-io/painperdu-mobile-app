@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss" scoped>
 .details-market-statistics-wrapper {
+  overflow-y: scroll;
   position: relative;
   top: 0;
   left: 0;
