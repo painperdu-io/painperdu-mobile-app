@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
-import VueTouch from 'vue-touch'
 import { sync } from 'vuex-router-sync'
 import store from './vuex/store'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
-Vue.use(VueTouch)
 
 global.currentUserId = '575c371b489e38aeb9cd4d24'; // PIERRE
 //global.currentUserId = '575c371b489e38aeb9cd4d26'; // MELANIE

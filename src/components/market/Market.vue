@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveRight" v-touch:swiperight="moveLeft" >
+      <div class="market-container  animated {{ sliderAnimation }}">
         <residence-slider :market="market" :animate="true" v-on:click="loadMarketDetails(market._id)"></residence-slider>
 
         <div class="market-products-wrapper animated slideInUp" style="overflow=scroll;">

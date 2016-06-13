@@ -1,7 +1,7 @@
 <template>
   <div class="foodkeeper-container animated">
     <template v-for="(index,foodkeeper) in foodkeepers">
-      <div class="foodkeeper-item animated" :class="{ 'active': index }" v-touch:swipeleft="loadFoodkeeperDetails(foodkeeper._id, 'slideOutLeft')">
+      <div class="foodkeeper-item animated" :class="{ 'active': index }">
         <div class="user-dispo-wrapper">
           <input id="user-dispo" type="checkbox" v-model="index" checked>
           <label for="userdispo"></label>
