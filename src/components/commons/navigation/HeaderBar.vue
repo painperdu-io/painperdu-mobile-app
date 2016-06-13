@@ -50,6 +50,7 @@
         </div>
       </div>
     </div>
+    <div class="link-hidden open-recipe" v-on:click="openRecipe"></div>
   </div>
 </template>
 
@@ -62,6 +63,11 @@ export default {
       document.getElementsByClassName('cart-popup-overlay')[0].classList.add('active');
     },
     openTip(event) {
+      event.preventDefault()
+      document.getElementsByClassName('popup-container')[0].classList.add('active');
+      document.getElementsByClassName('popup-overlay')[0].classList.add('active');
+    },
+    openRecipe(event) {
       event.preventDefault()
       document.getElementsByClassName('popup-container')[0].classList.add('active');
       document.getElementsByClassName('popup-overlay')[0].classList.add('active');
@@ -226,4 +232,13 @@ export default {
 .header-icon-menu{ width: 35px;}
 
 .app-contener { display: inline-block;}
+
+.link-hidden {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  &.open-tip { right: 80px;}
+  &.open-recipe { left: 80px;}
+}
 </style>

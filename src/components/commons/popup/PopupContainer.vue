@@ -13,8 +13,9 @@
         <add-photo v-if="popup.addPhoto"></add-photo>
         <add-blason v-if="popup.addBlason"></add-blason>
         <tip v-if="popup.tip"></tip>
+        <recipe v-if="popup.recipe"></recipe>
       </template>
-    </template>
+    </template> 
 
   </div>
 </template>
@@ -23,6 +24,7 @@
 import Cart from './Cart';
 import AddAccomplice from './AddAccomplicesFoodKeeper';
 import Tip from './Tip';
+import Recipe from './Recipe';
 import AddPhoto from './AddPhoto';
 import AddBlason from './AddBlason';
 import { popupsList } from './../../../vuex/getters';
@@ -38,6 +40,7 @@ export default {
     Cart,
     AddAccomplice,
     Tip,
+    Recipe,
     AddPhoto,
     AddBlason,
   },
