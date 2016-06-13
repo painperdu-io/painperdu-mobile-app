@@ -1,5 +1,5 @@
 <template>
-  <div class="foodkeeper-details-container animated bounceInRight" v-touch:swiperight="loadFoodkeeperListing('bounceOutRight')">
+  <div class="foodkeeper-details-container animated bounceInRight">
     <div class="foodkeeper-details-item-wrapper">
       <div class="foodkeeper-details-item-background" :style="{ 'background-image': 'url(' + foodkeeper.picture + ')' }" ></div>
       <svg v-if="foodkeeper.favorite" viewBox="0 0 50 50" class="foodkeeper-star-icon">

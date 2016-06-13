@@ -8,6 +8,26 @@
 }
 
 @font-face {
+  font-family: 'Avenir-Regular';
+  src: url('/static/fonts/Avenir-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/Avenir-Regular.woff') format('woff'),
+    url('/static/fonts/Avenir-Regular.ttf') format('truetype'),
+    url('/static/fonts/Avenir-Regular.svg#Avenir-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir-Bold';
+  src: url('/static/fonts/Avenir-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/Avenir-Bold.woff') format('woff'),
+    url('/static/fonts/Avenir-Bold.ttf') format('truetype'),
+    url('/static/fonts/Avenir-Bold.svg#Avenir-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Baskerville-Bold';
   src: url('/static/fonts/Baskerville-Bold.eot?#iefix') format('embedded-opentype'),
     url('/static/fonts/Baskerville-Bold.ttf')  format('truetype'),

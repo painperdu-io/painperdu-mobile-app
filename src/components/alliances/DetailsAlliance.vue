@@ -1,5 +1,5 @@
 <template>
-  <div class="alliance-details-container animated bounceInRight" v-touch:swiperight="loadAlliancesListing('bounceOutRight')">
+  <div class="alliance-details-container animated bounceInRight">
     <div class="alliance-summary alliance-summary-{{alliance.type}}">
       <div class="profile-container animated bounceInRight">
         <div class="profile-infos">

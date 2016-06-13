@@ -66,7 +66,7 @@ export default {
     justify-content: center;
     flex-direction: column;
     flex: 1 33%;
-    font: 1em 'Avenir-Book', sans-serif;
+    font: 1em 'Avenir-Bold', sans-serif;
     color: $color-white;
     text-align: center;
     text-transform: uppercase;
