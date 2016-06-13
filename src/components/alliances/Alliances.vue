@@ -96,6 +96,11 @@ export default {
           mix-blend-mode: multiply;
           opacity: 0.5;
         }
+
+        &.alliance-type-giver,
+        &.alliance-type-applicant {
+          opacity: 0.1;
+        }
       }
     }
 
@@ -123,12 +128,17 @@ export default {
         height: 30px;
         border-radius: 50%;
 
-        &.alliance-type-ally {
-          background-color: $color-green;
-          transform: scaleX(-1);
+        svg {
+          width: 20px;
+          margin: auto;
+        }
+
+        &.alliance-type-giver {
+          background-color: $color-red;
         }
         &.alliance-type-applicant {
-          background-color: $color-red;
+          background-color: $color-green;
+          transform: scaleX(-1);
         }
       }
 

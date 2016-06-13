@@ -1,6 +1,6 @@
 <template>
   <div class="alliance-details-container animated bounceInRight" v-touch:swiperight="loadAlliancesListing('bounceOutRight')">
-    <div class="alliance-summary">
+    <div class="alliance-summary alliance-summary-{{alliance.type}}">
       <div class="profile-container animated bounceInRight">
         <div class="profile-infos">
           <div class="profile-infos-photo">
@@ -508,6 +508,10 @@ export default {
   justify-content: center;
   align-items: center;
   top: 60px;
+
+  &.alliance-summary-applicant {
+    flex-direction: row-reverse;
+  }
 }
 
 .profile-container,
@@ -516,23 +520,28 @@ export default {
   flex-direction: column;
   flex: 1;
   max-width: 150px;
+  height: 170px;
 }
 
 .alliance-type {
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-width: 50px;
-  width: 50px;
-  height: 50px;
+  max-width: 40px;
+  width: 4px;
+  height: 40px;
   border-radius: 50%;
 
-  &.alliance-type-ally {
-    background-color: $color-green;
-    transform: scaleX(-1);
+  svg {
+    width: 20px;
+    margin: auto;
+  }
+
+  &.alliance-type-giver {
+    background-color: $color-red;
   }
   &.alliance-type-applicant {
-    background-color: $color-red;
+    background-color: $color-green;
   }
 }
 
