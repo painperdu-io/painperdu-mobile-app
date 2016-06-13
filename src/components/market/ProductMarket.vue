@@ -166,7 +166,6 @@ export default {
       document.getElementsByClassName('product-rotate')[0].style.transform= 'rotate('+ rotatedeg +'deg)';
     },
     updateStatus() {
-      console.log('Status :' + this.product.author.score);
       if(this.product.author.score < 10) {
         this.statusName = 'artisan';
       } else if (this.product.author.score > 10 && this.product.author.score < 20) {
@@ -204,7 +203,6 @@ export default {
           // ouverture popup validation
           document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
           document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
-          updateStatus();
         })
         .catch(err => {
           console.log(err);
