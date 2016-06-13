@@ -16,11 +16,10 @@ export default {
 
 <style lang="scss" scoped>
 .details-foodkeeper-timeline-wrapper {
-  overflow-y: scroll;
-  max-height: 350px;
+  overflow: scroll;
+  max-height: 265px;
   img {
     width: 100%;
-    overflow-y: scroll;
   }
 }
 </style>

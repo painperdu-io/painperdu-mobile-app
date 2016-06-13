@@ -69,12 +69,10 @@ export default {
 @import './../../styles/variables.scss';
 
 .foodkeeper-details-container {
-  display: flex;
   justify-content: flex-start;
   flex-direction: column;
   flex: 1 100%;
   position: relative;
-  min-height: 667px;
 }
 
   .foodkeeper-details-item-wrapper {
@@ -147,7 +145,7 @@ export default {
     }
 
   .foodkeeper-details-accomplice-wrapper {
-    padding: 10px 30px 20px;
+    padding: 10px 30px;
     .accomplices-container {padding: 10px 0px !important;}
   }
 
