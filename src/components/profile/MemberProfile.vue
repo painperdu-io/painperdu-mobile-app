@@ -45,14 +45,7 @@ export default {
   },
   data() {
     return {
-      profile: {
-        name: {
-          first: '',
-        },
-        profile: {
-          description: '',
-        },
-      },
+      profile: {},
       accomplices: {},
     };
   },

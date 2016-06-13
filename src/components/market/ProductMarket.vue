@@ -692,7 +692,7 @@ export default {
   .member-profile-img {
     display: inline-block;
     width: 95px;
-    height: 105px;
+    height: 115px;
     mask-image: url('/static/img/blason-1.png');
     -webkit-mask-image: url('/static/img/blason-1.png');
     mask-size: 100% 100%;
@@ -743,8 +743,8 @@ export default {
 
   .member-profile-item-allie {
     position: absolute;
-    right: 35%;
-    top: 25px;
+    right: 32%;
+    top: 10px;
     width: 25px;
     height: 25px;
     line-height: 25px;
