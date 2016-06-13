@@ -146,7 +146,6 @@ export default {
     .product-item-name {
       margin: 10px auto 5px;
       font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
-      text-transform: capitalize;
       color: $color-red;
     }
 

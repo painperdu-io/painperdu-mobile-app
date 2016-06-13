@@ -160,7 +160,6 @@ export default {
         .alliances-product-description-name {
           font: 2.5em 'IowanOldStyleBT-BlackItalic', sans-serif;
           color: $color-red;
-          text-transform: capitalize;
         }
 
         .alliances-product-description-separator {
