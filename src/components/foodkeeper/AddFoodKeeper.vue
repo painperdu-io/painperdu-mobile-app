@@ -115,7 +115,6 @@ export default {
       form: {
         name: '',
         description: '',
-        picture: '',
         location: {
           street: '',
           number: '',
