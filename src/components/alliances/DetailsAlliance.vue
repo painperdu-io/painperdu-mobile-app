@@ -191,10 +191,12 @@
               <form>
                 <h3>Tu viens de recevoir une requête<br /> </h3>
                   {{ alliance.users.applicant.name.first }} demande ta denrée située <br />
-                  dans ton garde-manger {{ foodkeeper.name }}
+                  dans ton garde-manger<br />
+                  <div class="foodkeeper-name">{{ foodkeeper.name }}</div>
                 <div v-if="alliance.request.delayed">
-                  Pour la récupération de ta denrée, {{ alliance.users.applicant.name.first }}
-                  te propose le créneau suivant:
+                  Pour la récupération de ta denrée, <br />
+                  {{ alliance.users.applicant.name.first }}
+                  te propose le créneau suivant: <br />
                   <div class="multiple-dates">
                     <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
                     <label for="date-1" >
@@ -204,11 +206,12 @@
                   </div>
                 </div>
                 <div v-else><h3>Es-tu disponible dès maintenant ?</h3></div>
+                <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
+                <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
               </form>
             </fieldset>
 
-            <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
-            <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
+
           </div>
         </template>
 
@@ -223,12 +226,12 @@
                   </svg>
                 </legend>
                 <form>
-                  <h3>As-tu donné la denrée desirée ?</h3>
+                  As-tu donné la denrée desirée ?
+
+                  <div class="alliance-action-button" v-on:click="allianceExchange(true)">Oui</div>
+                  <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
                 </form>
               </fieldset>
-
-              <div class="alliance-action-button" v-on:click="allianceExchange(true)">Oui</div>
-              <div class="alliance-action-button" v-on:click="allianceExchange(false)">Non</div>
             </div>
           </template>
           <template v-else>
@@ -519,7 +522,7 @@ export default {
   top: 60px;
 
   &:first-child {
-      padding: 45px 0 0px;
+      padding: 25px 0 0px;
     .profile-container,
     .product {
       height: 125px;
@@ -701,15 +704,16 @@ export default {
 
 .alliance-action-button {
   display: inline-block;
-  margin: 0 8px;
+  margin: 20px 8px 10px;
   border-radius: 50px;
   background-color: $color-beige;
   font: 1em 'Karla-Bold', sans-serif;
   color: $color-text;
   text-transform: uppercase;
   text-align: center;
-  padding: 20px;
-  min-width: 60px;
+  padding: 0 45px;
+  height: 50px;
+  line-height: 50px;
 }
 
 .alliance-icon {
@@ -724,11 +728,12 @@ export default {
   color: $color-text;
   font-family: 'Karla-Italic';
   padding-bottom: 20px;
+  font-weight: 300;
 }
 
 .step {
   text-align: center;
-  margin: 20px auto 30px;
+  margin: 0px auto 20px;
   width: 75%;
   padding-bottom: 15px;
   border: 0px;
@@ -763,12 +768,11 @@ export default {
   text-transform: uppercase;
   color: $color-white;
   font-family: 'Karla-Bold';
-  font-size: 1.3em;
   box-sizing: border-box;
   line-height: 40px;
   width: 70%;
   min-width: 115px;
-  margin: auto;
+  margin: 10px auto 0;
 }
 
 .user-address {
@@ -836,6 +840,19 @@ legend {
     top: 0;
     left: 25px;
   }
+}
+
+.foodkeeper-name {
+  background-color: $color-green;
+  line-height: 40px;
+  width: 70%;
+  margin: 10px auto;
+  height: 40px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  color: $color-white;
+  font-family: 'Karla-Bold';
+  box-sizing: border-box;
 }
 
 </style>
