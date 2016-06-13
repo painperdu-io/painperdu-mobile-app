@@ -204,7 +204,7 @@ export default {
           // ouverture popup validation
           document.getElementsByClassName('validation-popup-container')[0].classList.add('active');
           document.getElementsByClassName('validation-popup-overlay')[0].classList.add('active');
-          updateStatus();
+          updateStatus(); 
         })
         .catch(err => {
           console.log(err);
