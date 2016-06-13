@@ -144,6 +144,7 @@ export default {
       color: $color-text;
     }
     .see-alliance {
+      font: 1.2em 'Karla-Regular', sans-serif;
       color: $color-green;
       text-decoration: underline;
       text-transform: uppercase;
