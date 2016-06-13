@@ -96,9 +96,11 @@ export default {
           opacity: 0.5;
         }
 
-        &.alliance-type-giver,
-        &.alliance-type-applicant {
-          opacity: 0.1;
+        .alliance-type-giver,
+        .alliance-type-applicant {
+          opacity: 0.8;
+          filter: grayscale(1);
+          -webkit-filter: grayscale(1);
         }
       }
     }
