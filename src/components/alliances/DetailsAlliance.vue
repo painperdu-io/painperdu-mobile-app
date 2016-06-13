@@ -99,7 +99,9 @@
 
                 <div class="user-address">
                   Tu le trouveras à l'adresse suivante:<br>
-                  <span class="user-address-details">  {{ foodkeeper.location.street }}<br>
+                  <span class="user-address-details">
+                  {{ alliance.users.giver.name.first }} {{ alliance.users.giver.name.last }}
+                  {{ foodkeeper.location.street }}<br>
                   {{ foodkeeper.location.additional }}<br>
                   {{ foodkeeper.location.zipcode }} {{ foodkeeper.location.city }}</span>
                 </div>

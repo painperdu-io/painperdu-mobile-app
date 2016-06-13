@@ -197,6 +197,7 @@ export default {
         border: none;
         border-bottom: 1px solid $color-gray;
         color: $color-text;
+        border: 0;
 
         &:hover, &:focus {
           font: 1.3em 'Karla-Bold', sans-serif;

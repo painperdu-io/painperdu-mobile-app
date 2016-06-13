@@ -7,13 +7,13 @@
       </svg>
     </div>
     <div v-if="userSelection" class="confirmation-popup-container-content">
-      <h3 class="confirmation-popup-title">Parbleu !</h3>
+      <h3 class="confirmation-popup-title">Hourra !</h3>
       <div class="confirmation-popup-title-separator"></div>
       <div class="confirmation-popup-item-wrapper">
         <div  class="confirmation-popup-item">
           <div class="confirmation-popup-item-text-wrapper">
             <p class="confirmation-popup-item-text"><span class="underline"></span>Votre choix est fait !<br /></p>
-            <p class="confirmation-popup-item-text"><span class="underline"></span>On aime votre assurance !<br /></p>
+            <p class="confirmation-popup-item-text"><span class="underline"></span>On aime votre assurance !</p>
           </div>
         </div>
       </div>
@@ -21,11 +21,11 @@
     <div v-else class="confirmation-popup-container-content">
       <h3 class="confirmation-popup-title">Diantre !</h3>
       <div class="confirmation-popup-title-separator"></div>
-      <div class="confirmation-popup-item-wrapper"> 
+      <div class="confirmation-popup-item-wrapper">
         <div  class="confirmation-popup-item">
           <div class="confirmation-popup-item-text-wrapper">
             <p class="confirmation-popup-item-text"><span class="underline"></span>Tout ceci s'annonce compliqué !<br /></p>
-            <p class="confirmation-popup-item-text"><span class="underline"></span>Les éléments sont contre vous !<br /></p>
+            <p class="confirmation-popup-item-text"><span class="underline"></span>Les éléments sont contre vous !</p>
           </div>
         </div>
       </div>
