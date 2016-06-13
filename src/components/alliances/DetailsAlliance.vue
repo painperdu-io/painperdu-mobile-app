@@ -9,8 +9,6 @@
               <img v-else :src="alliance.users.giver.picture" v-link="{ name: 'MemberProfile', params: { id: alliance.users.giver._id }}"/>
             </div>
           </div>
-          <h3 v-if="alliance.type == 'giver'" class="profile-infos-name">{{ alliance.users.applicant.name.first }}</h3>
-          <h3 v-else class="profile-infos-name">{{ alliance.users.giver.name.first }}</h3>
         </div>
       </div>
       <div class="alliance-type alliance-type-{{alliance.type}}">
@@ -27,6 +25,15 @@
           </div>
           <div class="product-quantity">{{ alliance.quantity }}</div>
         </div>
+      </div>
+    </div>
+    <div class="alliance-summary alliance-summary-{{alliance.type}}">
+      <div class="profile-container animated bounceInRight">
+          <h3 v-if="alliance.type == 'giver'" class="profile-infos-name">{{ alliance.users.applicant.name.first }}</h3>
+          <h3 v-else class="profile-infos-name">{{ alliance.users.giver.name.first }}</h3>
+      </div>
+      <div class="alliance-type"></div>
+      <div class="product animated bounceInLeft">
         <div class="product-name">{{ alliance.product.name }}</div>
       </div>
     </div>
@@ -503,7 +510,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex: 1 100%;
-  padding: 45px 0 0px;
+  padding: 0px;
   background: url('/static/img/bg-3.jpg');
   z-index: 99;
   width: 100%;
@@ -511,7 +518,15 @@ export default {
   align-items: center;
   top: 60px;
 
-  &.alliance-summary-applicant {
+  &:first-child {
+      padding: 45px 0 0px;
+    .profile-container,
+    .product {
+      height: 125px;
+    }
+  }
+
+  &.alliance-summary-giver {
     flex-direction: row-reverse;
   }
 }
@@ -522,7 +537,6 @@ export default {
   flex-direction: column;
   flex: 1;
   max-width: 150px;
-  height: 170px;
 }
 
 .alliance-type {
@@ -555,7 +569,7 @@ export default {
     .profile-infos-photo {
       position: relative;
       margin: 0 auto 20px;
-      width: 110px;
+      width: 100px;
       height: 115px;
       mask-image: url('/static/img/blason-1.png');
       -webkit-mask-image: url('/static/img/blason-1.png');
@@ -690,7 +704,7 @@ export default {
   margin: 0 8px;
   border-radius: 50px;
   background-color: $color-beige;
-  font: 1.3em 'Karla-Bold', sans-serif;
+  font: 1em 'Karla-Bold', sans-serif;
   color: $color-text;
   text-transform: uppercase;
   text-align: center;

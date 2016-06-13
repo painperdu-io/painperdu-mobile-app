@@ -127,6 +127,7 @@ export default {
         width: 30px;
         height: 30px;
         border-radius: 50%;
+        margin: 0 0 0 -40px;
 
         svg {
           width: 20px;
