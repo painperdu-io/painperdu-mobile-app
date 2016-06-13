@@ -91,7 +91,7 @@
                       </svg>
                     </legend>
                       <h3>Tu es un sacré veinard ! {{ alliance.users.giver.name.first }} <br />
-                      est disponible pour le créneau:</h3>
+                      est disponible pour le créneau :</h3>
                       <div class="date-hours">Entre {{ alliance.request.timeStart }} et {{ alliance.request.timeEnd }}</div>
                       <span class="date-day">{{ alliance.request.date }}</span>
                   </fieldset>
@@ -109,7 +109,7 @@
 
               <div v-if="foodkeeper.location.infos">
                 <div class="user-address">
-                  Voici des informations complèmentaires:
+                  Voici des informations complémentaires:
                   {{ foodkeeper.location.infos }}
                 </div>
               </div>
@@ -126,7 +126,7 @@
                 <form>
                   <h3>Fichtre,</h3>
                   {{ alliance.users.giver.name.first }} n'est pas disponible
-                    <template v-if="alliance.request.delayed"><br /> pour le créneau horaire que tu lui a indiqué</template>
+                    <template v-if="alliance.request.delayed"><br /> pour le créneau horaire que tu lui as indiqué</template>
                     <template v-else>maintenant</template>
                     <br />
                     <h3>Mais il te propose l'horaire suivant:</h3>
@@ -202,7 +202,7 @@
                 <div v-if="alliance.request.delayed">
                   Pour la récupération de ta denrée, <br />
                   {{ alliance.users.applicant.name.first }}
-                  te propose le créneau suivant: <br />
+                  te propose le créneau suivant : <br />
                   <div class="multiple-dates">
                     <input type="radio" id="date-1" class="filter" value="false" v-model="productType">
                     <label for="date-1" >
