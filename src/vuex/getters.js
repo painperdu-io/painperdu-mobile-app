@@ -52,6 +52,10 @@ export function popupsList() {
       tip: true,
     },
     {
+      route: 'Market',
+      recipe: true,
+    },
+    {
       route: 'DetailsFoodkeeperProducts',
       addAccomplice: true,
     },

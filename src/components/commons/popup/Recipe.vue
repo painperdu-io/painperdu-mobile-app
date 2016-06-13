@@ -20,7 +20,7 @@
       </div>
       <div class="recipe-popup-item">
         <div class="recipe-popup-item-text-wrapper">
-          <p class="recipe-popup-item-text">Des <span class="text-bold text-uppercase">carottes</span> et <span class="text-bold text-uppercase">pommes dde terres</span> sont<span class="underline"></span></p><br/>
+          <p class="recipe-popup-item-text">Des <span class="text-bold text-uppercase">carottes</span> et <span class="text-bold text-uppercase">pommes de terres</span> sont<span class="underline"></span></p><br/>
           <p class="recipe-popup-item-text">disponibles sur la place du marché<span class="underline"></span></p>
         </div>
       </div>
