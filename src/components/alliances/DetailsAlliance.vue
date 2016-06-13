@@ -103,7 +103,6 @@
                   <span class="user-address-details">
                   {{ alliance.users.giver.name.first }} {{ alliance.users.giver.name.last }}<br/>
                   {{ foodkeeper.location.street }}<br/>
-                  {{ foodkeeper.location.additional }}<v-if="foodkeeper.location.additional " br/>
                   {{ foodkeeper.location.zipcode }} {{ foodkeeper.location.city }}</span>
                 </div>
 
