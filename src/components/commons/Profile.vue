@@ -184,6 +184,9 @@ export default {
       .profile-profile-app-icon-status-container{
         width: 40px;
         box-sizing: border-box;
+        svg {
+          height: 100%;
+        }
       }
       .profile-profile-app-icon-status-left { transform: scaleX(-1);}
     }
