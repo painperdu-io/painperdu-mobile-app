@@ -79,7 +79,7 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 0 35px 0 20px;
+      padding: 0 35px 0 5px;
       height: 110px;
       border-top: 1px solid $color-gray;
       border-bottom: 1px solid $color-gray;
@@ -87,7 +87,6 @@ export default {
       &.abandoned,
       &.terminated {
         background: $color-beige;
-        opacity: 0.6;
 
         .alliances-product-icon,
         .alliances-product-description {
@@ -128,6 +127,7 @@ export default {
         height: 30px;
         border-radius: 50%;
         margin: 0 0 0 -40px;
+        z-index: 1;
 
         svg {
           width: 20px;
@@ -152,7 +152,7 @@ export default {
       }
 
       .alliances-product-description {
-        width: 140px;
+        width: 180px;
       }
 
         .alliances-product-description-name {
