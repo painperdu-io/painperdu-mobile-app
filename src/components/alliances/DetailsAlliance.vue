@@ -211,7 +211,7 @@
                     </label>
                   </div>
                 </div>
-                <div v-else><h3>Es-tu disponible dès maintenant ?</h3>
+                <div><h3>Es-tu disponible dès maintenant ?</h3>
                   <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
                   <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
                 </div>
