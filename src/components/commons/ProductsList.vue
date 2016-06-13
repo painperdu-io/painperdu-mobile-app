@@ -55,6 +55,7 @@ export default {
   .product-item-wrapper {
     display: inline-block;
     margin: 20px 15px;
+    min-width: 150px;
 
     &.animate {
       animation: fadeIn 1s;
