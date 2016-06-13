@@ -10,10 +10,10 @@
       <h3 class="slot-popup-title">À toi de jouer !</h3>
       <div class="slot-popup-title-separator"></div>
       <div v-else class="slot-popup-item-wrapper">
-        <div class="slot-popup-item">
+        <div class="slot-popup-item slot-title-wrapper">
           <div class="slot-popup-item-text-wrapper">
             <p class="slot-popup-item-text"><span class="underline"></span>Propose un nouvel<br/></p>
-            <p class="slot-popup-item-text"><span class="underline"></span>horaire de rencontre</p>
+            <p class="slot-popup-item-text"><span class="underline"></span>créneau de rencontre</p>
           </div>
         </div>
         <div class="slot-popup-item">
@@ -204,6 +204,9 @@ export default {
 
   .slot-popup-overlay.active {display: inline-block;}
 
+  .slot-title-wrapper {
+    margin-bottom: 0px;
+  }
 
   .slot-form-item {
     display: flex;
@@ -223,15 +226,17 @@ export default {
 
     .slot-form-item-input {
       margin-top: -5px;
-      padding-top: 15px;
+      padding-top: 20px;
       padding-bottom: 5px;
-      font: 1.3em 'Karla-Regular', sans-serif;
+      font: 1.3em 'Karla-Bold', sans-serif;
       border: none;
-      border-bottom: 1px solid $color-white;
+      border-bottom: 2px solid $color-green;
       color: $color-text;
-      background-color: $color-green;
       -webkit-appearance: none;
       appearance: none;
+      height: 10px;
+      border-radius: 0px;
+      min-width: 65px;
 
       &:hover, &:focus {
         font: 1.3em 'Karla-Bold', sans-serif;

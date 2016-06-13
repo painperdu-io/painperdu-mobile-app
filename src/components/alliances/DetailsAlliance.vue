@@ -58,7 +58,8 @@
                   <use xlink:href="#app-icon-helmet"></use>
                 </svg>
               </legend>
-                <h3>Ta requête à bien été envoyé à {{ alliance.users.giver.name.first }} le :</h3>
+                <h3>Ta requête à bien été envoyé<br />
+                   à {{ alliance.users.giver.name.first }} le :</h3>
                 <div class="date-day">{{ allianceCreatedAt }}</div>
             </fieldset>
           </div>
@@ -211,9 +212,10 @@
                     </label>
                   </div>
                 </div>
-                <div v-else><h3>Es-tu disponible dès maintenant ?</h3></div>
-                <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
-                <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
+                <div v-else><h3>Es-tu disponible dès maintenant ?</h3>
+                  <div class="alliance-action-button" v-on:click="allianceRequest(true)">Oui</div>
+                  <div class="alliance-action-button" v-on:click="allianceRequest(false)">Non</div>
+                </div>
               </form>
             </fieldset>
 
