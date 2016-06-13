@@ -20,7 +20,7 @@
       </div>
       <div class="tip-popup-item">
         <div class="tip-popup-item-text-wrapper">
-          <p class="tip-popup-item-text">Ton <span class="text-bold text-uppercase">avocat</span> et tes <span class="text-bold text-uppercase">yaourts</span> n'ont pas été<span class="underline"></span></p><br/>
+          <p class="tip-popup-item-text">Ton <span class="text-bold text-uppercase">avocat</span> et tes <span class="text-bold text-uppercase">yaourts </span> n'ont pas été<span class="underline"></span></p><br/>
           <p class="tip-popup-item-text">récupérés à temps<span class="underline"></span></p>
         </div>
       </div>
@@ -181,14 +181,15 @@ export default {};
           height: 100px;
           border-radius: 50%;
           text-align: center;
-          border: 10px solid $color-beige;
+          border: 10px solid #c0bdb1;
+          background-color: #c0bdb1;
           box-sizing: border-box;
-          background: url('/static/img/product-raw.png') center center no-repeat $color-beige;
         }
 
 
           .tip-popup-product-item-icon {
             transform: scale(0.8);
+
           }
 
           .tip-popup-product-name {
