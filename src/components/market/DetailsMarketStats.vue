@@ -1,6 +1,6 @@
 <template>
   <div class="details-market-statistics-wrapper">
-    <statistics></statistics>
+    <statistics type="market"></statistics>
   </div>
 </template>
 

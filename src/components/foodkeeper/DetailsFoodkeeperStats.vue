@@ -1,6 +1,6 @@
 <template>
   <div class="details-foodkeeper-statistics-wrapper">
-    <statistics></statistics>
+    <statistics type="foodkeeper"></statistics>
   </div>
 </template>
 
