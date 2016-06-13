@@ -157,23 +157,22 @@
             <fieldset class="step final-step animated">
                 <svg viewBox="0 0 100 100" class="alliance-icon">
                   <use xlink:href="#app-icon-note"></use>
-                </svg>
-                <h3>
+                </svg><br />
                   Qu'as tu pensé de cette alliance ? <br>
                   Elle était :
-                </h3>
                 <select class="market-add-form-select" v-model="form.review">
-                    <option value="0">Naze</option>
-                    <option value="1">Bof</option>
-                    <option value="2">Ça va</option>
-                    <option value="3" selected>Passable</option>
-                    <option value="4">Bien</option>
-                    <option value="5">Très bien</option>
+                    <option value="0">A bannir</option>
+                    <option value="1">A éviter</option>
+                    <option value="2">Passable</option>
+                    <option value="3" selected>Bien</option>
+                    <option value="4">Très Bien</option>
+                    <option value="5">Parfait</option>
                     <!-- MARION côté back: DE 0 à 5 uniquement !!!! -->
                 </select>
+                <div class="alliance-action-button" v-on:click="allianceReview">Valider</div>
             </fieldset>
 
-            <div class="alliance-action-button" v-on:click="allianceReview">Valider</div>
+
           </div>
         </template>
 
@@ -291,10 +290,11 @@
                 <use xlink:href="#app-icon-note"></use>
               </svg>
               <h3>Hip Hip Hip Houra !</h3>
-              Une étape de plus a été franchie dans la quête du Pain Perdu !<br/>
+              Une étape de plus a été franchie<br />
+              dans la quête du Pain Perdu !<br/>
             </form>
+            <div class="alliance-action-button" v-link="{name: 'DetailsProfileReviews'}">Voir l'avis obtenu</div>
           </fieldset>
-          <div class="alliance-action-button" v-link="{name: 'DetailsProfileReviews'}">Voir l'avis obtenu</div>
         </template>
       </div>
     </template>
