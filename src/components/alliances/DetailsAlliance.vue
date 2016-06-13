@@ -13,6 +13,11 @@
           <h3 v-else class="profile-infos-name">{{ alliance.users.giver.name.first }}</h3>
         </div>
       </div>
+      <div class="alliance-type alliance-type-{{alliance.type}}">
+        <svg viewBox="0 0 100 100" class="exchange-icon animated pulse">
+          <use xlink:href="#app-icon-arrow"></use>
+        </svg>
+      </div>
       <div class="product animated bounceInLeft">
         <div class="product-item-circle {{ alliance.product.type }}">
           <div class="product-item-icon-container">
@@ -498,11 +503,12 @@ export default {
   display: flex;
   flex-direction: row;
   flex: 1 100%;
-  padding: 45px 0 30px;
+  padding: 45px 0 0px;
   background: url('/static/img/bg-3.jpg');
   z-index: 99;
   width: 100%;
   justify-content: center;
+  align-items: center;
   top: 60px;
 }
 
@@ -513,6 +519,25 @@ export default {
   flex: 1;
   max-width: 150px;
 }
+
+.alliance-type {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  &.alliance-type-ally {
+    background-color: $color-green;
+    transform: scaleX(-1);
+  }
+  &.alliance-type-applicant {
+    background-color: $color-red;
+  }
+}
+
 
 .profile-container {
   text-align: center;
@@ -550,7 +575,7 @@ export default {
     }
 
     .profile-infos-name {
-      font: bold 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
+      font: 1.8em 'IowanOldStyleBT-BlackItalic', sans-serif;
       text-transform: capitalize;
       color: $color-red;
     }
@@ -580,7 +605,7 @@ export default {
         .product-quantity {
           position: absolute;
           right: 0px;
-          top: 10px;
+          top: -10px;
           display: inline-block;
           background-color: $color-red;
           color: $color-white;
@@ -680,7 +705,7 @@ export default {
 
 .step {
   text-align: center;
-  margin: 30px auto;
+  margin: 20px auto 30px;
   width: 75%;
   padding-bottom: 15px;
   border: 0px;
