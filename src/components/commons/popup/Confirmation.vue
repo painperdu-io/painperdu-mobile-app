@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="confirmation-popup-redirect-button" v-on:click="closePopup">Proposer</div>
+    <div class="confirmation-popup-redirect-button" v-on:click="closePopup">OK</div>
   </div>
 </template>
 

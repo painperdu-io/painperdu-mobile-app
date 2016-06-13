@@ -146,11 +146,17 @@ export default {
       }
 
       .alliances-product-icon.raw {
-        background: url('/static/img/product-raw.png') center center repeat $color-white;
+        background-image: url('/static/img/product-raw.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 85px 85px;
       }
 
       .alliances-product-icon.homemade {
-        background: url('/static/img/product-homemade.png') center center repeat $color-white;
+        background-image: url('/static/img/product-homemade.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 85px 85px;
       }
 
       .alliances-product-description {
