@@ -38,6 +38,11 @@
       </div>
     </div>
 
+    <div class="title-wrapper">
+      <h3 class="title-section">Suivi de vos actions</h3>
+      <div class="steps-summary-separator"></div>
+    </div>
+
     <!-- Alliance en cours -->
     <template v-if="alliance.status == 'current'">
 
@@ -255,8 +260,8 @@
               <form>
                 <svg viewBox="0 0 100 100" class="alliance-icon">
                   <use xlink:href="#app-icon-note"></use>
-                </svg>
-                <h3>Ton allié ne t'a toujours pas évalué<br /> pour cet échange</h3>
+                </svg><br />
+                Ton allié ne t'a toujours pas évalué<br /> pour cet échange
               </form>
             </fieldset>
           </div>
@@ -514,7 +519,6 @@ export default {
   flex-direction: row;
   flex: 1 100%;
   padding: 0px;
-  background: url('/static/img/bg-3.jpg');
   z-index: 99;
   width: 100%;
   justify-content: center;
@@ -522,7 +526,7 @@ export default {
   top: 60px;
 
   &:first-child {
-      padding: 25px 0 0px;
+      padding: 50px 0 0px;
     .profile-container,
     .product {
       height: 125px;
@@ -665,8 +669,18 @@ export default {
       }
     }
 
+.title-wrapper {
+  font-size: 1.3em;
+  font-family: 'Karla-Regular';
+  text-align: center;
+  margin: 30px;
+}
+
 .title-section {
     text-transform: uppercase;
+    margin: auto;
+    color: $color-sepia;
+    font-weight: 300;
 }
 
 .steps-summary {
