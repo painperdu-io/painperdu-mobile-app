@@ -16,7 +16,6 @@ export default {
 
 <style lang="scss" scoped>
 .details-foodkeeper-statistics-wrapper {
-  overflow-y: scroll;
   position: relative;
   top: 0;
   left: 0;
