@@ -64,7 +64,7 @@
           <div class="col-25">
             <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-left">
               <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
-                <use xlink:href="#status-icon-{{ statusName }}" ></use>
+                <use xlink:href="#status-icon-{{ statusName }}"></use>
               </svg>
             </div>
           </div>
@@ -84,7 +84,24 @@
           <div class="col-25">
             <div class="profile-profile-app-icon-status-container profile-profile-app-icon-status-right">
               <svg viewBox="0 0 100 100" class="profile-profile-app-icon-status">
-                <use xlink:href="#status-icon-{{ statusName }}" ></use>
+                <template v-if="product.author.score < 10">
+                  <use xlink:href="#status-icon-artisan"></use>
+                </template>
+                <template v-if="product.author.score > 10 && product.author.score < 20">
+                  <use xlink:href="#status-icon-soldat"></use>
+                </template>
+                <template v-if="product.author.score > 20 && product.author.score < 30">
+                  <use xlink:href="#status-icon-menestrel"></use>
+                </template>
+                <template v-if="product.author.score > 30 && product.author.score < 40">
+                  <use xlink:href="#status-icon-ecuyer"></use>
+                </template>
+                <template v-if="product.author.score > 40 && product.author.score < 50">
+                  <use xlink:href="#status-icon-chevalier"></use>
+                </template>
+                <template v-if="product.author.score > 50">
+                  <use xlink:href="#status-icon-seigneur"></use>
+                </template>
               </svg>
             </div>
           </div>
@@ -117,11 +134,11 @@
           <input id="date" v-model="form.date" class="add-rdv-form-item-input" type="date" min="{{ datemin }}" v-model="date">
           <label for="date" class="add-rdv-form-item-label">Le</label>
         </div>
-        <div class="add-rdv-form-item add-rdv-form-item-slot" >
+        <div class="add-rdv-form-item add-rdv-form-item-slot">
           <label id="heure-debut" class="add-rdv-form-item-label">à partir de</label>
           <input for="heure-fin" v-model="form.timeStart" class="add-rdv-form-item-input" type="time" v-model="heureDebut">
         </div>
-        <div class="add-rdv-form-item add-rdv-form-item-slot" >
+        <div class="add-rdv-form-item add-rdv-form-item-slot">
           <label id="heure-debut" class="add-rdv-form-item-label">jusqu'à</label>
           <input for="heure-fin" v-model="form.timeEnd" class="add-rdv-form-item-input" type="time" v-model="heureFin">
         </div>
@@ -228,6 +245,7 @@ export default {
       },
       product: {
         author: {
+          score: 0,
           picture: '',
           name: {
             first: '',

@@ -12,11 +12,11 @@
 
         <div class="market-add-form-perimeter-range">
           <h3>Périmètre de recherche <span>pour cette place :</span></h3>
-          <input v-model="form.perimeter" type="range" value="2" max="3" min="1" step="1" />
+          <input v-model="form.perimeter" type="range" value="1" max="3" min="1" step="1" />
           <div class="market-add-form-perimeter-range-label">
             <span class="align-left">Lopin</span>
-            <span class="align-right">Canton</span>
-            <span>Contrée</span>
+            <span class="align-right">Contrée</span>
+            <span>Canton</span>
           </div>
         </div>
         <div class="market-add-form-perimeter-address">
