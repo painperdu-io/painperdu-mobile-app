@@ -697,8 +697,8 @@ export default {
 
   .member-profile-img {
     display: inline-block;
-    width: 75px;
-    height: 100px;
+    width: 95px;
+    height: 105px;
     mask-image: url('/static/img/blason-1.png');
     -webkit-mask-image: url('/static/img/blason-1.png');
     mask-size: 100% 100%;

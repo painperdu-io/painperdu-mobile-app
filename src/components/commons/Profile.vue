@@ -1,15 +1,17 @@
 <template>
   <div class="profile-container">
     <div class="profile-infos status-{{ statusName }}">
-      <div class="profile-infos-photo" :class="{ 'profile-accomplice': type == 'accomplice' }">
-        <div class="profile-infos-photo-img">
-          <img :src="profile.picture"/>
+      <div class="blason">
+        <div class="profile-infos-photo" :class="{ 'profile-accomplice': type == 'accomplice' }">
+          <div class="profile-infos-photo-img">
+            <img :src="profile.picture"/>
+          </div>
         </div>
-      </div>
-      <div class="profile-item-allie">
-        <svg viewBox="0 0 50 50" class="profile-icon ">
-          <use xlink:href="#profile-app-icon-infinite"></use>
-        </svg>
+        <div class="profile-item-allie">
+          <svg viewBox="0 0 50 50" class="profile-icon ">
+            <use xlink:href="#app-icon-infinite"></use>
+          </svg>
+        </div>
       </div>
       <div class="profile-infos-text">
         <div class="col-25">
@@ -25,7 +27,7 @@
           <p class="profile-infos-status ">
             <template v-if="profile.score < 10">Artisan</template>
             <template v-if="profile.score > 10 && profile.score < 20">Soldat</template>
-            <template v-if="profile.score > 20 && profile.score < 30">Menestrel</template>
+            <template v-if="profile.score > 20 && profile.score < 30">Ménestrel</template>
             <template v-if="profile.score > 30 && profile.score < 40">Écuyer</template>
             <template v-if="profile.score > 40 && profile.score < 50">Chevalier</template>
             <template v-if="profile.score > 50">Seigneur</template>
@@ -86,6 +88,15 @@ export default {
   .profile-infos {
     position: relative;
   }
+
+  @keyframes float {
+    0%   { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(0,10%,0); }
+  }
+    .blason {
+      position: relative;
+      animation: float 1s infinite linear alternate;
+    }
 
     .profile-infos-photo {
       position: relative;
@@ -210,8 +221,8 @@ export default {
 
     .profile-item-allie {
       position: absolute;
-      right: 33%;
-      top: -14px;
+      right: 31%;
+      top: -6px;
       width: 28px;
       height: 28px;
       line-height: 28px;

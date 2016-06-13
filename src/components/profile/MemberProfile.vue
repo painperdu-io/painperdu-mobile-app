@@ -28,11 +28,6 @@
       </div>
     </div>
     <div class="already-allie">
-      <div class="profile-item-allie">
-        <svg viewBox="0 0 100 100" class="profile-icon">
-          <use xlink:href="#app-icon-infinite"></use>
-        </svg>
-      </div>
       <h3 class="text">Vous vous êtes déjà allié avec {{ profile.name.first }} !<h3>
       <p class="see-alliance" v-link="{ name: 'Alliances'}">Voir l'historique de vos alliances</p>
     </div>
@@ -96,6 +91,7 @@ export default {
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
+    padding-bottom: 20px;
   }
 
     .member-profile-statistics {
