@@ -17,7 +17,7 @@
       <div class="market-container  animated {{ sliderAnimation }}" v-touch:swipeleft="moveRight" v-touch:swiperight="moveLeft" >
         <residence-slider :market="market" :animate="true" v-on:click="loadMarketDetails(market._id)"></residence-slider>
 
-        <div class="market-products-wrapper animated slideInUp">
+        <div class="market-products-wrapper animated slideInUp" style="overflow=scroll;">
           <div class="market-products-search">
             <svg viewBox="0 0 100 100" class="market-products-search-icon  market-products-search-icon-left">
               <use xlink:href="#app-icon-search"></use>
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div v-else>
-      <div class="market-container">
+      <div class="market-container no-market animated fadeIn">
         <div class="add-market" v-link="{ name: 'AddMarket' }">
           <div class="add-market-blason"><span>+</span></div>
           <div class="add-market-text">
@@ -268,6 +268,9 @@ export default {
       align-items: center;
       transition: all 1s;
       align-content: center;
+      &.no-market {
+        animation-delay: 1s;
+      }
     }
 
     .add-market { text-align: center;}

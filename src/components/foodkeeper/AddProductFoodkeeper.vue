@@ -350,7 +350,7 @@ export default {
         border: none;
         border-radius: 50px;
         box-sizing: border-box;
-        font: 1.5em 'Karla-Bold', sans-serif;
+        font: 1.5em 'Karla-Italic', sans-serif;
         color: $color-white;
         background: $color-green-lite;
 
