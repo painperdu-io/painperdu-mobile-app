@@ -9,8 +9,8 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(VueTouch)
 
-//global.currentUserId = '575c371b489e38aeb9cd4d24'; // PIERRE
-global.currentUserId = '575c371b489e38aeb9cd4d26'; // MELANIE
+global.currentUserId = '575c371b489e38aeb9cd4d24'; // PIERRE
+//global.currentUserId = '575c371b489e38aeb9cd4d26'; // MELANIE
 
 Vue.http.options.root = 'http://192.168.175.2:1337/api/v1';
 //Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
