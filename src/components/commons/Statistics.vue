@@ -41,13 +41,35 @@
         <div class="statistics-infos-content-legend"><span class="underline"></span>depuis l’inscription</div>
       </div>
     </div>
+
+  <template v-if="type == 'profile'">
+    <div class="statistics-infos-wrapper">
+      <div class="statistics-infos-content">
+        <div class="statistics-infos-content-bg">
+          <div class="statistics-infos-content-value">3</div>
+        </div>
+        <div class="statistics-infos-content-legend"><span class="underline"></span>Nouvelles rencontres</div>
+        <div class="statistics-infos-content-legend"><span class="underline"></span>ce mois-ci</div>
+      </div>
+      <div class="statistics-infos-content">
+        <div class="statistics-infos-content-bg">
+          <div class="statistics-infos-content-value">2</div>
+        </div>
+        <div class="statistics-infos-content-legend"><span class="underline"></span>Compères ajoutés</div>
+        <div class="statistics-infos-content-legend"><span class="underline"></span>depuis l’inscription</div>
+      </div>
+    </div>
+  </template>
+
   </div>
 </template>
 
 <script>
 export default {
+  props: ['type'],
   data () {
     return {
+      type: '',
       statistics: {
         share: { month: '2', begin: '6' },
         products: [
@@ -56,7 +78,7 @@ export default {
           { name: 'Laitue', percent: '38', priority: '3' },
           { name: 'Lasagne', percent: '67', priority: '4' },
           { name: 'Pomme', percent: '12', priority: '5' },
-        ]
+        ],
       },
     };
   },

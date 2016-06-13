@@ -1,8 +1,8 @@
 <template>
   <div class="stats-container">
-      <statistics></statistics>
+    <statistics type="profile"></statistics>
   </div>
-</template> 
+</template>
 
 <script>
 import Statistics from './../commons/Statistics'
