@@ -212,14 +212,6 @@ export function productsIcons() {
       name: 'Sushi'
     },
     {
-      icon: 'yaourt-fruits',
-      name: 'Yaourt au fruits'
-    },
-    {
-      icon: 'yaourt-chocolat',
-      name: 'Yaourt au chocolat'
-    },
-    {
       icon: 'yaourt-nature',
       name: 'Yaourt nature'
     },

@@ -795,7 +795,7 @@ export default {
   line-height: 40px;
   width: 70%;
   min-width: 115px;
-  margin: 10px auto 0;
+  margin: 10px auto;
 }
 
 .user-address {
