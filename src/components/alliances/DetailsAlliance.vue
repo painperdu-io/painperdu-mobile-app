@@ -727,7 +727,7 @@ export default {
 
 .alliance-action-button {
   display: inline-block;
-  margin: 20px 8px 10px;
+  margin: 10px 8px;
   border-radius: 50px;
   background-color: $color-beige;
   font: 1em 'Karla-Bold', sans-serif;
@@ -869,7 +869,7 @@ legend {
   background-color: $color-green;
   line-height: 40px;
   width: 70%;
-  margin: 10px auto;
+  margin: 10px auto 20px;
   height: 40px;
   border-radius: 20px;
   text-transform: uppercase;

@@ -44,7 +44,7 @@
           </div>
 
           <div v-else class="pictos-container">
-            <template v-for="picto in pictos | filterBy search in 'icon' | orderBy 'icon' ">
+            <template v-for="picto in pictos | filterBy search in 'name' | orderBy 'icon' ">
               <div class="picto-item-wrapper">
                 <input id="{{ picto.icon }}" class="picto" type="radio" value="{{ picto.icon }}" v-model="selectedFood">
                 <label for="{{ picto.icon }}" class="picto-item-container">
