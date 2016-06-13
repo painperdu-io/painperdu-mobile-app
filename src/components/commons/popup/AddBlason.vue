@@ -41,8 +41,8 @@
             <label class="beige"  for="beige" ></label>
             <input id="gray" class="color" type="radio" value="color-4" v-model="color">
             <label class="gray"  for="gray"></label>
-            <input id="sepia" class="color" type="radio" value="color-5" v-model="color">
-            <label class="sepia"  for="sepia"></label>
+            <input id="none" class="color" type="radio" value="color-5" v-model="color">
+            <label class="none"  for="none"></label>
           </div>
         </div>
       </div>
@@ -90,6 +90,53 @@ export default {};
       text-align: center;
     }
 
+    .blason {
+      position: relative;
+      &.blason-1 {
+        mask-image: url('/static/img/blason-1.png');
+        -webkit-mask-image: url('/static/img/blason-1.png');
+      }
+      &.blason-2 {
+        mask-image: url('/static/img/blason-2.png');
+        -webkit-mask-image: url('/static/img/blason-2.png');
+      }
+      &.blason-3 {
+        mask-image: url('/static/img/blason-3.png');
+        -webkit-mask-image: url('/static/img/blason-3.png');
+      }
+      &.blason-4 {
+        mask-image: url('/static/img/blason-4.png');
+        -webkit-mask-image: url('/static/img/blason-4.png');
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        left: 0;
+        top: 0;
+      }
+
+      &.color-1 {
+        &:after { background-color: $color-green; }
+
+      }
+      &.color-2 {
+        &:after { background-color: $color-red; }
+      }
+      &.color-3 {
+        &:after { background-color: $color-beige; }
+      }
+      &.color-4 {
+        &:after { background-color: $color-gray }
+      }
+      &.color-5 {
+        &:after{ background-color: #transparent;}
+      }
+    }
+
     p {
       display: inline;
       position: relative;
@@ -135,28 +182,11 @@ export default {};
 
   .form {
     + label {
-      width: 60px;
-      height: 60px;
-      background-color: $color-gray;
-      &.blason-1 {
-        mask-image: url('/static/img/blason-1.png');
-        -webkit-mask-image: url('/static/img/blason-1.png');
-      }
-      &.blason-2 {
-        mask-image: url('/static/img/blason-2.png');
-        -webkit-mask-image: url('/static/img/blason-2.png');
-      }
-      &.blason-3 {
-        mask-image: url('/static/img/blason-3.png');
-        -webkit-mask-image: url('/static/img/blason-3.png');
-      }
-      &.blason-4 {
-        mask-image: url('/static/img/blason-4.png');
-        -webkit-mask-image: url('/static/img/blason-4.png');
-      }
+      width: 43px;
+      height: 63px;
 
       img {
-        width: 100%;
+        height: 100%;
       }
     }
   }
@@ -166,9 +196,8 @@ export default {};
       display: inline-block;
       width: 40px;
       height: 40px;
-      background-color: $color-gray;
       img {
-        width: 100%;
+        height: 46px;
       }
     }
   }
@@ -191,7 +220,7 @@ export default {};
     &.green { background-color: $color-green; }
     &.gray { background-color: $color-gray; }
     &.beige { background-color: $color-beige; }
-    &.sepia { background-color: $color-sepia; }
+    &.none { border: 1px solid $color-gray; }
   }
 
   .blason {
