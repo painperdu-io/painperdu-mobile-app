@@ -55,20 +55,27 @@ export default {
     }
   },
   ready () {
-    console.log(this.profile.score);
+    console.log('test:' + this.profile.score);
     if(this.profile.score < 10) {
       this.statusName = 'artisan';
-    } else if (this.profile.score > 10 && this.profile.score < 20) {
+    }
+    if (this.profile.score > 10 && this.profile.score < 20) {
       this.statusName = 'soldat';
-    } else if (this.profile.score > 20 && this.profile.score < 30) {
+    }
+    if (this.profile.score > 20 && this.profile.score < 30) {
       this.statusName = 'menestrel';
-    } else if (this.profile.score > 30 && this.profile.score < 40) {
+    }
+    if (this.profile.score > 30 && this.profile.score < 40) {
       this.statusName = 'ecuyer';
-    } else if (this.profile.score > 40 && this.profile.score < 50) {
+    }
+    if (this.profile.score > 40 && this.profile.score < 50) {
       this.statusName = 'chevalier';
-    } else {
+    }
+    if (this.profile.score > 50 ) {
       this.statusName = 'seigneur';
     }
+    this.statusName;
+    console.log('status :' + this.statusName);
   }
 };
 </script>
