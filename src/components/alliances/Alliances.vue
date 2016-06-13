@@ -8,6 +8,11 @@
               <use xlink:href="#foods-icon-{{ alliance.product.icon }}"></use>
             </svg>
           </div>
+          <div class="alliance-type alliance-type-{{alliance.type}}">
+            <svg viewBox="0 0 100 100" class="exchange-icon animated pulse">
+              <use xlink:href="#app-icon-arrow"></use>
+            </svg>
+          </div>
           <div class="alliances-product-description">
             <div class="alliances-product-description-name">{{ alliance.product.name }}</div>
             <div class="alliances-product-description-separator"></div>
@@ -74,7 +79,7 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 0 35px;
+      padding: 0 35px 0 20px;
       height: 110px;
       border-top: 1px solid $color-gray;
       border-bottom: 1px solid $color-gray;
@@ -109,6 +114,24 @@ export default {
         }
       }
 
+      .alliance-type {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        max-width: 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+
+        &.alliance-type-ally {
+          background-color: $color-green;
+          transform: scaleX(-1);
+        }
+        &.alliance-type-applicant {
+          background-color: $color-red;
+        }
+      }
+
       .alliances-product-icon.raw {
         background: url('/static/img/product-raw.png') center center repeat $color-white;
       }
@@ -118,7 +141,7 @@ export default {
       }
 
       .alliances-product-description {
-        width: 150px;
+        width: 140px;
       }
 
         .alliances-product-description-name {
