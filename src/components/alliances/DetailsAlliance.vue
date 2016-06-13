@@ -47,7 +47,7 @@
                 </svg>
               </legend>
                 <h3>Ta requête à bien été envoyé à {{ alliance.users.giver.name.first }} le :</h3>
-                <div class="date-day">{{ alliance.createdAt }}</div>
+                <div class="date-day">{{ allianceCreatedAt }}</div>
             </fieldset>
           </div>
         </template>
@@ -313,10 +313,10 @@
 </template>
 
 <script>
+import moment from 'moment';
 import Profile from './../commons/Profile'
 import ConfirmationPopup from './../commons/popup/Confirmation'
 import SlotPopup from './../commons/popup/Slot'
-
 
 export default {
   components: {
@@ -418,6 +418,7 @@ export default {
       this.$http({ url: `alliances/${allianceId}/user/${global.currentUserId}`, method: 'GET' })
         .then(response => {
           this.alliance = response.data;
+          this.allianceCreatedAt = moment(this.alliance.createdAt).format('DD/MM/YYYY');
 
           // récupére le 1er foodkeeper associé au produit
           this.$http({ url: `products/${this.alliance.product._id}`, method: 'GET' })
@@ -453,6 +454,7 @@ export default {
   },
   data() {
     return {
+      allianceCreatedAt: '',
       userSelection: false,
       foodkeeper: {},
       alliance: {
