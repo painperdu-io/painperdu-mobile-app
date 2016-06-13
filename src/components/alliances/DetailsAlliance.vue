@@ -90,7 +90,7 @@
                         <use xlink:href="#app-icon-helmet"></use>
                       </svg>
                     </legend>
-                      <h3>Tu es un sacré vénard ! {{ alliance.users.giver.name.first }} <br />
+                      <h3>Tu es un sacré veinard ! {{ alliance.users.giver.name.first }} <br />
                       est disponible pour le créneau:</h3>
                       <div class="date-hours">Entre {{ alliance.request.timeStart }} et {{ alliance.request.timeEnd }}</div>
                       <span class="date-day">{{ alliance.request.date }}</span>
