@@ -342,11 +342,17 @@ export default {
         }
       }
       .product-item-circle.raw {
-        background: url('/static/img/product-raw.png') center center no-repeat $color-white;
+        background-image: url('/static/img/product-raw.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 115px 115px;
       }
 
       .product-item-circle.homemade {
-        background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
+        background-image: url('/static/img/product-homemade.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 115px 115px;
       }
 
       .product-quantity-circle {

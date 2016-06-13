@@ -100,9 +100,9 @@
                 <div class="user-address">
                   Tu le trouveras à l'adresse suivante:<br>
                   <span class="user-address-details">
-                  {{ alliance.users.giver.name.first }} {{ alliance.users.giver.name.last }}
-                  {{ foodkeeper.location.street }}<br>
-                  {{ foodkeeper.location.additional }}<br>
+                  {{ alliance.users.giver.name.first }} {{ alliance.users.giver.name.last }}<br/>
+                  {{ foodkeeper.location.street }}<br/>
+                  {{ foodkeeper.location.additional }}<br/>
                   {{ foodkeeper.location.zipcode }} {{ foodkeeper.location.city }}</span>
                 </div>
 
@@ -123,7 +123,7 @@
                   </svg>
                 </legend>
                 <form>
-                  <h3>  Fichtre,</h3>
+                  <h3>Fichtre,</h3>
                   {{ alliance.users.giver.name.first }} n'est pas disponible
                     <template v-if="alliance.request.delayed"><br /> pour le créneau horaire que tu lui a indiqué</template>
                     <template v-else>maintenant</template>
@@ -163,13 +163,12 @@
                   Qu'as tu pensé de cette alliance ? <br>
                   Elle était :
                 <select class="market-add-form-select" v-model="form.review">
-                    <option value="0">A bannir</option>
-                    <option value="1">A éviter</option>
-                    <option value="2">Passable</option>
-                    <option value="3" selected>Bien</option>
-                    <option value="4">Très Bien</option>
-                    <option value="5">Parfait</option>
-                    <!-- MARION côté back: DE 0 à 5 uniquement !!!! -->
+                  <option value="5">Parfait</option>
+                  <option value="4">Très Bien</option>
+                  <option value="3" selected>Bien</option>
+                  <option value="2">Passable</option>
+                  <option value="1">A éviter</option>
+                  <option value="0">A bannir</option>
                 </select>
                 <div class="alliance-action-button" v-on:click="allianceReview">Valider</div>
             </fieldset>
@@ -653,11 +652,17 @@ export default {
       }
 
       .product-item-circle.raw {
-        background: url('/static/img/product-raw.png') center center no-repeat $color-white;
+        background-image: url('/static/img/product-raw.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 125px 125px;
       }
 
       .product-item-circle.homemade {
-        background: url('/static/img/product-homemade.png') center center no-repeat $color-white;
+        background-image: url('/static/img/product-homemade.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 125px 125px;
       }
 
       .product-name {
